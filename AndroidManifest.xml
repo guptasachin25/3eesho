@@ -9,13 +9,14 @@
         android:targetSdkVersion="19" />
 
     <application
+        android:name="com.codepath.eesho.ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DailyPlanActivity"
-            android:label="@string/app_name" >
+            android:name="com.codepath.eesho.activities.DailyPlanActivity"
+            android:label="Daily Plan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
