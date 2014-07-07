@@ -1,12 +1,13 @@
 package com.codepath.eesho.adapters;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.Article;
@@ -26,38 +27,21 @@ public class ArticlesArrayAdapter extends ArrayAdapter<Article>{
 			v = convertView;
 		}
 		
+		TextView tvTitle = (TextView) v.findViewById(R.id.tvTitle);
+		TextView tvDescription = (TextView) v.findViewById(R.id.tvDescription);
+		
+		tvTitle.setText(article.getArticleTitle());
+		tvDescription.setText(article.getArticleDesription());
+		
+		String url = article.getArticleUrl();
+		
 		return v;
 		
 	}
 	
-	public ArticlesArrayAdapter(Context context, List<Article> article) {
+	public ArticlesArrayAdapter(Context context, ArrayList<Article> article) {
 		super(context, 0, article);
 	}
-	
-//	@Override
-//	public View getView(int position, View convertView, ViewGroup parent) {
-//		goal = getItem(position);
-//		
-//		View v;
-//		if (convertView == null) {
-//			LayoutInflater inflator = LayoutInflater.from(getContext());
-//			v = inflator.inflate(R.layout.daily_activity_item, parent, false);
-//		} else {
-//			v = convertView;
-//		}
-//		
-//		CheckBox ch = (CheckBox) v.findViewById(R.id.cb1);
-//		ch.setText(goal.getGoalDescription());
-//		ch.setChecked(goal.isDone());
-//	
-//		return v;
-//	}
-//	
-//	
-//	public GoalArrayAdapter(Context context, List<Goal> goals) {
-//		super(context, 0, goals);
-//
-//	}
 	
 
 }
