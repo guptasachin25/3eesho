@@ -3,5 +3,24 @@
 
     <string name="app_name">3eesho</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="et_userName">Raj Singh</string>
+    <string name="et_User_Profession">Software Engg</string>
+    <string name="et_user_location">San Francisco, CA</string>
+    <string name="iv_UserProfile_Image_contentdescription">User Profile Image</string>
+    <string name="tv_userProfileEmailLabel">"Email: "</string>
+    <string name="tv_userProfilePhoneLabel">Phone:</string>
+    <string name="tv_userProfileDOBLabel">"Date of Birth "</string>
+    <string name="hint_dob">mm/dd/yyyy</string>
+    <string name="tv_userWeightLabel">Weight:</string>
+    <string name="tv_userHeightLabel">Height</string>
+    <string name="tv_userDietHabitLabel">Diet Habit</string>
+    <string name="tv_userDailyScheduleLabel">Daily Schedule</string>
+    <string name="tv_userProfileTargetLabel">Target:</string>
+    <string name="tv_userProfileTargetDateLabel">"Target date to achieve the goal "</string>
+    <string name="tvuserProfileAmountTimeSpentLabel">"Time Spent "</string>
+    <string name="hint_phonenumber">1234567890</string>
+    <string name="tv_usertargetgoal">Loose 10 kg in 3 months</string>
+    <string name="tv_user_TimeSpent">Time Spend by user weekly or daily</string>
 
 </resources>

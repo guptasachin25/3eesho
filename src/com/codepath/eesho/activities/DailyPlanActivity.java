@@ -1,12 +1,17 @@
 package com.codepath.eesho.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 
+import com.codepath.eesho.activities.ProfileActivity;
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.DailyPlanFragment;
 
@@ -70,4 +75,17 @@ public class DailyPlanActivity extends FragmentActivity {
 	        }
 	        
 	    }
+	
+
+	public void onProfileView(MenuItem mi) {
+		Intent i = new Intent(DailyPlanActivity.this, ProfileActivity.class);
+		startActivity(i);
+		
+	}
+   
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	getMenuInflater().inflate(R.menu.profile, menu);
+		return true;
+    }
 }

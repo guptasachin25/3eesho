@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<item
+        android:id="@+id/miProfile"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_profile"
+        android:onClick="onProfileView"
+        android:title="Profile">
+    </item>
+
+</menu>
