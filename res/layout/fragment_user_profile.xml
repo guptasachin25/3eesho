@@ -345,8 +345,9 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:ems="10"
-            android:text="                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               "
-            android:textSize="12sp" />
+            android:text="@string/tvTimeSpend"
+            android:textSize="12sp"/>
+
         <TextView
             android:id="@+id/tvuserProfileperweek"
             android:layout_width="wrap_content"

@@ -75,17 +75,4 @@ public class DailyPlanActivity extends FragmentActivity {
 	        }
 	        
 	    }
-	
-
-	public void onProfileView(MenuItem mi) {
-		Intent i = new Intent(DailyPlanActivity.this, ProfileActivity.class);
-		startActivity(i);
-		
-	}
-   
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-    	getMenuInflater().inflate(R.menu.profile, menu);
-		return true;
-    }
 }

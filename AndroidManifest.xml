@@ -3,7 +3,7 @@
     package="com.codepath.eesho"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
@@ -19,21 +19,23 @@
         <activity
             android:name="com.codepath.eesho.activities.DailyPlanActivity"
             android:label="Daily Plan" >
-<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.codepath.eesho.activities.ArticlesActivity"
             android:label="Articles" >
-            
-            
         </activity>
         <activity
             android:name="com.codepath.eesho.activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.HomeActivity"
+            android:label="@string/title_activity_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

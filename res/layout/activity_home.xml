@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
-     <FrameLayout
-       android:id="@+id/frameLayoutProfile"
+    <FrameLayout
+        android:id="@+id/flHomeContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        tools:layout="@layout/fragment_user_profile" >
-  </FrameLayout>
-  
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+    </FrameLayout>
+
 </RelativeLayout>

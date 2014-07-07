@@ -22,5 +22,7 @@
     <string name="hint_phonenumber">1234567890</string>
     <string name="tv_usertargetgoal">Loose 10 kg in 3 months</string>
     <string name="tv_user_TimeSpent">Time Spend by user weekly or daily</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="tvTimeSpend">30hrs</string>
 
 </resources>
