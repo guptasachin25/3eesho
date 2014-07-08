@@ -44,7 +44,7 @@ public class UserDashBoardFragment extends Fragment {
 		setUpBarGraph();
 		BarGraph g = (BarGraph) v.findViewById(R.id.graph);
 		g.setBars(points);
-		g.setUnit("%");
+//		g.setUnit("%");
 		g.setShowBarText(false);
 		
 		expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
@@ -66,27 +66,22 @@ public class UserDashBoardFragment extends Fragment {
  
         // Adding child data
         List<String> yesterday = new ArrayList<String>();
-        yesterday.add("The Shawshank Redemption");
-        yesterday.add("The Godfather");
-        yesterday.add("The Godfather: Part II");
-        yesterday.add("Pulp Fiction");
+        yesterday.add("Run for 10 minutes");
+        yesterday.add("Eat Fruits");
+        yesterday.add("Eat Veggies");
  
         List<String> today = new ArrayList<String>();
-        today.add("The Conjuring");
-        today.add("Despicable Me 2");
-        today.add("Turbo");
-        today.add("Grown Ups 2");
-        today.add("Red 2");
-        today.add("The Wolverine");
+        today.add("Bike for 30 minutes");
+        today.add("Swim for 20 minutes");
+        today.add("Eat Salad for lunch");
  
         List<String> tomorrow = new ArrayList<String>();
-        tomorrow.add("2 Guns");
-        tomorrow.add("The Smurfs 2");
-        tomorrow.add("The Spectacular Now");
-        tomorrow.add("The Canyons");
-        tomorrow.add("Europa Report");
+        tomorrow.add("Drink fruit smoothie for breakfast");
+        tomorrow.add("Eat salad for dinner");
+        tomorrow.add("Walk for 30 minutes");
+        tomorrow.add("Biked for 60 minutes");
  
-        listDataChild.put(listDataHeader.get(0), yesterday); // Header, Child data
+        listDataChild.put(listDataHeader.get(0), yesterday);
         listDataChild.put(listDataHeader.get(1), today);
         listDataChild.put(listDataHeader.get(2), tomorrow);
     }
@@ -96,37 +91,37 @@ public class UserDashBoardFragment extends Fragment {
 		Bar d = new Bar();
 		d.setColor(Color.parseColor("#99CC00"));
 		d.setName("Monday");
-		d.setValue(10);
+		d.setValue(100);
 		
 		Bar d2 = new Bar();
 		d2.setColor(Color.parseColor("#FFBB33"));
 		d2.setName("Tuesday");
-		d2.setValue(20);
+		d2.setValue(200);
 		
 		Bar d3 = new Bar();
 		d3.setColor(Color.parseColor("#ff3232"));
 		d3.setName("Wednesday");
-		d3.setValue(100);
+		d3.setValue(1000);
 		
 		Bar d4 = new Bar();
 		d4.setColor(Color.parseColor("#38B0DE"));
 		d4.setName("Thursday");
-		d4.setValue(80);
+		d4.setValue(800);
 		
 		Bar d5 = new Bar();
 		d5.setColor(Color.parseColor("#99CC00"));
 		d5.setName("Friday");
-		d5.setValue(80);
+		d5.setValue(800);
 		
 		Bar d6 = new Bar();
 		d6.setColor(Color.parseColor("#FFBB33"));
 		d6.setName("Saturday");
-		d6.setValue(70);
+		d6.setValue(700);
 		
 		Bar d7 = new Bar();
 		d7.setColor(Color.parseColor("#ff3232"));
 		d7.setName("Sunday");
-		d7.setValue(100);
+		d7.setValue(1000);
 		
 		points.add(d);
 		points.add(d2);
