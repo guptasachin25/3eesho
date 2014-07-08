@@ -1,7 +1,5 @@
 package com.codepath.eesho.models;
 
-import java.lang.reflect.Array;
-
 import org.json.JSONArray;
 
 import com.parse.ParseClassName;
