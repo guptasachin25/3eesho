@@ -25,28 +25,7 @@ public class ArticlesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_articles);
-		articles = new ArrayList<Article>();
-		lvArticles = (ListView) findViewById(R.id.lvArticles);
-		articles.add(new Article("Title", "Description blah blah", "http://www.google.com"));
-		aArticles = new ArticlesArrayAdapter(this, articles);
-		lvArticles.setAdapter(aArticles);
-		setupListViewListener();
 
 	}
 	
-	private void setupListViewListener() {
-
-		lvArticles.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-								
-				String url = articles.get(position).getArticleUrl();
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				startActivity(i);
-
-			}
-		});
-	}
 }
