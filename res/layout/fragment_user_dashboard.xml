@@ -4,10 +4,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button1"
+    <TextView
+        android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dashboard Fragment view " />
+        android:text="Tasks Progress" />
+    
+    <com.echo.holographlibrary.BarGraph
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:id="@+id/graph"
+        android:layout_marginTop="50dp"/>
+    
+    <ExpandableListView
+     	android:id="@+id/lvExp"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/> 
 
 </LinearLayout>

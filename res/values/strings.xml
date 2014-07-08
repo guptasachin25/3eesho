@@ -24,5 +24,6 @@
     <string name="tv_user_TimeSpent">Time Spend by user weekly or daily</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="tvTimeSpend">30hrs</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 
 </resources>
