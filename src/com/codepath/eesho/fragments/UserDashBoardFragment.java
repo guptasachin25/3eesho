@@ -15,7 +15,6 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.ExpandableListAdapter;
@@ -29,6 +28,8 @@ public class UserDashBoardFragment extends Fragment {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     
+    boolean prepareBarGraph = false;
+    
 	@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -41,10 +42,12 @@ public class UserDashBoardFragment extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 		
-		setUpBarGraph();
 		BarGraph g = (BarGraph) v.findViewById(R.id.graph);
+		if (!prepareBarGraph) {
+			setUpBarGraph();
+			prepareBarGraph = true;
+		}
 		g.setBars(points);
-//		g.setUnit("%");
 		g.setShowBarText(false);
 		
 		expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
