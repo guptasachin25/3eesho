@@ -21,8 +21,14 @@
     <string name="tv_usertargetgoal">Loose 10 kg in 3 months</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="sphint_weight">114lb</string>
-    <string name="sphint_height">5\'\'.5\'</string>
+    <string name="sphint_height">5\'.5\'\'</string>
     <string name="hint_diethabit">Veg/Non-Veg/Vegan</string>
     <string name="hint_email">sam@gmail.com</string>
-
+    <string name="tvTimeSpend">30hrs</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="dot_label">.</string>
+    <string name="lb_label">lb</string>
+    <string name="singlequot_label">\'</string>
+    <string name="doublequot_label">\"</string>
 </resources>

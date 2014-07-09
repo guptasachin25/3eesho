@@ -1,4 +1,4 @@
-lt application files
+# built application files
 *.apk
 *.ap_
 
@@ -54,4 +54,3 @@ local.properties
 
 # PDT-specific
 .buildpath
-

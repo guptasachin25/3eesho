@@ -25,9 +25,9 @@
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
        	 	android:ems="10"
-        	android:text="@string/et_userName"
+        	android:hint="@string/et_userName"
         	android:inputType="text"
-        	android:enabled="false"
+        	android:background="@android:color/transparent"
         	android:gravity="center"
         	android:textSize="20sp"/>
     
@@ -38,7 +38,7 @@
         	android:ems="10"
         	android:text="@string/et_User_Profession"
         	android:inputType="text"
-        	android:enabled="false"
+        	android:background="@android:color/transparent"
         	android:gravity="center"
         	android:textSize="18sp"/>
 
@@ -50,7 +50,7 @@
          	android:gravity="center"
          	android:text="@string/et_user_location"
          	android:inputType="text"
-         	android:enabled="false"
+         	android:background="@android:color/transparent"
          	android:textSize="16sp" />
 
     </LinearLayout>
@@ -85,8 +85,9 @@
             android:layout_marginRight="10dp"
             android:ems="10"
             android:enabled="false"
-            android:hint="@string/hint_email"
+            android:text="@string/hint_email"
             android:inputType="textWebEmailAddress"
+            android:background="@android:color/transparent"
             android:textSize="15sp" >
 
             <requestFocus />
@@ -116,9 +117,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:enabled="false"
             android:ems="10"
             android:hint="@string/hint_phonenumber"
+            android:background="@android:color/transparent"
             android:inputType="phone"
             android:textSize="15sp" />
         
@@ -260,7 +261,7 @@
             android:ems="10"
             android:hint="@string/tv_usertargetgoal"
             android:inputType="text"
-            android:enabled="false"
+            android:background="@android:color/transparent"
             android:textSize="15sp" />
         
     </LinearLayout>
