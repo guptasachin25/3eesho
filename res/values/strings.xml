@@ -26,5 +26,6 @@
     <string name="tvTimeSpend">30hrs</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_expert_home">ExpertHomeActivity</string>
 
 </resources>

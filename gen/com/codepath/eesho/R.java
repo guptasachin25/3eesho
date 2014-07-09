@@ -63,17 +63,20 @@ public final class R {
         public static final int activity_articles=0x7f030000;
         public static final int activity_daily_plan=0x7f030001;
         public static final int activity_dashboard=0x7f030002;
-        public static final int activity_home=0x7f030003;
-        public static final int activity_profile=0x7f030004;
-        public static final int articles_item=0x7f030005;
-        public static final int daily_activity_item=0x7f030006;
-        public static final int fragment_goals_list=0x7f030007;
-        public static final int fragment_my_trainer=0x7f030008;
-        public static final int fragment_todaygoals_list=0x7f030009;
-        public static final int fragment_user_dashboard=0x7f03000a;
-        public static final int fragment_user_profile=0x7f03000b;
-        public static final int list_group=0x7f03000c;
-        public static final int list_item=0x7f03000d;
+        public static final int activity_expert_home=0x7f030003;
+        public static final int activity_home=0x7f030004;
+        public static final int activity_profile=0x7f030005;
+        public static final int articles_item=0x7f030006;
+        public static final int daily_activity_item=0x7f030007;
+        public static final int fragment_goals_list=0x7f030008;
+        public static final int fragment_my_clients=0x7f030009;
+        public static final int fragment_my_feed=0x7f03000a;
+        public static final int fragment_my_trainer=0x7f03000b;
+        public static final int fragment_todaygoals_list=0x7f03000c;
+        public static final int fragment_user_dashboard=0x7f03000d;
+        public static final int fragment_user_profile=0x7f03000e;
+        public static final int list_group=0x7f03000f;
+        public static final int list_item=0x7f030010;
     }
     public static final class menu {
         public static final int profile=0x7f060000;
@@ -88,6 +91,7 @@ public final class R {
         public static final int hint_phonenumber=0x7f040012;
         public static final int iv_UserProfile_Image_contentdescription=0x7f040006;
         public static final int title_activity_dashboard=0x7f040018;
+        public static final int title_activity_expert_home=0x7f040019;
         public static final int title_activity_home=0x7f040015;
         public static final int title_activity_login=0x7f040017;
         public static final int title_activity_profile=0x7f040002;
