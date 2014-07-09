@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-lt application files
-=======
 # built application files
->>>>>>> 45b4b3ae22a768f2d44b652fbc98900a7c33a4ec
 *.apk
 *.ap_
 
@@ -58,7 +54,3 @@ local.properties
 
 # PDT-specific
 .buildpath
-<<<<<<< HEAD
-
-=======
->>>>>>> 45b4b3ae22a768f2d44b652fbc98900a7c33a4ec

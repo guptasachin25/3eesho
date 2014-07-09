@@ -13,7 +13,6 @@ public final class R {
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
         public static final int ic_profile=0x7f020001;
-        public static final int popup_black=0x7f020002;
     }
     public static final class id {
         public static final int button1=0x7f07000a;
@@ -86,8 +85,9 @@ public final class R {
         public static final int hint_dob=0x7f04000a;
         public static final int hint_phonenumber=0x7f040012;
         public static final int iv_UserProfile_Image_contentdescription=0x7f040006;
-        public static final int title_activity_dashboard=0x7f040017;
+        public static final int title_activity_dashboard=0x7f040018;
         public static final int title_activity_home=0x7f040015;
+        public static final int title_activity_login=0x7f040017;
         public static final int title_activity_profile=0x7f040002;
         public static final int tvTimeSpend=0x7f040016;
         public static final int tv_userDailyScheduleLabel=0x7f04000e;
@@ -124,31 +124,9 @@ public final class R {
         res/values-v11/styles.xml on API 14+ devices.
     
  API 14 theme customizations can go here. 
-
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f050000;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
- Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f050001;
