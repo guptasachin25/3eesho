@@ -19,7 +19,7 @@
     <string name="tv_userProfileTargetDateLabel">"Target date to achieve the goal "</string>
     <string name="hint_phonenumber">1234567890</string>
     <string name="tv_usertargetgoal">Loose 10 kg in 3 months</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">3eesho</string>
     <string name="sphint_weight">114lb</string>
     <string name="sphint_height">5\'.5\'\'</string>
     <string name="hint_diethabit">Veg/Non-Veg/Vegan</string>
@@ -31,4 +31,7 @@
     <string name="lb_label">lb</string>
     <string name="singlequot_label">\'</string>
     <string name="doublequot_label">\"</string>
+    <string name="tvName">Name</string>
+    <string name="btnLabel_SelectTrainer">Select Trainer</string>
+    <string name="label_Description">Description</string>
 </resources>

@@ -7,6 +7,7 @@ import com.codepath.eesho.fragments.UserProfileFragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
 
 public class ProfileActivity extends FragmentActivity {
 
@@ -26,4 +27,9 @@ public class ProfileActivity extends FragmentActivity {
 		ft.commit();
 		
 	}
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+    	getMenuInflater().inflate(R.menu.logout, menu);
+		return true;
+    }
 }
