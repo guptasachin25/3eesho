@@ -16,8 +16,8 @@ public final class R {
         public static final int popup_black=0x7f020002;
     }
     public static final class id {
-        public static final int button1=0x7f07000a;
-        public static final int cb1=0x7f070008;
+        public static final int button1=0x7f070009;
+        public static final int cb1=0x7f070006;
         public static final int dot=0x7f070027;
         public static final int etuserProfileEmail=0x7f070013;
         public static final int etuserProfileLocation=0x7f070011;
@@ -26,9 +26,9 @@ public final class R {
         public static final int etuserProfilename=0x7f07000f;
         public static final int feet=0x7f070023;
         public static final int first_picker=0x7f070026;
-        public static final int flContainer=0x7f070003;
-        public static final int flHomeContainer=0x7f070004;
-        public static final int frameLayoutProfile=0x7f070005;
+        public static final int flContainer=0x7f070001;
+        public static final int flHomeContainer=0x7f070002;
+        public static final int frameLayoutProfile=0x7f070003;
         public static final int graph=0x7f07000c;
         public static final int imageView1=0x7f07000e;
         public static final int inches=0x7f070025;
@@ -37,15 +37,15 @@ public final class R {
         public static final int lblListItem=0x7f070021;
         public static final int lvArticles=0x7f070000;
         public static final int lvExp=0x7f07000d;
-        public static final int lvGoals=0x7f070009;
+        public static final int lvGoals=0x7f07000a;
         public static final int max_picker=0x7f070024;
         public static final int miProfile=0x7f07002a;
         public static final int min_picker=0x7f070022;
-        public static final int pager_header=0x7f070002;
+        public static final int pager_header=0x7f070008;
         public static final int second_picker=0x7f070028;
         public static final int tv1=0x7f07000b;
-        public static final int tvDescription=0x7f070007;
-        public static final int tvTitle=0x7f070006;
+        public static final int tvDescription=0x7f070005;
+        public static final int tvTitle=0x7f070004;
         public static final int tvuserProfileDietHabit=0x7f07001d;
         public static final int tvuserProfileDietHabitLabel=0x7f07001c;
         public static final int tvuserProfileEmaillabel=0x7f070012;
@@ -58,7 +58,7 @@ public final class R {
         public static final int tvuserProfileWeightLabel=0x7f070018;
         public static final int tvusergender=0x7f070017;
         public static final int tvusergenderlabel=0x7f070016;
-        public static final int vpPager=0x7f070001;
+        public static final int vpPager=0x7f070007;
     }
     public static final class layout {
         public static final int activity_articles=0x7f030000;
@@ -70,12 +70,13 @@ public final class R {
         public static final int daily_activity_item=0x7f030006;
         public static final int fragment_goals_list=0x7f030007;
         public static final int fragment_my_trainer=0x7f030008;
-        public static final int fragment_user_dashboard=0x7f030009;
-        public static final int fragment_user_profile=0x7f03000a;
-        public static final int list_group=0x7f03000b;
-        public static final int list_item=0x7f03000c;
-        public static final int number_picker_dialog=0x7f03000d;
-        public static final int weight_picker_dialog=0x7f03000e;
+        public static final int fragment_todaygoals_list=0x7f030009;
+        public static final int fragment_user_dashboard=0x7f03000a;
+        public static final int fragment_user_profile=0x7f03000b;
+        public static final int list_group=0x7f03000c;
+        public static final int list_item=0x7f03000d;
+        public static final int number_picker_dialog=0x7f03000e;
+        public static final int weight_picker_dialog=0x7f03000f;
     }
     public static final class menu {
         public static final int profile=0x7f060000;
