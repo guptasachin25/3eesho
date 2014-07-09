@@ -25,7 +25,7 @@ public class TodaysPlanFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_goals_list, container, false);
+		View v = inflater.inflate(R.layout.fragment_todaygoals_list, container, false);
 		lvGoals = (ListView) v.findViewById(R.id.lvGoals);
 		lvGoals.setAdapter(aGoals);
 		
