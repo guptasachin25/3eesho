@@ -22,7 +22,7 @@
     <string name="title_activity_home">3eesho</string>
     <string name="sphint_weight">114lb</string>
     <string name="sphint_height">5\'.5\'\'</string>
-    <string name="hint_diethabit">Veg/Non-Veg/Vegan</string>
+    <string name="hint_diethabit">Veg/Non-Veg</string>
     <string name="hint_email">sam@gmail.com</string>
     <string name="tvTimeSpend">30hrs</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -34,4 +34,7 @@
     <string name="tvName">Name</string>
     <string name="btnLabel_SelectTrainer">Select Trainer</string>
     <string name="label_Description">Description</string>
+    <string name="tvLabel_ExpertIn">ExpertIn:</string>
+    <string name="et_expertDescText">"Hi I am Trainer in body building. I love to help people who want to loose weight. "</string>
+    <string name="et_ExpertInDesc">Dietitian, Fitness Expert</string>
 </resources>

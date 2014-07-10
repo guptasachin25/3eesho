@@ -114,7 +114,7 @@ private void heightClick() {
 				        inch.setMinValue(0);
 
 				        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				        builder.setTitle("Text Size:");
+				        builder.setTitle("Height");
 				        builder.setView(npView);
 				        builder.setPositiveButton("Okay",
 				            new DialogInterface.OnClickListener() {
@@ -150,14 +150,14 @@ private void weightClick() {
 				        maxPicker.setMinValue(0);
 
 				        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				        builder.setTitle("Text Size:");
+				        builder.setTitle("Weight:");
 				        builder.setView(npView);
 				        builder.setPositiveButton("Okay",
 				            new DialogInterface.OnClickListener() {
 				                public void onClick(DialogInterface dialog, int whichButton) {
 				                	int weightvalue = minPicker.getValue();
 					                int pointvalue = maxPicker.getValue();
-					                weight.setText(weightvalue+"\'"+pointvalue+"\'\'");
+					                weight.setText(weightvalue+"."+pointvalue+"lb");
 				                }
 				            });
 				       builder.setNegativeButton("Cancel",

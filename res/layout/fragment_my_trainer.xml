@@ -9,13 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/tvMyTrainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="MyTrainer" />
     </LinearLayout>
 
     <TextView
@@ -26,7 +19,7 @@
         android:layout_marginTop="18dp"
         android:ems="10"
         android:gravity="center"
-        android:text="Choose Text" />
+        android:text="Choose Trainer" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
@@ -103,7 +96,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/btnSelectTrainer"
         android:layout_marginTop="16dp"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/tvLabel_myTrainerDescription"
@@ -113,10 +106,37 @@
         
         <EditText
             android:id="@+id/etMyTrainerDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/et_expertDescText" >
+
         </EditText>
 
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/ll_ExpertIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll_TrainerDesc"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvLabel_myExpertIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvLabel_ExpertIn" />
+
+        <EditText
+            android:id="@+id/etMyExpertIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/et_ExpertInDesc" >
+
+        </EditText>
     </LinearLayout>
 
 </RelativeLayout>
