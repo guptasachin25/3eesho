@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.codepath.eesho.R;
 
-public class MyClientsFragment extends Fragment{
+public class EditPlanFragment extends Fragment{
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MyClientsFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 		@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View v = inflater.inflate(R.layout.fragment_my_clients, container,false);
+		View v = inflater.inflate(R.layout.fragment_edit_plan, container,false);
 		return v;
 	}
 
