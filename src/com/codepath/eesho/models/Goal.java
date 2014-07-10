@@ -16,8 +16,9 @@ import com.parse.ParseQuery;
 
 @ParseClassName("Goal")
 public class Goal extends ParseObject{
-	ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+	static ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 	ArrayList<Goal> resultGoals;
+	static ArrayList<String> doneGoals = new ArrayList<String>();
 	
 	public Goal() {
 		super();
@@ -105,5 +106,27 @@ public class Goal extends ParseObject{
 		});
 		
 		return resultGoals;
+	}
+	
+	public static ArrayList<String> getDoneTasks(int dayOfWeek, String username, final List<String> li) {
+		query.whereEqualTo("username", username);
+		query.whereEqualTo("dayOfWeek", dayOfWeek);
+		query.whereEqualTo("done", true);
+		
+		query.findInBackground(new FindCallback<Goal>() {
+		    public void done(List<Goal> goals, ParseException e) {
+		        if (e == null) {
+		            for (int i = 0; i < goals.size(); i++) {
+		            	li.add(goals.get(i).getGoalDescription().toString());
+		            	System.out.println(goals.get(i).getGoalDescription().toString());
+		            }
+		            
+		        } else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }
+		    }
+		});
+		
+		return doneGoals;
 	}
 }
