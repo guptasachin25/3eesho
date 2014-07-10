@@ -1,6 +1,7 @@
 package com.codepath.eesho.fragments;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -50,77 +51,50 @@ public class TodaysPlanFragment extends Fragment{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		ParseQuery<Plan> query = ParseQuery.getQuery(Plan.class);
+		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		// Define our query conditions
-		query.whereEqualTo("username", "calren");
+		query.whereEqualTo("username", "caren");
 				
 		goals = new ArrayList<Goal>();
 		aGoals = new GoalArrayAdapter(getActivity(), goals);
+		
+		Calendar calendar = Calendar.getInstance();
+		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);		
+		
+		System.out.println("on tab: " + day);
+		System.out.println("day of week: " + dayOfWeek);
+		
+		
 		if (day == 1) {
-			query.findInBackground(new FindCallback<Plan>() {
-			    public void done(List<Plan> plan, ParseException e) {
-			        if (e == null) {
-			            // Access the array of results here
-			            JSONArray first = plan.get(0).getTodaysGoals();
-			            for (int i = 0; i < first.length(); i++) {
-			            	try {
-			            		goals.add(new Goal(first.getJSONObject(i).get("done").toString(),
-			            				first.getJSONObject(i).get("task").toString()));
-							} catch (JSONException e1) {
-								e1.printStackTrace();
-							}
-			            }
-			            aGoals.notifyDataSetChanged();
-			            
-			        } else {
-			            Log.d("item", "Error: " + e.getMessage());
-			        }
-			    }
-			});
-
+			query.whereEqualTo("dayOfWeek", dayOfWeek);
 		} else if (day == 0) {
-			query.findInBackground(new FindCallback<Plan>() {
-			    public void done(List<Plan> plan, ParseException e) {
-			        if (e == null) {
-			            // Access the array of results here
-			            JSONArray first = plan.get(0).getYesterdayGoals();
-			            for (int i = 0; i < first.length(); i++) {
-			            	try {
-			            		goals.add(new Goal(first.getJSONObject(i).get("done").toString(),
-			            				first.getJSONObject(i).get("task").toString()));
-							} catch (JSONException e1) {
-								e1.printStackTrace();
-							}
-			            }
-			            aGoals.notifyDataSetChanged();
-			            
-			        } else {
-			            Log.d("item", "Error: " + e.getMessage());
-			        }
-			    }
-			});
+			if (day == 1) {
+				query.whereEqualTo("dayOfWeek", 7);
+			} else {
+				query.whereEqualTo("dayOfWeek", dayOfWeek-1);
+			}
 		} else if (day == 2) {
-			query.findInBackground(new FindCallback<Plan>() {
-			    public void done(List<Plan> plan, ParseException e) {
-			        if (e == null) {
-			            // Access the array of results here
-			            JSONArray first = plan.get(0).getTomorrowsGoals();
-			            for (int i = 0; i < first.length(); i++) {
-			            	try {
-			            		goals.add(new Goal(first.getJSONObject(i).get("done").toString(),
-			            				first.getJSONObject(i).get("task").toString()));
-							} catch (JSONException e1) {
-								e1.printStackTrace();
-							}
-			            }
-			            aGoals.notifyDataSetChanged();
-			            
-			        } else {
-			            Log.d("item", "Error: " + e.getMessage());
-			        }
-			    }
-			});
+			if (day == 7) {
+				query.whereEqualTo("dayOfWeek", 1);
+			} else {
+				query.whereEqualTo("dayOfWeek", dayOfWeek + 1);
+			}
 		}
+		
+		query.findInBackground(new FindCallback<Goal>() {
+		    public void done(List<Goal> resultGoal, ParseException e) {
+		        if (e == null) {
+		        	for (int i = 0; i < resultGoal.size(); i++) {
+		        		goals.add(new Goal(resultGoal.get(i).isDone(), resultGoal.get(i).getGoalDescription()));
+		            }
+		            
+		            aGoals.notifyDataSetChanged();
+		            
+		        } else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }
+		    }
+		});
 		
 	}
 	
