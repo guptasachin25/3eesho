@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ClientListFragment;
+import com.codepath.eesho.fragments.EditPlanActivity;
 
 public class ExpertHomeActivity extends FragmentActivity {
 	
@@ -27,13 +28,8 @@ public class ExpertHomeActivity extends FragmentActivity {
 	}
 	
 	public void goToEditPlan(View v) {
-//		Intent i = new Intent(ExpertHomeActivity.this, EditPlanActivity.class);
-//        startActivity(i);
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		// Replace the container with the new fragment
 		ft.replace(R.id.flPlaceholder, new EditPlanActivity());
-		// or ft.add(R.id.your_placeholder, new FooFragment());
-		// Execute the changes specified
 		ft.commit();
 	}
 }

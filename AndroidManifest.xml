@@ -31,11 +31,6 @@
         <activity
             android:name="com.codepath.eesho.activities.HomeActivity"
             android:label="@string/title_activity_home" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.codepath.eesho.activities.LoginActivity"
@@ -48,14 +43,14 @@
         <activity
             android:name="com.codepath.eesho.activities.ExpertHomeActivity"
             android:label="@string/title_activity_expert_home" >
-            <!--   <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.EditPlanActivity"
+            android:name="com.codepath.eesho.fragments.EditPlanActivity"
             android:label="@string/title_activity_edit_plan" >
         </activity>
     </application>
