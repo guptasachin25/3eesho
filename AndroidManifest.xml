@@ -34,7 +34,7 @@
             android:label="@string/title_activity_home" >
         </activity>
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.codepath.eesho.activities.DashboardActivity"
             android:label="@string/title_activity_dashboard" >
         </activity>
         <activity
@@ -64,7 +64,7 @@
             android:value="629605243814245" />
 
         <activity
-            android:name=".activities.UserGoalActivity"
+            android:name="com.codepath.eesho.activities.UserGoalActivity"
             android:label="@string/title_activity_user_goal" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,15 +73,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.WeightActivity"
+            android:name="com.codepath.eesho.activities.WeightActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity
-            android:name=".activities.UserTimeGoalActivity"
+            android:name="com.codepath.eesho.activities.UserTimeGoalActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity
-            android:name=".activities.TimeCommitmentActivity"
+            android:name="com.codepath.eesho.activities.TimeCommitmentActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity

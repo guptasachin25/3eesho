@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,7 +42,7 @@ public class UserDashBoardFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		ViewGroup container, Bundle savedInstanceState) {
 		
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 		
