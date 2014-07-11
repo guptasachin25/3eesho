@@ -62,7 +62,7 @@ public class UserProfileFragment extends DialogFragment {
 
 @Override
 public View onCreateView(LayoutInflater inflater,
-	ViewGroup container, Bundle savedInstanceState) {
+		 ViewGroup container,  Bundle savedInstanceState) {
 	View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
 	// Email on click becomes editable otherwise it is non editable
 	tvUserProfileName = (TextView)v. findViewById(R.id.etuserProfilename);

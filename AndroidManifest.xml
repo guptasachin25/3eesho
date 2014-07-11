@@ -95,11 +95,7 @@
         <activity
             android:name="com.codepath.eesho.activities.ExpertHomeActivity"
             android:label="@string/title_activity_expert_home" >
-            <!--   <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            
         </activity>
         <activity
             android:name="com.codepath.eesho.activities.EditPlanActivity"

@@ -27,6 +27,11 @@ public class ClientListFragment extends Fragment{
 
 		clients = new ArrayList<User>();
 		gvClients = (GridView) v.findViewById(R.id.gvClients);
+		/*
+		 * TODO
+		 * this should be pulling from the database based on which expert is logged in
+		 * it should pull in all clients of an expert
+		 */
 		clients.add(new User("calren", "http://scienceblogs.com/gregladen/files/2012/12/Beautifull-cat-cats-14749885-1600-1200.jpg"));
 		aClients = new ClientArrayAdapter(this.getActivity(), clients);
 		gvClients.setAdapter(aClients);

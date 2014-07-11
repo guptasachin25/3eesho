@@ -48,13 +48,21 @@ public class Goal extends ParseObject{
 		put("goalDescription", description);
 	}
 	
+	public void setDayOfWeek(int dayOfWeek) {
+		put ("dayOfWeek", dayOfWeek);
+	}
+	
+	public void setUserName(String username) {
+		put ("username", username);
+	}
+	
 	public String getId() {
 		return getString("objectId");
 	}
 	
 	public boolean isDone() {
 	    return getBoolean("done");
-	  }
+	}
 	
 	public String getGoalDescription() {
 		return getString("goalDescription");

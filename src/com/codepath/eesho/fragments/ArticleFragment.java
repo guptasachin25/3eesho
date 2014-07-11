@@ -34,6 +34,11 @@ public class ArticleFragment extends Fragment {
 		
 		articles = new ArrayList<Article>();
 		lvArticles = (ListView) v.findViewById(R.id.lvArticles);
+		/*
+		 * TODO
+		 * this should be populating data from the database instead
+		 * we need to populate the articles table with some data
+		 */
 		articles.add(new Article("Title", "Description blah blah", "http://3eesho.com/articles/3331/%D9%85%D9%83%D9%85%D9%84%D8%A7%D8%AA+%D8%A7%D9%84%D8%B5%D9%8A%D8%A7%D9%85"));
 		articles.add(new Article("Another Title", "This description is even better than the last one", "http://www.yahoo.com"));
 		aArticles = new ArticlesArrayAdapter(this.getActivity(), articles);

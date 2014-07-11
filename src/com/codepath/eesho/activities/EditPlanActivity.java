@@ -15,8 +15,7 @@ public class EditPlanActivity extends Fragment {
 	}
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater,
-		ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.activity_edit_plan, container, false);
 		
 		return v;

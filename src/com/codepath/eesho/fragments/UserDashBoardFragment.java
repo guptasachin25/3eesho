@@ -22,6 +22,11 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+/*
+ * TODO
+ * the graph still is populating random data, but i'm thinking of removing the graph and putting in something
+ * more visually pleasing. such as how many day streak the user is on
+ */
 public class UserDashBoardFragment extends Fragment {
 	ArrayList<Bar> points = new ArrayList<Bar>();
 	ExpandableListAdapter listAdapter;
@@ -29,7 +34,6 @@ public class UserDashBoardFragment extends Fragment {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
     
-//    static ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 	static ArrayList<String> doneGoals = new ArrayList<String>();
 	
     boolean prepareBarGraph = false;
@@ -43,6 +47,7 @@ public class UserDashBoardFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 		ViewGroup container, Bundle savedInstanceState) {
+
 		
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 		
@@ -75,28 +80,34 @@ public class UserDashBoardFragment extends Fragment {
         listDataHeader.add("Friday");
         listDataHeader.add("Saturday");
         listDataHeader.add("Sunday");
+        
+        /*
+         * TODO
+         * this should be pulling in the username of the logged in user
+         */
+        String username = "caren";
 
         // Adding child data
         List<String> monday = new ArrayList<String>();
-        getDoneTasks(2, "caren", monday);
+        getDoneTasks(2, username, monday);
         
         List<String> tuesday = new ArrayList<String>();
-        getDoneTasks(3, "caren", tuesday);
+        getDoneTasks(3, username, tuesday);
         
         List<String> wed = new ArrayList<String>();
-        getDoneTasks(4, "caren", wed);
+        getDoneTasks(4, username, wed);
         
         List<String> thurs = new ArrayList<String>();
-        getDoneTasks(5, "caren", thurs);
+        getDoneTasks(5, username, thurs);
         
         final List<String> fri = new ArrayList<String>();
-        getDoneTasks(6, "caren", fri);
+        getDoneTasks(6, username, fri);
         
         List<String> sat = new ArrayList<String>();
-        getDoneTasks(7, "caren", sat);
+        getDoneTasks(7, username, sat);
         
         List<String> sun = new ArrayList<String>();
-        getDoneTasks(1, "caren", sun);
+        getDoneTasks(1, username, sun);
 
         listDataChild.put(listDataHeader.get(0), monday);
         listDataChild.put(listDataHeader.get(1), tuesday);
