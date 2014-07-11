@@ -1,0 +1,105 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <EditText
+        android:id="@+id/etHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+		android:layout_below="@+id/etWeight"
+		android:layout_marginLeft="20dp"
+		android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Enter Height" />
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="20dp"
+        android:ems="10" 
+        android:hint="Enter weight">
+
+        <requestFocus />
+    </EditText>
+
+    <Switch
+        android:id="@+id/swWeightUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etWeight"
+        android:layout_alignParentRight="true" 
+        android:textOn="LB"
+        android:textOff="KG"
+        android:onClick="onClick"
+        android:text="" />
+
+    <Switch
+        android:id="@+id/swHeightUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/etHeight"
+        android:textOn="inch"
+        android:textOff="cm"
+        android:onClick="onClick"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnLowActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etHeight"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:onClick="onClick"
+        android:text="Low Activity" />
+
+    <Button
+        android:id="@+id/btnMediumActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnLowActivity"
+        android:layout_below="@+id/btnLowActivity"
+        android:layout_marginTop="14dp"
+        android:onClick="onClick"
+        android:text="Medium Activity" />
+
+    <Button
+        android:id="@+id/btnHighActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnMediumActivity"
+        android:layout_below="@+id/btnMediumActivity"
+        android:layout_marginTop="24dp"
+        android:onClick="onClick"
+        android:text="High Activity" />
+
+    <Switch
+        android:id="@+id/swEatingHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/etHeight"
+        android:layout_below="@+id/btnHighActivity"
+        android:layout_marginTop="58dp"
+        android:textOn="Veg"
+        android:textOff="Non Veg"
+        android:onClick="onClick"
+        android:text="Eating Habits" />
+
+    <Button
+        android:id="@+id/btnDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="onClick"
+        android:text="Done" />
+
+</RelativeLayout>

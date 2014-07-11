@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="62dp"
+        android:layout_marginTop="103dp"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="33dp"
+        android:text="How much you want to lose?"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnKg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnLb"
+        android:layout_alignBottom="@+id/btnLowActivity"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClick"
+        android:text="Kg" />
+
+    <Button
+        android:id="@+id/btnLb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etWeight"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="148dp"
+        android:onClick="onClick"
+        android:text="Lbs" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="38dp"
+        android:layout_marginRight="24dp"
+        android:onClick="onClick"
+        android:text="Next" />
+
+</RelativeLayout>

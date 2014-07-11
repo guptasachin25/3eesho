@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/btnLowActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:text="Low Activity" />
+
+    <Button
+        android:id="@+id/btnMediumActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLowActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:text="Normal" />
+
+    <Button
+        android:id="@+id/btnHighActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnMediumActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:text="High" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnHighActivity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="Super" />
+
+</RelativeLayout>

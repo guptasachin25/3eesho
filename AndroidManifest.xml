@@ -11,26 +11,60 @@
         android:targetSdkVersion="19" />
 
     <application
-        android:name="com.codepath.eesho.ParseApplication"
+        android:name=".ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.codepath.eesho.activities.DailyPlanActivity"
+            android:name=".activities.DailyPlanActivity"
             android:label="Daily Plan" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ArticlesActivity"
+            android:name=".activities.ArticlesActivity"
             android:label="Articles" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.HomeActivity"
+            android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name=".DashboardActivity"
+            android:label="@string/title_activity_dashboard" >
+        </activity>
+        <activity
+            android:name="com.parse.ui.ParseLoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop" >
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
+                android:value="true" />
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_EMAIL_AS_USERNAME"
+                android:value="true" />
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED"
+                android:value="true" />
+            <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.TWITTER_LOGIN_ENABLED"
+                android:value="true" />
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="629605243814245" />
+
+        <activity
+            android:name=".activities.UserGoalActivity"
+            android:label="@string/title_activity_user_goal" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,12 +72,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:name=".activities.WeightActivity"
+            android:label="@string/title_activity_user_goal" >
         </activity>
-        <activity    
-            android:name="com.codepath.eesho.DashboardActivity"
-            android:label="@string/title_activity_dashboard" >
+        <activity
+            android:name=".activities.UserTimeGoalActivity"
+            android:label="@string/title_activity_user_goal" >
+        </activity>
+        <activity
+            android:name=".activities.TimeCommitmentActivity"
+            android:label="@string/title_activity_user_goal" >
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.UserMetricsActivity"
+            android:label="@string/title_activity_user_metrics" >
         </activity>
     </application>
 
