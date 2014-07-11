@@ -15,6 +15,9 @@ import android.widget.ListView;
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.DailyPlanFragment.MyPagerAdapter;
 
+/*
+ * this is for expert view
+ */
 public class EditPlanActivity extends Fragment {
 	FragmentPagerAdapter adapterViewPager;
 		

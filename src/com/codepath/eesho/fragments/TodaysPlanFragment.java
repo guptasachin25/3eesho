@@ -52,7 +52,10 @@ public class TodaysPlanFragment extends Fragment{
 		super.onCreate(savedInstanceState);
 		
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
-		// Define our query conditions
+		/*
+		 * TODO
+		 * this should be pulling for whichever user is logged in, based on username
+		 */
 		query.whereEqualTo("username", "caren");
 				
 		goals = new ArrayList<Goal>();

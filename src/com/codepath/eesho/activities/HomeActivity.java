@@ -32,52 +32,6 @@ public class HomeActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		setupTabs();
-		
-		/*
-		 * the rest of this method was used to populate data 
-		 */
-//		JSONObject task1 = new JSONObject();
-//		try {
-//		    task1.put("task", "go for a walk");
-//		    task1.put("done", false);
-//
-//		} catch (JSONException e) {
-//		    // TODO Auto-generated catch block
-//		    e.printStackTrace();
-//		}
-//		
-//		JSONObject task2 = new JSONObject();
-//		try {
-//		    task2.put("task", "do 50 jumping jacks");
-//		    task2.put("done", false);
-//
-//		} catch (JSONException e) {
-//		    // TODO Auto-generated catch block
-//		    e.printStackTrace();
-//		}
-//		
-//
-//		jsonArray.put(task1);
-//		jsonArray.put(task2);
-//
-//		Plan goal = new Plan();
-//		goal.put("monday_goals", jsonArray);
-//		goal.put("username", "calren");
-//		goal.saveInBackground();
-		
-//		ParseQuery<ParseObject> query = ParseQuery.getQuery("Plan");
-//		 
-//		// Retrieve the object by id
-//		query.getInBackground("1VQCtDDDcC", new GetCallback<ParseObject>() {
-//		  public void done(ParseObject gameScore, ParseException e) {
-//		    if (e == null) {
-//		      // Now let's update it with some new data. In this case, only cheatMode and score
-//		      // will get sent to the Parse Cloud. playerName hasn't changed.
-//		      gameScore.put("su_goals", jsonArray);
-//		      gameScore.saveInBackground();
-//		    }
-//		  }
-//		});
 	}
 	
 	private void setupTabs() {

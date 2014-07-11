@@ -24,6 +24,9 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+/*
+ * this class is for the expert's view when he wants to edit a client's goals
+ */
 @SuppressLint("ValidFragment")
 public class DailyEditPlanFragment extends Fragment{
 	private ArrayList<Goal> goals;
@@ -45,6 +48,10 @@ public class DailyEditPlanFragment extends Fragment{
 		
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		// Define our query conditions
+		/*
+		 * TODO
+		 * this should be pulling in whichever user is logged in
+		 */
 		query.whereEqualTo("username", "caren");
 				
 		goals = new ArrayList<Goal>();
@@ -127,6 +134,11 @@ public class DailyEditPlanFragment extends Fragment{
 				}
 				
 				Goal newGoal = new Goal(false, goalToAdd);
+				
+				/*
+				 * TODO
+				 * this should save for whichever user is logged in
+				 */
 				newGoal.setUserName("caren");
 				newGoal.setDayOfWeek(whatDayGoal);
 				newGoal.saveInBackground();
