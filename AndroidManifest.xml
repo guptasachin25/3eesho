@@ -87,13 +87,9 @@
             android:name="com.codepath.eesho.activities.UserMetricsActivity"
             android:label="@string/title_activity_user_metrics" >
         </activity>
-        <activity>
+        <activity
             android:name="com.codepath.eesho.activities.LoginActivity"
             android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name="com.codepath.eesho.DashboardActivity"
-            android:label="@string/title_activity_dashboard" >
         </activity>
         <activity
             android:name="com.codepath.eesho.activities.ExpertHomeActivity"
