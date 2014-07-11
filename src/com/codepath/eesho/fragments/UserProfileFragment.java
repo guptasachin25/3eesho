@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -50,7 +49,7 @@ public class UserProfileFragment extends DialogFragment {
 		}
 @Override
 public View onCreateView(LayoutInflater inflater,
-		@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		 ViewGroup container,  Bundle savedInstanceState) {
 	View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
 	// Email on click becomes editable otherwise it is non editable 
 	phone = (EditText) v.findViewById(R.id.etuserProfilePhone);

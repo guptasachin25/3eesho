@@ -3,7 +3,6 @@ package com.codepath.eesho.fragments;
 import com.codepath.eesho.R;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,7 @@ public class MyTrainerFragment extends Fragment {
 	}
 @Override
 public View onCreateView(LayoutInflater inflater,
-	@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+	 ViewGroup container,  Bundle savedInstanceState) {
 View v = inflater.inflate(R.layout.fragment_my_trainer, container,false);
 return v;
 }
