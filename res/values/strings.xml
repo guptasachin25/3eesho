@@ -27,6 +27,9 @@
     <string name="tvTimeSpend">30hrs</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_user_goal">UserGoalActivity</string>
+    <string name="title_activity_user_metrics">UserMetricsActivity</string>
+    <string name="weightHint">Enter Weight</string>
     <string name="dot_label">.</string>
     <string name="lb_label">lb</string>
     <string name="singlequot_label">\'</string>

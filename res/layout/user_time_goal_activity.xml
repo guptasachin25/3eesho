@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="Target Date?" />
+
+    <EditText
+        android:id="@+id/etTargetTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:ems="10" />
+
+     <Button
+            android:id="@+id/btnWeeks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+			android:layout_below="@+id/etTargetAmount"
+            android:layout_alignParentLeft="true"
+            android:onClick="onClick"
+            android:text="Weeks" />
+     
+     <Button
+            android:id="@+id/btnMonths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnWeeks"
+			android:layout_alignBaseline="@+id/btnWeeks"
+            android:onClick="onClick"
+            android:text="Months" />
+          
+       <Button
+            android:id="@+id/btnYears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btnMonths"
+			android:layout_alignBaseline="@+id/btnMonths"
+            android:onClick="onClick"
+            android:text="Years" />
+
+       <Button
+           android:id="@+id/btnSubmit"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="45dp"
+           android:layout_toRightOf="@+id/btnYears"
+           android:onClick="onClick"
+           android:text="Next" />
+        
+</RelativeLayout>

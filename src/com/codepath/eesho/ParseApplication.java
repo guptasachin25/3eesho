@@ -7,7 +7,9 @@ import com.codepath.eesho.models.Goal;
 import com.codepath.eesho.models.Plan;
 import com.codepath.eesho.models.User;
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
+import com.parse.ParseTwitterUtils;
 
 public class ParseApplication extends Application {
     @Override
@@ -21,5 +23,7 @@ public class ParseApplication extends Application {
 
         
         Parse.initialize(this, "Iyx6g7dZxvqi1o3ECmMxTLHhqys3OAhOS5YB2DV1", "JEm4N1zcYnvIgUcSLNGJj2z1S5I30MkCBPfDnti9");
+        ParseFacebookUtils.initialize("629605243814245");
+        ParseTwitterUtils.initialize("OMRjiobCKSwX9zEZIx3cgz2lM", "FzvomIfq6cMjcYImZoFVbtkTLwjyhGyMK0jpiMxFtfJztHAgUI");
   }		
 }
