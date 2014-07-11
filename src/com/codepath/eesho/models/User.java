@@ -113,4 +113,9 @@ public class User extends ParseObject {
 	public void setEmailId(String emailId) {
 		put("email_id", emailId);
 	}
+
+	public String getobjectId() {
+		// TODO Auto-generated method stub
+		return getString("getObjectId()");
+	}
 }

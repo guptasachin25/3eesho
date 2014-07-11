@@ -1,5 +1,7 @@
 package com.codepath.eesho.fragments;
 
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,10 +20,17 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.models.Goal;
+import com.codepath.eesho.models.User;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 public class UserProfileFragment extends DialogFragment {
 	
-	private long user_id;
+	private String user_id;
+	private TextView tvUserProfileName;
 	private EditText phone;
 	private TextView gender;
 	private TextView profession;
@@ -35,10 +45,10 @@ public class UserProfileFragment extends DialogFragment {
 	private NumberPicker maxPicker;
 	
 	// The fragment for geting user input field names
-	public static UserProfileFragment newInstance(long user_id) {
+	public static UserProfileFragment newInstance(String userid) {
 		UserProfileFragment fragment = new UserProfileFragment();
 		Bundle args = new Bundle();
-		args.putLong("user_id", user_id);
+		args.putString("user_id", userid);
 		fragment.setArguments(args);
 		return fragment;
 	}
@@ -46,13 +56,17 @@ public class UserProfileFragment extends DialogFragment {
 		public void onCreate(Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			super.onCreate(savedInstanceState);
-			user_id = getArguments().getLong("user_id", 0);
+			user_id = getArguments().getString("user_id");
+			
+			
 		}
+
 @Override
 public View onCreateView(LayoutInflater inflater,
 		@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 	View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
-	// Email on click becomes editable otherwise it is non editable 
+	// Email on click becomes editable otherwise it is non editable
+	tvUserProfileName = (TextView)v. findViewById(R.id.etuserProfilename);
 	phone = (EditText) v.findViewById(R.id.etuserProfilePhone);
 	gender = (TextView) v.findViewById(R.id.tvusergender);
 	profession = (TextView) v.findViewById(R.id.etuserProfileProfession);
@@ -69,8 +83,29 @@ public View onCreateView(LayoutInflater inflater,
 	weightClick();
 	heightClick();
 	dietHabitClick();
+	ParseQuery<User> query = ParseQuery.getQuery(User.class);
+	// Define our query conditions
+	query.getInBackground(user_id, new GetCallback<User>() {
+		
+		@Override
+		public void done(User user, ParseException e) {
+			// TODO Auto-generated method stub
+			if(e == null){
+				setUpUser(user);
+				//Log.d("Fragment", "Retrieved " + user.getUsernname() + " Data");
+			}else {
+				
+			}
+		}
+
+		
+	});
 
 	return v;
+}
+private void setUpUser(User user) {
+	// TODO Auto-generated method stub
+	tvUserProfileName.setText(user.getUsernname());
 }
 private void dietHabitClick() {
 	dietHabit.setOnClickListener(new OnClickListener() {
