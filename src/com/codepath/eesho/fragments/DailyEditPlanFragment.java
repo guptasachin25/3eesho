@@ -20,6 +20,7 @@ import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.GoalArrayAdapter;
 import com.codepath.eesho.models.Goal;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
@@ -32,6 +33,7 @@ public class DailyEditPlanFragment extends Fragment{
 	EditText etNewGoal;
 	
 	private int day;
+	int dayOfWeek;
 	
 	public DailyEditPlanFragment(int i) {
 		day = i;
@@ -49,11 +51,7 @@ public class DailyEditPlanFragment extends Fragment{
 		aGoals = new GoalArrayAdapter(getActivity(), goals);
 		
 		Calendar calendar = Calendar.getInstance();
-		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);		
-		
-		System.out.println("on tab: " + day);
-		System.out.println("day of week: " + dayOfWeek);
-		
+		dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);	
 		
 		if (day == 1) {
 			query.whereEqualTo("dayOfWeek", dayOfWeek);
@@ -102,11 +100,37 @@ public class DailyEditPlanFragment extends Fragment{
 			@Override
             public void onClick(View v)
             {
-				goals.add(new Goal(false, etNewGoal.getText().toString()));
+				String goalToAdd = etNewGoal.getText().toString();
+				goals.add(new Goal(false, goalToAdd));
 				aGoals.notifyDataSetChanged();
 				etNewGoal.setText("");
 				etNewGoal.setHint("Add a new goal");
-            } 
+				
+				int whatDayGoal = 0;
+				
+				if (day == 1) {
+					if (dayOfWeek == 7) {
+						whatDayGoal = 1;
+					} else {
+						whatDayGoal = dayOfWeek + 1;
+					}
+				} else if (day == 0) {
+					whatDayGoal = dayOfWeek;
+				} else if (day == 2) {
+					if (day == 7) {
+						whatDayGoal = 2;
+					} else if (day == 6) {
+						whatDayGoal = 1;
+					} else {
+						whatDayGoal = dayOfWeek + 2;
+					}
+				}
+				
+				Goal newGoal = new Goal(false, goalToAdd);
+				newGoal.setUserName("caren");
+				newGoal.setDayOfWeek(whatDayGoal);
+				newGoal.saveInBackground();
+		   } 
 		}); 
 		
 		return v;
