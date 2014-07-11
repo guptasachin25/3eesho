@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.Goal;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 public class GoalArrayAdapter extends ArrayAdapter<Goal> {
 	
@@ -31,6 +35,22 @@ public class GoalArrayAdapter extends ArrayAdapter<Goal> {
 		CheckBox ch = (CheckBox) v.findViewById(R.id.cb1);
 		ch.setText(goal.getGoalDescription());
 		ch.setChecked(goal.isDone());
+		
+		ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+		       @Override
+		       public void onCheckedChanged(CompoundButton buttonView , final boolean isChecked) {
+		    	   ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+			   		// Define our query conditions
+			   	   query.getInBackground(goal.getId(), new GetCallback<Goal>() {
+			   	   public void done(Goal gameScore, ParseException e) {
+			   		   gameScore.put("done", isChecked);
+			   		   gameScore.saveInBackground();
+			   	  }
+			   	});
+		       }
+		   }
+		);   
 	
 		return v;
 	}

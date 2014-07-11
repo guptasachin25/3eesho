@@ -8,19 +8,20 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.ExpandableListAdapter;
+import com.codepath.eesho.models.Goal;
 import com.echo.holographlibrary.Bar;
 import com.echo.holographlibrary.BarGraph;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
 public class UserDashBoardFragment extends Fragment {
 	ArrayList<Bar> points = new ArrayList<Bar>();
@@ -28,6 +29,11 @@ public class UserDashBoardFragment extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    
+//    static ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+	static ArrayList<String> doneGoals = new ArrayList<String>();
+	
+    boolean prepareBarGraph = false;
     
 	@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +47,12 @@ public class UserDashBoardFragment extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 		
-		setUpBarGraph();
 		BarGraph g = (BarGraph) v.findViewById(R.id.graph);
+		if (!prepareBarGraph) {
+			setUpBarGraph();
+			prepareBarGraph = true;
+		}
 		g.setBars(points);
-//		g.setUnit("%");
 		g.setShowBarText(false);
 		
 		expListView = (ExpandableListView) v.findViewById(R.id.lvExp);
@@ -56,35 +64,74 @@ public class UserDashBoardFragment extends Fragment {
 	}
 	
 	private void prepareListData() {
+		
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
  
         // Adding child data
-        listDataHeader.add("Yesterday");
-        listDataHeader.add("Today");
-        listDataHeader.add("Tomorrow");
- 
+        listDataHeader.add("Monday");
+        listDataHeader.add("Tuesday");
+        listDataHeader.add("Wednesday");
+        listDataHeader.add("Thursday");
+        listDataHeader.add("Friday");
+        listDataHeader.add("Saturday");
+        listDataHeader.add("Sunday");
+
         // Adding child data
-        List<String> yesterday = new ArrayList<String>();
-        yesterday.add("Run for 10 minutes");
-        yesterday.add("Eat Fruits");
-        yesterday.add("Eat Veggies");
- 
-        List<String> today = new ArrayList<String>();
-        today.add("Bike for 30 minutes");
-        today.add("Swim for 20 minutes");
-        today.add("Eat Salad for lunch");
- 
-        List<String> tomorrow = new ArrayList<String>();
-        tomorrow.add("Drink fruit smoothie for breakfast");
-        tomorrow.add("Eat salad for dinner");
-        tomorrow.add("Walk for 30 minutes");
-        tomorrow.add("Biked for 60 minutes");
- 
-        listDataChild.put(listDataHeader.get(0), yesterday);
-        listDataChild.put(listDataHeader.get(1), today);
-        listDataChild.put(listDataHeader.get(2), tomorrow);
+        List<String> monday = new ArrayList<String>();
+        getDoneTasks(2, "caren", monday);
+        
+        List<String> tuesday = new ArrayList<String>();
+        getDoneTasks(3, "caren", tuesday);
+        
+        List<String> wed = new ArrayList<String>();
+        getDoneTasks(4, "caren", wed);
+        
+        List<String> thurs = new ArrayList<String>();
+        getDoneTasks(5, "caren", thurs);
+        
+        final List<String> fri = new ArrayList<String>();
+        getDoneTasks(6, "caren", fri);
+        
+        List<String> sat = new ArrayList<String>();
+        getDoneTasks(7, "caren", sat);
+        
+        List<String> sun = new ArrayList<String>();
+        getDoneTasks(1, "caren", sun);
+
+        listDataChild.put(listDataHeader.get(0), monday);
+        listDataChild.put(listDataHeader.get(1), tuesday);
+        listDataChild.put(listDataHeader.get(2), wed);
+        listDataChild.put(listDataHeader.get(3), thurs);
+        listDataChild.put(listDataHeader.get(4), fri);
+        listDataChild.put(listDataHeader.get(5), sat);
+        listDataChild.put(listDataHeader.get(6), sun);
+
     }
+	
+	public static ArrayList<String> getDoneTasks(int dayOfWeek, String username, final List<String> li) {
+	    ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+
+		query.whereEqualTo("username", username);
+		query.whereEqualTo("dayOfWeek", dayOfWeek);
+		query.whereEqualTo("done", true);
+		
+		query.findInBackground(new FindCallback<Goal>() {
+		    public void done(List<Goal> goals, ParseException e) {
+		        if (e == null) {
+		            for (int i = 0; i < goals.size(); i++) {
+		            	li.add(goals.get(i).getGoalDescription().toString());
+		            	System.out.println(goals.get(i).getGoalDescription().toString());
+		            }
+		            
+		        } else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }
+		    }
+		});
+		
+		return doneGoals;
+	}
 
 	
 	public void setUpBarGraph() {		

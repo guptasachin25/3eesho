@@ -1,14 +1,21 @@
 package com.codepath.eesho.models;
 
 import com.parse.ParseClassName;
-import com.parse.ParseUser;
+import com.parse.ParseObject;
 
 @ParseClassName("User")
-public class User extends ParseUser {
+public class User extends ParseObject {
+	
 	public User() {
 		super();
 	}
-		
+	
+	public User(String username, String picture) {
+		super();
+		setUserName(username);
+		setProfileImage(picture);
+	}
+	
 	public String getUsernname() {
 	    return getString("username");
 	}
