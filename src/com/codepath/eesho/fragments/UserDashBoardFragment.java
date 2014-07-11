@@ -22,6 +22,11 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+/*
+ * TODO
+ * the graph still is populating random data, but i'm thinking of removing the graph and putting in something
+ * more visually pleasing. such as how many day streak the user is on
+ */
 public class UserDashBoardFragment extends Fragment {
 	ArrayList<Bar> points = new ArrayList<Bar>();
 	ExpandableListAdapter listAdapter;
