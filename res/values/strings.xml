@@ -37,4 +37,7 @@
     <string name="tvLabel_ExpertIn">ExpertIn:</string>
     <string name="et_expertDescText">"Hi I am Trainer in body building. I love to help people who want to loose weight. "</string>
     <string name="et_ExpertInDesc">Dietitian, Fitness Expert</string>
+    <string name="title_activity_expert_home">ExpertHomeActivity</string>
+    <string name="title_activity_edit_plan">EditPlanActivity</string>
+
 </resources>

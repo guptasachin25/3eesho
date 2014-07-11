@@ -10,6 +10,12 @@ public class User extends ParseObject {
 		super();
 	}
 	
+	public User(String username, String picture) {
+		super();
+		setUserName(username);
+		setProfileImage(picture);
+	}
+	
 	public String getUsernname() {
 	    return getString("username");
 	}
