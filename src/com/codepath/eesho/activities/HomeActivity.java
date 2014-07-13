@@ -7,6 +7,7 @@ import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,17 +17,31 @@ import com.codepath.eesho.fragments.DailyPlanFragment;
 import com.codepath.eesho.fragments.MyTrainerFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
+import com.parse.ParseUser;
+
 
 public class HomeActivity extends FragmentActivity {
 	JSONArray jsonArray = new JSONArray();
+	ParseUser currentUser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		setupTabs();
+		
+		getCurrentUser();
 	}
 	
+	private void getCurrentUser() {
+		currentUser = ParseUser.getCurrentUser();
+		if (currentUser != null) {
+			setupTabs();
+		} else {
+		  // show the signup or login screen
+		}
+		
+	}
+
 	private void setupTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -79,6 +94,8 @@ public class HomeActivity extends FragmentActivity {
 	
 	public void onProfileView(MenuItem mi) {
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
+		i.putExtra("currentUserLoggedInfo", currentUser.getObjectId());
+		Log.d("inHomeactivity", "user id is " + currentUser.getObjectId() + " before");
 		startActivity(i);
 		
 	}

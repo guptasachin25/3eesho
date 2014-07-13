@@ -3,6 +3,7 @@
     <item
         android:id="@+id/miLogout"
         android:showAsAction="always"
+        android:onClick="onLogout"
         android:title="Logout">
     </item>
 
