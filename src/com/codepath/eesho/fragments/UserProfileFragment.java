@@ -55,14 +55,15 @@ public class UserProfileFragment extends DialogFragment {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		user_id = getArguments().getString("user_id");
-		currentUser = ParseUser.getCurrentUser();
+		
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
-@Override
-public View onCreateView(LayoutInflater inflater,
+	@Override
+	public View onCreateView(LayoutInflater inflater,
 		 ViewGroup container,  Bundle savedInstanceState) {
 	View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
+	currentUser = ParseUser.getCurrentUser();
 	// get the current user object
 	
 	// Email on click becomes editable otherwise it is non editable
@@ -85,7 +86,9 @@ public View onCreateView(LayoutInflater inflater,
 	weightClick();
 	heightClick();
 	dietHabitClick();
-	setUpUserData(currentUser);
+	
+	System.out.println(ParseUser.getCurrentUser());
+	setUpUserData(ParseUser.getCurrentUser());
 	return v;
 }
 
