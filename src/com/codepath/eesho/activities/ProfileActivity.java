@@ -1,59 +1,43 @@
 package com.codepath.eesho.activities;
 
-import com.codepath.eesho.R;
-import com.codepath.eesho.fragments.UserProfileFragment;
-import com.parse.FindCallback;
-import com.parse.GetCallback;
-import com.parse.ParseClassName;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.codepath.eesho.models.User;
-
-
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.Toast;
+import android.view.MenuItem;
+
+import com.codepath.eesho.R;
+import com.codepath.eesho.fragments.UserProfileFragment;
+import com.facebook.LoginActivity;
+import com.parse.ParseUser;
 
 public class ProfileActivity extends FragmentActivity {
-
+String user_id;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
-		// Make the user variable Of User type after we set up the database.
-		ParseQuery<User> query = ParseQuery.getQuery(User.class);
-		query.getInBackground("ApsFqMAfrE", new GetCallback<User>() {
-			
-			@Override
-			public void done(User user, ParseException e) {
-				// TODO Auto-generated method stub
-				if(e == null){
-					//access the data using get method
-					setupWithUser(user);
-					Log.d("inprofileactivity", "user profile " + user.getUsernname() + " before");
-					
-				}else {
-					//Toast.makeText(getCallingActivity(), "Cannot get the user data information from parse", Toast.LENGTH_SHORT);
-				}
-			}
-		});
-		//Long user = (long) 1234;
-		
+		user_id = getIntent().getExtras().getString("currentUserLoggedInfo");
+		setupWithUser(user_id);
 	}
 
-	private void setupWithUser(User user) {
+	private void setupWithUser(String user_id) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		UserProfileFragment fragment = UserProfileFragment.newInstance(user.getobjectId());
-		Log.d("inprofileactivity", "user profile " + user.getobjectId() + " after");
+		UserProfileFragment fragment = UserProfileFragment.newInstance(user_id);
+		Log.d("inprofileactivity", "user profile " + user_id + " after");
 		ft.replace(R.id.frameLayoutProfile, fragment);
 		ft.commit();
-		
 	}
+	
+	public void onLogout(MenuItem mi){
+		ParseUser.logOut();
+		Log.d("logout", "user is now loged out");
+		//Intent i = new Intent(this, LoginActivity.class);
+		  //startActivity(i);
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	getMenuInflater().inflate(R.menu.logout, menu);

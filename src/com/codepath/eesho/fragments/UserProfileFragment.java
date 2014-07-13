@@ -19,18 +19,21 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.Goal;
 import com.codepath.eesho.models.User;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class UserProfileFragment extends DialogFragment {
 	
 	private String user_id;
+	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
 	private EditText phone;
+	private TextView email;
 	private TextView gender;
 	private TextView profession;
 	private TextView location;
@@ -42,8 +45,10 @@ public class UserProfileFragment extends DialogFragment {
 	private NumberPicker inch;
 	private NumberPicker minPicker;
 	private NumberPicker maxPicker;
+	private ParseUser currentUser = ParseUser.getCurrentUser();
 	
-	// The fragment for geting user input field names
+	
+	// The fragment for getting user input field names
 	public static UserProfileFragment newInstance(String userid) {
 		UserProfileFragment fragment = new UserProfileFragment();
 		Bundle args = new Bundle();
@@ -56,7 +61,7 @@ public class UserProfileFragment extends DialogFragment {
 			// TODO Auto-generated method stub
 			super.onCreate(savedInstanceState);
 			user_id = getArguments().getString("user_id");
-			
+			Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 			
 		}
 
@@ -64,8 +69,11 @@ public class UserProfileFragment extends DialogFragment {
 public View onCreateView(LayoutInflater inflater,
 		 ViewGroup container,  Bundle savedInstanceState) {
 	View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
+	// get the current user object
+	
 	// Email on click becomes editable otherwise it is non editable
 	tvUserProfileName = (TextView)v. findViewById(R.id.etuserProfilename);
+	email = (TextView)v. findViewById(R.id.etuserProfileEmail);
 	phone = (EditText) v.findViewById(R.id.etuserProfilePhone);
 	gender = (TextView) v.findViewById(R.id.tvusergender);
 	profession = (TextView) v.findViewById(R.id.etuserProfileProfession);
@@ -74,6 +82,7 @@ public View onCreateView(LayoutInflater inflater,
 	height = (TextView) v.findViewById(R.id.tvuserProfileHeight);
 	dietHabit = (TextView) v.findViewById(R.id.tvuserProfileDietHabit);
 	target = (TextView) v.findViewById(R.id.tvuserProfileTarget);
+	usernameClick();
 	professionClick();
 	locationClick();
 	genderClick();
@@ -82,30 +91,90 @@ public View onCreateView(LayoutInflater inflater,
 	weightClick();
 	heightClick();
 	dietHabitClick();
-	ParseQuery<User> query = ParseQuery.getQuery(User.class);
-	// Define our query conditions
-	query.getInBackground(user_id, new GetCallback<User>() {
-		
-		@Override
-		public void done(User user, ParseException e) {
-			// TODO Auto-generated method stub
-			if(e == null){
-				setUpUser(user);
-				//Log.d("Fragment", "Retrieved " + user.getUsernname() + " Data");
-			}else {
-				
-			}
-		}
-
-		
-	});
-
+	setUpUserData(currentUser);
 	return v;
 }
-private void setUpUser(User user) {
-	// TODO Auto-generated method stub
-	tvUserProfileName.setText(user.getUsernname());
+
+private void setUpUserData(ParseUser user) {
+	tvUserProfileName.setText(user.getString("name"));
+	email.setText(user.getString("email"));
+	phone.setText(user.getNumber("phone").toString());
+	gender.setText(user.getString("sex"));
+	profession.setText(user.getString("profession"));
+	location.setText(user.getString("location"));
+	weight.setText(user.getNumber("weight").toString());
+	height.setText(user.getNumber("height_feet").toString()+"\'"+user.getNumber("height_inches").toString()+"\'\'");
+	dietHabit.setText(user.getString("diet_habit"));
+	target.setText(user.getString("targetDescription"));		
 }
+
+private void usernameClick() {
+	// TODO Auto-generated method stub
+	tvUserProfileName.addTextChangedListener(new TextWatcher() {
+		
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			//TODO Auto-generated method stub
+		}
+		
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void afterTextChanged(Editable s) {
+			if(s != null){
+				currentUser.put("name", s.toString());
+					currentUser.saveInBackground(new SaveCallback() {
+				
+						@Override
+						public void done(ParseException e) {
+						// TODO Auto-generated method stub
+							Log.d("done","changed phone number is saved");	
+						}
+					});
+				}
+			}
+	});
+	
+}
+
+private void phoneClick() {
+	phone.addTextChangedListener(new TextWatcher() {
+		
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			//TODO Auto-generated method stub
+		}
+		
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void afterTextChanged(Editable s) {
+			if(s != null){
+				currentUser.put("phone", Long.parseLong(s.toString()));
+					currentUser.saveInBackground(new SaveCallback() {
+				
+						@Override
+						public void done(ParseException e) {
+						// TODO Auto-generated method stub
+							Log.d("done","changed phone number is saved");	
+						}
+					});
+				}
+			}
+	});
+	
+}
+
 private void dietHabitClick() {
 	dietHabit.setOnClickListener(new OnClickListener() {
 		
@@ -117,12 +186,30 @@ private void dietHabitClick() {
 	                   public void onClick(DialogInterface dialog, int id) {
 	                       // send a request to backend that set gender as female
 	                	   dietHabit.setText("Vegetarian");
+	                	   currentUser.put("diet_habit", "Vegetarian");
+           				   currentUser.saveInBackground(new SaveCallback() {
+								
+								@Override
+								public void done(ParseException e) {
+									// TODO Auto-generated method stub
+									Log.d("done","veg changed");
+								}
+							});
 	                   }
 	               })
 	               .setNegativeButton("Non-Vegitarian", new DialogInterface.OnClickListener() {
 	                   public void onClick(DialogInterface dialog, int id) {
 	                       // Set gender to male
 	                	   dietHabit.setText("Non-Vegetarian");
+	                	   currentUser.put("diet_habit", "Non-Vegtarian");
+	                	   currentUser.saveInBackground(new SaveCallback() {
+							
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done","non-veg changed");	
+							}
+						});
 	                   }
 	               })
 	               .create()
@@ -156,6 +243,16 @@ private void heightClick() {
 				                int feetvalue = feet.getValue();
 				                int inchvalue = inch.getValue();
 				                height.setText(feetvalue+"\'"+inchvalue+"\'\'");
+				                currentUser.put("height_feet",feetvalue);
+				                currentUser.put("height_inches",inchvalue);
+				                currentUser.saveInBackground(new SaveCallback() {
+									
+									@Override
+									public void done(ParseException e) {
+										// TODO Auto-generated method stub
+										Log.d("done","Saved the height in parse database");
+									}
+								});
 				                }
 				            });
 				       builder.setNegativeButton("Cancel",
@@ -192,6 +289,15 @@ private void weightClick() {
 				                	int weightvalue = minPicker.getValue();
 					                int pointvalue = maxPicker.getValue();
 					                weight.setText(weightvalue+"."+pointvalue+"lb");
+					                currentUser.put("weight", weightvalue);
+				                	   currentUser.saveInBackground(new SaveCallback() {
+										
+										@Override
+										public void done(ParseException e) {
+											// TODO Auto-generated method stub
+											Log.d("done","changed weight is saved");	
+										}
+									});
 				                }
 				            });
 				       builder.setNegativeButton("Cancel",
@@ -221,9 +327,16 @@ private void targetClick() {
 		}
 		
 		@Override
-		public void afterTextChanged(Editable s) {
-			// get the phone number typed in the edittext and send it to the backend to be saved. 
-			
+		public void afterTextChanged(Editable s) { 
+			currentUser.put("targetDescription", s.toString());
+     	   currentUser.saveInBackground(new SaveCallback() {
+				
+				@Override
+				public void done(ParseException e) {
+					// TODO Auto-generated method stub
+					Log.d("done","target is saved");	
+				}
+			});
 			
 		}
 	});
@@ -247,9 +360,16 @@ location.addTextChangedListener(new TextWatcher() {
 		}
 		
 		@Override
-		public void afterTextChanged(Editable s) {
-			// get the phone number typed in the edittext and send it to the backend to be saved. 
-			//phone.setText(s);
+		public void afterTextChanged(Editable s) { 
+			currentUser.put("location", s.toString());
+     	   currentUser.saveInBackground(new SaveCallback() {
+				
+				@Override
+				public void done(ParseException e) {
+					// TODO Auto-generated method stub
+					Log.d("done","changed location is saved");	
+				}
+			});
 			
 		}
 	});
@@ -272,39 +392,22 @@ profession.addTextChangedListener(new TextWatcher() {
 		}
 		
 		@Override
-		public void afterTextChanged(Editable s) {
-			// get the phone number typed in the edittext and send it to the backend to be saved. 
-			//phone.setText(s);
+		public void afterTextChanged(Editable s) { 
+			currentUser.put("profession", s.toString());
+     	   currentUser.saveInBackground(new SaveCallback() {
+				
+				@Override
+				public void done(ParseException e) {
+					// TODO Auto-generated method stub
+					Log.d("done","changed profession is saved ");	
+				}
+			});
 			
 		}
 	});
 	
 }
-private void phoneClick() {
-	phone.addTextChangedListener(new TextWatcher() {
-		
-		@Override
-		public void onTextChanged(CharSequence s, int start, int before, int count) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void beforeTextChanged(CharSequence s, int start, int count,
-				int after) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void afterTextChanged(Editable s) {
-			// get the phone number typed in the edittext and send it to the backend to be saved. 
-			//phone.setText(s);
-			
-		}
-	});
-	
-}
+
 private void genderClick() {
 gender.setOnClickListener(new OnClickListener() {
 		
@@ -316,12 +419,30 @@ gender.setOnClickListener(new OnClickListener() {
 	                   public void onClick(DialogInterface dialog, int id) {
 	                       // send a request to backend that set gender as female
 	                	   gender.setText("Female");
+	                	   currentUser.put("sex", "Female");
+	                	   currentUser.saveInBackground(new SaveCallback() {
+							
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done"," Gender changed to female");	
+							}
+						});
 	                   }
 	               })
 	               .setNegativeButton("Male", new DialogInterface.OnClickListener() {
 	                   public void onClick(DialogInterface dialog, int id) {
 	                       // Set gender to male
 	                	   gender.setText("Male");
+	                	   currentUser.put("sex", "Male");
+	                	   currentUser.saveInBackground(new SaveCallback() {
+							
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done","Gender changed to male");	
+							}
+						});
 	                   }
 	               })
 	               .create()
@@ -329,7 +450,5 @@ gender.setOnClickListener(new OnClickListener() {
 			
 		}// end of onClick
 	});
-	
-	
 }
 }
