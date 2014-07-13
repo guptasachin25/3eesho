@@ -1,8 +1,6 @@
 package com.codepath.eesho.activities;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -18,13 +16,8 @@ import com.codepath.eesho.fragments.DailyPlanFragment;
 import com.codepath.eesho.fragments.MyTrainerFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 
 public class HomeActivity extends FragmentActivity {
-
 	JSONArray jsonArray = new JSONArray();
 
 	@Override
@@ -84,7 +77,6 @@ public class HomeActivity extends FragmentActivity {
 		actionBar.selectTab(myPlan);
 	}
 	
-
 	public void onProfileView(MenuItem mi) {
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		startActivity(i);

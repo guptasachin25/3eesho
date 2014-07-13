@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
@@ -13,10 +14,8 @@ import com.codepath.eesho.models.AnonUser;
 
 public class UserTimeGoalActivity extends Activity {
 	EditText etTargetTime;
-	Button btnWeeks;
-	Button btnMonths;
-	Button btnYears;
 	Button btnSubmit;
+	Spinner spTimeUnits;
 	
 	AnonUser anonUser;
 	
@@ -30,13 +29,12 @@ public class UserTimeGoalActivity extends Activity {
 	
 	private void setViews() {
 		btnSubmit = (Button) findViewById(R.id.btnSubmit);
-		btnWeeks = (Button) findViewById(R.id.btnWeeks);
-		btnMonths = (Button) findViewById(R.id.btnMonths);
-		btnYears = (Button) findViewById(R.id.btnYears);
 		etTargetTime = (EditText) findViewById(R.id.etTargetTime);
+		spTimeUnits = (Spinner) findViewById(R.id.spTimeUnits);
 	}
 	
 	private void onSubmit() {
+		anonUser.setGoalCommitmentTimeUnit(spTimeUnits.getSelectedItem().toString());
 		if(etTargetTime.getText() == null 
 				|| etTargetTime.getText().toString().equals("")
 				|| anonUser.getGoalCommitmentTimeUnit() == null) {
@@ -53,15 +51,6 @@ public class UserTimeGoalActivity extends Activity {
 	
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.btnWeeks:
-			anonUser.setGoalCommitmentTimeUnit("week");
-			break;
-		case R.id.btnYears:
-			anonUser.setGoalCommitmentTimeUnit("year");
-			break;
-		case R.id.btnMonths:
-			anonUser.setGoalCommitmentTimeUnit("month");
-			break;
 		case R.id.btnSubmit:
 			onSubmit();
 		

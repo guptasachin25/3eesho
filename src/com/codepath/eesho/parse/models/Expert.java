@@ -1,10 +1,10 @@
-package com.codepath.eesho.models;
+package com.codepath.eesho.parse.models;
 
 import com.parse.ParseClassName;
-import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Expert")
-public class Expert extends ParseObject{
+public class Expert extends ParseUser {
 	
 	public Expert() {
 		super();

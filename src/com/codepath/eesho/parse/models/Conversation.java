@@ -1,4 +1,4 @@
-package com.codepath.eesho.models;
+package com.codepath.eesho.parse.models;
 
 import org.json.JSONArray;
 

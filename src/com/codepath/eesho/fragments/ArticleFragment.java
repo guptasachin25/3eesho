@@ -15,7 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.ArticlesArrayAdapter;
-import com.codepath.eesho.models.Article;
+import com.codepath.eesho.parse.models.Article;
 
 public class ArticleFragment extends Fragment {
 	private ArrayList<Article> articles;

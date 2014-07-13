@@ -19,8 +19,8 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.Goal;
-import com.codepath.eesho.models.User;
+import com.codepath.eesho.parse.models.Goal;
+import com.codepath.eesho.parse.models.User;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;

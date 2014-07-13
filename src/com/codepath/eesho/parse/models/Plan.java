@@ -1,15 +1,20 @@
-package com.codepath.eesho.models;
+package com.codepath.eesho.parse.models;
 
 import java.util.Calendar;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import com.codepath.eesho.models.DailyActivity;
+import com.codepath.eesho.models.FitnessPlanSingleActivity;
+import com.codepath.eesho.models.WeeklyFitnessPlan;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Plan")
 public class Plan extends ParseObject{
-	
 	public Plan() {
 		super();
 	}
@@ -64,5 +69,23 @@ public class Plan extends ParseObject{
 		return null;
 	}
 
+	public void setUser(ParseUser user) {
+		put("user", user);
+	}
 
+	public void setPlanType(String type) {
+		put("plan_type", type);
+	}
+	
+	public void setPlanDesc(JSONObject defaultPlan) throws JSONException {
+		put("planDesc", defaultPlan);
+	}
+
+	public static JSONObject getPlanforTheDay(String string) {
+		return null;
+	}
+	
+	public DailyActivity getDayActivity(String string) {
+		return null;
+	}
 }

@@ -1,7 +1,5 @@
 package com.codepath.eesho.fragments;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,16 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.adapters.GoalArrayAdapter;
-import com.codepath.eesho.models.Goal;
 
 public class DailyPlanFragment extends Fragment{
 
-	private ArrayList<Goal> goals;
-	private GoalArrayAdapter aGoals;
 	ListView lvGoals;
 	FragmentPagerAdapter adapterViewPager;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -54,13 +48,13 @@ public class DailyPlanFragment extends Fragment{
 	        public Fragment getItem(int position) {
 	            switch (position) {
 	            case 0: 
-	                return new TodaysPlanFragment(0);
+	                return new DayPlanFragment(0);
 	            case 1: 
-	                return new TodaysPlanFragment(1);
+	                return new DayPlanFragment(1);
 	            case 2: 
-	                return new TodaysPlanFragment(2);
+	                return new DayPlanFragment(2);
 	            default:
-	            	return new TodaysPlanFragment(1);
+	            	return new DayPlanFragment(1);
 	            }
 	        }
 	        
@@ -81,5 +75,4 @@ public class DailyPlanFragment extends Fragment{
 	        }
 	        
 	    }
-
 }

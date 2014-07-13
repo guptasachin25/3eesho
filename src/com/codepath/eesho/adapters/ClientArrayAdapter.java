@@ -11,8 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.Article;
-import com.codepath.eesho.models.User;
+import com.codepath.eesho.parse.models.User;
 
 public class ClientArrayAdapter extends ArrayAdapter<User>{
 	

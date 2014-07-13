@@ -8,7 +8,7 @@ import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.codepath.eesho.models.User;
+import com.codepath.eesho.parse.models.User;
 
 
 

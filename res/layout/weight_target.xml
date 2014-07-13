@@ -2,49 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
-    <EditText
-        android:id="@+id/etWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="103dp"
-        android:ems="10" />
-    
+ 
     <TextView
-        android:id="@+id/textView1"
+         android:id="@+id/tvQuestion"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentTop="true"
+         android:layout_marginTop="51dp"
+         android:layout_toLeftOf="@+id/btnNext"
+         android:text="How much?"
+         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+     <EditText
+         android:id="@+id/etWeight"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/tvQuestion"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="123dp"
+         android:ems="10"
+         android:inputType="number" />
+     
+     <Spinner
+        android:id="@+id/spWeightUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="33dp"
-        android:text="How much you want to lose?"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <Button
-        android:id="@+id/btnKg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnLb"
-        android:layout_alignBottom="@+id/btnLowActivity"
-        android:layout_centerHorizontal="true"
-        android:onClick="onClick"
-        android:text="Kg" />
-
-    <Button
-        android:id="@+id/btnLb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etWeight"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="148dp"
-        android:onClick="onClick"
-        android:text="Lbs" />
-
-    <Button
+        android:layout_toRightOf="@+id/etWeight"
+        android:entries="@array/weight_units"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/etWeight" />
+     
+     <Button
         android:id="@+id/btnNext"
         android:layout_width="100dp"
         android:layout_height="wrap_content"

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.json.JSONException;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,7 +20,7 @@ import android.widget.ListView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.GoalArrayAdapter;
-import com.codepath.eesho.models.Goal;
+import com.codepath.eesho.parse.models.Goal;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
@@ -55,7 +57,7 @@ public class DailyEditPlanFragment extends Fragment{
 		query.whereEqualTo("username", "caren");
 				
 		goals = new ArrayList<Goal>();
-		aGoals = new GoalArrayAdapter(getActivity(), goals);
+		//aGoals = new GoalArrayAdapter(getActivity(), goals);
 		
 		Calendar calendar = Calendar.getInstance();
 		dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);	
@@ -80,7 +82,12 @@ public class DailyEditPlanFragment extends Fragment{
 		    public void done(List<Goal> resultGoal, ParseException e) {
 		        if (e == null) {
 		        	for (int i = 0; i < resultGoal.size(); i++) {
-		        		goals.add(new Goal(resultGoal.get(i).isDone(), resultGoal.get(i).getGoalDescription()));
+		        		try {
+							goals.add(new Goal(resultGoal.get(i).isDone(), resultGoal.get(i).getGoalDescription()));
+						} catch (JSONException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 		            }
 		            
 		            aGoals.notifyDataSetChanged();
@@ -90,7 +97,6 @@ public class DailyEditPlanFragment extends Fragment{
 		        }
 		    }
 		});
-		
 	}
 	
 	@Override
