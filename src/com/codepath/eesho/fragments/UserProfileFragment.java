@@ -90,16 +90,27 @@ public View onCreateView(LayoutInflater inflater,
 }
 
 private void setUpUserData(ParseUser user) {
-	tvUserProfileName.setText(user.getString("name"));
-	email.setText(user.getString("email"));
-	phone.setText(user.getNumber("phone").toString());
-	gender.setText(user.getString("sex"));
-	profession.setText(user.getString("profession"));
-	location.setText(user.getString("location"));
-	weight.setText(user.getNumber("weight").toString());
-	height.setText(user.getNumber("height_feet").toString()+"\'"+user.getNumber("height_inches").toString()+"\'\'");
-	dietHabit.setText(user.getString("diet_habit"));
-	target.setText(user.getString("targetDescription"));		
+	if(user.getString("name") != null){
+		tvUserProfileName.setText(user.getString("name"));
+	}else if( user.getString("email") != null){
+		email.setText(user.getString("email"));
+	}else if( user.getNumber("phone") != null){
+		phone.setText(user.getNumber("phone").toString());
+	}else if(user.getString("sex") != null){
+		gender.setText(user.getString("sex"));
+	}else if(user.getString("profession") != null){
+		profession.setText(user.getString("profession"));
+	}else if( user.getString("location") != null){
+		location.setText(user.getString("location"));
+	}else if( user.getNumber("weight") != null){
+		weight.setText(user.getNumber("weight").toString());
+	}else if(user.getNumber("height_feet").toString() != null && (user.getNumber("height_inches") != null)){
+		height.setText(user.getNumber("height_feet").toString()+"\'"+user.getNumber("height_inches").toString()+"\'\'");
+	}else if(user.getString("diet_habit") != null){
+		dietHabit.setText(user.getString("diet_habit"));
+	}else if(user.getString("targetDescription") != null){
+		target.setText(user.getString("targetDescription"));
+	}
 }
 
 private void usernameClick() {
