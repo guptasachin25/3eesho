@@ -22,7 +22,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class UserProfileFragment extends DialogFragment {
-	
+
 	private String user_id;
 	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
@@ -39,9 +39,8 @@ public class UserProfileFragment extends DialogFragment {
 	private NumberPicker inch;
 	private NumberPicker minPicker;
 	private NumberPicker maxPicker;
-	private ParseUser currentUser = ParseUser.getCurrentUser();
-	
-	
+	private ParseUser currentUser;
+
 	// The fragment for getting user input field names
 	public static UserProfileFragment newInstance(String userid) {
 		UserProfileFragment fragment = new UserProfileFragment();
@@ -50,14 +49,15 @@ public class UserProfileFragment extends DialogFragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
+	
 	@Override
-		public void onCreate(Bundle savedInstanceState) {
-			// TODO Auto-generated method stub
-			super.onCreate(savedInstanceState);
-			user_id = getArguments().getString("user_id");
-			Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
-			
-		}
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		user_id = getArguments().getString("user_id");
+		currentUser = ParseUser.getCurrentUser();
+		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
+	}
 
 @Override
 public View onCreateView(LayoutInflater inflater,
