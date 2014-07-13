@@ -36,7 +36,7 @@
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:ems="10"
-        	android:text="@string/et_User_Profession"
+        	android:hint="@string/et_User_Profession"
         	android:inputType="text"
         	android:background="@android:color/transparent"
         	android:gravity="center"
@@ -48,7 +48,7 @@
          	android:layout_height="wrap_content"
          	android:ems="10"
          	android:gravity="center"
-         	android:text="@string/et_user_location"
+         	android:hint="@string/et_user_location"
          	android:inputType="text"
          	android:background="@android:color/transparent"
          	android:textSize="16sp" />
