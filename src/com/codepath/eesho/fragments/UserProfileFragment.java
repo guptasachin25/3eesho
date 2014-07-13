@@ -104,9 +104,9 @@ private void setUpUserData(ParseUser user) {
 		location.setText(user.getString("location"));
 	} if( user.getNumber("weight") != null){
 		weight.setText(user.getNumber("weight").toString());
-	} //if(user.getNumber("height_feet").toString() != null && (user.getNumber("height_inches").toString() != null)){
-		//height.setText(user.getNumber("height_feet").toString()+"\'"+user.getNumber("height_inches").toString()+"\'\'");
-	//} 
+	} if(user.getNumber("height_feet") != null && (user.getNumber("height_inches") != null)){
+		height.setText(user.getNumber("height_feet").toString()+"\'"+user.getNumber("height_inches").toString()+"\'\'");
+	} 
 if(user.getString("diet_habit") != null){
 		dietHabit.setText(user.getString("diet_habit"));
 	} if(user.getString("targetDescription") != null){
