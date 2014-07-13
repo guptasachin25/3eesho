@@ -5,31 +5,31 @@ import java.io.Serializable;
 public class AnonUser implements Serializable {
 	private static final long serialVersionUID = -3779487540497329458L;
 
-	String goal;
+	String goal = null;
 	
-	long weightTarget;
+	long weightTarget = 0L;
 	
-	String weightTargetUnit;
+	String weightTargetUnit = null;
 	
-	long currentWeight;
+	long currentWeight = 0L;
 	
-	String currentWeightUnit;
+	String currentWeightUnit =  null;
 	
-	long height;
+	long height = 0L;
 	
-	String heightUnit;
+	String heightUnit = null;
 	
-	long timeCommitment;
+	long timeCommitment = 0L;
 	
-	String timeCommentmentUnit;
+	String timeCommentmentUnit = null;
 	
-	long goalCommitment;
+	long goalCommitment = 0L;
 	
-	String goalCommitmentTimeUnit;
+	String goalCommitmentTimeUnit = null;
 	
-	String activity;
+	String activity = null;
 	
-	String foodHabits;
+	String foodHabits = null;
 
 	public String getHeightUnit() {
 		return heightUnit;

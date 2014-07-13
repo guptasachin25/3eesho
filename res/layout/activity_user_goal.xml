@@ -5,26 +5,25 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="81dp"
-        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
         android:text="What you want to do?" />
-
+    
     <Button
         android:id="@+id/btnLoseWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/tvQuestion"
         android:layout_centerHorizontal="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="40dp"
         android:text="Lose Weight"
         android:onClick="onBtnClick"
         android:textAlignment="center"></Button>
@@ -39,7 +38,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:text="Gain Weight"
         android:onClick="onBtnClick"
         android:textAlignment="center" />
@@ -54,7 +53,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:onClick="onBtnClick"
         android:text="Run Marathon"
         android:textAlignment="center" />
@@ -69,9 +68,10 @@
         android:layout_marginRight="25dp"
         android:layout_below="@+id/btnRunMarathon"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:onClick="onBtnClick"
         android:text="Fitness"
         android:textAlignment="viewStart"></Button>
 
+    
 </RelativeLayout>

@@ -1,97 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
-
-    <EditText
-        android:id="@+id/etHeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-		android:layout_below="@+id/etWeight"
-		android:layout_marginLeft="20dp"
-		android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Enter Height" />
-
-    <EditText
-        android:id="@+id/etWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-		android:layout_alignParentLeft="true"
-		android:layout_alignParentTop="true"
-		android:layout_marginTop="10dp"
-		android:layout_marginLeft="20dp"
-        android:ems="10" 
-        android:hint="Enter weight">
-
-        <requestFocus />
-    </EditText>
-
-    <Switch
-        android:id="@+id/swWeightUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/etWeight"
-        android:layout_alignParentRight="true" 
-        android:textOn="LB"
-        android:textOff="KG"
-        android:onClick="onClick"
-        android:text="" />
-
-    <Switch
-        android:id="@+id/swHeightUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/etHeight"
-        android:textOn="inch"
-        android:textOff="cm"
-        android:onClick="onClick"
-        android:text="" />
-
-    <Button
-        android:id="@+id/btnLowActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etHeight"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:onClick="onClick"
-        android:text="Low Activity" />
-
-    <Button
-        android:id="@+id/btnMediumActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnLowActivity"
-        android:layout_below="@+id/btnLowActivity"
-        android:layout_marginTop="14dp"
-        android:onClick="onClick"
-        android:text="Medium Activity" />
-
-    <Button
-        android:id="@+id/btnHighActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnMediumActivity"
-        android:layout_below="@+id/btnMediumActivity"
-        android:layout_marginTop="24dp"
-        android:onClick="onClick"
-        android:text="High Activity" />
-
-    <Switch
-        android:id="@+id/swEatingHabits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/etHeight"
-        android:layout_below="@+id/btnHighActivity"
-        android:layout_marginTop="58dp"
-        android:textOn="Veg"
-        android:textOff="Non Veg"
-        android:onClick="onClick"
-        android:text="Eating Habits" />
 
     <Button
         android:id="@+id/btnDone"
@@ -101,5 +12,141 @@
         android:layout_alignParentRight="true"
         android:onClick="onClick"
         android:text="Done" />
+
+    <TextView
+        android:id="@+id/tvWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="23dp"
+        android:text="Weight" />
+
+    <EditText
+        android:id="@+id/etWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/tvWeight"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/tvWeight"
+        android:ems="10"
+        android:hint="Enter Current Weight"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/spWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/etWeight"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/etWeight"
+        android:entries="@array/weight_units" />
+
+    <TextView
+        android:id="@+id/tvHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvWeight"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="20dp"
+        android:text="Height" />
+
+    <Spinner
+        android:id="@+id/spHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etHeight"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/etHeight"
+        android:entries="@array/height_units" />
+
+    <EditText
+        android:id="@+id/etHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvHeight"
+        android:layout_alignLeft="@+id/etWeight"
+        android:layout_below="@+id/etWeight"
+        android:ems="10"
+        android:hint="Enter Height" >
+
+        <requestFocus />
+    </EditText>
+
+    <RadioGroup
+        android:id="@+id/rGrpActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvHeight"
+        android:layout_below="@+id/spHeight"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rdLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Low" />
+
+        <RadioButton
+            android:id="@+id/rdMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium" />
+
+        <RadioButton
+            android:id="@+id/rdHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rGrpActivity"
+        android:layout_below="@+id/spHeight"
+        android:layout_marginTop="80dp"
+        android:text="Daily Activity" />
+
+    <RadioGroup
+        android:id="@+id/rdDietHabits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rGrpActivity"
+        android:layout_below="@+id/rGrpActivity"
+        android:layout_marginTop="54dp" 
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdNonVeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="NonVeg" />
+
+        <RadioButton
+            android:id="@+id/rdVeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Veg" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvDiet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rdDietHabits"
+        android:layout_below="@+id/rGrpActivity"
+        android:layout_marginTop="20dp"
+        android:layout_centerVertical="true"
+        android:text="Diet Habits" />
 
 </RelativeLayout>

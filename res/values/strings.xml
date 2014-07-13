@@ -55,4 +55,9 @@
         <item>Years</item>        
     </string-array>
     
+    <string-array name="height_units">
+        <item>Inch</item>
+        <item>CM</item>
+    </string-array>
+    
 </resources>

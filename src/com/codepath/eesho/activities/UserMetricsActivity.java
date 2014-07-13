@@ -4,7 +4,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.joda.time.DateTime;
 import org.json.JSONException;
 
 import android.annotation.SuppressLint;
@@ -14,17 +13,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.AnonUser;
 import com.codepath.eesho.models.WeeklyFitnessPlan;
-import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Plan;
-import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.ui.ParseLoginBuilder;
@@ -32,15 +30,12 @@ import com.parse.ui.ParseLoginBuilder;
 public class UserMetricsActivity extends Activity {
 	EditText etWeight;
 	EditText etHeight;
-	Switch swWeightUnit;
-	Switch swHeightUnit;
-	Switch swEatingHabits;
-
-	Button btnLowActivity;
-	Button btnMediumActivity;
-	Button btnHighActivity;
+	Spinner spWeight;
+	Spinner spHeight;
+	RadioGroup rGrpDiet;
+	RadioGroup rGrpActivity;
 	Button btnNext;
-
+	
 	AnonUser anonUser;
 	ParseUser currentUser;
 
@@ -55,7 +50,7 @@ public class UserMetricsActivity extends Activity {
 		weekDayMap.put(Calendar.SATURDAY, "Saturday");
 		weekDayMap.put(Calendar.SUNDAY, "Sunday");		
 	}
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,54 +60,44 @@ public class UserMetricsActivity extends Activity {
 	}
 
 	private void setViews() {
-		btnLowActivity = (Button) findViewById(R.id.btnLowActivity);
-		btnMediumActivity = (Button) findViewById(R.id.btnMediumActivity);
-		btnHighActivity = (Button) findViewById(R.id.btnHighActivity);
-
 		btnNext = (Button) findViewById(R.id.btnDone);
-
 		etWeight = (EditText) findViewById(R.id.etWeight); 
 		etHeight = (EditText) findViewById(R.id.etHeight);
-		swWeightUnit = (Switch) findViewById(R.id.swWeightUnit);
-		swHeightUnit = (Switch) findViewById(R.id.swHeightUnit);
-		swEatingHabits = (Switch) findViewById(R.id.swEatingHabits);
+		spWeight = (Spinner) findViewById(R.id.spWeight);
+		spHeight = (Spinner) findViewById(R.id.spHeight);
+		rGrpActivity = (RadioGroup) findViewById(R.id.rGrpActivity);
+		rGrpDiet = (RadioGroup) findViewById(R.id.rdDietHabits);
 	}
 
 	private boolean checkDataAvailable() {
 		if(anonUser.getActivity() == null 
-				|| etWeight.getText() == null 
-				|| etHeight.getText() == null
-				|| etWeight.getText().toString().equals("")
-				|| etHeight.getText().toString().equals("")) {
+				|| anonUser.getFoodHabits() == null 
+				|| anonUser.getCurrentWeight() == 0L
+				|| anonUser.getHeight() == 0L
+				|| anonUser.getCurrentWeightUnit() == null
+				|| anonUser.getHeightUnit() == null) {
 			return false;
 		}
 		return true;
 	}
 
-	private String getWeightUnit() {
-		return swWeightUnit.isPressed() ? "LB" : "KG";
-	}
-
-	private String getHeightUnit() {
-		return swHeightUnit.isPressed() ? "INCH" : "CM";
-	}
-
-	private String getFoodHabits() {
-		return swEatingHabits.isPressed() ? "VEG" : "NonVEG";
-	}
-
 	private void onSubmit() {
+		anonUser.setCurrentWeight(Long.parseLong(etWeight.getText().toString()));
+		anonUser.setHeight(Long.parseLong(etHeight.getText().toString()));
+		anonUser.setCurrentWeightUnit(spWeight.getSelectedItem().toString());
+		anonUser.setHeightUnit(spHeight.getSelectedItem().toString());
+		
+		RadioButton diet = (RadioButton) findViewById(rGrpDiet.getCheckedRadioButtonId());
+		anonUser.setFoodHabits(diet.getText().toString());
+		
+		RadioButton activity = (RadioButton) findViewById(rGrpActivity.getCheckedRadioButtonId());
+		anonUser.setActivity(activity.getText().toString());
+		
 		if(!checkDataAvailable()) {
 			String warningText = "First enter current metrics values";
 			Toast.makeText(this, warningText, Toast.LENGTH_SHORT).show();
 			return;
 		}
-
-		anonUser.setCurrentWeight(Long.parseLong(etWeight.getText().toString()));
-		anonUser.setHeight(Long.parseLong(etHeight.getText().toString()));
-		anonUser.setCurrentWeightUnit(getWeightUnit());
-		anonUser.setHeightUnit(getHeightUnit());
-		anonUser.setFoodHabits(getFoodHabits());
 
 		ParseLoginBuilder builder = new ParseLoginBuilder(getApplicationContext());
 		startActivityForResult(builder.build(), 80);
@@ -193,15 +178,6 @@ public class UserMetricsActivity extends Activity {
 
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.btnLowActivity:
-			anonUser.setActivity("low");
-			break;
-		case R.id.btnHighActivity:
-			anonUser.setActivity("high");
-			break;
-		case R.id.btnMediumActivity:
-			anonUser.setActivity("medium");
-			break;
 		case R.id.btnDone:
 			onSubmit();
 			break;

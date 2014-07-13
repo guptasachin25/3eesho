@@ -4,49 +4,74 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
+    <Button
+        android:id="@+id/btn30MinPerDay"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-      </RadioGroup>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" 
+        android:onClick="onClick"
+        android:text="30 minutes Per Day" />
 
     <Button
-        android:id="@+id/btnNext"
+        android:id="@+id/btn1HourPerDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignLeft="@+id/btn30MinPerDay"
+        android:layout_below="@+id/btn30MinPerDay"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp" 
         android:onClick="onClick"
-        android:text="next" />
+        android:text="1 Hour Per Day" />
 
-    <RadioButton
-        android:id="@+id/rBtnPerWeek"
+    <Button
+        android:id="@+id/btn5HoursPerWeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn1HourPerDay"
+        android:layout_below="@+id/btn1HourPerDay"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/etNumHours"
-        android:layout_marginTop="19dp"
-        android:checked="true"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:onClick="onClick"
-        android:text="Hour Per Week" />
+        android:text="5 Hours Per Week" />
 
-    <RadioButton
-        android:id="@+id/rBtnPerDay"
+    <Button
+        android:id="@+id/btn10HoursPerWeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btn5HoursPerWeek"
+        android:layout_below="@+id/btn5HoursPerWeek"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/rBtnPerWeek"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:onClick="onClick"
-        android:text="Hour Per day" />
-
-    <EditText
-        android:id="@+id/etNumHours"
-        android:layout_width="match_parent"
+        android:text="10 Hour Per Week" />
+    
+    <Button
+        android:id="@+id/btn15HoursPerWeek"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btn10HoursPerWeek"
+        android:layout_below="@+id/btn10HoursPerWeek"
+        android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"  
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:onClick="onClick"
-        android:ems="10" />
+        android:text="15 Hours Per Week" />
         
 </RelativeLayout>

@@ -5,18 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.AnonUser;
 
 public class TimeCommitmentActivity extends Activity {
-	RadioButton rBtnPerWeek;
-	RadioButton rBtnPerDay;
-	Button btnNext;
-	EditText etNumHours;
+	
+	Button btn30MinPerDay;
+	Button btn1HourPerDay;
+	Button btn5HoursPerWeek;
+	Button btn10HoursPerWeek;
+	Button btn15HoursPerWeek;
 	
 	AnonUser anonUser;
 	
@@ -29,36 +28,45 @@ public class TimeCommitmentActivity extends Activity {
 	}
 	
 	private void setViews() {
-		btnNext = (Button) findViewById(R.id.btnNext);
-		rBtnPerDay = (RadioButton) findViewById(R.id.rBtnPerDay);
-		rBtnPerWeek = (RadioButton) findViewById(R.id.rBtnPerWeek);
-		etNumHours = (EditText) findViewById(R.id.etNumHours);
+		btn30MinPerDay = (Button) findViewById(R.id.btn30MinPerDay);
+		btn1HourPerDay = (Button) findViewById(R.id.btn1HourPerDay);
+		btn5HoursPerWeek = (Button) findViewById(R.id.btn5HoursPerWeek);
+		btn10HoursPerWeek = (Button) findViewById(R.id.btn10HoursPerWeek);
+		btn15HoursPerWeek = (Button) findViewById(R.id.btn15HoursPerWeek);
 	}
 	
 	private void onSubmit() {
-		if(etNumHours.getText() == null 
-				|| etNumHours.getText().toString().equals("")
-				|| anonUser.getTimeCommentmentUnit() == null) {
-			String warningText = "First enter time commitment values";
-			Toast.makeText(this, warningText, Toast.LENGTH_SHORT).show();
-			return;
-		}
-		anonUser.setTimeCommitment(Long.parseLong(etNumHours.getText().toString()));
 		Intent intent = new Intent(this, UserMetricsActivity.class);
 		intent.putExtra("anonUser", anonUser);
 		startActivity(intent);
 	}
 	
+	private void setData(long value, String unit) {
+		anonUser.setTimeCommentmentUnit(unit);
+		anonUser.setTimeCommitment(value);
+	}
+	
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.btnNext:
+		case R.id.btn30MinPerDay:
+			setData(30, "Day");
 			onSubmit();
 			break;
-		case R.id.rBtnPerDay:
-			anonUser.setTimeCommentmentUnit("day");
+		case R.id.btn1HourPerDay:
+			setData(60, "Day");
+			onSubmit();
 			break;
-		case R.id.rBtnPerWeek:
-			anonUser.setTimeCommentmentUnit("week");
+		case R.id.btn15HoursPerWeek:
+			setData(900, "Week");
+			onSubmit();
+			break;
+		case R.id.btn5HoursPerWeek:
+			setData(300, "Week");
+			onSubmit();
+			break;
+		case R.id.btn10HoursPerWeek:
+			setData(600, "Week");
+			onSubmit();
 			break;
 		}
 	}

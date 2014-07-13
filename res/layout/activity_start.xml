@@ -2,7 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background_image"
+    android:background="@drawable/woman_running"
     tools:context="${relativePackage}.${activityClass}" >
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnSignUp"
+        android:layout_alignBottom="@+id/btnSignUp"
+        android:layout_marginLeft="58dp"
+        android:layout_toRightOf="@+id/btnSignUp"
+        android:text="Log In" 
+        android:onClick="onClick"/>
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="51dp"
+        android:layout_marginLeft="60dp"
+        android:onClick="onClick"
+        android:text="Sign Up" />
 
 </RelativeLayout>
