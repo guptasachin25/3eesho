@@ -111,6 +111,7 @@ private void setUpUserData(ParseUser user) {
 	}else if(user.getString("targetDescription") != null){
 		target.setText(user.getString("targetDescription"));
 	}
+}
 
 private void usernameClick() {
 	// TODO Auto-generated method stub
