@@ -10,10 +10,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:text="Target Date?" />
+        android:text="Set Target Time..." 
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <EditText
         android:id="@+id/etTargetTime"
+        android:inputType="number"
+        android:hint="Enter target time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvText"
@@ -21,41 +24,24 @@
         android:layout_marginTop="44dp"
         android:ems="10" />
 
-     <Button
-            android:id="@+id/btnWeeks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:layout_below="@+id/etTargetAmount"
-            android:layout_alignParentLeft="true"
-            android:onClick="onClick"
-            android:text="Weeks" />
-     
-     <Button
-            android:id="@+id/btnMonths"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btnWeeks"
-			android:layout_alignBaseline="@+id/btnWeeks"
-            android:onClick="onClick"
-            android:text="Months" />
-          
-       <Button
-            android:id="@+id/btnYears"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btnMonths"
-			android:layout_alignBaseline="@+id/btnMonths"
-            android:onClick="onClick"
-            android:text="Years" />
-
        <Button
            android:id="@+id/btnSubmit"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentBottom="true"
-           android:layout_marginBottom="45dp"
-           android:layout_toRightOf="@+id/btnYears"
+           android:layout_alignParentRight="true"
+           android:layout_marginBottom="28dp"
            android:onClick="onClick"
            android:text="Next" />
+
+       <Spinner
+           android:id="@+id/spTimeUnits"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignTop="@+id/etTargetTime"
+           android:entries="@array/time_units"
+           android:layout_marginRight="10dp"
+           android:layout_marginLeft="10dp"
+           android:layout_toRightOf="@+id/etTargetTime" />
         
 </RelativeLayout>

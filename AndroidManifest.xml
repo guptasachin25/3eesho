@@ -5,36 +5,37 @@
     android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
     <application
-        android:name="com.codepath.eesho.ParseApplication"
+        android:name=".ParseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.codepath.eesho.activities.DailyPlanActivity"
+            android:name=".activities.DailyPlanActivity"
             android:label="Daily Plan" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ArticlesActivity"
+            android:name=".activities.ArticlesActivity"
             android:label="Articles" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ProfileActivity"
+            android:name=".activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.HomeActivity"
+            android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home" >
+            
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.DashboardActivity"
+            android:name=".activities.DashboardActivity"
             android:label="@string/title_activity_dashboard" >
         </activity>
         <activity
@@ -64,7 +65,7 @@
             android:value="629605243814245" />
 
         <activity
-            android:name="com.codepath.eesho.activities.UserGoalActivity"
+            android:name=".activities.UserGoalActivity"
             android:label="@string/title_activity_user_goal" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,33 +74,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.WeightActivity"
+            android:name=".activities.WeightActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.UserTimeGoalActivity"
+            android:name=".activities.UserTimeGoalActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.TimeCommitmentActivity"
+            android:name=".activities.TimeCommitmentActivity"
             android:label="@string/title_activity_user_goal" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.UserMetricsActivity"
+            android:name=".activities.UserMetricsActivity"
             android:label="@string/title_activity_user_metrics" >
-        </activity>
-        <activity
-            android:name="com.codepath.eesho.activities.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name="com.codepath.eesho.activities.ExpertHomeActivity"
-            android:label="@string/title_activity_expert_home" >
             
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.EditPlanActivity"
+            android:name=".activities.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".activities.ExpertHomeActivity"
+            android:label="@string/title_activity_expert_home" >
+        </activity>
+        <activity
+            android:name=".activities.EditPlanActivity"
             android:label="@string/title_activity_edit_plan" >
+        </activity>
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/title_activity_start" >
         </activity>
     </application>
 

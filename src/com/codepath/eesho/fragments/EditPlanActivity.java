@@ -58,7 +58,7 @@ public class EditPlanActivity extends Fragment {
 	            case 2: 
 	                return new DailyEditPlanFragment(2);
 	            default:
-	            	return new TodaysPlanFragment(1);
+	            	return new DayPlanFragment(1);
 	            }
 	        }
 	        

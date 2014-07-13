@@ -1,16 +1,13 @@
 package com.codepath.eesho.activities;
 
-import android.content.Intent;
+import com.codepath.eesho.R;
+import com.codepath.eesho.fragments.UserProfileFragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.codepath.eesho.R;
-import com.codepath.eesho.fragments.UserProfileFragment;
-import com.facebook.LoginActivity;
 import com.parse.ParseUser;
 
 public class ProfileActivity extends FragmentActivity {

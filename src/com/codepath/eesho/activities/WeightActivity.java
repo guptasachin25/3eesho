@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
@@ -14,8 +15,7 @@ import com.codepath.eesho.models.AnonUser;
 public class WeightActivity extends Activity {
 	
 	EditText etWeight;
-	Button btnLb;
-	Button btnKg;
+	Spinner spWeightUnits;
 	
 	AnonUser anonUser;
 	
@@ -30,11 +30,11 @@ public class WeightActivity extends Activity {
 	
 	private void setViews() {
 		etWeight = (EditText) findViewById(R.id.etWeight);
-		btnLb = (Button) findViewById(R.id.btnLb);
-		btnKg = (Button) findViewById(R.id.btnKg);
+		spWeightUnits = (Spinner) findViewById(R.id.spWeightUnits);
 	}
 	
 	private void onSubmit() {
+		anonUser.setWeightTargetUnit(spWeightUnits.getSelectedItem().toString());
 		if(anonUser.getWeightTargetUnit() == null 
 				|| etWeight.getText() == null 
 				|| etWeight.getText().toString().equals("")) {
@@ -50,12 +50,6 @@ public class WeightActivity extends Activity {
 	
 	public void onClick(View v) {
 		switch(v.getId()) {
-		case R.id.btnLb:
-			anonUser.setWeightTargetUnit("KG");
-			break;
-		case R.id.btnKg:
-			anonUser.setWeightTargetUnit("KG");
-			break;
 		case R.id.btnNext:
 			onSubmit();
 		}

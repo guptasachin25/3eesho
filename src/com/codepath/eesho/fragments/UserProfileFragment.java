@@ -1,7 +1,5 @@
 package com.codepath.eesho.fragments;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,11 +17,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.User;
-import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 

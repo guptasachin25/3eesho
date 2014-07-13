@@ -11,7 +11,7 @@ import android.widget.GridView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.ClientArrayAdapter;
-import com.codepath.eesho.models.User;
+import com.codepath.eesho.parse.models.User;
 
 public class ClientListFragment extends Fragment{
 	private ArrayList<User> clients;

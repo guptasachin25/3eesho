@@ -42,5 +42,17 @@
     <string name="et_ExpertInDesc">Dietitian, Fitness Expert</string>
     <string name="title_activity_expert_home">ExpertHomeActivity</string>
     <string name="title_activity_edit_plan">EditPlanActivity</string>
+    <string name="title_activity_start">StartActivity</string>
 
+    <string-array name="weight_units">
+        <item>LB</item>
+        <item>KB</item>
+    </string-array>
+    
+    <string-array name="time_units">
+        <item>Weeks</item>
+        <item>Months</item>
+        <item>Years</item>        
+    </string-array>
+    
 </resources>

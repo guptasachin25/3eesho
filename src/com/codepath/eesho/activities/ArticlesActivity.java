@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.ArticlesArrayAdapter;
-import com.codepath.eesho.models.Article;
+import com.codepath.eesho.parse.models.Article;
 
 public class ArticlesActivity extends Activity {
 	

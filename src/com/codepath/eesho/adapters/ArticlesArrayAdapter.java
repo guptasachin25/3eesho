@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.Article;
+import com.codepath.eesho.parse.models.Article;
 
 public class ArticlesArrayAdapter extends ArrayAdapter<Article>{
 	

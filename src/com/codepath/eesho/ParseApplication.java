@@ -2,10 +2,10 @@ package com.codepath.eesho;
 
 import android.app.Application;
 
-import com.codepath.eesho.models.Article;
-import com.codepath.eesho.models.Goal;
-import com.codepath.eesho.models.Plan;
-import com.codepath.eesho.models.User;
+import com.codepath.eesho.parse.models.Article;
+import com.codepath.eesho.parse.models.Goal;
+import com.codepath.eesho.parse.models.Plan;
+import com.codepath.eesho.parse.models.User;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
