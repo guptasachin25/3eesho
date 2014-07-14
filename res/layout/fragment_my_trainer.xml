@@ -31,7 +31,7 @@
         android:layout_marginTop="44dp" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/ivSenderImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"

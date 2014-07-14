@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.joda.time.DateTime;
 import org.json.JSONException;
 
 import android.annotation.SuppressLint;
@@ -21,8 +22,11 @@ import android.widget.Toast;
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.AnonUser;
 import com.codepath.eesho.models.WeeklyFitnessPlan;
+import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Plan;
+import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.ui.ParseLoginBuilder;
@@ -35,7 +39,7 @@ public class UserMetricsActivity extends Activity {
 	RadioGroup rGrpDiet;
 	RadioGroup rGrpActivity;
 	Button btnNext;
-	
+
 	AnonUser anonUser;
 	ParseUser currentUser;
 
@@ -50,7 +54,7 @@ public class UserMetricsActivity extends Activity {
 		weekDayMap.put(Calendar.SATURDAY, "Saturday");
 		weekDayMap.put(Calendar.SUNDAY, "Sunday");		
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,29 +74,39 @@ public class UserMetricsActivity extends Activity {
 	}
 
 	private boolean checkDataAvailable() {
-		if(anonUser.getActivity() == null 
-				|| anonUser.getFoodHabits() == null 
-				|| anonUser.getCurrentWeight() == 0L
-				|| anonUser.getHeight() == 0L
-				|| anonUser.getCurrentWeightUnit() == null
-				|| anonUser.getHeightUnit() == null) {
+		try {
+			if(anonUser.getActivity() == null 
+					|| anonUser.getFoodHabits() == null 
+					|| anonUser.getCurrentWeight() == 0L
+					|| anonUser.getHeight() == 0L
+					|| anonUser.getCurrentWeightUnit() == null
+					|| anonUser.getHeightUnit() == null) {
+				return false;
+			} 
+		} catch (Exception e) {
 			return false;
 		}
 		return true;
 	}
 
 	private void onSubmit() {
-		anonUser.setCurrentWeight(Long.parseLong(etWeight.getText().toString()));
-		anonUser.setHeight(Long.parseLong(etHeight.getText().toString()));
+		if(etWeight.getText() != null && !etWeight.getText().toString().equals("")) {
+			anonUser.setCurrentWeight(Long.parseLong(etWeight.getText().toString()));
+		}
+		
+		if(etHeight.getText() != null && !etHeight.getText().toString().equals("")) {
+			anonUser.setHeight(Long.parseLong(etHeight.getText().toString()));	
+		}
+		
 		anonUser.setCurrentWeightUnit(spWeight.getSelectedItem().toString());
 		anonUser.setHeightUnit(spHeight.getSelectedItem().toString());
-		
+
 		RadioButton diet = (RadioButton) findViewById(rGrpDiet.getCheckedRadioButtonId());
 		anonUser.setFoodHabits(diet.getText().toString());
-		
+
 		RadioButton activity = (RadioButton) findViewById(rGrpActivity.getCheckedRadioButtonId());
 		anonUser.setActivity(activity.getText().toString());
-		
+
 		if(!checkDataAvailable()) {
 			String warningText = "First enter current metrics values";
 			Toast.makeText(this, warningText, Toast.LENGTH_SHORT).show();
@@ -127,7 +141,7 @@ public class UserMetricsActivity extends Activity {
 		user.put("diet_habit", anonUser.getFoodHabits());
 		user.put("activity_level", anonUser.getActivity());
 		user.saveInBackground();
-
+		
 		// Save plan 
 		Plan newPlan = new Plan();
 		newPlan.setUser(ParseUser.getCurrentUser());
@@ -148,8 +162,7 @@ public class UserMetricsActivity extends Activity {
 		// Save default plan week data in Goal table with date
 		final WeeklyFitnessPlan plan = WeeklyFitnessPlan.getDefaultPlan();
 
-		/*
-		for(int i = 0; i < 7; i++) {
+		for(int i = -7; i < 7; i++) {
 			final DateTime date = new DateTime().plusDays(i);
 			ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 			query.whereEqualTo("user", ParseUser.getCurrentUser());
@@ -158,13 +171,20 @@ public class UserMetricsActivity extends Activity {
 			query.getFirstInBackground(new GetCallback<Goal>() {
 				@Override
 				public void done(Goal goal, ParseException exception) {
-					if(exception != null) {	
+					if(exception != null) {
 						if(goal == null) {
 							System.out.println("Goal is null");
 							goal = new Goal();
 						}
 						goal.setDate(date.toDateMidnight().toDate());
 						goal.setWeekDay(weekDayMap.get(date.getDayOfWeek()));
+						try {
+							System.out.println("This is plan..." + weekDayMap.get(date.getDayOfWeek()));
+							System.out.println(plan.getPlan(date).toJson());
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						goal.setPlan(plan.getPlan(date));
 						goal.setUser(currentUser);
 						goal.saveInBackground();
@@ -173,7 +193,7 @@ public class UserMetricsActivity extends Activity {
 					}
 				}
 			});
-		}*/		
+		}		
 	}
 
 	public void onClick(View v) {

@@ -32,7 +32,6 @@
         <activity
             android:name=".activities.HomeActivity"
             android:label="@string/title_activity_home" >
-            
         </activity>
         <activity
             android:name=".activities.DashboardActivity"
@@ -67,7 +66,6 @@
         <activity
             android:name=".activities.UserGoalActivity"
             android:label="@string/title_activity_user_goal" >
-            
         </activity>
         <activity
             android:name=".activities.WeightActivity"
@@ -84,7 +82,6 @@
         <activity
             android:name=".activities.UserMetricsActivity"
             android:label="@string/title_activity_user_metrics" >
-            
         </activity>
         <activity
             android:name=".activities.LoginActivity"
@@ -106,6 +103,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.ChatActivity"
+            android:label="@string/title_activity_chat" >
         </activity>
     </application>
 

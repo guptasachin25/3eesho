@@ -77,7 +77,7 @@ public class UserDashBoardFragment extends Fragment {
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
-		for(int i = 0; i < 7; i ++) {
+		for(int i = -1; i < 7; i ++) {
 			DateTime datetime = new DateTime();
 			String weekDay = UserMetricsActivity.weekDayMap.get(datetime.plusDays(i).getDayOfWeek());
 			listDataHeader.add(weekDay);

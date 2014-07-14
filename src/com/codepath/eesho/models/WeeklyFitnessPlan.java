@@ -61,12 +61,35 @@ public class WeeklyFitnessPlan {
 		activity3.setDescription("Run");
 		activity3.setDuration(20L);
 		
+		FitnessPlanSingleActivity activity4 = new FitnessPlanSingleActivity();
+		activity4.setDescription("Walk");
+		activity4.setDuration(30L);
+		
+		FitnessPlanSingleActivity activity5 = new FitnessPlanSingleActivity();
+		activity5.setDescription("Lunges 3 Sets");
+		activity5.setRepititions("20");
+		
+		FitnessPlanSingleActivity activity6 = new FitnessPlanSingleActivity();
+		activity6.setDescription("Shoulders 4 Sets");
+		activity6.setRepititions("20");
+		
+		FitnessPlanSingleActivity activity7 = new FitnessPlanSingleActivity();
+		activity7.setDescription("Chest presses");
+		activity7.setRepititions("20");
+		
 		fitnessPlan.addActivity("Sunday", activity1);
+		fitnessPlan.addActivity("Sunday", activity4);
+		fitnessPlan.addActivity("Sunday", activity6);
+		fitnessPlan.addActivity("Monday", activity1);
 		fitnessPlan.addActivity("Monday", activity2);
+		fitnessPlan.addActivity("Monday", activity3);
 		fitnessPlan.addActivity("Tuesday", activity3);
 		fitnessPlan.addActivity("Thrusday", activity1);
 		fitnessPlan.addActivity("Friday", activity2);
 		fitnessPlan.addActivity("Saturday", activity3);	
+		fitnessPlan.addActivity("Saturday", activity6);	
+		fitnessPlan.addActivity("Saturday", activity7);	
+		
 		return fitnessPlan;
 	}
 	

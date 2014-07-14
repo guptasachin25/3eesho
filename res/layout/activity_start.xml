@@ -14,6 +14,8 @@
         android:layout_marginLeft="58dp"
         android:layout_toRightOf="@+id/btnSignUp"
         android:text="Log In" 
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
         android:onClick="onClick"/>
 
     <Button
@@ -25,6 +27,8 @@
         android:layout_marginBottom="51dp"
         android:layout_marginLeft="60dp"
         android:onClick="onClick"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
         android:text="Sign Up" />
 
 </RelativeLayout>
