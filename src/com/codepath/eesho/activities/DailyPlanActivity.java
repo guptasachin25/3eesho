@@ -2,6 +2,7 @@ package com.codepath.eesho.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
 import com.codepath.eesho.R;
 
 public class DailyPlanActivity extends FragmentActivity {

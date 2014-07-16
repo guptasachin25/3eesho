@@ -22,7 +22,6 @@ import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.GoalArrayAdapter;
 import com.codepath.eesho.parse.models.Goal;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 

@@ -7,8 +7,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.codepath.eesho.models.DailyActivity;
-import com.codepath.eesho.models.FitnessPlanSingleActivity;
-import com.codepath.eesho.models.WeeklyFitnessPlan;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;

@@ -1,7 +1,5 @@
 package com.codepath.eesho.fragments;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,10 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.fragments.DailyPlanFragment.MyPagerAdapter;
 
 /*
  * this is for expert view

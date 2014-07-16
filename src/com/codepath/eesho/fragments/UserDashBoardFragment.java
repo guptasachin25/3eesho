@@ -116,7 +116,6 @@ public class UserDashBoardFragment extends Fragment {
 		});
 	}
 
-
 	public void setUpBarGraph() {		
 		Bar d = new Bar();
 		d.setColor(Color.parseColor("#99CC00"));

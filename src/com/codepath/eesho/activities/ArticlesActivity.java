@@ -3,12 +3,7 @@ package com.codepath.eesho.activities;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.codepath.eesho.R;

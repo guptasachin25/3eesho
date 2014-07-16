@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ArticleFragment;
@@ -17,6 +18,7 @@ import com.codepath.eesho.fragments.DailyPlanFragment;
 import com.codepath.eesho.fragments.MyTrainerFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
+import com.codepath.eesho.parse.models.Messages;
 import com.parse.ParseUser;
 
 
@@ -38,15 +40,14 @@ public class HomeActivity extends FragmentActivity {
 			setupTabs();
 		} else {
 		  // show the signup or login screen
-		}
-		
+		}		
 	}
 
 	private void setupTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(true);
-		
+		/*
 		Tab myDashboard = actionBar
 				.newTab()
 				.setText("MyDashBoard")
@@ -55,7 +56,8 @@ public class HomeActivity extends FragmentActivity {
 				.setTabListener(
 				    new FragmentTabListener<UserDashBoardFragment>(R.id.flHomeContainer, this, "MyDashboard",
 				    		UserDashBoardFragment.class));
-		
+		*/
+		/*
 		Tab myTrainer = actionBar
 				.newTab()
 				.setText("MyTrainer")
@@ -64,7 +66,8 @@ public class HomeActivity extends FragmentActivity {
 				.setTabListener(
 				    new FragmentTabListener<MyTrainerFragment>(R.id.flHomeContainer, this, "MyTrainer",
 				    		MyTrainerFragment.class));
-
+		*/
+		
 		Tab myPlan = actionBar
 			.newTab()
 			.setText("MyPlan")
@@ -73,9 +76,7 @@ public class HomeActivity extends FragmentActivity {
 			.setTabListener(
 				new FragmentTabListener<DailyPlanFragment>(R.id.flHomeContainer, this, "MyPlan",
 						DailyPlanFragment.class));
-	
-		
-
+		/*
 		Tab myArticle = actionBar
 				.newTab()
 				.setText("MyArticle")
@@ -84,11 +85,18 @@ public class HomeActivity extends FragmentActivity {
 				.setTabListener(
 				    new FragmentTabListener<ArticleFragment>(R.id.flHomeContainer, this, "MyArticle",
 				    		ArticleFragment.class));
+		*/
+		Tab myWall = actionBar.newTab()
+				.setText("My Wall")
+				.setTag("MyWallFragment")
+				.setTabListener(new FragmentTabListener<WallFragment>(R.id.flHomeContainer, this, "MyWall", WallFragment.class));
+		
 
 		actionBar.addTab(myPlan);
-		actionBar.addTab(myDashboard);
-		actionBar.addTab(myTrainer);
-		actionBar.addTab(myArticle);
+		//actionBar.addTab(myDashboard);
+		//actionBar.addTab(myTrainer);
+		//actionBar.addTab(myArticle);
+		actionBar.addTab(myWall);
 		actionBar.selectTab(myPlan);
 	}
 	
@@ -96,7 +104,19 @@ public class HomeActivity extends FragmentActivity {
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		i.putExtra("currentUserLoggedInfo", currentUser.getObjectId());
 		Log.d("inHomeactivity", "user id is " + currentUser.getObjectId() + " before");
-		startActivity(i);
+		startActivity(i);	
+	}
+	
+	private String getMessage() {
+		return "Shout";
+	}
+	
+	public void onShout(MenuItem mi) {
+		Toast.makeText(getApplicationContext(), "Shout!!!", Toast.LENGTH_SHORT).show();
+		Messages message = new Messages();
+		message.setMessage(getMessage());
+		message.setSender(ParseUser.getCurrentUser());
+		message.saveInBackground();
 		
 	}
 	
