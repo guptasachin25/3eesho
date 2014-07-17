@@ -12,9 +12,9 @@
 
         <com.codepath.eesho.utils.CircularImageView
             android:id="@+id/ivPicture"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/com_facebook_profile_picture_blank_square"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/buzz2"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp" />
 
@@ -26,8 +26,9 @@
             android:textColor="#FFF"
             android:layout_toRightOf="@+id/ivPicture"
             android:layout_alignTop="@+id/ivPicture"
-            android:textSize="15sp"
-            android:layout_marginLeft="5dp" />
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold" />
         
         <TextView
             android:id="@+id/tvGoal"
@@ -37,8 +38,8 @@
             android:textColor="#FFF"
             android:layout_toRightOf="@+id/ivPicture"
             android:layout_alignBottom="@+id/ivPicture"
-            android:textSize="10sp"
-            android:layout_marginLeft="5dp" />
+            android:textSize="12sp"
+            android:layout_marginLeft="15dp" />
 
     </RelativeLayout>
 
