@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.fragments.DailyPlanFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;

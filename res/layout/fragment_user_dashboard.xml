@@ -108,7 +108,7 @@
 		            android:id="@+id/ivActivity"
 		            android:layout_width="50dp"
 		            android:layout_height="50dp"
-		            android:src="@drawable/ic_bargraph" 
+		            android:src="@drawable/ic_activity" 
 		            android:layout_centerVertical="true"/>
 
             	<TextView
