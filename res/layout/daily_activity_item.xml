@@ -2,14 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-    
-    <CheckBox
-        android:id="@+id/cb1"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_centerHorizontal="true"
-        android:text="Task Description" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="26dp"
+        android:text="20"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvNumber"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/tvNumber"
+        android:text="push ups"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/ivCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvActivity"
+        android:layout_marginLeft="54dp"
+        android:layout_toRightOf="@+id/tvActivity"
+        android:src="@drawable/ic_check" />
     
 </RelativeLayout>

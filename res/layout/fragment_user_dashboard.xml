@@ -5,12 +5,42 @@
     android:background="#FFF"
     android:orientation="vertical" >
     
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:orientation="vertical"
         android:background="#506f7b" >
-    </LinearLayout>
+
+        <com.codepath.eesho.utils.CircularImageView
+            android:id="@+id/ivPicture"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Billy Bob"
+            android:textColor="#FFF"
+            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_alignTop="@+id/ivPicture"
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp" />
+        
+        <TextView
+            android:id="@+id/tvGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Run full marathon in 3 months"
+            android:textColor="#FFF"
+            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_alignBottom="@+id/ivPicture"
+            android:textSize="10sp"
+            android:layout_marginLeft="5dp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:background="#5a7e8c"

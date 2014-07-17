@@ -1,34 +1,17 @@
 package com.codepath.eesho.fragments;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-import org.joda.time.DateTime;
-import org.json.JSONException;
-
-import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.activities.UserMetricsActivity;
-import com.codepath.eesho.adapters.ExpandableListAdapter;
-import com.codepath.eesho.models.DailyActivity;
-import com.codepath.eesho.models.FitnessPlanSingleActivity;
-import com.codepath.eesho.models.SingleActivity;
-import com.codepath.eesho.parse.models.Goal;
-import com.echo.holographlibrary.Bar;
-import com.echo.holographlibrary.BarGraph;
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 public class UserDashBoardFragment extends Fragment {
 
@@ -45,7 +28,31 @@ public class UserDashBoardFragment extends Fragment {
 
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
-
+		ImageView ivPicture = (ImageView) v.findViewById(R.id.ivPicture);
+//		ivPicture.setImageBitmap(getRoundedShape(ivPicture.));
 		return v;
+	}
+	
+	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+	    int targetWidth = 50;
+	    int targetHeight = 50;
+	    Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
+	                        targetHeight,Bitmap.Config.ARGB_8888);
+
+	    Canvas canvas = new Canvas(targetBitmap);
+	    Path path = new Path();
+	    path.addCircle(((float) targetWidth - 1) / 2,
+	        ((float) targetHeight - 1) / 2,
+	        (Math.min(((float) targetWidth), 
+	        ((float) targetHeight)) / 2),
+	        Path.Direction.CCW);
+
+	    canvas.clipPath(path);
+	    Bitmap sourceBitmap = scaleBitmapImage;
+	    canvas.drawBitmap(sourceBitmap, 
+	        new Rect(0, 0, sourceBitmap.getWidth(),
+	        sourceBitmap.getHeight()), 
+	        new Rect(0, 0, targetWidth, targetHeight), null);
+	    return targetBitmap;
 	}
 }

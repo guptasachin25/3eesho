@@ -2,14 +2,17 @@ package com.codepath.eesho.adapters;
 
 import java.util.List;
 
-import org.json.JSONException;
-
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.models.SingleActivity;
@@ -31,18 +34,25 @@ public class GoalArrayAdapter extends ArrayAdapter<SingleActivity> {
 			v = convertView;
 		}
 		
-		CheckBox ch = (CheckBox) v.findViewById(R.id.cb1);
-		System.out.println("I am inside adapter");
-		try {
-			System.out.println(goal.toJSONObject().toString());
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+//		CheckBox ch = (CheckBox) v.findViewById(R.id.cb1);
+//		System.out.println("I am inside adapter");
+//		try {
+//			System.out.println(goal.toJSONObject().toString());
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		ch.setText(goal.toString());
+//		ch.setChecked(goal.isDone());
+//		ch.setClickable(false);
+//		ch.setFocusable(false);
 		
-		ch.setText(goal.toString());
-		ch.setChecked(goal.isDone());
-		ch.setClickable(false);
-		ch.setFocusable(false);
+		TextView number = (TextView) v.findViewById(R.id.tvNumber);
+		TextView activity = (TextView) v.findViewById(R.id.tvActivity);
+		ImageView checkbox = (ImageView) v.findViewById(R.id.ivCheck);
+		
+		activity.setText(goal.toString());
+		//
 		
 		/*
 		ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
