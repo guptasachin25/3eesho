@@ -6,13 +6,17 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
@@ -123,4 +127,11 @@ public class HomeActivity extends FragmentActivity {
     	getMenuInflater().inflate(R.menu.profile, menu);
 		return true;
     }
+	
+	public void goToActivityHistory(View v) {
+		FragmentTransaction fts = getSupportFragmentManager().beginTransaction();
+		fts.replace(R.id.flHomeContainer, new ActivityHistoryFragment());	
+		fts.addToBackStack(null);
+		fts.commit();
+	}
 }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvWeightProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="WEIGHT"
+        android:textStyle="bold" />
+
+    <com.echo.holographlibrary.LineGraph
+        android:id="@+id/graph"
+		android:layout_width="250dp"
+        android:layout_height="81dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvWeightProgress"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/tvRunning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="RUNNING"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTotalMiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRunning"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="35dp"
+        android:text="total miles" />
+
+    <TextView
+        android:id="@+id/tvMilesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTotalMiles"
+        android:layout_toRightOf="@+id/tvRunning"
+        android:layout_marginLeft="40dp"
+        android:text="80"
+        android:textSize="25dp"
+        android:textColor="#00bdab" />
+
+    <TextView
+        android:id="@+id/tvExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvRunning"
+        android:layout_below="@+id/tvMilesCount"
+        android:layout_marginTop="40dp"
+        android:text="EXERCISE"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvSitups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvTotalMiles"
+        android:layout_below="@+id/tvExercise"
+        android:layout_marginTop="20dp"
+        android:text="sit ups" />
+
+    <TextView
+        android:id="@+id/tvSitupsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvSitups"
+        android:layout_alignLeft="@+id/tvMilesCount"
+        android:text="30"
+        android:textSize="25dp"
+        android:textColor="#00bdab" />
+
+    <TextView
+        android:id="@+id/tvPushups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvSitups"
+        android:layout_below="@+id/tvSitups"
+        android:layout_marginTop="20dp"
+        android:text="push ups" />
+
+    <TextView
+        android:id="@+id/tvPushupsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPushups"
+        android:layout_alignBottom="@+id/tvPushups"
+        android:layout_alignLeft="@+id/tvSitupsCount"
+        android:text="78"
+        android:textSize="25dp"
+        android:textColor="#00bdab" />
+
+    <TextView
+        android:id="@+id/tvSquats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvPushups"
+        android:layout_below="@+id/tvPushupsCount"
+        android:layout_marginTop="20dp"
+        android:text="squats" />
+
+    <TextView
+        android:id="@+id/tvSquatsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvSquats"
+        android:layout_alignBottom="@+id/tvSquats"
+        android:layout_alignLeft="@+id/tvPushupsCount"
+        android:text="254"
+        android:textSize="25dp"
+        android:textColor="#00bdab" />
+
+</RelativeLayout>
