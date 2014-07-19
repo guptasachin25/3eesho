@@ -1,18 +1,22 @@
 package com.codepath.eesho.activities;
 
+import org.joda.time.DateTime;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
@@ -20,20 +24,83 @@ import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
+import com.codepath.eesho.models.WeeklyFitnessPlan;
+import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
+import com.codepath.eesho.parse.models.Plan;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 
 public class HomeActivity extends FragmentActivity {
 	JSONArray jsonArray = new JSONArray();
 	ParseUser currentUser;
-
+	String referer = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
-		
+		Intent intent = getIntent();
+		if(intent != null) {
+			String referer = intent.getStringExtra("referer");
+			if(referer != null) {
+				setPlan();
+			}
+		}
 		getCurrentUser();
+	}
+	
+	/**
+	 * This function save plan and daily plans for user in user table.
+	 * This function show only be called when user signup or some repeated interval
+	 * in case when plan is not available. This can also move to utility functions.
+	 */
+	public static void setPlan() {
+		// Save plan 
+		Plan newPlan = new Plan();
+		newPlan.setUser(ParseUser.getCurrentUser());
+		newPlan.setPlanType("fitness");
+		final WeeklyFitnessPlan plan = WeeklyFitnessPlan.getDefaultPlan2();
+		newPlan.setPlanDesc(plan.toJSON());
+		newPlan.saveInBackground();
+		
+		// ToDO(This should be changed from next day onwards. Whenever user ask for 
+		// change in plan
+		for(int i = -7; i < 7; i++) {
+			final DateTime date = new DateTime().plusDays(i);
+			ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+			query.whereEqualTo("user", ParseUser.getCurrentUser());
+			query.whereEqualTo("date", date.toDateMidnight().toDate());
+			
+			query.getFirstInBackground(new GetCallback<Goal>() {
+				@Override
+				public void done(Goal goal, ParseException exception) {
+					if(exception != null) {
+						if(goal == null) {
+							System.out.println("Goal is null");
+							goal = new Goal();
+						}
+						goal.setDate(date.toDateMidnight().toDate());
+						goal.setWeekDay(UserMetricsActivity.weekDayMap.get(date.getDayOfWeek()));
+						try {
+							System.out.println("This is plan..." + UserMetricsActivity.weekDayMap.get(date.getDayOfWeek()));
+							System.out.println(plan.getPlan(date).toJson());
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						goal.setPlan(plan.getPlan(date));
+						goal.setUser(ParseUser.getCurrentUser());
+						goal.saveInBackground();
+					} else {
+						System.out.println(exception);
+					}
+				}
+			});
+		}		
 	}
 	
 	private void getCurrentUser() {
@@ -72,7 +139,7 @@ public class HomeActivity extends FragmentActivity {
 		
 		Tab myPlan = actionBar
 			.newTab()
-			.setText("MyPlan")
+			.setText("My Plan")
 			//.setIcon(R.drawable.ic_home)
 			.setTag("DailyPlanFragment")
 			.setTabListener(
@@ -89,11 +156,10 @@ public class HomeActivity extends FragmentActivity {
 				    		ArticleFragment.class));
 		*/
 		Tab myWall = actionBar.newTab()
-				.setText("My Wall")
+				.setText("Social")
 				.setTag("MyWallFragment")
 				.setTabListener(new FragmentTabListener<WallFragment>(R.id.flHomeContainer, this, "MyWall", WallFragment.class));
 		
-
 		actionBar.addTab(myPlan);
 		//actionBar.addTab(myDashboard);
 		//actionBar.addTab(myTrainer);

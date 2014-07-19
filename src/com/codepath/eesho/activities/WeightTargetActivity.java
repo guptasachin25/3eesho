@@ -42,6 +42,7 @@ public class WeightTargetActivity extends Activity {
 	private void doSubmit() {
 		saveData();
 		Intent intent = new Intent(this, HomeActivity.class);
+		intent.putExtra("referer", "SignUp");
 		startActivity(intent);
 	}
 	

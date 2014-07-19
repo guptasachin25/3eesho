@@ -191,7 +191,7 @@ public class Goal extends ParseObject {
 
 	public void resetDone(DailyActivity<FitnessPlanSingleActivity> dailyActivity, SingleActivity singleActivity) throws JSONException {
 		dailyActivity.resetDone(singleActivity);
-		//System.out.println(dailyActivity.toJson());
+		System.out.println(dailyActivity.toJson());
 		put("plan_object", dailyActivity.toJson());
 	}
 }

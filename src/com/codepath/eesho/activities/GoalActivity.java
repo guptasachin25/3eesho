@@ -36,7 +36,9 @@ public class GoalActivity extends Activity {
 	
 	private void clickFitness() {
 		saveData("General Fitness");
-		startActivity(new Intent(this, HomeActivity.class));
+		Intent intent = new Intent(this, HomeActivity.class);
+		intent.putExtra("referer", "SignUp");
+		startActivity(intent);
 	}
 	
 	private void clickRun() {
@@ -48,7 +50,6 @@ public class GoalActivity extends Activity {
 		saveData("Lose Weight");
 		startActivity(new Intent(this, WeightTargetActivity.class));
 	}
-	
 	
 	public void onClick(View v) {
 		switch(v.getId()) {

@@ -23,6 +23,7 @@ public interface SingleActivity {
 	 */
 	public JSONObject toJSONObject() throws JSONException;
 
+	public Long getDisplayNumber();
 	/**
 	 * @return whether activity is finished by user on a given day.
 	 */

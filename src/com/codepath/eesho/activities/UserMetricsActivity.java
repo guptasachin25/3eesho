@@ -146,11 +146,7 @@ public class UserMetricsActivity extends Activity {
 		Plan newPlan = new Plan();
 		newPlan.setUser(ParseUser.getCurrentUser());
 		newPlan.setPlanType("fitness");
-		try {
-			newPlan.setPlanDesc(WeeklyFitnessPlan.getDefaultPlan().toJSON());
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		newPlan.setPlanDesc(WeeklyFitnessPlan.getDefaultPlan().toJSON());
 		newPlan.saveInBackground(new SaveCallback() {
 
 			@Override

@@ -101,4 +101,12 @@ public class DietPlanSingleActivity implements SingleActivity {
 		return ID;
 	}
 
+
+
+	@Override
+	public Long getDisplayNumber() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

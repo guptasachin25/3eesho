@@ -47,6 +47,7 @@ public class DailyActivity<T extends SingleActivity> {
 		for(int i = 0; i< activities.size(); i++) {
 			if(singleActivity.getId() == activities.get(i).getId()) {
 				activities.get(i).resetDone();
+				return;
 			}
 		}
 	}
