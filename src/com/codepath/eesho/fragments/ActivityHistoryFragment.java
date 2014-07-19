@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
 import com.echo.holographlibrary.Line;
@@ -26,6 +27,14 @@ public class ActivityHistoryFragment extends Fragment{
 		li.addLine(l);
 		li.setRangeY(0, 10);
 		li.setLineToFill(0);
+		
+		ProgressBar pb = (ProgressBar) v.findViewById(R.id.pbCrunches);
+		pb.setMax(100);
+		pb.setProgress(50);
+		
+		ProgressBar pbPushups = (ProgressBar) v.findViewById(R.id.pbPushups);
+		pbPushups.setMax(100);
+		pbPushups.setProgress(30);
 		
 		return v;
 	}
