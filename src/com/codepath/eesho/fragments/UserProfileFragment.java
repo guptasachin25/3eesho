@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.NumberPicker;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
@@ -22,25 +22,26 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class UserProfileFragment extends DialogFragment {
-
-	protected static final String DEFAULT_PHONE_NUMBER = "000-000-0000";
+	
 	private String user_id;
 	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
-	private EditText phone;
-	private TextView email;
 	private TextView gender;
-	private TextView profession;
 	private TextView location;
 	private TextView weight;
 	private TextView height;
-	private TextView dietHabit;
 	private TextView target;
 	private NumberPicker feet;
 	private NumberPicker inch;
 	private NumberPicker minPicker;
 	private NumberPicker maxPicker;
 	private ParseUser currentUser;
+	private TextView tv_profileage;
+	private NumberPicker agePicker;
+	protected RadioButton rd1_dialog;
+	protected RadioButton rd2_dialog;
+	protected RadioButton rd3_dialog;
+	
 
 	// The fragment for getting user input field names
 	public static UserProfileFragment newInstance(String userid) {
@@ -66,224 +67,53 @@ public class UserProfileFragment extends DialogFragment {
 		View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
 		currentUser = ParseUser.getCurrentUser();
 		// get the current user object
-
-		// Email on click becomes editable otherwise it is non editable
-		tvUserProfileName = (TextView)v. findViewById(R.id.etuserProfilename);
-		email = (TextView)v. findViewById(R.id.etuserProfileEmail);
-		phone = (EditText) v.findViewById(R.id.etuserProfilePhone);
-		gender = (TextView) v.findViewById(R.id.tvusergender);
-		profession = (TextView) v.findViewById(R.id.etuserProfileProfession);
+		tv_profileage = (TextView)v. findViewById(R.id.tv_profileage);
+		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userProfilename);
+		gender = (TextView) v.findViewById(R.id.tv_profile_gender);
 		location = (TextView) v.findViewById(R.id.etuserProfileLocation);
-		weight = (TextView) v.findViewById(R.id.tvuserProfileWeight);
-		height = (TextView) v.findViewById(R.id.tvuserProfileHeight);
-		dietHabit = (TextView) v.findViewById(R.id.tvuserProfileDietHabit);
-		target = (TextView) v.findViewById(R.id.tvuserProfileTarget);
+		weight = (TextView) v.findViewById(R.id.tv_profile_weight);
+		height = (TextView) v.findViewById(R.id.tv_profile_height);
+		target = (TextView) v.findViewById(R.id.tv_profile_activity);
+		ageClick();
 		usernameClick();
-		professionClick();
 		locationClick();
 		genderClick();
-		phoneClick();
 		targetClick();
 		weightClick();
 		heightClick();
-		dietHabitClick();
+		
+		imageViewCircle();
 		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
 		return v;
 
 	}
 
+	private void imageViewCircle() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	private void setUpUserData(ParseUser user) {
-		if(user.getString("name") != null){
+		if(user.getString("dob") != null){
+			tv_profileage.setText(user.getString("dob"));
+		}if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
-		} if( user.getString("email") != null){
-			email.setText(user.getString("email"));
-		} if( user.getNumber("phone") != null) {
-			String phoneNumber = user.getNumber("phone").toString();
-			if(phoneNumber.equals("0")) {
-				phoneNumber = DEFAULT_PHONE_NUMBER;
-			}
-			phone.setText(phoneNumber);
 		} if(user.getString("sex") != null){
 			gender.setText(user.getString("sex"));
-		} if(user.getString("profession") != null){
-			profession.setText(user.getString("profession"));
-		} if( user.getString("location") != null){
+		}  if( user.getString("location") != null){
 			location.setText(user.getString("location"));
 		} if( user.getNumber("weight") != null){
 			weight.setText(user.getNumber("weight").toString());
 		} if(user.getNumber("height_feet") != null && user.getNumber("height_inches") != null) {
-			height.setText(user.getNumber("height_feet").toString() + "\' " + user.getNumber("height_inches").toString() + "\'\'");
-		} 
-		if(user.getString("diet_habit") != null){
-			dietHabit.setText(user.getString("diet_habit"));
-		} if(user.getString("targetDescription") != null){
-			target.setText(user.getString("targetDescription"));
+			height.setText(user.getNumber("height_feet").toString() + "feet " + user.getNumber("height_inches").toString() + "inches");
+		}  if(user.getString("activity_level") != null){
+			target.setText(user.getString("activity_level"));
 		}else{
 			Log.d("Getting the value for parse","value from parse is null");
 		}
 	}
-
-	private void usernameClick() {
-		// TODO Auto-generated method stub
-		tvUserProfileName.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				//TODO Auto-generated method stub
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				if(s != null){
-					currentUser.put("name", s.toString());
-					currentUser.saveInBackground(new SaveCallback() {
-
-						@Override
-						public void done(ParseException e) {
-							// TODO Auto-generated method stub
-							Log.d("done","changed phone number is saved");	
-						}
-					});
-				}
-			}
-		});
-
-	}
-
-	private void phoneClick() {
-		phone.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				//TODO Auto-generated method stub
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				if(s != null) {
-					try {
-					 currentUser.put("phone", Long.parseLong(s.toString()));
-					} catch (NumberFormatException e) {
-						currentUser.put("phone", 0L);
-					}
-					
-					currentUser.saveInBackground(new SaveCallback() {
-						@Override
-						public void done(ParseException e) {
-							// TODO Auto-generated method stub
-							Log.d("done","changed phone number is saved");	
-						}
-					});
-				}
-			}
-		});
-
-	}
-
-	private void dietHabitClick() {
-		dietHabit.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setMessage("What is your dietary Habit?")
-				.setPositiveButton("Vegitarian", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						// send a request to backend that set gender as female
-						dietHabit.setText("Vegetarian");
-						currentUser.put("diet_habit", "Vegetarian");
-						currentUser.saveInBackground(new SaveCallback() {
-
-							@Override
-							public void done(ParseException e) {
-								// TODO Auto-generated method stub
-								Log.d("done","veg changed");
-							}
-						});
-					}
-				})
-				.setNegativeButton("Non-Vegitarian", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						// Set gender to male
-						dietHabit.setText("Non-Vegetarian");
-						currentUser.put("diet_habit", "Non-Vegtarian");
-						currentUser.saveInBackground(new SaveCallback() {
-
-							@Override
-							public void done(ParseException e) {
-								// TODO Auto-generated method stub
-								Log.d("done","non-veg changed");	
-							}
-						});
-					}
-				})
-				.create()
-				.show();
-
-			}// end of onClick
-		});	
-	}
-
-	private void heightClick() {
-		height.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				LayoutInflater inflater = (LayoutInflater)
-						getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				View npView = inflater.inflate(R.layout.number_picker_dialog, null);
-				feet = (NumberPicker) npView.findViewById(R.id.min_picker);
-				feet.setMaxValue(7);
-				feet.setMinValue(4);
-				inch = (NumberPicker) npView.findViewById(R.id.max_picker);
-				inch.setMaxValue(11);
-				inch.setMinValue(0);
-
-				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-				builder.setTitle("Height");
-				builder.setView(npView);
-				builder.setPositiveButton("Okay",
-						new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-						int feetvalue = feet.getValue();
-						int inchvalue = inch.getValue();
-						height.setText(feetvalue+"\'"+inchvalue+"\'\'");
-						currentUser.put("height_feet",feetvalue);
-						currentUser.put("height_inches",inchvalue);
-						currentUser.saveInBackground(new SaveCallback() {
-
-							@Override
-							public void done(ParseException e) {
-								// TODO Auto-generated method stub
-								Log.d("done","Saved the height in parse database");
-							}
-						});
-					}
-				});
-				builder.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int whichButton) {
-					}
-				});
-				builder.create();
-				builder.show();
-			}
-		});
-	}
+	
 	private void weightClick() {
 		weight.setOnClickListener(new OnClickListener() {
 
@@ -328,14 +158,16 @@ public class UserProfileFragment extends DialogFragment {
 				builder.show();
 			}
 		});
+		
 	}
-	private void targetClick() {
-		target.addTextChangedListener(new TextWatcher() {
+
+	private void usernameClick() {
+		// TODO Auto-generated method stub
+		tvUserProfileName.addTextChangedListener(new TextWatcher() {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// TODO Auto-generated method stub
-
+				//TODO Auto-generated method stub
 			}
 
 			@Override
@@ -346,17 +178,160 @@ public class UserProfileFragment extends DialogFragment {
 			}
 
 			@Override
-			public void afterTextChanged(Editable s) { 
-				currentUser.put("targetDescription", s.toString());
-				currentUser.saveInBackground(new SaveCallback() {
+			public void afterTextChanged(Editable s) {
+				if(s != null){
+					currentUser.put("name", s.toString());
+					currentUser.saveInBackground(new SaveCallback() {
 
-					@Override
-					public void done(ParseException e) {
-						// TODO Auto-generated method stub
-						Log.d("done","target is saved");	
+						@Override
+						public void done(ParseException e) {
+							// TODO Auto-generated method stub
+							Log.d("done","user name is changed");	
+						}
+					});
+				}
+			}
+		});
+
+	}
+
+	private void heightClick() {
+		height.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				LayoutInflater inflater = (LayoutInflater)
+						getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				View npView = inflater.inflate(R.layout.number_picker_dialog, null);
+				feet = (NumberPicker) npView.findViewById(R.id.min_picker);
+				feet.setMaxValue(7);
+				feet.setMinValue(4);
+				inch = (NumberPicker) npView.findViewById(R.id.max_picker);
+				inch.setMaxValue(11);
+				inch.setMinValue(0);
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setTitle("Height");
+				builder.setView(npView);
+				builder.setPositiveButton("Okay",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						int feetvalue = feet.getValue();
+						int inchvalue = inch.getValue();
+						height.setText(feetvalue+"feet'"+inchvalue+"inches");
+						currentUser.put("height_feet",feetvalue);
+						currentUser.put("height_inches",inchvalue);
+						currentUser.saveInBackground(new SaveCallback() {
+
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done","Saved the height in parse database");
+							}
+						});
 					}
 				});
+				builder.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+					}
+				});
+				builder.create();
+				builder.show();
+			}
+		});
+	}
+	private void ageClick() {
+		tv_profileage.setOnClickListener(new OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				LayoutInflater inflater = (LayoutInflater)
+						getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				View npView = inflater.inflate(R.layout.age_picker_dialog, null);
+				agePicker = (NumberPicker) npView.findViewById(R.id.age_picker);
+				agePicker.setMaxValue(100);
+				agePicker.setMinValue(20);
+			
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setTitle("Age:");
+				builder.setView(npView);
+				builder.setPositiveButton("Okay",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						int ageValue = agePicker.getValue();
+						tv_profileage.setText(String.valueOf(ageValue));
+						currentUser.put("dob", String.valueOf(ageValue));
+						currentUser.saveInBackground(new SaveCallback() {
+
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done","changed dob is saved");	
+							}
+						});
+					}
+				});
+				builder.setNegativeButton("Cancel",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+					}
+				});
+				builder.create();
+				builder.show();
+			}
+		});
+	}
+	private void targetClick() {
+		
+		target.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final CharSequence[] items={"High Activity","Medium Activity","Low Activity"};
+			
+				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+				builder.setTitle("Set Activity");
+				
+				builder.setPositiveButton("Okay",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						 if(currentUser.getString("activity_level") != null){
+								target.setText(currentUser.getString("activity_level"));
+							}
+						}
+				});
+				builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						
+						
+						if("High Activity".equals(items[which]))
+						{
+							target.setText("High Activity");
+						}
+						else if("Medium Activity".equals(items[which]))
+						{
+							target.setText("Medium Activity");
+							}
+						else if("Low Activity".equals(items[which]))
+						{
+							target.setText("Low Activity");
+							}
+						currentUser.put("activity_level", items[which]);
+						currentUser.saveInBackground(new SaveCallback() {
+
+							@Override
+							public void done(ParseException e) {
+								// TODO Auto-generated method stub
+								Log.d("done","changed target is saved");	
+							}
+						});
+					}
+				});
+				builder.create();
+				builder.show();
 			}
 		});
 
@@ -394,38 +369,6 @@ public class UserProfileFragment extends DialogFragment {
 		});
 	}
 
-	private void professionClick() {
-		profession.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) { 
-				currentUser.put("profession", s.toString());
-				currentUser.saveInBackground(new SaveCallback() {
-
-					@Override
-					public void done(ParseException e) {
-						// TODO Auto-generated method stub
-						Log.d("done","changed profession is saved ");	
-					}
-				});
-
-			}
-		});
-
-	}
 
 	private void genderClick() {
 		gender.setOnClickListener(new OnClickListener() {

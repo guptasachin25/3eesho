@@ -1,4 +1,4 @@
-package com.codepath.eesho.activities;
+package com.codepath.eesho.fragments;
 
 import java.util.ArrayList;
 import java.util.List;

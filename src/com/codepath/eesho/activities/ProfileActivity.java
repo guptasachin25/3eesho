@@ -1,5 +1,6 @@
 package com.codepath.eesho.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.StartActivity;
 import com.codepath.eesho.fragments.UserProfileFragment;
 import com.parse.ParseUser;
 
@@ -32,8 +34,8 @@ String user_id;
 	public void onLogout(MenuItem mi){
 		ParseUser.logOut();
 		Log.d("logout", "user is now loged out");
-		//Intent i = new Intent(this, LoginActivity.class);
-		  //startActivity(i);
+		Intent i = new Intent(this, StartActivity.class);
+		  startActivity(i);
 	}
 	
 	@Override

@@ -2,7 +2,6 @@ package com.codepath.eesho;
 
 import android.app.Application;
 
-import com.codepath.eesho.parse.models.Article;
 import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.Plan;
@@ -18,7 +17,6 @@ public class ParseApplication extends Application {
         super.onCreate();
         
         ParseObject.registerSubclass(Goal.class);
-        ParseObject.registerSubclass(Article.class);
         ParseObject.registerSubclass(User.class);
         ParseObject.registerSubclass(Plan.class);
         ParseObject.registerSubclass(Messages.class);
