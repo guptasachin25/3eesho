@@ -13,32 +13,53 @@
         android:text="RUNNING"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvTotalMiles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvRunning"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="35dp"
-        android:text="total miles" />
+    <RelativeLayout
+        android:id="@+id/rlMiles"
+        android:layout_width="match_parent"
+    	android:layout_height="40dp"
+    	android:layout_below="@+id/tvRunning">
 
-    <TextView
-        android:id="@+id/tvMilesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvTotalMiles"
-        android:layout_toRightOf="@+id/tvRunning"
-        android:layout_marginLeft="40dp"
-        android:text="80"
-        android:textSize="25dp"
-        android:textColor="#00bdab" />
+        <TextView
+            android:id="@+id/tvMiles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="36dp"
+            android:textSize="15dp"
+            android:text="total miles"/>
+
+        <ProgressBar
+            android:id="@+id/pbMiles"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="140dp"
+            android:layout_height="3dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+			android:layout_marginLeft="120dp" 
+            android:background="#FFF"
+            android:progressDrawable="@drawable/progress" />
+
+        <TextView
+            android:id="@+id/tvMilesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvMiles"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/pbMiles"
+            android:layout_centerVertical="true"
+            android:text="78"
+            android:textColor="#00bdab"
+            android:textSize="15dp"/>
+        
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvExercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvRunning"
-        android:layout_below="@+id/tvMilesCount"
+        android:layout_below="@+id/rlMiles"
         android:layout_marginTop="25dp"
         android:text="EXERCISE"
         android:textStyle="bold" />
@@ -212,6 +233,7 @@
          android:layout_width="250dp"
          android:layout_height="81dp"
          android:layout_alignLeft="@+id/tvTotalMiles"
+         android:layout_centerHorizontal="true"
          android:layout_below="@+id/tvWeightProgress"
          android:layout_marginTop="10dp" />
 
@@ -237,8 +259,8 @@
          android:layout_marginTop="20dp"
          android:text="Month"
          android:textSize="10sp"
-         android:textColor="#FFF"
-         android:background="@drawable/history_button" />
+         android:textColor="#a8a8a8"
+         android:background="@drawable/history_button_unclicked" />
 
      <Button
          android:id="@+id/btAll"
@@ -250,8 +272,8 @@
          android:layout_marginTop="20dp"
          android:text="All"
          android:textSize="10sp"
-         android:textColor="#FFF"
-         android:background="@drawable/history_button" />
+         android:textColor="#a8a8a8"
+         android:background="@drawable/history_button_unclicked" />
      
      <View
     	android:layout_width="200dp"
