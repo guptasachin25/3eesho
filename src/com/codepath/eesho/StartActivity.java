@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codepath.eesho.activities.ActivityRecognitionScan;
 import com.codepath.eesho.activities.HomeActivity;
 import com.codepath.eesho.activities.UserGoalActivity;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.parse.ParseUser;
 import com.parse.ui.ParseLoginBuilder;
 
@@ -20,8 +23,11 @@ public class StartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
-		checkLogin();
-		setViews();
+		ActivityRecognitionScan scan = new ActivityRecognitionScan(getApplicationContext());
+		System.out.println(GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) == ConnectionResult.SUCCESS);
+		scan.startActivityRecognitionScan();
+		//checkLogin();
+		//setViews();
 	}
 	
 	private void checkLogin() {

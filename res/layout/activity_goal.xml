@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/LLImage"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/beachrun" >
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="142dp"
+            android:text="Great!!"
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv1"
+            android:layout_below="@+id/tv1"
+            android:layout_marginTop="3dp"
+            android:text="What would you like to do?"
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/LLImage"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:background="@drawable/progress_bar_2" >
+    </LinearLayout>
+
+    
+    <EditText
+        android:id="@+id/etTargetDistance"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/linearLayout1"
+		android:layout_marginTop="30dp"
+        android:ems="10"
+        android:layout_marginLeft="60dp"
+        android:layout_alignParentLeft="true"
+        android:hint="Lose weight" >
+        <requestFocus/>
+    </EditText>
+    
+    <EditText
+        android:id="@+id/etTrainingDuration"
+        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_alignLeft="@+id/etTargetDistance"
+        android:layout_alignRight="@+id/etTargetDistance"
+        android:layout_below="@+id/etTargetDistance"
+        android:layout_marginTop="12dp"
+        android:hint="Run a distance"
+        android:ems="10" />
+    
+    <EditText
+        android:id="@+id/etFitness"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etTrainingDuration"
+        android:layout_alignRight="@+id/etTargetDistance"
+        android:layout_below="@+id/etTrainingDuration"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="General fitness" >
+
+</EditText>
+
+    <TextView
+        android:id="@+id/etTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:text="Goal" />
+
+    <TextView
+        android:id="@+id/tvContinue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+		android:layout_centerHorizontal="true"
+		android:textColor="#CCCCCC"
+		android:textSize="20dp"
+        android:text="Continue" />
+
+</RelativeLayout>

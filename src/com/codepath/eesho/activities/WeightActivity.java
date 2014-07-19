@@ -28,7 +28,7 @@ public class WeightActivity extends Activity {
 	}
 	
 	private void setViews() {
-		etWeight = (EditText) findViewById(R.id.etWeight);
+		etWeight = (EditText) findViewById(R.id.etTrainingDuration);
 		spWeightUnits = (Spinner) findViewById(R.id.spWeightUnits);
 	}
 	

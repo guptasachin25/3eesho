@@ -65,8 +65,8 @@ public class UserMetricsActivity extends Activity {
 
 	private void setViews() {
 		btnNext = (Button) findViewById(R.id.btnDone);
-		etWeight = (EditText) findViewById(R.id.etWeight); 
-		etHeight = (EditText) findViewById(R.id.etHeight);
+		etWeight = (EditText) findViewById(R.id.etTrainingDuration); 
+		etHeight = (EditText) findViewById(R.id.etTargetDistance);
 		spWeight = (Spinner) findViewById(R.id.spWeight);
 		spHeight = (Spinner) findViewById(R.id.spHeight);
 		rGrpActivity = (RadioGroup) findViewById(R.id.rGrpActivity);
