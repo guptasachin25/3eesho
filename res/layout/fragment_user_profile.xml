@@ -1,48 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-     >
+	tools:context="${relativePackage}.${activityClass}"
+    >
 
-    <LinearLayout 
+    <LinearLayout
+        android:id="@+id/lvprofile_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="150dp"
+        android:background="@drawable/profile_background"
         android:gravity="center"
-        android:layout_marginBottom="5dp">
-            
-   	    <ImageView
+        android:orientation="vertical" >
+        
+        <ImageView
      		android:id="@+id/ivSenderImage"
        		android:layout_width="60dp"
         	android:layout_height="60dp"
         	android:layout_marginTop="24dp"
         	android:contentDescription="@string/iv_UserProfile_Image_contentdescription"
-        	android:src="@drawable/ic_profile" />
-    
-    	<EditText
-        	android:id="@+id/etuserProfilename"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-       	 	android:ems="10"
-        	android:hint="@string/et_userName"
-        	android:inputType="text"
-        	android:background="@android:color/transparent"
-        	android:gravity="center"
-        	android:textSize="20sp"/>
-    
-    	<EditText
-       	 	android:id="@+id/etuserProfileProfession"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:ems="10"
-        	android:hint="@string/et_User_Profession"
-        	android:inputType="text"
-        	android:background="@android:color/transparent"
-        	android:gravity="center"
-        	android:textSize="18sp"/>
+        	android:scaleType="fitXY"
+    android:adjustViewBounds="true"
+        	android:src="@drawable/profile_circle_image" />
+        
+        <EditText
+            android:id="@+id/tv_userProfilename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/et_userName"
+            android:inputType="text"
+            android:textSize="20sp" />
 
-     	<EditText
+        <EditText
          	android:id="@+id/etuserProfileLocation"
          	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
@@ -52,220 +44,105 @@
          	android:inputType="text"
          	android:background="@android:color/transparent"
          	android:textSize="16sp" />
-
-    </LinearLayout>
-    
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"/>
-    
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/tvuserProfileEmaillabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userProfileEmailLabel"
-            android:gravity="left"
-            android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/etuserProfileEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:enabled="false"
-            android:text="@string/hint_email"
-            android:inputType="textWebEmailAddress"
-            android:background="@android:color/transparent"
-            android:textSize="15sp" >
-
-            <requestFocus />
-        </EditText>
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
-        <TextView
-            android:id="@+id/tvuserProfilePhoneLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userProfilePhoneLabel"
-            android:gravity="left"
-            android:textSize="15sp" />
-        
-        <EditText
-            android:id="@+id/etuserProfilePhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/hint_phonenumber"
-            android:background="@android:color/transparent"
-            android:inputType="phone"
-            android:textSize="15sp" />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
- 
-        <TextView
-            android:id="@+id/tvusergenderlabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_genderlabel"
-            android:textSize="15sp" />
-        
-        <TextView
-            android:id="@+id/tvusergender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/hint_gender"
-            android:textSize="15sp" />
-        
-    </LinearLayout>
-        <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
- 
-        <TextView
-            android:id="@+id/tvuserProfileWeightLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userWeightLabel"
-            android:textSize="15sp" />
-        
-        <TextView
-            android:id="@+id/tvuserProfileWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/sphint_weight"
-            android:textSize="15sp" />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
- 
-        <TextView
-            android:id="@+id/tvuserProfileHeightLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userHeightLabel"
-            android:textSize="15sp" />
-        
-        <TextView
-            android:id="@+id/tvuserProfileHeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/sphint_height"
-            android:textSize="15sp" />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
- 
-        <TextView
-            android:id="@+id/tvuserProfileDietHabitLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userDietHabitLabel"
-            android:textSize="15sp" />
-        
-        <TextView
-            android:id="@+id/tvuserProfileDietHabit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/hint_diethabit"
-            android:textSize="15sp" />
-        
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
- 
-        <TextView
-            android:id="@+id/tvuserProfileTargetLabel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="40dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:text="@string/tv_userProfileTargetLabel"
-            android:textSize="15sp" />
-        
-        <EditText
-            android:id="@+id/tvuserProfileTarget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:ems="10"
-            android:hint="@string/tv_usertargetgoal"
-            android:inputType="text"
-            android:background="@android:color/transparent"
-            android:textSize="15sp" />
         
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_editProfile_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lvprofile_image"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/tv_EditProfileLabel"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
     
-</LinearLayout>
+        <TextView
+        android:id="@+id/tv_profileage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_editProfile_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:hint="@string/hint_profile_age" />
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_profileage"
+        android:layout_alignRight="@+id/tv_profileage"
+        android:layout_below="@+id/tv_profileage"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/tv_profile_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/progressBar1"
+        android:layout_below="@+id/progressBar1"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_gender" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_profile_gender"
+        android:layout_alignRight="@+id/tv_profile_gender"
+        android:layout_below="@+id/tv_profile_gender" />
+
+    <TextView
+        android:id="@+id/tv_profile_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar2"
+        android:layout_alignRight="@+id/progressBar2"
+        android:layout_below="@+id/progressBar2"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_height" />
+
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_profile_height"
+        android:layout_alignRight="@+id/tv_profile_height"
+        android:layout_below="@+id/tv_profile_height" />
+
+    <TextView
+        android:id="@+id/tv_profile_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar3"
+        android:layout_alignRight="@+id/progressBar3"
+        android:layout_below="@+id/progressBar3"
+        android:layout_marginTop="20dp"
+        android:hint="@string/hint_weight" />
+
+    <ProgressBar
+        android:id="@+id/progressBar4"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_profile_weight"
+        android:layout_alignRight="@+id/tv_profile_weight"
+        android:layout_below="@+id/tv_profile_weight" />
+
+    <TextView
+        android:id="@+id/tv_profile_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/progressBar4"
+        android:layout_alignRight="@+id/progressBar4"
+        android:layout_below="@+id/progressBar4"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_activity" />
+        
+    </RelativeLayout>

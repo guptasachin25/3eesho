@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/tv_editProfile_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -17,8 +17,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_below="@+id/tv_editProfile_label"
         android:layout_marginTop="40dp"
         android:text="Height" />
 
@@ -26,21 +26,21 @@
         android:id="@+id/etNumHours"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/textView1"
+        android:layout_alignTop="@+id/tv_editProfile_label"
         android:layout_marginLeft="64dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/tv_editProfile_label"
         android:ems="10" >
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/tv_profile_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView2"
         android:layout_alignBottom="@+id/textView2"
         android:layout_marginLeft="50dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/tv_editProfile_label"
         android:ems="10" />
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/etNumHours"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/tv_profile_gender"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="93dp"
         android:text="Height Units" />

@@ -20,8 +20,6 @@
     <string name="hint_phonenumber">1234567890</string>
     <string name="tv_usertargetgoal">Loose 10 kg in 3 months</string>
     <string name="title_activity_home">3eesho</string>
-    <string name="sphint_weight">114lb</string>
-    <string name="sphint_height">5\'.5\'\'</string>
     <string name="hint_diethabit">Veg/Non-Veg</string>
     <string name="hint_email">sam@gmail.com</string>
     <string name="tvTimeSpend">30hrs</string>
@@ -59,5 +57,23 @@
     </string-array>
 
     <string name="title_activity_chat">ChatActivity</string>
+
+    <string name="tv_EditProfileLabel">EditProfile</string>
+
+    <string name="hint_profile_age">30</string>
+
+    <string name="hint_height">5\'3\'\'</string>
+
+    <string name="hint_weight">114lb</string>
+
+    <string name="hint_activity">High Activity</string>
+
+    <string name="rd_highActivity">High Activity</string>
+
+    <string name="rd_lowActivity">Low Activity</string>
+
+    <string name="Dialog_btn_ok">OK</string>
+
+    <string name="rd_mediumActivity">Medium Activity</string>
 
 </resources>
