@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.fragments.DailyPlanFragment;
+import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
 import com.codepath.eesho.parse.models.Messages;
@@ -72,8 +72,8 @@ public class HomeActivity extends FragmentActivity {
 			//.setIcon(R.drawable.ic_home)
 			.setTag("DailyPlanFragment")
 			.setTabListener(
-				new FragmentTabListener<DailyPlanFragment>(R.id.flHomeContainer, this, "MyPlan",
-						DailyPlanFragment.class));
+				new FragmentTabListener<UserDashBoardFragment>(R.id.flHomeContainer, this, "MyPlan",
+						UserDashBoardFragment.class));
 		/*
 		Tab myArticle = actionBar
 				.newTab()

@@ -2,29 +2,166 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFF" >
-
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="Weekly Progress"
-        android:textColor="#0099CC"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <com.echo.holographlibrary.BarGraph
-        android:id="@+id/graph"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp" />
+    android:background="#FFF"
+    android:orientation="vertical" >
     
-    <ExpandableListView
-        android:layout_marginTop="20dp"
-     	android:id="@+id/lvExp"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"/> 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#506f7b" >
+
+        <com.codepath.eesho.utils.CircularImageView
+            android:id="@+id/ivPicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/buzz2"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Billy Bob"
+            android:textColor="#FFF"
+            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_alignTop="@+id/ivPicture"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold" />
+        
+        <TextView
+            android:id="@+id/tvGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Run full marathon in 3 months"
+            android:textColor="#FFF"
+            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_alignBottom="@+id/ivPicture"
+            android:textSize="12sp"
+            android:layout_marginLeft="15dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="#5a7e8c"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal">
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+            
+   			<RelativeLayout
+                android:layout_width="100dp"
+            	android:layout_height="match_parent"
+            	android:layout_gravity="center">
+            	
+            	<ImageView
+		            android:id="@+id/ivGraph"
+		            android:layout_width="50dp"
+		            android:layout_height="50dp"
+		            android:src="@drawable/ic_bargraph" 
+		            android:layout_centerVertical="true"/>
+
+            	<TextView
+            	    android:id="@+id/tvProgress"
+            	    android:layout_width="wrap_content"
+            	    android:layout_height="wrap_content"
+            	    android:layout_alignBottom="@+id/ivGraph"
+            	    android:text="88"
+            	    android:layout_toRightOf="@+id/ivGraph"
+            	    android:textSize="40sp"
+            	    android:textColor="#FFF" 
+            	    android:layout_centerVertical="true"/>
+            	
+            	<TextView
+            	    android:id="@+id/tvProgressTxt"
+            	    android:layout_width="wrap_content"
+            	    android:layout_height="wrap_content"
+            	    android:text="PROGRESS"
+            	    android:layout_below="@+id/tvProgress"
+            	    android:layout_centerVertical="true"
+            	    android:layout_centerHorizontal="true"
+            	    android:textSize="10sp" 
+            	    android:textColor="#FFF"/>
+            	
+            </RelativeLayout>         
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+			
+            <RelativeLayout
+                android:layout_width="100dp"
+            	android:layout_height="match_parent"
+            	android:layout_gravity="center">
+            	
+            	<ImageView
+		            android:id="@+id/ivActivity"
+		            android:layout_width="50dp"
+		            android:layout_height="50dp"
+		            android:src="@drawable/ic_activity" 
+		            android:layout_centerVertical="true"/>
+
+            	<TextView
+            	    android:id="@+id/tvActivity"
+            	    android:layout_width="wrap_content"
+            	    android:layout_height="wrap_content"
+            	    android:layout_alignBottom="@+id/ivActivity"
+            	    android:text="88"
+            	    android:layout_toRightOf="@+id/ivActivity"
+            	    android:textSize="40sp"
+            	    android:textColor="#FFF" 
+            	    android:layout_centerVertical="true"/>
+            	
+            	<TextView
+            	    android:id="@+id/tvActivityText"
+            	    android:layout_width="wrap_content"
+            	    android:layout_height="wrap_content"
+            	    android:text="ACTIVITY"
+            	    android:layout_below="@+id/tvActivity"
+            	    android:layout_centerVertical="true"
+            	    android:layout_centerHorizontal="true"
+            	    android:textSize="10sp" 
+            	    android:textColor="#FFF"/>
+            	
+            </RelativeLayout>    
+            
+        </LinearLayout>
+        
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#02c1d7"
+        >
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:textColor="#FFF"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvGoals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
 
 </LinearLayout>

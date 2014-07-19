@@ -114,8 +114,4 @@ public class DayPlanFragment extends Fragment{
 		});
 	}
 
-	public void addAll(ArrayList<SingleActivity> goals) {
-		aGoals.addAll(goals);
-	}
-
 }
