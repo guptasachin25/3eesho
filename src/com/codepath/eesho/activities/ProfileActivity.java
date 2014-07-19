@@ -26,7 +26,7 @@ String user_id;
 	private void setupWithUser(String user_id) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserProfileFragment fragment = UserProfileFragment.newInstance(user_id);
-		Log.d("inprofileactivity", "user profile " + user_id + " after");
+		Log.d("in profile activity", "user profile " + user_id + " after");
 		ft.replace(R.id.frameLayoutProfile, fragment);
 		ft.commit();
 	}

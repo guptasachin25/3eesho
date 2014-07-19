@@ -14,7 +14,7 @@
          android:textAppearance="?android:attr/textAppearanceLarge" />
 
      <EditText
-         android:id="@+id/etTrainingDuration"
+         android:id="@+id/etWeight"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_below="@+id/tvQuestion"
@@ -27,10 +27,10 @@
         android:id="@+id/spWeightUnits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/etTrainingDuration"
+        android:layout_toRightOf="@+id/etWeight"
         android:entries="@array/weight_units"
         android:layout_marginLeft="10dp"
-        android:layout_alignTop="@+id/etTrainingDuration" />
+        android:layout_alignTop="@+id/etWeight" />
      
      <Button
         android:id="@+id/btnNext"

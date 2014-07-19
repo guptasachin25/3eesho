@@ -50,7 +50,7 @@
 
     
     <EditText
-        android:id="@+id/etTargetDistance"
+        android:id="@+id/etHeight"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
 		android:layout_below="@+id/linearLayout1"
@@ -63,18 +63,18 @@
     </EditText>
     
     <EditText
-        android:id="@+id/etTrainingDuration"
+        android:id="@+id/etWeight"
         android:layout_height="wrap_content"
         android:layout_width="250dp"
-        android:layout_alignLeft="@+id/etTargetDistance"
-        android:layout_alignRight="@+id/etTargetDistance"
-        android:layout_below="@+id/etTargetDistance"
+        android:layout_alignLeft="@+id/etHeight"
+        android:layout_alignRight="@+id/etHeight"
+        android:layout_below="@+id/etHeight"
         android:layout_marginTop="20dp"
         android:hint="Training duration"
         android:ems="10" />
 
     <TextView
-        android:id="@+id/etTarget"
+        android:id="@+id/etProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

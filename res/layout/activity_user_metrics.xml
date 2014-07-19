@@ -24,7 +24,7 @@
         android:text="Weight" />
 
     <EditText
-        android:id="@+id/etTrainingDuration"
+        android:id="@+id/etWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -40,9 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/etTrainingDuration"
+        android:layout_alignTop="@+id/etWeight"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/etTrainingDuration"
+        android:layout_toRightOf="@+id/etWeight"
         android:entries="@array/weight_units" />
 
     <TextView
@@ -59,19 +59,19 @@
         android:id="@+id/spHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/etTargetDistance"
+        android:layout_alignBaseline="@+id/etHeight"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/etTargetDistance"
+        android:layout_toRightOf="@+id/etHeight"
         android:entries="@array/height_units" />
 
     <EditText
-        android:id="@+id/etTargetDistance"
+        android:id="@+id/etHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvHeight"
-        android:layout_alignLeft="@+id/etTrainingDuration"
-        android:layout_below="@+id/etTrainingDuration"
+        android:layout_alignLeft="@+id/etWeight"
+        android:layout_below="@+id/etWeight"
         android:ems="10"
         android:hint="Enter Height" >
 

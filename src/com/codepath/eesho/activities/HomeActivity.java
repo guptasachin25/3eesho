@@ -102,7 +102,7 @@ public class HomeActivity extends FragmentActivity {
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		i.putExtra("currentUserLoggedInfo", currentUser.getObjectId());
 		Log.d("inHomeactivity", "user id is " + currentUser.getObjectId() + " before");
-		startActivity(i);	
+		startActivity(i);
 	}
 	
 	private String getMessage() {

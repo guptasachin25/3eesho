@@ -116,7 +116,6 @@ public class UserProfileFragment extends DialogFragment {
 	
 	private void weightClick() {
 		weight.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				LayoutInflater inflater = (LayoutInflater)
@@ -157,8 +156,7 @@ public class UserProfileFragment extends DialogFragment {
 				builder.create();
 				builder.show();
 			}
-		});
-		
+		});	
 	}
 
 	private void usernameClick() {
@@ -282,8 +280,8 @@ public class UserProfileFragment extends DialogFragment {
 			}
 		});
 	}
+	
 	private void targetClick() {
-		
 		target.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
