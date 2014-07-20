@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/beachrun" >
+        android:background="@drawable/onboard_header_image" >
 
         <TextView
             android:id="@+id/tv1"
@@ -41,13 +41,12 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/LLImage"
         android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
         android:orientation="horizontal"
-        android:background="@drawable/progress_bar_2" >
+        android:background="@drawable/onboard_progress_2" >
     </LinearLayout>
 
     
@@ -110,5 +109,32 @@
         android:textStyle="bold"
         android:textSize="17dp"
         android:text="Goal" />
+
+    <ImageView
+        android:id="@+id/ivLoseWeightIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnLoseWeight"
+        android:layout_alignTop="@+id/btnLoseWeight"
+        android:layout_alignLeft="@+id/etGoal"
+        android:src="@drawable/icon_loseweight_inactive" />
+
+    <ImageView
+        android:id="@+id/ivRunIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivLoseWeightIcon"
+        android:layout_alignBottom="@+id/btnRun"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/icon_run_inactive" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivRunIcon"
+        android:layout_alignBottom="@+id/btnFitness"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/icon_generalhealth_inactive" />
 
 </RelativeLayout>

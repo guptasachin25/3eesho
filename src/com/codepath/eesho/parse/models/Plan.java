@@ -75,7 +75,7 @@ public class Plan extends ParseObject{
 		put("plan_type", type);
 	}
 	
-	public void setPlanDesc(JSONObject defaultPlan) throws JSONException {
+	public void setPlanDesc(JSONObject defaultPlan) {
 		put("planDesc", defaultPlan);
 	}
 

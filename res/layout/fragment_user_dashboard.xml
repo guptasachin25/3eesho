@@ -12,8 +12,8 @@
 
         <com.codepath.eesho.utils.CircularImageView
             android:id="@+id/ivPicture"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/buzz2"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp" />
@@ -26,7 +26,8 @@
             android:textColor="#FFF"
             android:layout_toRightOf="@+id/ivPicture"
             android:layout_alignTop="@+id/ivPicture"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            android:typeface="serif"
             android:layout_marginLeft="15dp"
             android:textStyle="bold" />
         
@@ -36,17 +37,55 @@
             android:layout_height="wrap_content"
             android:text="Run full marathon in 3 months"
             android:textColor="#FFF"
-            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_alignLeft="@+id/tvName"
             android:layout_alignBottom="@+id/ivPicture"
             android:textSize="12sp"
-            android:layout_marginLeft="15dp" />
+            android:typeface="serif"/>
+
+        <TextView
+            android:id="@+id/tvNumLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:textColor="#ffffff"
+            android:text="15" />
+
+        <ImageView
+            android:id="@+id/ivLikes"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignBottom="@+id/tvNumLikes"
+            android:layout_toLeftOf="@+id/tvNumLikes"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/ic_like" />
+
+        <ImageView
+            android:id="@+id/ivMessages"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignLeft="@+id/ivLikes"
+            android:layout_below="@+id/ivLikes"
+            android:src="@drawable/ic_broadcast" />
+
+        <TextView
+            android:id="@+id/tvNumMessages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivMessages"
+            android:layout_alignTop="@+id/ivMessages"
+			android:layout_alignLeft="@+id/tvNumLikes"
+			android:textColor="#ffffff"
+            android:text="20" />
 
     </RelativeLayout>
+    
 
     <LinearLayout
         android:background="#5a7e8c"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="75dp"
         android:orientation="horizontal">
         
         <LinearLayout
@@ -56,14 +95,14 @@
             android:orientation="vertical" >
             
    			<RelativeLayout
-                android:layout_width="100dp"
+                android:layout_width="90dp"
             	android:layout_height="match_parent"
             	android:layout_gravity="center">
             	
             	<ImageView
 		            android:id="@+id/ivGraph"
-		            android:layout_width="50dp"
-		            android:layout_height="50dp"
+		            android:layout_width="40dp"
+		            android:layout_height="40dp"
 		            android:src="@drawable/ic_bargraph" 
 		            android:layout_centerVertical="true"/>
 
@@ -72,10 +111,11 @@
             	    android:layout_width="wrap_content"
             	    android:layout_height="wrap_content"
             	    android:layout_alignBottom="@+id/ivGraph"
+            	    android:layout_marginBottom="7dp"
             	    android:text="88"
             	    android:layout_toRightOf="@+id/ivGraph"
-            	    android:textSize="40sp"
-            	    android:textColor="#FFF" 
+            	    android:textSize="20sp"
+            	    android:textColor="#FFFFFF" 
             	    android:layout_centerVertical="true"/>
             	
             	<TextView
@@ -101,14 +141,14 @@
             android:onClick="goToActivityHistory" >
 			
             <RelativeLayout
-                android:layout_width="100dp"
+                android:layout_width="90dp"
             	android:layout_height="match_parent"
             	android:layout_gravity="center">
             	
             	<ImageView
 		            android:id="@+id/ivActivity"
-		            android:layout_width="50dp"
-		            android:layout_height="50dp"
+		            android:layout_width="40dp"
+		            android:layout_height="40dp"
 		            android:src="@drawable/ic_activity" 
 		            android:layout_centerVertical="true"/>
 
@@ -117,10 +157,11 @@
             	    android:layout_width="wrap_content"
             	    android:layout_height="wrap_content"
             	    android:layout_alignBottom="@+id/ivActivity"
-            	    android:text="88"
+            	    android:text="60"
             	    android:layout_toRightOf="@+id/ivActivity"
-            	    android:textSize="40sp"
-            	    android:textColor="#FFF" 
+            	    android:textSize="20sp"
+            	    android:textColor="#FFFFFF"
+            	    android:layout_marginBottom="7sp" 
             	    android:layout_centerVertical="true"/>
             	
             	<TextView
@@ -133,36 +174,35 @@
             	    android:layout_centerHorizontal="true"
             	    android:textSize="10sp" 
             	    android:textColor="#FFF"/>
-            	
             </RelativeLayout>    
-            
         </LinearLayout>
-        
-
     </LinearLayout>
-
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#02c1d7"
         >
-
+        
         <TextView
-            android:id="@+id/tv1"
+            android:id="@+id/tvWeekday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Today"
             android:textColor="#FFF"
             android:layout_gravity="center_horizontal"
-            android:textSize="20sp" />
-
+            android:textSize="18sp" 
+            android:layout_marginTop="2sp"
+            android:typeface="serif"
+            android:layout_marginBottom="2sp"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/lvGoals"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="20dp">
     </ListView>
 
 </LinearLayout>

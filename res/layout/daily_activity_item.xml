@@ -9,29 +9,34 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="18dp"
         android:text="20"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+        android:textColor="#BBBBBB"
+        android:typeface="serif"
+        android:textStyle="bold" 
+        android:layout_marginBottom="5dp"/>
 
     <TextView
         android:id="@+id/tvActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvNumber"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/tvNumber"
+        android:layout_centerHorizontal="true"
         android:text="push ups"
-        android:textSize="20dp" />
-
+        android:typeface="sans"
+        android:textAlignment="viewStart"
+        android:textSize="15dp" 
+        android:layout_marginBottom="5dp"/>
+    
     <ImageView
         android:id="@+id/ivCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvActivity"
-        android:layout_marginLeft="54dp"
-        android:layout_toRightOf="@+id/tvActivity"
-        android:src="@drawable/ic_check" />
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_check"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignBottom="@+id/tvActivity"/>
     
 </RelativeLayout>

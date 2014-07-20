@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.view.LayoutInflater;
@@ -47,13 +48,26 @@ public class GoalArrayAdapter extends ArrayAdapter<SingleActivity> {
 //		ch.setClickable(false);
 //		ch.setFocusable(false);
 		
+		//System.out.println("goal_done" + goal.isDone());
 		TextView number = (TextView) v.findViewById(R.id.tvNumber);
 		TextView activity = (TextView) v.findViewById(R.id.tvActivity);
 		ImageView checkbox = (ImageView) v.findViewById(R.id.ivCheck);
 		
 		activity.setText(goal.toString());
-		//
+		number.setText(Long.toString(goal.getDisplayNumber()));
 		
+		if(goal.isDone()) {
+			checkbox.setImageResource(R.drawable.ic_check_done);
+			activity.setTextColor(Color.GRAY);
+			number.setTextColor(Color.GRAY);
+		} else {
+			checkbox.setImageResource(R.drawable.ic_check);
+			activity.setTextColor(Color.BLACK);
+			number.setTextColor(Color.BLACK);
+
+		}
+		v.setTag(goal);
+		//
 		/*
 		ch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 		       @Override

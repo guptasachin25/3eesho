@@ -13,6 +13,22 @@
         android:title="Profile">
     </item>
     
+	<item
+        android:id="@+id/miSocial"
+        android:icon="@drawable/ic_profile"
+        android:onClick="onSocialView"
+        android:title="Social">
+    </item>
+    
+	<item
+        android:id="@+id/miMyPlan"
+        android:icon="@drawable/ic_profile"
+        android:onClick="onPlanView"
+        android:title="My Plan">
+    </item>
+    
+    
+    
     <!--  android:showAsAction="always" -->
 	
 </menu>

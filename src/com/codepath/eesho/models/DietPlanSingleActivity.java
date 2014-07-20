@@ -16,11 +16,12 @@ public class DietPlanSingleActivity implements SingleActivity {
 	
 	Boolean done;
 	
+	String title;
+	
 	public DietPlanSingleActivity() {}
 	
-
-	
-	public DietPlanSingleActivity(String description, String timestamp) {
+	public DietPlanSingleActivity(String description, String title, String timestamp) {
+		this.title = title;
 		this.timestamp = timestamp;
 		this.description = description;
 	}
@@ -52,7 +53,7 @@ public class DietPlanSingleActivity implements SingleActivity {
 	public void setDone(boolean done) {
 		this.done = done;
 	} 
-
+	
 	@Override 
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -62,8 +63,8 @@ public class DietPlanSingleActivity implements SingleActivity {
 		return builder.toString();
 	}
 	
-	public static DietPlanSingleActivity getPlan(String desc, String timestamp) {
-		return new DietPlanSingleActivity(desc, timestamp);
+	public static DietPlanSingleActivity getPlan(String desc, String title, String timestamp) {
+		return new DietPlanSingleActivity(desc, title, timestamp);
 	}
 
 	@Override
@@ -95,10 +96,15 @@ public class DietPlanSingleActivity implements SingleActivity {
 		return activity;
 	}
 
-
 	@Override
 	public Long getId() {
 		return ID;
+	}
+
+	@Override
+	public Long getDisplayNumber() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
