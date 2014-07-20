@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/beachrun" >
+        android:background="@drawable/onboard_header_image" >
 
         <TextView
             android:id="@+id/tv1"
@@ -22,7 +22,7 @@
             android:layout_marginTop="135dp"
             android:typeface="serif"
             android:text="Hello!!"
-            android:textSize="18dp"
+            android:textSize="24dp"
             android:textColor="#ffffff"/>
 
         <TextView
@@ -41,13 +41,12 @@
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
         android:layout_below="@+id/LLImage"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        android:background="@drawable/progress_bar_1" >
+        android:background="@drawable/onboard_progress_1" >
     </LinearLayout>
 
     
@@ -56,7 +55,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
 		android:layout_below="@+id/linearLayout1"
-		android:layout_marginTop="30dp"
+		android:layout_marginTop="50dp"
         android:ems="10"
         android:layout_marginLeft="70dp"
         android:typeface="serif"
@@ -119,7 +118,7 @@
    		android:layout_alignLeft="@+id/etProfile"
    		android:layout_alignTop="@+id/etActivityLevel"
         android:src="@drawable/ic_heart" />
-
+  
     <Button
         android:id="@+id/btnContinue"
         android:layout_width="wrap_content"
@@ -133,6 +132,24 @@
 		android:onClick="onClick"
         android:text="Continue" />
 
-    
+    <ImageView
+        android:id="@+id/ivHeightIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/etHeight"
+        android:layout_alignBottom="@+id/etHeight"
+		android:layout_alignParentLeft="true"
+		android:layout_marginLeft="11dp"
+        android:src="@drawable/ic_height_inactive" />
+
+    <ImageView
+        android:id="@+id/ivWeightIcon"
+        android:layout_width="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivHeart"
+        android:layout_alignBottom="@+id/etWeight"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/icon_weight_inactive" />
 
 </RelativeLayout>

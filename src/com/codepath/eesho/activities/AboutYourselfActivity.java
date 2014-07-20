@@ -102,7 +102,7 @@ public class AboutYourselfActivity extends Activity {
 			changeColorOfHint();
 			return;
 		}
-		saveData();
+		//saveData();
 		
 		Intent intent = new Intent(this, GoalActivity.class);
 		startActivity(intent);	
