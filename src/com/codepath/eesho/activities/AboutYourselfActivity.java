@@ -36,15 +36,14 @@ public class AboutYourselfActivity extends Activity {
 		etHeight = (EditText) findViewById(R.id.etHeight);
 		etActivityLevel = (EditText) findViewById(R.id.etActivityLevel);
 		btnContinue = (Button) findViewById(R.id.btnContinue);
-
 	}
 
 	private void setTextChangeListeners() {
 		etHeight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
+				checkContinueEnabled();
 				EditText view = (EditText) v;
-
 				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(heightUnit)) {
 					String height = ((EditText) v).getText().toString();					
 					etHeight.setText(height + " " + heightUnit);
@@ -55,6 +54,7 @@ public class AboutYourselfActivity extends Activity {
 		etWeight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
+				checkContinueEnabled();
 				EditText view = (EditText) v;
 				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(weightUnit)) {
 					String weight = ((EditText) v).getText().toString();					
@@ -62,6 +62,22 @@ public class AboutYourselfActivity extends Activity {
 				}
 			}
 		});
+		
+		etActivityLevel.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				checkContinueEnabled();
+			}
+		});
+	}
+	
+	private void checkContinueEnabled() {
+		if(checkDataAvailable()) {
+			btnContinue.setEnabled(true);
+		} else {
+			btnContinue.setEnabled(false);
+		}
 	}
 
 	private boolean checkDataAvailable() {		

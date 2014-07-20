@@ -180,7 +180,6 @@ public class HomeActivity extends FragmentActivity {
 		Log.d("in profile activity", "user profile " + ParseUser.getCurrentUser() + " after");
 		ft.replace(R.id.flHomeContainer, fragment);
 		ft.commit();
-		
 		/*
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		i.putExtra("currentUserLoggedInfo", currentUser.getObjectId());

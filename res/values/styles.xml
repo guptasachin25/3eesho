@@ -17,4 +17,8 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name = "NiceButton" parent="@android:style/Widget.Button">
+    	<item name="android:textColor">@color/button_color_selector</item>
+    	<item name="android:background">@drawable/light_button</item>
+	</style>
 </resources>
