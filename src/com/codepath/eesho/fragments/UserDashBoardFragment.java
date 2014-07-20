@@ -71,10 +71,8 @@ public class UserDashBoardFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		DateTime date = new DateTime();
-		date = date.plusDays(1);
 		goals = new ArrayList<SingleActivity>();
-		aGoals = new GoalArrayAdapter(getActivity(), goals);
-				
+		aGoals = new GoalArrayAdapter(getActivity(), goals);				
 		System.out.println(date);
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());

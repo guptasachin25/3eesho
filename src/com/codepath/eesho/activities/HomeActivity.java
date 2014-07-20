@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
+import com.codepath.eesho.fragments.UserProfileFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
 import com.codepath.eesho.models.DailyActivity;
@@ -105,7 +106,8 @@ public class HomeActivity extends FragmentActivity {
 	private void getCurrentUser() {
 		currentUser = ParseUser.getCurrentUser();
 		if (currentUser != null) {
-			setupTabs();
+			//setupTabs();
+			onPlanView();
 		} else {
 			// show the signup or login screen
 		}		
@@ -167,13 +169,39 @@ public class HomeActivity extends FragmentActivity {
 		actionBar.selectTab(myPlan);
 	}
 
+	private void onPlanView() {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		UserDashBoardFragment fragment = new UserDashBoardFragment();
+		ft.replace(R.id.flHomeContainer, fragment);
+		ft.commit();
+	}
+	
 	public void onProfileView(MenuItem mi) {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+		Log.d("in profile activity", "user profile " + ParseUser.getCurrentUser() + " after");
+		ft.replace(R.id.flHomeContainer, fragment);
+		ft.commit();
+		
+		/*
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		i.putExtra("currentUserLoggedInfo", currentUser.getObjectId());
 		Log.d("inHomeactivity", "user id is " + currentUser.getObjectId() + " before");
-		startActivity(i);
+		startActivity(i);*/
 	}
 
+	public void onSocialView(MenuItem mi) {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		WallFragment fragment = new WallFragment();
+		ft.replace(R.id.flHomeContainer, fragment);
+		ft.commit();
+	}
+	
+	public void onPlanView(MenuItem mi) {
+		onPlanView();
+	}
+	
+	
 	private String getMessage() {
 		return "Shout";
 	}
@@ -183,7 +211,7 @@ public class HomeActivity extends FragmentActivity {
 		DateTime date = new DateTime();
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
-		query.whereEqualTo("date", date.toDateMidnight().plusDays(1).toDate());
+		query.whereEqualTo("date", date.toDateMidnight().toDate());
 
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
@@ -234,6 +262,7 @@ public class HomeActivity extends FragmentActivity {
 				}
 			}
 		});
+		onSocialView(null);
 	}
 
 
