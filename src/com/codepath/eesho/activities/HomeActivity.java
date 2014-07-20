@@ -22,13 +22,11 @@ import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.UserProfileFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
-import com.codepath.eesho.models.DailyActivity;
 import com.codepath.eesho.models.FitnessPlanSingleActivity;
 import com.codepath.eesho.models.WeeklyFitnessPlan;
 import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.Plan;
-import com.google.android.gms.drive.internal.ac;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -38,7 +36,7 @@ public class HomeActivity extends FragmentActivity {
 	JSONArray jsonArray = new JSONArray();
 	ParseUser currentUser;
 	String referer = null;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,7 +50,7 @@ public class HomeActivity extends FragmentActivity {
 		}
 		getCurrentUser();
 	}
-
+	
 	/**
 	 * This function save plan and daily plans for user in user table.
 	 * This function show only be called when user signup or some repeated interval
@@ -200,7 +198,6 @@ public class HomeActivity extends FragmentActivity {
 	public void onPlanView(MenuItem mi) {
 		onPlanView();
 	}
-	
 	
 	private String getMessage() {
 		return "Shout";

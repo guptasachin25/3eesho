@@ -42,7 +42,45 @@
             android:textSize="12sp"
             android:typeface="serif"/>
 
+        <TextView
+            android:id="@+id/tvNumLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tvName"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:textColor="#ffffff"
+            android:text="15" />
+
+        <ImageView
+            android:id="@+id/ivLikes"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignBottom="@+id/tvNumLikes"
+            android:layout_toLeftOf="@+id/tvNumLikes"
+            android:layout_marginRight="2dp"
+            android:src="@drawable/ic_like" />
+
+        <ImageView
+            android:id="@+id/ivMessages"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_alignLeft="@+id/ivLikes"
+            android:layout_below="@+id/ivLikes"
+            android:src="@drawable/ic_broadcast" />
+
+        <TextView
+            android:id="@+id/tvNumMessages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ivMessages"
+            android:layout_alignTop="@+id/ivMessages"
+			android:layout_alignLeft="@+id/tvNumLikes"
+			android:textColor="#ffffff"
+            android:text="20" />
+
     </RelativeLayout>
+    
 
     <LinearLayout
         android:background="#5a7e8c"

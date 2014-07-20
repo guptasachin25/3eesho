@@ -25,7 +25,7 @@
         android:layout_alignBottom="@+id/tvNumber"
         android:layout_centerHorizontal="true"
         android:text="push ups"
-        android:typeface="serif"
+        android:typeface="sans"
         android:textAlignment="viewStart"
         android:textSize="15dp" 
         android:layout_marginBottom="5dp"/>
