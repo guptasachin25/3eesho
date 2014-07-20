@@ -152,7 +152,7 @@ public class FitnessPlanSingleActivity implements SingleActivity {
 				value = description;
 			}
 		} else if(hasDuration()) {
-			value = String.format(Locale.ENGLISH, "%s for %d minutes", exercise, duration);
+			value = String.format(Locale.ENGLISH, "%s for %d minutes", description, duration);
 		}
 		return value;
 	}

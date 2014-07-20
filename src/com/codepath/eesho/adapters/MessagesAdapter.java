@@ -3,6 +3,7 @@ package com.codepath.eesho.adapters;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class MessagesAdapter extends ArrayAdapter<Messages>{
 		TextView tvDescription = (TextView) v.findViewById(R.id.tvDescription);
 		TextView timestamp = (TextView) v.findViewById(R.id.tvTimespan);
 		
-		tvDescription.setText(message.getMessage());	
+		tvDescription.setText(Html.fromHtml(message.getMessage()));	
 		System.out.println(message.getTimestamp());
 		timestamp.setText(message.getTimeSinceCurrentTime(message.getTimestamp()));
 		return v;
