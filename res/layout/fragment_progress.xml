@@ -56,7 +56,8 @@
         android:layout_below="@+id/btMonth"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="WEIGHT"
+        android:text="WEIGHT PROGRESS"
+        android:textColor="#008B8B"
         android:textStyle="bold" />
 
     <com.echo.holographlibrary.LineGraph
