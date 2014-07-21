@@ -126,11 +126,14 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
 		android:layout_centerHorizontal="true"
-		android:textColor="#000000"
 		android:typeface="serif"
+		android:enabled="false"
+		style="@style/NiceButton"
 		android:textSize="20dp"
+		android:clickable="true"
+		android:focusable="true"
 		android:onClick="onClick"
-        android:text="Continue" />
+        android:text="CONTINUE" />
 
     <ImageView
         android:id="@+id/ivHeightIcon"
@@ -141,7 +144,7 @@
 		android:layout_alignParentLeft="true"
 		android:layout_marginLeft="11dp"
         android:src="@drawable/ic_height_inactive" />
-
+	
     <ImageView
         android:id="@+id/ivWeightIcon"
         android:layout_width="25dp"

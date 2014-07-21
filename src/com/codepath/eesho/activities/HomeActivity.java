@@ -189,10 +189,13 @@ public class HomeActivity extends FragmentActivity {
 	}
 
 	public void onSocialView(MenuItem mi) {
+		Intent intent = new Intent(this, ShoutActivity.class);
+		startActivity(intent);
+		/*
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		WallFragment fragment = new WallFragment();
 		ft.replace(R.id.flHomeContainer, fragment);
-		ft.commit();
+		ft.commit();*/
 	}
 	
 	public void onPlanView(MenuItem mi) {
