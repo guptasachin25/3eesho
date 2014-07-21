@@ -17,7 +17,9 @@ import com.echo.holographlibrary.LinePoint;
 
 public class ProgressFragment extends Fragment{
 	Line l = new Line();
-	
+	Line lProgress = new Line();
+	LineGraph lgWeight;
+	LineGraph lgProgress;
 	Button bWeek;
 	Button bMonth;
 	Button bAll;
@@ -34,13 +36,12 @@ public class ProgressFragment extends Fragment{
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
 		bAll = (Button) v.findViewById(R.id.btAll);
-		
+
+		lgWeight = (LineGraph) v.findViewById(R.id.graph);
+		lgProgress = (LineGraph) v.findViewById(R.id.progressGraph);
+
 		setUpWeightGraph();
-		
-		LineGraph li = (LineGraph) v.findViewById(R.id.graph);
-		li.addLine(l);
-		li.setRangeY(0, 10);
-		li.setLineToFill(0);
+		setUpProgressGraph();
 		
 		return v;
 	}
@@ -64,7 +65,30 @@ public class ProgressFragment extends Fragment{
 		p.setY(4);
 		l.addPoint(p);
 		l.setColor(Color.parseColor("#00bdab"));
+		lgWeight.addLine(l);
+		lgWeight.setRangeY(0, 10);
+		lgWeight.showMinAndMaxValues(true);
+
 	}
+	
+	public void setUpProgressGraph() {
+		LinePoint p = new LinePoint();
+		p.setX(0);
+		p.setY(5);
+		lProgress.addPoint(p);
+		p = new LinePoint();
+		p.setX(8);
+		p.setY(8);
+		lProgress.addPoint(p);
+		p = new LinePoint();
+		p.setX(10);
+		p.setY(4);
+		lProgress.addPoint(p);
+		lProgress.setColor(Color.parseColor("#00bdab"));
+		lgProgress.addLine(l);
+		lgProgress.setRangeY(0, 10);
+	}
+	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
