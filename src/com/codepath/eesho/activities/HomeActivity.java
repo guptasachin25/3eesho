@@ -20,7 +20,7 @@ import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.ProgressFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
-import com.codepath.eesho.fragments.UserSocialProfileFragment;
+import com.codepath.eesho.fragments.UserProfileFragment;
 import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
 import com.codepath.eesho.models.FitnessPlanSingleActivity;
@@ -177,8 +177,8 @@ public class HomeActivity extends FragmentActivity {
 	
 	public void onProfileView(MenuItem mi) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		//UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
-		UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+		//UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
 		Log.d("in profile activity", "user profile " + ParseUser.getCurrentUser() + " after");
 		ft.replace(R.id.flHomeContainer, fragment);
 		ft.commit();

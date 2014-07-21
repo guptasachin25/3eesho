@@ -23,7 +23,7 @@ public class UserSocialProfileFragment extends DialogFragment {
 	private String user_id;
 	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
-	private TextView location;
+	private TextView targetTxt;
 	private ParseUser currentUser;
 	protected RadioButton rd1_dialog;
 	protected RadioButton rd2_dialog;
@@ -54,10 +54,10 @@ public class UserSocialProfileFragment extends DialogFragment {
 		View v = inflater.inflate(R.layout.fragment_user_social_profile, container,false);
 		currentUser = ParseUser.getCurrentUser();
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userSocialProfilename);
-		location = (TextView) v.findViewById(R.id.etuserSocialProfileLocation);
+		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
 		
 		usernameClick();
-		locationClick();
+		//targetClick();
 		
 		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
@@ -68,7 +68,7 @@ public class UserSocialProfileFragment extends DialogFragment {
 	private void setUpUserData(ParseUser user) {
 		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
-			location.setText(getUserTarget(ParseUser.getCurrentUser()));
+			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
 		}   //if( user.getString("location") != null){
 			//location.setText(user.getString("location"));
 	//	} 
@@ -113,9 +113,9 @@ public class UserSocialProfileFragment extends DialogFragment {
 	}
 
 	
-	private void locationClick() {
+	private void targetClick() {
 		// TODO Auto-generated method stub
-		location.addTextChangedListener(new TextWatcher() {
+		targetTxt.addTextChangedListener(new TextWatcher() {
 
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {

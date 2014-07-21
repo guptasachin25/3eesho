@@ -35,17 +35,22 @@
             android:textSize="24sp" />
 
         <EditText
-         	android:id="@+id/etuserSocialProfileLocation"
-         	android:layout_width="wrap_content"
-         	android:layout_height="wrap_content"
-         	android:ems="10"
-         	android:gravity="center"
-         	android:hint="@string/et_user_location"
-         	android:inputType="text"
-         	android:background="@android:color/transparent"
-         	android:textColor="@android:color/white"
-         	android:textSize="16sp"
-          />
+            android:id="@+id/etuserSocialProfileTargetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/hint_targetTxt"
+            android:inputType="text"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+        
+        <View
+    		android:layout_height="0.5dp"
+    		android:layout_width="match_parent"
+    		android:background="#d3d3d3"
+    		android:layout_alignParentBottom="true" />
         
     </LinearLayout>
     
@@ -54,12 +59,12 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="horizontal"
-        
+        android:divider="@drawable/vertical_divider"
         android:showDividers="middle"
         android:layout_below="@+id/lv_socialprofile_image">
         
         <LinearLayout
-            android:id="@+id/llProgress"
+            android:id="@+id/llWeight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
