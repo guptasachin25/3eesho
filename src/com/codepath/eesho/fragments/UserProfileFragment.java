@@ -411,4 +411,9 @@ public class UserProfileFragment extends DialogFragment {
 			}// end of onClick
 		});
 	}
+	
+	public void onSave(View v){
+			
+		
+	}
 }

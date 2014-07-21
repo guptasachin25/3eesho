@@ -215,6 +215,36 @@
         android:layout_alignTop="@id/tv_profile_activity"
         android:src="@drawable/icon_activity_inactive"
         android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
-        
+
+     <Button
+         android:id="@+id/btn_editProfile_cancel"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/icon_profile_activity"
+         android:layout_below="@+id/progressBar5"
+         android:layout_marginLeft="18dp"
+         android:text="@string/btn_Cancel"
+         android:typeface="serif"
+         android:enabled="false"
+         style="@style/NiceButton"
+         android:clickable="true"
+		 android:focusable="true"
+		 android:onClick="onCancel"
+		 />
+
+     <Button
+         android:id="@+id/btn_editprofile_save"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/progressBar5"
+         android:layout_marginLeft="34dp"
+         android:layout_toRightOf="@+id/btn_editProfile_cancel"
+         android:text="@string/btn_Save"
+          android:typeface="serif"
+         android:enabled="false"
+         style="@style/NiceButton"
+         android:clickable="true"
+		 android:focusable="true"
+		 android:onClick="onSave" />
         
     </RelativeLayout>

@@ -71,5 +71,8 @@
     <string name="title_activity_weight_target">WeightTargetActivity</string>
     <string name="title_activity_diet_plan">DietPlanActivity</string>
     <string name="title_activity_shout">ShoutActivity</string>
+    <string name="btn_Cancel">Cancel</string>
+    <string name="btn_Save">Save</string>
+    <string name="title_activity_social_profile">SocialProfileActivity</string>
 
 </resources>

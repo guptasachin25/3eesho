@@ -116,6 +116,7 @@
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
         </activity>
+
         <service
             android:name=".activities.ActivityRecognitionService"
             android:exported="false"
@@ -139,8 +140,12 @@
             android:label="@string/title_activity_diet_plan" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ShoutActivity"
+            android:name=".activities.ShoutActivity"
             android:label="@string/title_activity_shout" >
+        </activity>
+        <activity
+            android:name=".SocialProfileActivity"
+            android:label="@string/title_activity_social_profile" >
         </activity>
     </application>
 
