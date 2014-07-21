@@ -2,37 +2,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
 	tools:context="${relativePackage}.${activityClass}"
     >
 
     <LinearLayout
         android:id="@+id/lvprofile_image"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@drawable/profile_background"
+        android:layout_height="160dp"
+        android:background="@android:color/holo_blue_bright"
         android:gravity="center"
         android:orientation="vertical" >
         
-        <ImageView
+        <com.codepath.eesho.utils.CircularImageView
      		android:id="@+id/ivSenderImage"
-       		android:layout_width="60dp"
-        	android:layout_height="60dp"
-        	android:layout_marginTop="24dp"
+       		android:layout_width="80dp"
+        	android:layout_height="80dp"
+        	android:layout_marginTop="20dp"
         	android:contentDescription="@string/iv_UserProfile_Image_contentdescription"
-        	android:scaleType="fitXY"
-    android:adjustViewBounds="true"
-        	android:src="@drawable/profile_circle_image" />
+        	android:src="@drawable/buzz2" />
         
         <EditText
             android:id="@+id/tv_userProfilename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
+            android:textColor="@android:color/white"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/et_userName"
             android:inputType="text"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
          	android:id="@+id/etuserProfileLocation"
@@ -43,7 +43,9 @@
          	android:hint="@string/et_user_location"
          	android:inputType="text"
          	android:background="@android:color/transparent"
-         	android:textSize="16sp" />
+         	android:textColor="@android:color/white"
+         	android:textSize="16sp"
+          />
         
     </LinearLayout>
 
@@ -53,26 +55,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/lvprofile_image"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/tv_EditProfileLabel"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+       
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
         <TextView
         android:id="@+id/tv_profileage"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_editProfile_label"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@+id/icon_profile_age"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="@string/hint_profile_age" />
 
     <ProgressBar
         android:id="@+id/progressBar1"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="780dp"
+        android:layout_height="3dp"
         android:layout_alignLeft="@+id/tv_profileage"
         android:layout_alignRight="@+id/tv_profileage"
         android:layout_below="@+id/tv_profileage"
@@ -80,11 +88,12 @@
 
     <TextView
         android:id="@+id/tv_profile_gender"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/progressBar1"
         android:layout_below="@+id/progressBar1"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="@string/hint_gender" />
 
@@ -92,57 +101,120 @@
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="3dp"
         android:layout_alignLeft="@+id/tv_profile_gender"
         android:layout_alignRight="@+id/tv_profile_gender"
         android:layout_below="@+id/tv_profile_gender" />
 
     <TextView
         android:id="@+id/tv_profile_height"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/progressBar2"
         android:layout_alignRight="@+id/progressBar2"
         android:layout_below="@+id/progressBar2"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/hint_height" />
 
     <ProgressBar
         android:id="@+id/progressBar3"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="3dp"
         android:layout_alignLeft="@+id/tv_profile_height"
         android:layout_alignRight="@+id/tv_profile_height"
         android:layout_below="@+id/tv_profile_height" />
 
     <TextView
         android:id="@+id/tv_profile_weight"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/progressBar3"
         android:layout_alignRight="@+id/progressBar3"
         android:layout_below="@+id/progressBar3"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/hint_weight" />
 
     <ProgressBar
         android:id="@+id/progressBar4"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="3dp"
         android:layout_alignLeft="@+id/tv_profile_weight"
         android:layout_alignRight="@+id/tv_profile_weight"
         android:layout_below="@+id/tv_profile_weight" />
 
     <TextView
         android:id="@+id/tv_profile_activity"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/progressBar4"
         android:layout_alignRight="@+id/progressBar4"
         android:layout_below="@+id/progressBar4"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/hint_activity" />
+
+    <ProgressBar
+        android:id="@+id/progressBar5"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_alignLeft="@+id/tv_profile_activity"
+        android:layout_alignRight="@+id/tv_profile_activity"
+        android:layout_below="@+id/tv_profile_activity" />
+    
+    <ImageView
+        android:id="@+id/icon_profile_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_alignTop="@id/tv_profileage"
+        android:src="@drawable/icon_age_inactive"
+        android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
+    
+    <ImageView
+        android:id="@+id/icon_gender_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_alignTop="@id/tv_profile_gender"
+        android:src="@drawable/icon_gender_inactive"
+        android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
+    
+    <ImageView
+        android:id="@+id/icon_profile_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_alignTop="@id/tv_profile_height"
+        android:src="@drawable/ic_height_inactive"
+        android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
+    
+    <ImageView
+        android:id="@+id/icon_profile_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_alignTop="@id/tv_profile_weight"
+        android:src="@drawable/icon_weight_inactive"
+        android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
+    
+     <ImageView
+        android:id="@+id/icon_profile_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:layout_alignLeft="@+id/tv_editProfile_label"
+        android:layout_alignTop="@id/tv_profile_activity"
+        android:src="@drawable/icon_activity_inactive"
+        android:contentDescription="@string/iv_UserProfile_Image_contentdescription" />
+        
         
     </RelativeLayout>
