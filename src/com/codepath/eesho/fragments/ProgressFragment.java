@@ -38,10 +38,10 @@ public class ProgressFragment extends Fragment{
 		bAll = (Button) v.findViewById(R.id.btAll);
 
 		lgWeight = (LineGraph) v.findViewById(R.id.graph);
-		lgProgress = (LineGraph) v.findViewById(R.id.progressGraph);
+//		lgProgress  = (LineGraph) v.findViewById(R.id.progressGraph);
 
 		setUpWeightGraph();
-		setUpProgressGraph();
+//		setUpProgressGraph();
 		
 		return v;
 	}
@@ -52,23 +52,25 @@ public class ProgressFragment extends Fragment{
 	}
 	
 	public void setUpWeightGraph() {
-		LinePoint p = new LinePoint();
-		p.setX(0);
-		p.setY(5);
-		l.addPoint(p);
-		p = new LinePoint();
-		p.setX(8);
-		p.setY(8);
-		l.addPoint(p);
-		p = new LinePoint();
-		p.setX(10);
-		p.setY(4);
-		l.addPoint(p);
+		addPoint(0, 180);
+		addPoint(1, 176);
+		addPoint(2, 173);
+		addPoint(3, 167);
+		addPoint(4, 178);
+		addPoint(5, 180);
+		addPoint(6, 176);
+		addPoint(7, 175);
+		
 		l.setColor(Color.parseColor("#00bdab"));
 		lgWeight.addLine(l);
-		lgWeight.setRangeY(0, 10);
+		lgWeight.setRangeY(160, 190);
 		lgWeight.showMinAndMaxValues(true);
 
+	}
+	
+	public void addPoint(int x, int y) {
+		LinePoint p = new LinePoint(x , y);
+		l.addPoint(p);
 	}
 	
 	public void setUpProgressGraph() {
@@ -87,6 +89,7 @@ public class ProgressFragment extends Fragment{
 		lProgress.setColor(Color.parseColor("#00bdab"));
 		lgProgress.addLine(l);
 		lgProgress.setRangeY(0, 10);
+		lgProgress.showMinAndMaxValues(true);
 	}
 	
 	
