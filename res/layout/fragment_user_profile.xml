@@ -10,7 +10,7 @@
         android:id="@+id/lvprofile_image"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@android:color/holo_blue_bright"
+        android:background="#506f7b"
         android:gravity="center"
         android:orientation="vertical" >
         
