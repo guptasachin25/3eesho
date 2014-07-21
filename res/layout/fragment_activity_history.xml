@@ -227,6 +227,47 @@
             android:textSize="15dp"/>
         
     </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/rlShoulder"
+        android:layout_width="match_parent"
+    	android:layout_height="40dp"
+    	android:layout_below="@+id/rlLunges">
+
+        <TextView
+            android:id="@+id/tvShoulder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="36dp"
+            android:textSize="15dp"
+            android:text="shoulders"/>
+        
+        <ProgressBar
+            android:id="@+id/pbShoulder"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="140dp"
+            android:layout_height="3dp"
+			android:layout_alignParentLeft="true"
+			android:layout_marginLeft="120dp"            
+            android:layout_centerVertical="true"
+            android:background="#FFF"
+            android:progressDrawable="@drawable/progress" />
+
+        <TextView
+            android:id="@+id/tvShoulderCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvShoulder"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/pbShoulder"
+            android:layout_centerVertical="true"
+            android:text="78"
+            android:textColor="#00bdab"
+            android:textSize="15dp"/>
+        
+    </RelativeLayout>
 
      <Button
          android:id="@+id/btWeek"
