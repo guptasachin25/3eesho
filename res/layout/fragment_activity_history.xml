@@ -7,7 +7,7 @@
         android:id="@+id/tvRunning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/graph"
+        android:layout_below="@+id/divider"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="RUNNING"
@@ -228,15 +228,6 @@
         
     </RelativeLayout>
 
-     <com.echo.holographlibrary.LineGraph
-         android:id="@+id/graph"
-         android:layout_width="250dp"
-         android:layout_height="81dp"
-         android:layout_alignLeft="@+id/tvTotalMiles"
-         android:layout_centerHorizontal="true"
-         android:layout_below="@+id/tvWeightProgress"
-         android:layout_marginTop="10dp" />
-
      <Button
          android:id="@+id/btWeek"
          style="?android:attr/buttonStyleSmall"
@@ -276,21 +267,12 @@
          android:background="@drawable/history_button_unclicked" />
      
      <View
+        android:id="@+id/divider"
     	android:layout_width="200dp"
     	android:layout_height="1dp"
     	android:background="@android:color/darker_gray"
     	android:layout_below="@+id/btAll"
     	android:layout_marginTop="20dp"
     	android:layout_centerHorizontal="true"/>
-
-     <TextView
-         android:id="@+id/tvWeightProgress"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_below="@+id/btMonth"
-         android:layout_centerHorizontal="true"
-         android:layout_marginTop="42dp"
-         android:text="WEIGHT"
-         android:textStyle="bold" />
      
 </RelativeLayout>

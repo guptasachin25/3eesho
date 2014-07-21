@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+     <Button
+         android:id="@+id/btWeek"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="60dp"
+         android:layout_height="20dp"
+         android:layout_alignParentLeft="true"
+         android:layout_marginLeft="20dp"
+         android:layout_marginTop="20dp"
+         android:text="Week"
+         android:textSize="10sp"
+         android:textColor="#FFF"
+         android:background="@drawable/history_button" />
+     
+     <Button
+         android:id="@+id/btMonth"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="60dp"
+         android:layout_height="20dp"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="20dp"
+         android:text="Month"
+         android:textSize="10sp"
+         android:textColor="#a8a8a8"
+         android:background="@drawable/history_button_unclicked" />
+
+     <Button
+         android:id="@+id/btAll"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="60dp"
+         android:layout_height="20dp"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="20dp"
+         android:layout_marginTop="20dp"
+         android:text="All"
+         android:textSize="10sp"
+         android:textColor="#a8a8a8"
+         android:background="@drawable/history_button_unclicked" />
+     
+     <View
+    	android:layout_width="200dp"
+    	android:layout_height="1dp"
+    	android:background="@android:color/darker_gray"
+    	android:layout_below="@+id/btAll"
+    	android:layout_marginTop="20dp"
+    	android:layout_centerHorizontal="true"/>
+
+     <TextView
+         android:id="@+id/tvWeightProgress"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/btMonth"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="42dp"
+         android:text="WEIGHT"
+         android:textStyle="bold" />
+     
+     <com.echo.holographlibrary.LineGraph
+         android:id="@+id/graph"
+         android:layout_width="250dp"
+         android:layout_height="100dp"
+         android:layout_alignLeft="@+id/tvTotalMiles"
+         android:layout_centerHorizontal="true"
+         android:layout_below="@+id/tvWeightProgress"
+         android:layout_marginTop="10dp" />
+     
+     <TextView
+         android:id="@+id/tvProgress"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/graph"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="42dp"
+         android:text="PROGRESS"
+         android:textStyle="bold" />
+     
+     <com.echo.holographlibrary.LineGraph
+         android:id="@+id/progressGraph"
+         android:layout_width="250dp"
+         android:layout_height="100dp"
+         android:layout_alignLeft="@+id/tvTotalMiles"
+         android:layout_centerHorizontal="true"
+         android:layout_below="@+id/tvProgress"
+         android:layout_marginTop="10dp" />
+     
+</RelativeLayout>

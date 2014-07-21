@@ -11,12 +11,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
-import com.echo.holographlibrary.Line;
-import com.echo.holographlibrary.LineGraph;
-import com.echo.holographlibrary.LinePoint;
 
 public class ActivityHistoryFragment extends Fragment{
-	Line l = new Line();
 	
 	Button bWeek;
 	Button bMonth;
@@ -34,13 +30,6 @@ public class ActivityHistoryFragment extends Fragment{
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
 		bAll = (Button) v.findViewById(R.id.btAll);
-		
-		setUpWeightGraph();
-		
-		LineGraph li = (LineGraph) v.findViewById(R.id.graph);
-		li.addLine(l);
-		li.setRangeY(0, 10);
-		li.setLineToFill(0);
 		
 		ProgressBar pb = (ProgressBar) v.findViewById(R.id.pbCrunches);
 		pb.setMax(100);
@@ -101,22 +90,6 @@ public class ActivityHistoryFragment extends Fragment{
 	public void setToUnclick(Button b) {
 		b.setBackgroundResource(R.drawable.history_button_unclicked);
 		b.setTextColor(Color.parseColor("#a8a8a8"));
-	}
-	
-	public void setUpWeightGraph() {
-		LinePoint p = new LinePoint();
-		p.setX(0);
-		p.setY(5);
-		l.addPoint(p);
-		p = new LinePoint();
-		p.setX(8);
-		p.setY(8);
-		l.addPoint(p);
-		p = new LinePoint();
-		p.setX(10);
-		p.setY(4);
-		l.addPoint(p);
-		l.setColor(Color.parseColor("#00bdab"));
 	}
 	
 	@Override
