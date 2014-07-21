@@ -1,6 +1,8 @@
 package com.codepath.eesho.parse.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.joda.time.DateTime;
 
@@ -72,5 +74,20 @@ public class Messages extends ParseObject {
 		} else {
 			return String.valueOf(seconds / 86400) + 'd';
 		}
+	}
+
+	public void like() {
+		increment("like");
+	}
+	
+	public Number getLikes() {
+		Number likes = getNumber("like");
+		return likes != null ? likes : 0;
+	}
+	
+	public void addUserWhoLiked(ParseUser user) {
+		List<ParseUser> users = new ArrayList<ParseUser>();
+		users.add(user);
+		addAll("users_who_liked", users);
 	}
 }

@@ -118,7 +118,7 @@ public class UserDashBoardFragment extends Fragment {
 		
 		tvName.setText(getUserName(ParseUser.getCurrentUser()));
 		tvGoal.setText(getUserTarget(ParseUser.getCurrentUser()));
-
+		
 		lvGoals.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,

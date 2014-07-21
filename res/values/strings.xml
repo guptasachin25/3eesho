@@ -11,7 +11,7 @@
     <string name="tv_userProfileEmailLabel">Email:</string>
     <string name="tv_userProfilePhoneLabel">Phone:</string>
     <string name="tv_genderlabel">Gender</string>
-    <string name="hint_gender">male/female</string>
+    <string name="hint_gender">Gender</string>
     <string name="tv_userWeightLabel">Weight:</string>
     <string name="tv_userHeightLabel">Height</string>
     <string name="tv_userDietHabitLabel">Diet Habit:</string>
@@ -58,10 +58,10 @@
 
     <string name="title_activity_chat">ChatActivity</string>
     <string name="tv_EditProfileLabel">EditProfile</string>
-    <string name="hint_profile_age">30</string>
-    <string name="hint_height">5\'3\'\'</string>
-    <string name="hint_weight">114lb</string>
-    <string name="hint_activity">High Activity</string>
+    <string name="hint_profile_age">Age</string>
+    <string name="hint_height">Height</string>
+    <string name="hint_weight">Weight</string>
+    <string name="hint_activity">Activity</string>
     <string name="rd_highActivity">High Activity</string>
     <string name="rd_lowActivity">Low Activity</string>
     <string name="Dialog_btn_ok">OK</string>
@@ -70,5 +70,6 @@
     <string name="title_activity_run_target">RunTargetActivity</string>
     <string name="title_activity_weight_target">WeightTargetActivity</string>
     <string name="title_activity_diet_plan">DietPlanActivity</string>
+    <string name="title_activity_shout">ShoutActivity</string>
 
 </resources>

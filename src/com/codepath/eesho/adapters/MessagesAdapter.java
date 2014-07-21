@@ -29,10 +29,12 @@ public class MessagesAdapter extends ArrayAdapter<Messages>{
 		
 		TextView tvDescription = (TextView) v.findViewById(R.id.tvDescription);
 		TextView timestamp = (TextView) v.findViewById(R.id.tvTimespan);
+		TextView likes = (TextView) v.findViewById(R.id.tvLikes);
 		
 		tvDescription.setText(Html.fromHtml(message.getMessage()));	
-		System.out.println(message.getTimestamp());
+		likes.setText(message.getLikes().toString());
 		timestamp.setText(message.getTimeSinceCurrentTime(message.getTimestamp()));
+		// Set image too here...
 		return v;
 	}
 	

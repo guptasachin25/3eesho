@@ -61,7 +61,8 @@
         android:typeface="serif"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"
-        android:textSize="12dp"
+        android:textSize="20dp"
+        android:background="@drawable/light_button"
         android:inputType="textNoSuggestions"
         android:hint="Lose weight" >
     </Button>
@@ -76,7 +77,8 @@
         android:layout_marginTop="12dp"
         android:typeface="serif"
 		android:onClick="onClick"
-		android:textSize="12dp"
+		android:textSize="20dp"
+		android:background="@drawable/light_button"
 		android:inputType="textNoSuggestions"
         android:hint="Run a distance"
         android:ems="10" />
@@ -93,7 +95,8 @@
         android:inputType="textNoSuggestions"
         android:ems="10"
         android:onClick="onClick"
-        android:textSize="12dp"
+        android:textSize="20dp"
+		android:background="@drawable/light_button"
         android:hint="General fitness" >
      </Button>
 
