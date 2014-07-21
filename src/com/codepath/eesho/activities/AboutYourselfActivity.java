@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.codepath.eesho.R;
 import com.parse.ParseUser;
@@ -18,6 +19,9 @@ public class AboutYourselfActivity extends Activity {
 	EditText etHeight;
 	EditText etActivityLevel;
 	Button btnContinue;
+	ImageView ivHeightIcon;
+	ImageView ivWeightIcon;
+	ImageView ivHeart;
 
 	String weightUnit = "lbs";
 	String heightUnit = "cms";
@@ -36,6 +40,9 @@ public class AboutYourselfActivity extends Activity {
 		etHeight = (EditText) findViewById(R.id.etHeight);
 		etActivityLevel = (EditText) findViewById(R.id.etActivityLevel);
 		btnContinue = (Button) findViewById(R.id.btnContinue);
+		ivHeightIcon = (ImageView) findViewById(R.id.ivHeightIcon);
+		ivWeightIcon = (ImageView) findViewById(R.id.ivWeightIcon);
+		ivHeart = (ImageView) findViewById(R.id.ivHeart);
 	}
 
 	private void setTextChangeListeners() {
@@ -47,6 +54,7 @@ public class AboutYourselfActivity extends Activity {
 				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(heightUnit)) {
 					String height = ((EditText) v).getText().toString();					
 					etHeight.setText(height + " " + heightUnit);
+					ivHeightIcon.setImageResource(R.drawable.ic_height_active);
 				}
 			}
 		});
@@ -59,6 +67,7 @@ public class AboutYourselfActivity extends Activity {
 				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(weightUnit)) {
 					String weight = ((EditText) v).getText().toString();					
 					etWeight.setText(weight + " " + weightUnit);
+					ivWeightIcon.setImageResource(R.drawable.icon_weight_active);
 				}
 			}
 		});
@@ -68,6 +77,11 @@ public class AboutYourselfActivity extends Activity {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
 				checkContinueEnabled();
+				EditText view = (EditText) v;
+				if (view.getText() != null && 
+					!view.getText().toString().equals("")) {
+						ivHeart.setImageResource(R.drawable.ic_like);
+				}
 			}
 		});
 	}
@@ -111,7 +125,7 @@ public class AboutYourselfActivity extends Activity {
 		currentUser.put("activity_level", etActivityLevel.getText().toString());
 		currentUser.saveInBackground();
 	}
-	
+
 	private void onSubmit() {
 		System.out.println("On Submit");
 		if(!checkDataAvailable()) {
@@ -123,16 +137,19 @@ public class AboutYourselfActivity extends Activity {
 		Intent intent = new Intent(this, GoalActivity.class);
 		startActivity(intent);	
 	}
-
+	
 	private void onSubmitHeight() {
 		etHeight.setText("");
+		ivHeightIcon.setImageResource(R.drawable.ic_height_inactive);		
 	}
 
 	private void onSubmitWeight() {
 		etWeight.setText("");
+		ivWeightIcon.setImageResource(R.drawable.icon_weight_inactive);		
 	}
 
 	private void onSubmitActivityLevel() {
+		ivHeart.setImageResource(R.drawable.ic_activity);
 		System.out.println("We came in this activity level");
 		final CharSequence[] items={"High Activity", "Medium Activity", "Low Activity"};
 
@@ -146,21 +163,27 @@ public class AboutYourselfActivity extends Activity {
 				//etActivityLevel.setText(items[whichButton]);
 			}
 		});
-
+		
 		builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {		
 				if("High Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("High Activity");
+					ivHeart.setImageResource(R.drawable.ic_like);
+
 				}
 				else if("Medium Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Medium Activity");
+					ivHeart.setImageResource(R.drawable.ic_like);
+
 				}
 				else if("Low Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Low Activity");
+					ivHeart.setImageResource(R.drawable.ic_like);
+
 				}
 			}
 		});

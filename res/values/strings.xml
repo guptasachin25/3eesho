@@ -70,5 +70,6 @@
     <string name="title_activity_run_target">RunTargetActivity</string>
     <string name="title_activity_weight_target">WeightTargetActivity</string>
     <string name="title_activity_diet_plan">DietPlanActivity</string>
+    <string name="title_activity_shout">ShoutActivity</string>
 
 </resources>

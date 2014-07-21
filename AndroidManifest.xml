@@ -110,16 +110,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> 
-            
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
-            
-            
         </activity>
-
         <service
             android:name=".activities.ActivityRecognitionService"
             android:exported="false"
@@ -141,6 +137,10 @@
         <activity
             android:name=".DietPlanActivity"
             android:label="@string/title_activity_diet_plan" >
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.ShoutActivity"
+            android:label="@string/title_activity_shout" >
         </activity>
     </application>
 
