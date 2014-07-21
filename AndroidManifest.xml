@@ -146,14 +146,10 @@
         <activity
             android:name=".SocialProfileActivity"
             android:label="@string/title_activity_social_profile" >
+        </activity>
 		<activity
             android:name="com.codepath.eesho.activities.SignupActivity"
             android:label="@string/title_activity_signup" >
-        </activity>
-        <activity
-            android:name="com.codepath.eesho.activities.LoginActivity"
-            android:label="@string/title_activity_login" >
-
         </activity>
     </application>
 
