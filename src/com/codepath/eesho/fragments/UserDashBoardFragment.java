@@ -30,6 +30,7 @@ import com.codepath.eesho.models.FitnessPlanSingleActivity;
 import com.codepath.eesho.models.SingleActivity;
 import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.MyActivity;
+import com.facebook.widget.ProfilePictureView;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -37,7 +38,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class UserDashBoardFragment extends Fragment {
-	
+
 	private ArrayList<SingleActivity> goals;
 	private GoalArrayAdapter aGoals;
 	ListView lvGoals;
@@ -47,29 +48,34 @@ public class UserDashBoardFragment extends Fragment {
 	TextView tvName;
 	TextView tvGoal;
 	TextView tvActivity;
-	
+
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
 	}
 	
 	private String getUserTarget(ParseUser user) {
 		String targetType = user.getString("target_type");
-		if(targetType.equalsIgnoreCase("run")) {
-			return String.format(Locale.ENGLISH, "Run %d miles in %d months", 
-					user.getNumber("target_run_distance"),
-					user.getNumber("target_time"));
-		} else if(targetType.toLowerCase().contains("weight")) {
-			return String.format(Locale.ENGLISH, "Lose %d lbs weight in %d months",
-					user.getNumber("target_weight"),
-					user.getNumber("target_time"));
+		if(targetType != null) {
+			if(targetType.equalsIgnoreCase("run")) {
+				return String.format(Locale.ENGLISH, "Run %d miles in %d months", 
+						user.getNumber("target_run_distance"),
+						user.getNumber("target_time"));
+			} else if(targetType.toLowerCase().contains("weight")) {
+				return String.format(Locale.ENGLISH, "Lose %d lbs weight in %d months",
+						user.getNumber("target_weight"),
+						user.getNumber("target_time"));
+			} else {
+				return "General Fitness";
+			}
 		} else {
-			return "General Fitness";
+			return "No Target";
 		}
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		DateTime date = new DateTime();
 		goals = new ArrayList<SingleActivity>();
 		aGoals = new GoalArrayAdapter(getActivity(), goals);				
@@ -77,7 +83,6 @@ public class UserDashBoardFragment extends Fragment {
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", date.toDateMidnight().toDate());
-		
 
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
@@ -106,19 +111,21 @@ public class UserDashBoardFragment extends Fragment {
 			ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
-		ImageView ivPicture = (ImageView) v.findViewById(R.id.ivPicture);
+		ProfilePictureView ivPicture = (ProfilePictureView) v.findViewById(R.id.ivPicture);
 		lvGoals = (ListView) v.findViewById(R.id.lvGoals);
 		tvName = (TextView) v.findViewById(R.id.tvName);
 		tvGoal = (TextView) v.findViewById(R.id.tvGoal);
 		tvActivity = (TextView) v.findViewById(R.id.tvActivity);
-		
-		
+
+		ivPicture.setPresetSize(ProfilePictureView.NORMAL);
+		ivPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
+		Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
 		lvGoals.setAdapter(aGoals);
 		lvGoals.setItemsCanFocus(true);
-		
+
 		tvName.setText(getUserName(ParseUser.getCurrentUser()));
 		tvGoal.setText(getUserTarget(ParseUser.getCurrentUser()));
-		
+
 		lvGoals.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
@@ -138,7 +145,7 @@ public class UserDashBoardFragment extends Fragment {
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-				
+
 				myGoal.saveInBackground(new SaveCallback() {
 					@Override
 					public void done(ParseException arg0) {
@@ -168,27 +175,27 @@ public class UserDashBoardFragment extends Fragment {
 		});
 		return v;
 	}
-	
+
 	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-	    int targetWidth = 50;
-	    int targetHeight = 50;
-	    Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
-	                        targetHeight,Bitmap.Config.ARGB_8888);
+		int targetWidth = 50;
+		int targetHeight = 50;
+		Bitmap targetBitmap = Bitmap.createBitmap(targetWidth, 
+				targetHeight,Bitmap.Config.ARGB_8888);
 
-	    Canvas canvas = new Canvas(targetBitmap);
-	    Path path = new Path();
-	    path.addCircle(((float) targetWidth - 1) / 2,
-	        ((float) targetHeight - 1) / 2,
-	        (Math.min(((float) targetWidth), 
-	        ((float) targetHeight)) / 2),
-	        Path.Direction.CCW);
+		Canvas canvas = new Canvas(targetBitmap);
+		Path path = new Path();
+		path.addCircle(((float) targetWidth - 1) / 2,
+				((float) targetHeight - 1) / 2,
+				(Math.min(((float) targetWidth), 
+						((float) targetHeight)) / 2),
+						Path.Direction.CCW);
 
-	    canvas.clipPath(path);
-	    Bitmap sourceBitmap = scaleBitmapImage;
-	    canvas.drawBitmap(sourceBitmap, 
-	        new Rect(0, 0, sourceBitmap.getWidth(),
-	        sourceBitmap.getHeight()), 
-	        new Rect(0, 0, targetWidth, targetHeight), null);
-	    return targetBitmap;
+		canvas.clipPath(path);
+		Bitmap sourceBitmap = scaleBitmapImage;
+		canvas.drawBitmap(sourceBitmap, 
+				new Rect(0, 0, sourceBitmap.getWidth(),
+						sourceBitmap.getHeight()), 
+						new Rect(0, 0, targetWidth, targetHeight), null);
+		return targetBitmap;
 	}
 }

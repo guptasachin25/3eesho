@@ -116,6 +116,7 @@
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
         </activity>
+
         <service
             android:name=".activities.ActivityRecognitionService"
             android:exported="false"
@@ -135,12 +136,20 @@
             android:label="@string/title_activity_weight_target" >
         </activity>
         <activity
-            android:name=".DietPlanActivity"
+            android:name=".activities.DietPlanActivity"
             android:label="@string/title_activity_diet_plan" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.ShoutActivity"
+            android:name=".activities.ShoutActivity"
             android:label="@string/title_activity_shout" >
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.SignupActivity"
+            android:label="@string/title_activity_signup" >
+        </activity>
+        <activity
+            android:name="com.codepath.eesho.activities.LoginActivity"
+            android:label="@string/title_activity_login" >
         </activity>
     </application>
 
