@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/splash_screen">
+
+      <LinearLayout
+        android:id="@+id/linLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLogo"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+		android:layout_marginTop="250dp"
+		android:background="#FFFFFF"
+		android:alpha="0.9"
+        android:orientation="vertical" >
+        
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+    	android:layout_marginRight="15dp"
+    	android:layout_marginBottom="15dp"
+        android:hint="Email Address"
+        android:background="#00000000"
+        android:textColorHint="#CCCCCC"
+        android:fontFamily="sans-serif"
+        android:textSize="12sp"
+        android:typeface="normal"
+        android:singleLine="true" 
+        android:inputType="textEmailAddress|textNoSuggestions"/>
+    
+    <View
+    	android:layout_width="fill_parent"
+    	android:layout_height="1dp"
+   	 	android:layout_marginLeft="15dp"
+    	android:layout_marginRight="15dp"
+    	android:background="@android:color/darker_gray"/>
+    
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    	android:layout_marginTop="15dp"
+    	android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+    	android:layout_marginRight="15dp"
+        android:fontFamily="sans-serif"
+        android:typeface="normal"
+        android:textColorHint="#CCCCCC"
+        android:textSize="12sp"
+        android:hint="Password"
+        android:background="#00000000"
+        android:inputType="textPassword" />   
+    </LinearLayout>
+    
+    <Button
+          android:id="@+id/btnLogin"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/linLayout1"
+          android:layout_alignLeft="@+id/linLayout1"
+          android:layout_alignRight="@+id/linLayout1"
+          android:layout_marginTop="8dp"
+          android:onClick="onClick"
+          android:alpha="1"
+          android:text="Login" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+		android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/eesho_logo" />
+    
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:text="Forgot Password?"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="3dp"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

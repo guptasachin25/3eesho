@@ -3,7 +3,6 @@ package com.codepath.eesho;
 import android.app.Application;
 
 import com.codepath.eesho.parse.models.Goal;
-import com.codepath.eesho.parse.models.Likes;
 import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.MyActivity;
 import com.codepath.eesho.parse.models.Plan;
@@ -12,6 +11,7 @@ import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
 import com.parse.ParseTwitterUtils;
+import com.parse.ParseUser;
 
 public class ParseApplication extends Application {
     @Override
@@ -23,6 +23,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(Plan.class);
         ParseObject.registerSubclass(Messages.class);
         ParseObject.registerSubclass(MyActivity.class);
+        ParseObject.registerSubclass(ParseUser.class);
         
         Parse.initialize(this, "Iyx6g7dZxvqi1o3ECmMxTLHhqys3OAhOS5YB2DV1", "JEm4N1zcYnvIgUcSLNGJj2z1S5I30MkCBPfDnti9");
         ParseFacebookUtils.initialize("629605243814245");
