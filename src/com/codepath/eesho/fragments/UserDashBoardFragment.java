@@ -118,8 +118,11 @@ public class UserDashBoardFragment extends Fragment {
 		tvActivity = (TextView) v.findViewById(R.id.tvActivity);
 
 		ivPicture.setPresetSize(ProfilePictureView.NORMAL);
-		ivPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
-		Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
+		String facebookPic = ParseUser.getCurrentUser().getString("facebook_id");
+		if(facebookPic != null) {
+			ivPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
+			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
+		}
 		lvGoals.setAdapter(aGoals);
 		lvGoals.setItemsCanFocus(true);
 

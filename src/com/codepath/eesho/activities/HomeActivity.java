@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ActivityHistoryFragment;
+import com.codepath.eesho.fragments.ProgressFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.fragments.UserProfileFragment;
 import com.codepath.eesho.fragments.WallFragment;
@@ -151,6 +152,7 @@ public class HomeActivity extends FragmentActivity {
 		fts.commit();
 	}
 	
+
 	private void setupTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -205,5 +207,12 @@ public class HomeActivity extends FragmentActivity {
 		//actionBar.addTab(myArticle);
 		actionBar.addTab(myWall);
 		actionBar.selectTab(myPlan);
+        }
+
+	public void openProgress(View v) {
+		FragmentTransaction fts = getSupportFragmentManager().beginTransaction();
+		fts.replace(R.id.flHomeContainer, new ProgressFragment());	
+		fts.addToBackStack(null);
+		fts.commit();
 	}
 }
