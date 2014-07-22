@@ -80,7 +80,7 @@
         android:layout_alignLeft="@+id/linearLayout2"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -93,7 +93,7 @@
                 android:id="@+id/ivLoseWeightIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="12dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_loseweight_inactive" />
 
@@ -101,7 +101,7 @@
                 android:id="@+id/ivRunIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="26dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_run_inactive" />
 
@@ -109,7 +109,7 @@
                 android:id="@+id/ivGeneralFitness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="28dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_generalhealth_inactive" />
         </LinearLayout>
@@ -127,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="12dp"
                 android:editable="false"
                 android:hint="Lose Weight"
                 android:onClick="onClick" >
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="12dp"
                 android:editable="false"
                 android:hint="Run a distance"
                 android:onClick="onClick" />
@@ -164,7 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="12dp"
                 android:editable="false"
                 android:hint="General Fitness"
                 android:onClick="onClick" />

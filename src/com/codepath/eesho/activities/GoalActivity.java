@@ -63,23 +63,73 @@ public class GoalActivity extends Activity {
 	}
 	
 	private void onSubmit() {
-	
+		
 	}
 	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.btnFitness:
-			clickFitness();
+			selectFitness();
 			break;
 		case R.id.btnRun:
-			clickRun();
+			selectRun();
 			break;
 		case R.id.btnLoseWeight:
-			clickLoseWeight();
+			selectLoseWeight();
 			break;
 		case R.id.btnContinue:
 			onSubmit();
 			break;
 		}
+	}
+	
+	private void setWeightImage() {
+		btnLoseWeight.setText(btnLoseWeight.getHint().toString());
+		ivWeightLostIcon.setImageResource(R.drawable.icon_loseweight_active);
+	}
+	
+	private void offWeightImage() {
+		btnLoseWeight.setText("");
+		ivWeightLostIcon.setImageResource(R.drawable.icon_loseweight_inactive);
+	}
+	
+	private void setRunImage() {
+		btnRun.setText(btnRun.getHint().toString());
+		ivRunIcon.setImageResource(R.drawable.icon_run_active);
+	}
+	
+	private void offRunImage() {
+		btnRun.setText("");
+		ivRunIcon.setImageResource(R.drawable.icon_run_inactive);
+
+	}
+	
+	private void setFitnessImage() {
+		btnFitness.setText(btnFitness.getHint().toString());
+		ivFitnessIcon.setImageResource(R.drawable.icon_generalhealth_active);
+	}
+	
+	private void offFitnessImage() {
+		btnFitness.setText("");
+		ivFitnessIcon.setImageResource(R.drawable.icon_generalhealth_inactive);
+	}
+
+	private void selectLoseWeight() {
+		setWeightImage();
+		offFitnessImage();
+		offRunImage();
+	}
+
+	private void selectRun() {
+		offWeightImage();
+		setRunImage();
+		offFitnessImage();
+	}
+
+	private void selectFitness() {
+		btnFitness.setText(btnFitness.getHint().toString());
+		offWeightImage();
+		offRunImage();
+		setFitnessImage();
 	}
 }
