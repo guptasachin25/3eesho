@@ -27,6 +27,7 @@ public class GoalActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_goal_new);
+		getActionBar().hide();
 		setViews();
 	}
 	
@@ -47,18 +48,18 @@ public class GoalActivity extends Activity {
 	}
 	
 	private void clickFitness() {
-		//saveData("General Fitness");
+		saveData("General Fitness");
 		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 	}
 	
 	private void clickRun() {
-		//saveData("Run");
+		saveData("Run");
 		startActivity(new Intent(this, RunTargetActivity.class));
 	}
 	
 	private void clickLoseWeight() {
-		//saveData("Lose Weight");
+		saveData("Lose Weight");
 		startActivity(new Intent(this, WeightTargetActivity.class));
 	}
 	

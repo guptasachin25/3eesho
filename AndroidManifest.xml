@@ -106,25 +106,26 @@
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_start" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
         </activity>
-        
+
         <service
             android:name=".activities.ActivityRecognitionService"
             android:exported="false"
             android:label="ActivityRecognitionService" >
         </service>
-        
+
         <activity
             android:name=".activities.GoalActivity"
             android:label="@string/title_activity_goal" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.RunTargetActivity"

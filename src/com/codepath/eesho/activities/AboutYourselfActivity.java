@@ -89,7 +89,6 @@ public class AboutYourselfActivity extends Activity {
 		etWeight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
-				checkContinueEnabled();
 				EditText view = (EditText) v;
 				if (!isNullorEmpty(view) && !view.getText().toString().contains(weightUnit)) {
 					String weight = ((EditText) v).getText().toString();					

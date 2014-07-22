@@ -2,32 +2,21 @@ package com.codepath.eesho.activities;
 
 import org.joda.time.DateTime;
 import org.json.JSONArray;
-import org.json.JSONException;
 
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.ProgressFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
-import com.codepath.eesho.fragments.UserSocialProfileFragment;
-import com.codepath.eesho.fragments.WallFragment;
-import com.codepath.eesho.listeners.FragmentTabListener;
-import com.codepath.eesho.models.FitnessPlanSingleActivity;
 import com.codepath.eesho.parse.models.Goal;
-import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.utils.Utils;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -63,7 +52,6 @@ public class HomeActivity extends FragmentActivity {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserDashBoardFragment fragment = new UserDashBoardFragment();
 		ft.replace(R.id.flHomeContainer, fragment, "dashboard");
-		
 		ft.commit();
 	}
 	
