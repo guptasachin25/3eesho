@@ -106,7 +106,8 @@ public class ProgressFragment extends Fragment{
 					
 					myLine.setColor(Color.parseColor("#FFFFFF"));
 					lgWeight.addLine(myLine);
-					lgWeight.setRangeY(myPoints.get(myPoints.indexOf(Collections.min(myPoints))) - 3, myPoints.get(myPoints.indexOf(Collections.max(myPoints)) + 3));
+
+					lgWeight.setRangeY((myPoints.get(myPoints.indexOf(Collections.min(myPoints)))) - 3, (myPoints.get(myPoints.indexOf(Collections.max(myPoints))) + 3));
 //					lgWeight.showMinAndMaxValues(true);
 					lgWeight.setHorizontalFadingEdgeEnabled(true);
 					lgWeight.setTextSize(20);
