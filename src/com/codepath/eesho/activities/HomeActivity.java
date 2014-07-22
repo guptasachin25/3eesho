@@ -53,6 +53,7 @@ public class HomeActivity extends FragmentActivity {
 	public void onProfileView(MenuItem mi) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+		//UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
 		Log.d("in profile activity", "user profile " + ParseUser.getCurrentUser() + " after");
 		ft.replace(R.id.flHomeContainer, fragment);
 		ft.commit();

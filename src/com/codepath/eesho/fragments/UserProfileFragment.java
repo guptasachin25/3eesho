@@ -23,8 +23,7 @@ import com.parse.SaveCallback;
 
 public class UserProfileFragment extends DialogFragment {
 	
-	private String user_id;
-	//private ParseUser currentUser; 
+	private String user_id; 
 	private TextView tvUserProfileName;
 	private TextView gender;
 	private TextView location;
@@ -104,9 +103,9 @@ public class UserProfileFragment extends DialogFragment {
 		}  if( user.getString("location") != null){
 			location.setText(user.getString("location"));
 		} if( user.getNumber("weight") != null){
-			weight.setText(user.getNumber("weight").toString());
+			weight.setText(user.getNumber("weight").toString()+" "+ "lb");
 		} if(user.getNumber("height_feet") != null && user.getNumber("height_inches") != null) {
-			height.setText(user.getNumber("height_feet").toString() + "feet " + user.getNumber("height_inches").toString() + "inches");
+			height.setText(user.getNumber("height_feet").toString() + "\'" + " "+  user.getNumber("height_inches").toString() +" "+ "\'\'");
 		}  if(user.getString("activity_level") != null){
 			target.setText(user.getString("activity_level"));
 		}else{
@@ -131,12 +130,12 @@ public class UserProfileFragment extends DialogFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setTitle("Weight:");
 				builder.setView(npView);
-				builder.setPositiveButton("Okay",
+				builder.setPositiveButton("Save",
 						new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						int weightvalue = minPicker.getValue();
 						int pointvalue = maxPicker.getValue();
-						weight.setText(weightvalue+"."+pointvalue+"lb");
+						weight.setText(weightvalue+"."+pointvalue+" "+ "lb");
 						currentUser.put("weight", weightvalue);
 						currentUser.saveInBackground(new SaveCallback() {
 
@@ -211,12 +210,12 @@ public class UserProfileFragment extends DialogFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setTitle("Height");
 				builder.setView(npView);
-				builder.setPositiveButton("Okay",
+				builder.setPositiveButton("Save",
 						new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						int feetvalue = feet.getValue();
 						int inchvalue = inch.getValue();
-						height.setText(feetvalue+"feet'"+inchvalue+"inches");
+						height.setText(feetvalue +"\'"+" "+inchvalue+ "\'\'");
 						currentUser.put("height_feet",feetvalue);
 						currentUser.put("height_inches",inchvalue);
 						currentUser.saveInBackground(new SaveCallback() {
@@ -254,7 +253,7 @@ public class UserProfileFragment extends DialogFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setTitle("Age:");
 				builder.setView(npView);
-				builder.setPositiveButton("Okay",
+				builder.setPositiveButton("Save",
 						new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						int ageValue = agePicker.getValue();
@@ -290,7 +289,7 @@ public class UserProfileFragment extends DialogFragment {
 				AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 				builder.setTitle("Set Activity");
 				
-				builder.setPositiveButton("Okay",
+				builder.setPositiveButton("Save",
 						new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						 if(currentUser.getString("activity_level") != null){

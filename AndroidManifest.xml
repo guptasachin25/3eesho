@@ -145,12 +145,21 @@
             android:label="@string/title_activity_shout" >
         </activity>
         <activity
+
             android:name=".activities.SignupActivity"
             android:label="@string/title_activity_signup" >
         </activity>
         <activity
             android:name=".ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password" >
+        </activity>
+        <activity>
+            android:name=".SocialProfileActivity"
+            android:label="@string/title_activity_social_profile" >
+        </activity>
+		<activity
+            android:name="com.codepath.eesho.activities.SignupActivity"
+            android:label="@string/title_activity_signup" >
         </activity>
     </application>
 
