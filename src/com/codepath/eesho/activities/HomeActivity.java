@@ -56,6 +56,7 @@ public class HomeActivity extends FragmentActivity {
 		//UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
 		Log.d("in profile activity", "user profile " + ParseUser.getCurrentUser() + " after");
 		ft.replace(R.id.flHomeContainer, fragment);
+		ft.addToBackStack(null);
 		ft.commit();
 		
 		/*
