@@ -71,7 +71,7 @@ public class HomeActivity extends FragmentActivity {
 	public void onBackPressed() {
 	    final UserDashBoardFragment fragment = (UserDashBoardFragment) getSupportFragmentManager().findFragmentByTag("dashboard");
 	    if (fragment.isVisible()) {
-	    	// don't go anywhere
+	    	// don't go anywhere if already on UserDashBoard
 	    	} else {
 	    		super.onBackPressed();
 	    	}

@@ -1,6 +1,8 @@
 package com.codepath.eesho.fragments;
 
-import android.content.res.ColorStateList;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.parse.models.Weight;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class ProgressFragment extends Fragment{
 	Line l = new Line();
@@ -38,10 +44,8 @@ public class ProgressFragment extends Fragment{
 		bAll = (Button) v.findViewById(R.id.btAll);
 
 		lgWeight = (LineGraph) v.findViewById(R.id.graph);
-//		lgProgress  = (LineGraph) v.findViewById(R.id.progressGraph);
 
 		setUpWeightGraph();
-//		setUpProgressGraph();
 		
 		return v;
 	}
@@ -52,14 +56,7 @@ public class ProgressFragment extends Fragment{
 	}
 	
 	public void setUpWeightGraph() {
-		addPoint(0, 180);
-		addPoint(1, 176);
-		addPoint(2, 173);
-		addPoint(3, 167);
-		addPoint(4, 178);
-		addPoint(5, 180);
-		addPoint(6, 176);
-		addPoint(7, 175);
+		getWeights();
 		
 		l.setColor(Color.parseColor("#FFFFFF"));
 		lgWeight.addLine(l);
@@ -71,28 +68,32 @@ public class ProgressFragment extends Fragment{
 		lgWeight.setGridColor(Color.parseColor("#FFFFFF"));
 	}
 	
-	public void addPoint(int x, int y) {
+	public void addPoint(float x, int y) {
 		LinePoint p = new LinePoint(x , y);
 		l.addPoint(p);
 	}
 	
-	public void setUpProgressGraph() {
-		LinePoint p = new LinePoint();
-		p.setX(0);
-		p.setY(5);
-		lProgress.addPoint(p);
-		p = new LinePoint();
-		p.setX(8);
-		p.setY(8);
-		lProgress.addPoint(p);
-		p = new LinePoint();
-		p.setX(10);
-		p.setY(4);
-		lProgress.addPoint(p);
-		lProgress.setColor(Color.parseColor("#00bdab"));
-		lgProgress.addLine(l);
-		lgProgress.setRangeY(0, 10);
-		lgProgress.showMinAndMaxValues(true);
+	public void plotPoints(ArrayList<Integer> points) {
+		float currentX = 0;
+		for (int i = 0; i < points.size(); i++) {
+			addPoint(currentX, points.get(i));
+			currentX = currentX + (50 / points.size());
+		}
+	}
+	
+	public void getWeights() {
+		ParseQuery<Weight> query = ParseQuery.getQuery(Weight.class);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<Weight>() {
+			public void done(List<Weight> weights, ParseException e) {
+				ArrayList<Integer> points = new ArrayList<Integer>();
+				for (int i = 0; i < weights.size(); i++) {
+					points.add(weights.get(i).getWeight());
+				}
+				plotPoints(points);
+			}
+		});
 	}
 	
 	
