@@ -1,8 +1,13 @@
 package com.codepath.eesho.fragments;
 
+import java.util.List;
+
+import org.json.JSONException;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +16,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.models.FitnessPlanSingleActivity;
+import com.codepath.eesho.parse.models.MyActivity;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 public class ActivityHistoryFragment extends Fragment{
 	
@@ -43,7 +54,7 @@ public class ActivityHistoryFragment extends Fragment{
 		
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
-		bAll = (Button) v.findViewById(R.id.btAll);
+		bAll = (Button) v.findViewById(R.id.btEverything);
 		
 		pbMiles = (ProgressBar) v.findViewById(R.id.pbMiles);
 		pbSitups = (ProgressBar) v.findViewById(R.id.pbSitups);
@@ -127,31 +138,58 @@ public class ActivityHistoryFragment extends Fragment{
 	
 	public void setUpWeekBars() {
 		
-		setBar(pbMiles, tvMiles, 25, 50);
-		setBar(pbSitups, tvSitups, 100, 30);
-		setBar(pbCrunches, tvCrunches, 200, 34);
-		setBar(pbPushups, tvPushups, 500, 200);
-		setBar(pbLunges, tvLunges, 500, 125);
-		setBar(pbShoulder, tvShoulder, 300, 175);
+		getActivityWeek("Run", pbMiles, tvMiles, 25);
+		getActivityWeek("Pushups", pbPushups, tvPushups, 100);
+		// formerly crunches
+		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 50);
+		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 100);
+		//formerly situps
+		getActivityWeek("Chest Presses", pbSitups, tvSitups, 100);
+		getActivityWeek("Lunges", pbLunges, tvLunges, 100);
 		
 	}
 	
+	public void getActivityWeek(String activity, final ProgressBar pb, final TextView tv, final int max) {
+		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		query.whereEqualTo("activity_type", activity);
+		
+		query.findInBackground(new FindCallback<MyActivity>() {
+			public void done(List<MyActivity> activity, ParseException e) {
+				int count = 0;
+				if (e == null) {
+					for (int i = 0; i < activity.size(); i++) {
+						count = count + activity.get(i).getInt("activity_dimensions");
+					}
+					setBar(pb, tv, max, count);
+				} else {
+					Log.d("item", "Error: " + e.getMessage());
+				}
+			}
+		});
+
+	}
+	
 	public void setUpMonthBars() {
-		setBar(pbMiles, tvMiles, 50, 50);
-		setBar(pbSitups, tvSitups, 400, 30);
-		setBar(pbCrunches, tvCrunches, 300, 34);
-		setBar(pbPushups, tvPushups, 500, 200);
-		setBar(pbLunges, tvLunges, 900, 125);
-		setBar(pbShoulder, tvShoulder, 300, 175);
+		getActivityWeek("Run", pbMiles, tvMiles, 100);
+		getActivityWeek("Pushups", pbPushups, tvPushups, 400);
+		// formerly crunches
+		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 200);
+		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 400);
+		//formerly situps
+		getActivityWeek("Chest Presses", pbSitups, tvSitups, 400);
+		getActivityWeek("Lunges", pbLunges, tvLunges, 400);
 	}
 	
 	public void setUpAllBars() {
-		setBar(pbMiles, tvMiles, 500, 50);
-		setBar(pbSitups, tvSitups, 10000, 30);
-		setBar(pbCrunches, tvCrunches, 20000, 34);
-		setBar(pbPushups, tvPushups, 50000, 200);
-		setBar(pbLunges, tvLunges, 50000, 125);
-		setBar(pbShoulder, tvShoulder, 10000, 175);	
+		getActivityWeek("Run", pbMiles, tvMiles, 300);
+		getActivityWeek("Pushups", pbPushups, tvPushups, 1200);
+		// formerly crunches
+		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 600);
+		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 1200);
+		//formerly situps
+		getActivityWeek("Chest Presses", pbSitups, tvSitups, 1200);
+		getActivityWeek("Lunges", pbLunges, tvLunges, 1200);
 	}
 
 }
