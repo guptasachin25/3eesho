@@ -26,6 +26,7 @@ import com.codepath.eesho.listeners.FragmentTabListener;
 import com.codepath.eesho.models.FitnessPlanSingleActivity;
 import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
+import com.codepath.eesho.utils.Utils;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -40,7 +41,22 @@ public class HomeActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		checkAndSetPlan();
 		getPlanView();
+	}
+	
+	private void checkAndSetPlan() {
+		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
+
+		try {
+			if(query.count() == 0) {
+				Utils.setFitnessPlan(ParseUser.getCurrentUser());
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void getPlanView() {

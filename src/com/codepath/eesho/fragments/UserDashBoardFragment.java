@@ -19,7 +19,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -75,14 +74,12 @@ public class UserDashBoardFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		DateTime date = new DateTime();
 		goals = new ArrayList<SingleActivity>();
 		aGoals = new GoalArrayAdapter(getActivity(), goals);				
-		System.out.println(date);
+		
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
-		query.whereEqualTo("date", date.toDateMidnight().toDate());
+		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
 
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {

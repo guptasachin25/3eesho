@@ -8,20 +8,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ForgotPasswordDialog;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.RequestPasswordResetCallback;
 
 public class LoginActivity extends FragmentActivity {
 	EditText etUserName;
 	EditText etPassword;
 	Button btnLogin;
-	TextView tvSignup;
+	Button btnSignup;
 	Button tvForgotPassword;
 
 	@Override
@@ -30,13 +30,14 @@ public class LoginActivity extends FragmentActivity {
 		setContentView(R.layout.login);
 		getActionBar().hide();
 		setViews();
+		addListeners();
 	}
 
 	private void setViews() {
 		etUserName = (EditText) findViewById(R.id.etUserName);
 		etPassword = (EditText) findViewById(R.id.etPassword);
 		btnLogin = (Button) findViewById(R.id.btnLogin);
-		tvSignup = (TextView) findViewById(R.id.tvSignup);
+		btnSignup = (Button) findViewById(R.id.btnSignup);
 		tvForgotPassword = (Button) findViewById(R.id.tvForgotPassword);
 	}
 
@@ -55,13 +56,12 @@ public class LoginActivity extends FragmentActivity {
 			}
 		});
 	}
-	
+
 	private void forgotPassword() {
-		System.out.println("Forgot Password");
-	    FragmentManager fm = getSupportFragmentManager();
-	    ForgotPasswordDialog editNameDialog = ForgotPasswordDialog.newInstance("Forgot Password?");
-	    editNameDialog.show(fm, "fragment_edit_name");
-	    /*
+		FragmentManager fm = getSupportFragmentManager();
+		ForgotPasswordDialog editNameDialog = ForgotPasswordDialog.newInstance("Forgot Password?");
+		editNameDialog.show(fm, "fragment_edit_name");
+		/*
 		ParseUser.requestPasswordResetInBackground("myemail@example.com",
 				new RequestPasswordResetCallback() {
 			public void done(ParseException e) {
@@ -73,7 +73,46 @@ public class LoginActivity extends FragmentActivity {
 			}
 		});*/
 	}
+
+	private void addListeners() {
+		etPassword.addTextChangedListener(new Watcher());
+		etUserName.addTextChangedListener(new Watcher());
+	}
 	
+	private class Watcher implements TextWatcher {
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			System.out.println("----" + checkValues());
+			btnLogin.setEnabled(checkValues());
+			btnLogin.refreshDrawableState();
+		}
+	}
+
+	private boolean checkValues() {
+		System.out.println(etUserName.getText());
+		System.out.println(etPassword.getText());
+		System.out.println(btnLogin.isEnabled());
+		if(etUserName.getText() == null || etPassword.getText() == null
+				|| etUserName.getText().toString().equals("")
+				|| etPassword.getText().toString().equals("")) {
+			return false;
+		}
+		return true;
+	}
+
 	private void signup() {
 		Intent intent = new Intent(this, SignupActivity.class);
 		startActivity(intent);
@@ -84,7 +123,7 @@ public class LoginActivity extends FragmentActivity {
 		case R.id.btnLogin:
 			onSubmit();
 			break;
-		case R.id.tvSignup:
+		case R.id.btnSignup:
 			signup();
 			break;
 		case R.id.tvForgotPassword:
