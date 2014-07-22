@@ -1,11 +1,13 @@
 package com.codepath.eesho.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,7 @@ public class ProgressFragment extends Fragment{
 
 		lgWeight = (LineGraph) v.findViewById(R.id.graph);
 
-		setUpWeightGraph();
+		getWeights();
 		
 		return v;
 	}
@@ -60,7 +62,7 @@ public class ProgressFragment extends Fragment{
 		
 		l.setColor(Color.parseColor("#FFFFFF"));
 		lgWeight.addLine(l);
-		lgWeight.setRangeY(160, 190);
+//		lgWeight.setRangeY(110, 130);
 //		lgWeight.showMinAndMaxValues(true);
 		lgWeight.setHorizontalFadingEdgeEnabled(true);
 		lgWeight.setTextSize(20);
@@ -87,11 +89,33 @@ public class ProgressFragment extends Fragment{
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<Weight>() {
 			public void done(List<Weight> weights, ParseException e) {
-				ArrayList<Integer> points = new ArrayList<Integer>();
-				for (int i = 0; i < weights.size(); i++) {
-					points.add(weights.get(i).getWeight());
+				if (e == null) {
+					Line myLine = new Line();
+					ArrayList<Integer> myPoints = new ArrayList<Integer>();
+					for (int i = 0; i < weights.size(); i++) {
+						myPoints.add(weights.get(i).getWeight());
+					}
+					
+					int currentX = 0;
+					for (int i = 0; i < myPoints.size(); i++) {
+
+						LinePoint p = new LinePoint(currentX , myPoints.get(i));
+						myLine.addPoint(p);
+						currentX = currentX + 1;
+					}
+					
+					myLine.setColor(Color.parseColor("#FFFFFF"));
+					lgWeight.addLine(myLine);
+					lgWeight.setRangeY(myPoints.get(myPoints.indexOf(Collections.min(myPoints))) - 3, myPoints.get(myPoints.indexOf(Collections.max(myPoints)) + 3));
+//					lgWeight.showMinAndMaxValues(true);
+					lgWeight.setHorizontalFadingEdgeEnabled(true);
+					lgWeight.setTextSize(20);
+					lgWeight.showHorizontalGrid(true);
+					lgWeight.setGridColor(Color.parseColor("#FFFFFF"));
+				} else {
+					System.out.println(e.getStackTrace());
 				}
-				plotPoints(points);
+				
 			}
 		});
 	}
