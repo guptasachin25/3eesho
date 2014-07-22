@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
+        android:id="@+id/editProfile"
+        android:showAsAction="always"
+        android:onClick="onEditProfile"
+        android:title="Edit">
+    </item>
+    <item
         android:id="@+id/miLogout"
         android:showAsAction="always"
         android:onClick="onLogout"

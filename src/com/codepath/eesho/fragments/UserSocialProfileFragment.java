@@ -3,7 +3,8 @@ package com.codepath.eesho.fragments;
 import java.util.Locale;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,16 +19,17 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-public class UserSocialProfileFragment extends DialogFragment {
+public class UserSocialProfileFragment extends Fragment {
 	
 	private String user_id;
-	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
 	private TextView targetTxt;
 	private ParseUser currentUser;
 	protected RadioButton rd1_dialog;
 	protected RadioButton rd2_dialog;
 	protected RadioButton rd3_dialog;
+	private TextView likesTxt;
+	private TextView activity;
 	
 
 	// The fragment for getting user input field names
@@ -41,10 +43,7 @@ public class UserSocialProfileFragment extends DialogFragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		user_id = getArguments().getString("user_id");
-
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
@@ -55,24 +54,27 @@ public class UserSocialProfileFragment extends DialogFragment {
 		currentUser = ParseUser.getCurrentUser();
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userSocialProfilename);
 		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
+		likesTxt = (TextView) v.findViewById(R.id.tvSocialProfileLikes);
+		activity = (TextView) v.findViewById(R.id.tvSocialProfileActivity);
 		
 		usernameClick();
-		//targetClick();
-		
 		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
+		listofShoutMessages();
 		return v;
-
+	}
+	
+	private void listofShoutMessages() {
+		Fragment myWallFragment = new MyWallFragment();
+		FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+		transaction.add(R.id.fr_myshoutMessage, myWallFragment).commit();
 	}
 
 	private void setUpUserData(ParseUser user) {
 		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
 			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
-		}   //if( user.getString("location") != null){
-			//location.setText(user.getString("location"));
-	//	} 
-		
+		}
 	else{
 			Log.d("Getting the value for parse","value from parse is null");
 		}
@@ -144,9 +146,6 @@ public class UserSocialProfileFragment extends DialogFragment {
 
 			}
 		});
-	}
-	
-	public void onSave(View v){	
 	}
 	
 	private String getUserTarget(ParseUser user) {
