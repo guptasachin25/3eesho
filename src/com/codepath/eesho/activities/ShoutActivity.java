@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentActivity;
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.DailyWallFragment;
 import com.codepath.eesho.fragments.LikesWallFragment;
-import com.codepath.eesho.fragments.WallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
 
 public class ShoutActivity extends FragmentActivity {

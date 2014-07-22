@@ -21,6 +21,7 @@ public class GoalActivity extends Activity {
 	ImageView ivRunIcon;
 	ImageView ivWeightLostIcon;
 	
+	EditText selected;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,6 +62,10 @@ public class GoalActivity extends Activity {
 		startActivity(new Intent(this, WeightTargetActivity.class));
 	}
 	
+	private void onSubmit() {
+	
+	}
+	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.btnFitness:
@@ -71,6 +76,9 @@ public class GoalActivity extends Activity {
 			break;
 		case R.id.btnLoseWeight:
 			clickLoseWeight();
+			break;
+		case R.id.btnContinue:
+			onSubmit();
 			break;
 		}
 	}

@@ -61,11 +61,14 @@ public class ProgressFragment extends Fragment{
 		addPoint(6, 176);
 		addPoint(7, 175);
 		
-		l.setColor(Color.parseColor("#00bdab"));
+		l.setColor(Color.parseColor("#FFFFFF"));
 		lgWeight.addLine(l);
 		lgWeight.setRangeY(160, 190);
-		lgWeight.showMinAndMaxValues(true);
-
+//		lgWeight.showMinAndMaxValues(true);
+		lgWeight.setHorizontalFadingEdgeEnabled(true);
+		lgWeight.setTextSize(20);
+		lgWeight.showHorizontalGrid(true);
+		lgWeight.setGridColor(Color.parseColor("#FFFFFF"));
 	}
 	
 	public void addPoint(int x, int y) {

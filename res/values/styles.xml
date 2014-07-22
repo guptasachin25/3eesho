@@ -17,14 +17,14 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="NiceButton" parent="@android:style/Widget.Button">
-        <item name="android:textColor">@color/button_color_selector</item>
-        <item name="android:background">@drawable/light_button</item>
-    </style>
-
     <style name="LoginButton" parent="@android:style/Widget.Button">
         <item name="android:textColor">@color/login_button_color_selector</item>
         <item name="android:background">@drawable/login_button_selector</item>
+    </style>
+
+    <style name="ContinueButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/login_button_color_selector</item>
+        <item name="android:background">@drawable/transparent_button</item>
     </style>
 
     <style name="EditTextStyleLogin" parent="@android:style/Widget.EditText">

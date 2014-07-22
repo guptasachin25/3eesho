@@ -230,7 +230,8 @@
             android:layout_centerInParent="true"
             android:text="TODAY"
             android:textColor="#FFF"
-            android:textSize="16sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ListView
@@ -241,13 +242,14 @@
     </ListView>
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:id="@+id/btShout"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:background="@drawable/shout_button_unclickable"
+        android:background="@drawable/shout_button"
         android:text="Shout!"
+        android:textSize="20sp"
         android:textColor="#FFF" />
 
 </LinearLayout>

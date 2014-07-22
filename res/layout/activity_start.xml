@@ -4,57 +4,57 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash_bg_light"
     tools:context="${relativePackage}.${activityClass}" >
-	
+
     <TextView
         android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="110dp"
         android:layout_centerHorizontal="true"
-        android:textStyle="normal"
+        android:layout_marginTop="110dp"
         android:fontFamily="sans-serif-light"
+        android:text="3eesho"
         android:textSize="48sp"
-        android:text="3eesho"/>
-    
+        android:textStyle="normal" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"   
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:layout_centerHorizontal="true"  
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical" >
-        
-     <Button
-        android:id="@+id/btnFacebook"
-        style="@style/ParseLoginUI.Button.ThirdPartyLogin"
-        android:background="@drawable/com_parse_ui_facebook_login_button_background_selector"
-        android:drawableLeft="@drawable/com_parse_ui_facebook_login_logo"
-        android:layout_height="50dp"
-        android:layout_width="match_parent"
-        android:alpha="0.95"
-        android:fontFamily="sans-serif-light"
-        android:text="Facebook"
-        android:textSize="20sp"
-        android:onClick="onClick"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        android:visibility="visible" />
-        
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:onClick="onClick"
-        android:layout_marginTop="12dp"
-        android:alpha="0.95"
-        android:text="Email"
-        android:background="@drawable/email_button"
-        android:fontFamily="sans-serif-light"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnFacebook"
+            style="@style/ParseLoginUI.Button.ThirdPartyLogin"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:alpha="0.80"
+            android:background="@drawable/com_parse_ui_facebook_login_button_background_selector"
+            android:drawableLeft="@drawable/com_parse_ui_facebook_login_logo"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onClick"
+            android:text="Facebook" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:alpha="0.80"
+            android:background="@drawable/email_button"
+            android:drawableLeft="@drawable/ic_email"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onClick"
+            android:paddingLeft="16dp"
+            android:paddingRight="24dp"
+            android:text="Email"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </RelativeLayout>

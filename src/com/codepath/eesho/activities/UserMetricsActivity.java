@@ -169,18 +169,10 @@ public class UserMetricsActivity extends Activity {
 				public void done(Goal goal, ParseException exception) {
 					if(exception != null) {
 						if(goal == null) {
-							System.out.println("Goal is null");
 							goal = new Goal();
 						}
 						goal.setDate(date.toDateMidnight().toDate());
 						goal.setWeekDay(weekDayMap.get(date.getDayOfWeek()));
-						try {
-							System.out.println("This is plan..." + weekDayMap.get(date.getDayOfWeek()));
-							System.out.println(plan.getPlan(date).toJson());
-						} catch (JSONException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
 						goal.setPlan(plan.getPlan(date));
 						goal.setUser(currentUser);
 						goal.saveInBackground();

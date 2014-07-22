@@ -55,7 +55,7 @@ public class AboutYourselfActivity extends Activity {
 				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(heightUnit)) {
 					String height = ((EditText) v).getText().toString();					
 					etHeight.setText(height + " " + heightUnit);
-					ivHeightIcon.setImageResource(R.drawable.ic_height_active);
+					ivHeightIcon.setImageResource(R.drawable.icon_height_active);
 				}
 			}
 		});
@@ -81,7 +81,7 @@ public class AboutYourselfActivity extends Activity {
 				EditText view = (EditText) v;
 				if (view.getText() != null && 
 					!view.getText().toString().equals("")) {
-						ivActivityIcon.setImageResource(R.drawable.ic_like);
+						ivActivityIcon.setImageResource(R.drawable.icon_activity_active);
 				}
 			}
 		});
@@ -94,7 +94,7 @@ public class AboutYourselfActivity extends Activity {
 			btnContinue.setEnabled(false);
 		}
 	}
-
+	
 	private boolean checkDataAvailable() {		
 		if(etWeight.getText().toString().equals("") || 
 		   etHeight.getText().toString().equals("") ||
@@ -151,7 +151,6 @@ public class AboutYourselfActivity extends Activity {
 
 	private void onSubmitActivityLevel() {
 		ivActivityIcon.setImageResource(R.drawable.ic_activity);
-		System.out.println("We came in this activity level");
 		final CharSequence[] items={"High Activity", "Medium Activity", "Low Activity"};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);

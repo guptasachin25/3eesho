@@ -92,30 +92,30 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnLogin"
-        android:layout_below="@+id/btnLogin"
-        android:layout_marginTop="-2dp"
-        android:fontFamily="sans-serif"
-        android:onClick="onClick"
-        android:text="Forgot Password?"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/tvSignup"
+        android:id="@+id/btnSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/transparent_button"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="13dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:fontFamily="sans-serif"
         android:onClick="onClick"
         android:text="Sign Up"
         android:textColor="#00BCD4"
         android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLogin"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/transparent_button"
+        android:fontFamily="sans-serif"
+        android:onClick="onClick"
+        android:text="Forgot Password?"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
 </RelativeLayout>
