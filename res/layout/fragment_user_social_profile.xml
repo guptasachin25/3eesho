@@ -3,40 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-	tools:context="${relativePackage}.${activityClass}"
-    >
+    tools:context="${relativePackage}.${activityClass}" >
 
     <LinearLayout
         android:id="@+id/lv_socialprofile_image"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="#506f7b"
+        android:layout_height="200dp"
+        android:background="@drawable/profile_bg"
         android:gravity="center"
         android:orientation="vertical" >
-        
+
         <com.codepath.eesho.utils.CircularImageView
-     		android:id="@+id/ivsocialprofileImage"
-       		android:layout_width="80dp"
-        	android:layout_height="80dp"
-        	android:layout_marginTop="20dp"
-        	android:contentDescription="@string/iv_UserProfile_Image_contentdescription"
-        	android:src="@drawable/buzz2" />
-        
-        <EditText
+            android:id="@+id/ivsocialprofileImage"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/iv_UserProfile_Image_contentdescription"
+            android:src="@drawable/buzz2" />
+
+        <TextView
             android:id="@+id/tv_userSocialProfilename"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:textColor="@android:color/white"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/et_userName"
             android:inputType="text"
+            android:textColor="@android:color/white"
             android:textSize="24sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/etuserSocialProfileTargetText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
@@ -44,116 +43,168 @@
             android:hint="@string/hint_targetTxt"
             android:inputType="text"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
-        
-        <View
-    		android:layout_height="0.5dp"
-    		android:layout_width="match_parent"
-    		android:background="#d3d3d3"
-    		android:layout_alignParentBottom="true" />
-        
+            android:textSize="16sp"
+            android:alpha="0.65" />
+
     </LinearLayout>
-    
+
     <LinearLayout
-        android:background="#546E7A"
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/lv_socialprofile_image"
+        android:background="#546E7A"
         android:orientation="horizontal"
-        android:divider="@drawable/vertical_divider"
-        android:showDividers="middle"
-        android:layout_below="@+id/lv_socialprofile_image">
-        
+         >
+
         <LinearLayout
-            android:id="@+id/llWeight"
+            android:id="@+id/llSocialProfileWeight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:onClick="openProgress" >
-            
-   			<RelativeLayout
-                android:layout_width="90dp"
-            	android:layout_height="match_parent"
-            	android:layout_gravity="center">
-            	
-            	<ImageView
-		            android:id="@+id/ivGraph"
-		            android:layout_width="40dp"
-		            android:layout_height="40dp"
-		            android:src="@drawable/ic_bargraph" 
-		            android:layout_centerVertical="true"/>
-
-            	<TextView
-            	    android:id="@+id/tvProgress"
-            	    android:layout_width="wrap_content"
-            	    android:layout_height="wrap_content"
-            	    android:layout_alignBottom="@+id/ivGraph"
-            	    android:layout_marginBottom="7dp"
-            	    android:text="88"
-            	    android:layout_toRightOf="@+id/ivGraph"
-            	    android:textSize="24sp"
-            	    android:textColor="#FFFFFF" 
-            	    android:layout_centerVertical="true"/>
-            	
-            	<TextView
-            	    android:id="@+id/tvProgressTxt"
-            	    android:layout_width="wrap_content"
-            	    android:layout_height="wrap_content"
-            	    android:text="PROGRESS"
-            	    android:layout_below="@+id/tvProgress"
-            	    android:layout_centerVertical="true"
-            	    android:layout_centerHorizontal="true"
-            	    android:textSize="10sp" 
-            	    android:textColor="#FFF"/>
-            	
-            </RelativeLayout>         
-            
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:onClick="goToActivityHistory" >
+            android:orientation="vertical" >
 
             <RelativeLayout
                 android:layout_width="90dp"
-            	android:layout_height="match_parent"
-            	android:layout_gravity="center">
-            	
-            	<ImageView
-		            android:id="@+id/ivActivity"
-		            android:layout_width="40dp"
-		            android:layout_height="40dp"
-		            android:src="@drawable/ic_activity" 
-		            android:layout_centerVertical="true"/>
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
 
-            	<TextView
-            	    android:id="@+id/tvActivity"
-            	    android:layout_width="wrap_content"
-            	    android:layout_height="wrap_content"
-            	    android:layout_alignBottom="@+id/ivActivity"
-            	    android:text="60"
-            	    android:layout_toRightOf="@+id/ivActivity"
-            	    android:textSize="24sp"
-            	    android:textColor="#FFFFFF"
-            	    android:layout_marginBottom="7sp" 
-            	    android:layout_centerVertical="true"/>
-            	
-            	<TextView
-            	    android:id="@+id/tvActivityText"
-            	    android:layout_width="wrap_content"
-            	    android:layout_height="wrap_content"
-            	    android:text="ACTIVITY"
-            	    android:layout_below="@+id/tvActivity"
-            	    android:layout_centerVertical="true"
-            	    android:layout_centerHorizontal="true"
-            	    android:textSize="10sp" 
-            	    android:textColor="#FFF"/>
-            </RelativeLayout>    
+                <ImageView
+                    android:id="@+id/ivSocialProfileWeight"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/icon_weight_dashboard" />
+
+                <TextView
+                    android:id="@+id/tvSocialProfileWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@+id/ivSocialProfileWeight"
+                    android:text="88"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/tvWeightTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvSocialProfileWeight"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/tv_weight"
+                    android:textColor="#CFD8DC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSocialProfileActivity"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
+
+                <ImageView
+                    android:id="@+id/ivSocialProfileActivity"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                     android:layout_marginTop="10dp"
+                    android:src="@drawable/icon_activity_dashboard" />
+
+                <TextView
+                    android:id="@+id/tvSocialProfileActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@+id/ivSocialProfileActivity"
+                    android:text="60"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-light"/>
+
+                <TextView
+                    android:id="@+id/tvSocialProfileActivityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvSocialProfileActivity"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/tv_activity"
+                    android:textColor="#CFD8DC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSocialProfileLikes"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" >
+
+                <ImageView
+                    android:id="@+id/ivSocialProfileLikes"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/icon_likes_dashboard" />
+
+                <TextView
+                    android:id="@+id/tvSocialProfileLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   	android:layout_alignParentTop="true"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@+id/ivSocialProfileLikes"
+                    android:text="60"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-light" />
+
+                <TextView
+                    android:id="@+id/tvSocialProfileActivityLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvSocialProfileLikes"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/tv_likes"
+                    android:textColor="#CFD8DC"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 
-    
-    </RelativeLayout>
+    <fragment
+        android:id="@+id/fr_myshoutMessage"
+        android:name="com.codepath.eesho.fragments.MyWallFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        tools:layout="@layout/activity_messages" >
+
+    </fragment>
+
+</RelativeLayout>

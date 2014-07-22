@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        tools:layout="@layout/fragment_user_profile" >
+        tools:layout="@layout/fragment_user_social_profile" >
   </FrameLayout>
   
 </RelativeLayout>

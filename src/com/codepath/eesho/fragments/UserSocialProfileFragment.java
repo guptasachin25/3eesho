@@ -3,7 +3,8 @@ package com.codepath.eesho.fragments;
 import java.util.Locale;
 
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -18,7 +19,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-public class UserSocialProfileFragment extends DialogFragment {
+public class UserSocialProfileFragment extends Fragment {
 	
 	private String user_id;
 	//private ParseUser currentUser; 
@@ -43,8 +44,7 @@ public class UserSocialProfileFragment extends DialogFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		user_id = getArguments().getString("user_id");
-
+		
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
@@ -58,12 +58,19 @@ public class UserSocialProfileFragment extends DialogFragment {
 		
 		usernameClick();
 		//targetClick();
-		
+		//listofShoutMessages();
 		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
 		return v;
 
 	}
+	
+/*	private void listofShoutMessages() {
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		MyWallFragment fragment = new MyWallFragment();
+		ft.replace(R.id.fr_myshoutMessage, fragment);
+		ft.commit();
+	}*/
 
 	private void setUpUserData(ParseUser user) {
 		if(user.getString("name") != null){

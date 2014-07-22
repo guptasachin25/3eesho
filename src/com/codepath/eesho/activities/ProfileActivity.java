@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.codepath.eesho.R;
 import com.codepath.eesho.StartActivity;
 import com.codepath.eesho.fragments.UserProfileFragment;
+import com.codepath.eesho.fragments.UserSocialProfileFragment;
 import com.parse.ParseUser;
 
 public class ProfileActivity extends FragmentActivity {
@@ -23,9 +24,9 @@ String user_id;
 		setupWithUser(user_id);
 	}
 
-	private void setupWithUser(String user_id) {
+	private void setupWithUser(String user_name) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		UserProfileFragment fragment = UserProfileFragment.newInstance(user_id);
+		UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(user_name);
 		Log.d("in profile activity", "user profile " + user_id + " after");
 		ft.replace(R.id.frameLayoutProfile, fragment);
 		ft.commit();
@@ -38,9 +39,22 @@ String user_id;
 		  startActivity(i);
 	}
 	
+	public void onEditProfile(MenuItem mi){
+		
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+		ft.replace(R.id.frameLayoutProfile, fragment);
+		ft.commit();
+	}
+	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	getMenuInflater().inflate(R.menu.logout, menu);
 		return true;
     }
+	
+@Override
+	public void invalidateOptionsMenu() {
+		
+	}
 }

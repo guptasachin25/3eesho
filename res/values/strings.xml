@@ -75,5 +75,8 @@
     <string name="tv_user_Target">Target</string>
     <string name="hint_targetTxt">"Target "</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="tv_likes">LIKES</string>
+    <string name="tv_activity">ACTIVITY</string>
+    <string name="tv_weight">WEIGHT</string>
 
 </resources>
