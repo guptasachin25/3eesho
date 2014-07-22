@@ -9,7 +9,7 @@
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
     <application
@@ -106,7 +106,7 @@
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_start" >
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -115,6 +115,7 @@
         <activity
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
+           
         </activity>
 
         <service
@@ -144,12 +145,12 @@
             android:label="@string/title_activity_shout" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.SignupActivity"
+            android:name=".activities.SignupActivity"
             android:label="@string/title_activity_signup" >
         </activity>
         <activity
-            android:name="com.codepath.eesho.activities.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:name=".ForgotPasswordActivity"
+            android:label="@string/title_activity_forgot_password" >
         </activity>
     </application>
 

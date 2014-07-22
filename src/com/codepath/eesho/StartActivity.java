@@ -14,8 +14,6 @@ import com.codepath.eesho.activities.SignupActivity;
 import com.facebook.Request;
 import com.facebook.Response;
 import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -24,7 +22,6 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class StartActivity extends Activity {
-	Button btnSignUp;
 	Button btnLogin;
 	Button btnFacebook;
 
@@ -35,6 +32,7 @@ public class StartActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
+		getActionBar().hide();
 		setViews();
 		
 	/*
@@ -60,7 +58,6 @@ public class StartActivity extends Activity {
 	}
 
 	private void setViews() {
-		btnSignUp = (Button) findViewById(R.id.btnSignUp);
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		btnFacebook = (Button) findViewById(R.id.btnFacebook);
 	}
@@ -166,12 +163,8 @@ public class StartActivity extends Activity {
 	    request.executeAsync();
 	} 
 
-
 	public void onClick(View view) {
 		switch(view.getId()) {
-		case R.id.btnSignUp:
-			signup();
-			break;
 		case R.id.btnLogin:
 			login();
 			break;

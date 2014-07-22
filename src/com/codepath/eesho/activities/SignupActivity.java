@@ -10,15 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.R.id;
-import com.codepath.eesho.R.layout;
 import com.codepath.eesho.utils.Utils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class SignupActivity extends Activity {
-
 	EditText etEmailId;
 	EditText etPassword;
 	EditText etName;
@@ -29,9 +26,10 @@ public class SignupActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signup);
+		getActionBar().hide();
 		setViews();
 	}
-
+	
 	private void setViews() {
 		etEmailId = (EditText) findViewById(R.id.etUserName);
 		etPassword = (EditText) findViewById(R.id.etPassword);

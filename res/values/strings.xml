@@ -72,5 +72,6 @@
     <string name="title_activity_diet_plan">DietPlanActivity</string>
     <string name="title_activity_shout">ShoutActivity</string>
     <string name="title_activity_signup">SignupActivity</string>
+    <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
 
 </resources>

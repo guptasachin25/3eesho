@@ -1,19 +1,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_screen"
+    android:background="@drawable/splash_bg_light"
     tools:context="${relativePackage}.${activityClass}" >
 	
-    <ImageView
+    <TextView
         android:id="@+id/ivLogo"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-		android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:src="@drawable/eesho_logo" />
+        android:layout_marginTop="110dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-light"
+        android:textSize="48sp"
+        android:text="3eesho"/>
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +32,12 @@
         style="@style/ParseLoginUI.Button.ThirdPartyLogin"
         android:background="@drawable/com_parse_ui_facebook_login_button_background_selector"
         android:drawableLeft="@drawable/com_parse_ui_facebook_login_logo"
-        android:layout_height="wrap_content"
-        android:alpha="0.8"
-        android:text="Login using Facebook"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:alpha="0.95"
+        android:fontFamily="sans-serif-light"
+        android:text="Facebook"
+        android:textSize="20sp"
         android:onClick="onClick"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
@@ -41,24 +46,15 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:onClick="onClick"
-        android:layout_marginTop="8dp"
-        android:text="Login using Email"
+        android:layout_marginTop="12dp"
+        android:alpha="0.95"
+        android:text="Email"
+        android:background="@drawable/email_button"
+        android:fontFamily="sans-serif-light"
         android:textColor="#FFFFFF"
-        android:textStyle="italic" />
-    
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:layout_marginTop="8dp"
-        android:text="Signup using Email"
-        android:textColor="#FFFFFF"
-        android:textStyle="italic" />
-    
-    
+        android:textSize="20sp"/>
     </LinearLayout>
 
 </RelativeLayout>
