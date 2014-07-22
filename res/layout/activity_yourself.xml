@@ -58,7 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
@@ -74,104 +73,106 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivHeightIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
         android:layout_below="@+id/linearLayout2"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_height_inactive" />
+        android:orientation="horizontal" >
 
-    <EditText
-        android:id="@+id/etHeight"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivHeightIcon"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/ivHeightIcon"
-        android:hint="Height (cms)"
-        android:onClick="onClick" >
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-        <requestFocus />
-    </EditText>
+            <ImageView
+                android:id="@+id/ivHeightIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="6dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_height_inactive" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etHeight"
-        android:layout_alignRight="@+id/etHeight"
-        android:layout_below="@+id/etHeight"
-        android:alpha="0.25"
-        android:background="#000000" />
+            <ImageView
+                android:id="@+id/ivWeightIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_weight_inactive" />
 
-    <ImageView
-        android:id="@+id/ivWeightIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@+id/etHeight"
-        android:layout_marginTop="12dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_weight_inactive" />
+            <ImageView
+                android:id="@+id/ivActivityIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_activity_inactive" />
+        </LinearLayout>
 
-    <EditText
-        android:id="@+id/etWeight"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etHeight"
-        android:layout_alignRight="@+id/etHeight"
-        android:layout_alignTop="@+id/ivWeightIcon"
-        android:layout_marginBottom="12dp"
-        android:hint="Weight (lbs)"
-        android:onClick="onClick" />
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical" >
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etWeight"
-        android:layout_alignRight="@+id/etWeight"
-        android:layout_below="@+id/etWeight"
-        android:alpha="0.25"
-        android:background="#000000" />
+            <EditText
+                android:id="@+id/etHeight"
+                style="@style/EditTextDataEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
+                android:hint="Height (cms)"
+                android:onClick="onClick" >
 
-    
-    <ImageView
-        android:id="@+id/ivActivityIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:scaleType="fitXY"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@id/ivWeightIcon"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/icon_activity_inactive" />
-    
-    
-    <EditText
-        android:id="@+id/etActivityLevel"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etWeight"
-        android:layout_alignRight="@+id/etWeight"
-        android:layout_alignTop="@+id/ivActivityIcon"
-        android:layout_marginBottom="12dp"
-        android:hint="Activity Level"
-        android:onClick="onClick" />
+                <requestFocus />
+            </EditText>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etActivityLevel"
-        android:layout_alignRight="@+id/etActivityLevel"
-        android:layout_below="@+id/etActivityLevel"
-        android:alpha="0.25"
-        android:background="#000000" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:alpha="0.25"
+                android:background="#000000" />
 
-   
+            <EditText
+                android:id="@+id/etWeight"
+                style="@style/EditTextDataEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
+                android:hint="Weight (lbs)"
+                android:onClick="onClick" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:alpha="0.25"
+                android:background="#000000" />
+
+            <EditText
+                android:id="@+id/etActivityLevel"
+                style="@style/EditTextDataEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
+                android:hint="Activity Level"
+                android:onClick="onClick" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:alpha="0.25"
+                android:background="#000000" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnContinue"
@@ -181,10 +182,10 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:minHeight="0dp"
-        android:minWidth="0dp"
         android:enabled="false"
         android:fontFamily="sans-serif"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
         android:onClick="onClick"
         android:text="CONTINUE"
         android:textSize="20dp"

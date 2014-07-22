@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-light"
-                android:text="We will help you run.."
+                android:text="We will help you lose weight.."
                 android:textColor="#FFFFFF"
                 android:textSize="24dp" />
 
@@ -58,7 +58,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
-        android:layout_marginBottom="24dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
@@ -74,69 +73,82 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivTargetWeightIcon"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/linearLayout2"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_loseweight_inactive" />
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal" >
 
-    <EditText
-        android:id="@+id/etWeightTarget"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivTargetWeightIcon"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/ivTargetWeightIcon"
-        android:hint="Target Distance (miles)"
-        android:onClick="onClick" >
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <requestFocus />
-    </EditText>
+            <ImageView
+                android:id="@+id/ivTargetWeightIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_loseweight_inactive" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etWeightTarget"
-        android:layout_alignRight="@+id/etWeightTarget"
-        android:layout_below="@+id/etWeightTarget"
-        android:alpha="0.25"
-        android:background="#000000" />
+            <ImageView
+                android:id="@+id/ivTargetTimeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_time_inactive" />
+        </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ivTargetTimeIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@+id/etWeightTarget"
-        android:layout_marginTop="20dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/icon_time_inactive" />
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/etTargetTime"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etWeightTarget"
-        android:layout_alignRight="@+id/etWeightTarget"
-        android:layout_alignTop="@+id/ivTargetTimeIcon"
-        android:layout_marginBottom="12dp"
-        android:hint="Target Time (months)"
-        android:onClick="onClick" />
+            <EditText
+                android:id="@+id/etWeightTarget"
+                style="@style/EditTextDataEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
+                android:hint="Target weight (lbs)"
+                android:onClick="onClick" >
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etTargetTime"
-        android:layout_alignRight="@+id/etTargetTime"
-        android:layout_below="@+id/etTargetTime"
-        android:alpha="0.25"
-        android:background="#000000" />
+                <requestFocus />
+            </EditText>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:alpha="0.25"
+                android:background="#000000" />
+
+            <EditText
+                android:id="@+id/etTargetTime"
+                style="@style/EditTextDataEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="14dp"
+                android:hint="Target time (months)"
+                android:onClick="onClick" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:alpha="0.25"
+                android:background="#000000" />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnContinue"
