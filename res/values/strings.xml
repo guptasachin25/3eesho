@@ -78,5 +78,5 @@
     <string name="tv_likes">LIKES</string>
     <string name="tv_activity">ACTIVITY</string>
     <string name="tv_weight">WEIGHT</string>
-
+    <string name="title_activity_forgot_password">ForgotPasswordActivity</string>
 </resources>

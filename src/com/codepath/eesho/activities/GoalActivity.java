@@ -5,27 +5,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.codepath.eesho.R;
 import com.parse.ParseUser;
 
 public class GoalActivity extends Activity {
 	
-	Button btnFitness;
-	Button btnRun;
-	Button btnLoseWeight;
+	EditText btnFitness;
+	EditText btnRun;
+	EditText btnLoseWeight;
+	Button btnContinue;
+	ImageView ivFitnessIcon;
+	ImageView ivRunIcon;
+	ImageView ivWeightLostIcon;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_goal);
+		setContentView(R.layout.activity_goal_new);
 		setViews();
 	}
 	
 	private void setViews() {
-		btnFitness = (Button) findViewById(R.id.btnFitness);
-		btnRun = (Button) findViewById(R.id.btnRun);
-		btnLoseWeight = (Button) findViewById(R.id.btnLoseWeight);
+		btnFitness = (EditText) findViewById(R.id.btnFitness);
+		btnRun = (EditText) findViewById(R.id.btnRun);
+		btnLoseWeight = (EditText) findViewById(R.id.btnLoseWeight);
+		btnContinue = (Button) findViewById(R.id.btnContinue);
+		ivFitnessIcon = (ImageView) findViewById(R.id.ivLoseWeightIcon);
+		ivRunIcon = (ImageView) findViewById(R.id.ivRunIcon);
+		ivWeightLostIcon = (ImageView) findViewById(R.id.ivWeightIcon);
 	}
 	
 	private void saveData(String target) {

@@ -21,7 +21,7 @@ public class AboutYourselfActivity extends Activity {
 	Button btnContinue;
 	ImageView ivHeightIcon;
 	ImageView ivWeightIcon;
-	ImageView ivHeart;
+	ImageView ivActivityIcon;
 
 	String weightUnit = "lbs";
 	String heightUnit = "cms";
@@ -31,6 +31,7 @@ public class AboutYourselfActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_yourself);
+		getActionBar().hide();
 		setViews();
 		setTextChangeListeners();
 	}
@@ -42,7 +43,7 @@ public class AboutYourselfActivity extends Activity {
 		btnContinue = (Button) findViewById(R.id.btnContinue);
 		ivHeightIcon = (ImageView) findViewById(R.id.ivHeightIcon);
 		ivWeightIcon = (ImageView) findViewById(R.id.ivWeightIcon);
-		ivHeart = (ImageView) findViewById(R.id.ivHeart);
+		ivActivityIcon = (ImageView) findViewById(R.id.ivActivityIcon);
 	}
 
 	private void setTextChangeListeners() {
@@ -80,7 +81,7 @@ public class AboutYourselfActivity extends Activity {
 				EditText view = (EditText) v;
 				if (view.getText() != null && 
 					!view.getText().toString().equals("")) {
-						ivHeart.setImageResource(R.drawable.ic_like);
+						ivActivityIcon.setImageResource(R.drawable.ic_like);
 				}
 			}
 		});
@@ -149,7 +150,7 @@ public class AboutYourselfActivity extends Activity {
 	}
 
 	private void onSubmitActivityLevel() {
-		ivHeart.setImageResource(R.drawable.ic_activity);
+		ivActivityIcon.setImageResource(R.drawable.ic_activity);
 		System.out.println("We came in this activity level");
 		final CharSequence[] items={"High Activity", "Medium Activity", "Low Activity"};
 
@@ -170,19 +171,19 @@ public class AboutYourselfActivity extends Activity {
 				if("High Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("High Activity");
-					ivHeart.setImageResource(R.drawable.ic_like);
+					ivActivityIcon.setImageResource(R.drawable.ic_like);
 
 				}
 				else if("Medium Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Medium Activity");
-					ivHeart.setImageResource(R.drawable.ic_like);
+					ivActivityIcon.setImageResource(R.drawable.ic_like);
 
 				}
 				else if("Low Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Low Activity");
-					ivHeart.setImageResource(R.drawable.ic_like);
+					ivActivityIcon.setImageResource(R.drawable.ic_like);
 
 				}
 			}
@@ -208,6 +209,4 @@ public class AboutYourselfActivity extends Activity {
 			break;
 		}
 	}
-
 }
-

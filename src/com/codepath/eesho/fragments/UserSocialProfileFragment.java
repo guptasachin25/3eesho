@@ -28,6 +28,8 @@ public class UserSocialProfileFragment extends Fragment {
 	protected RadioButton rd1_dialog;
 	protected RadioButton rd2_dialog;
 	protected RadioButton rd3_dialog;
+	private TextView likesTxt;
+	private TextView activity;
 	
 
 	// The fragment for getting user input field names
@@ -52,6 +54,8 @@ public class UserSocialProfileFragment extends Fragment {
 		currentUser = ParseUser.getCurrentUser();
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userSocialProfilename);
 		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
+		likesTxt = (TextView) v.findViewById(R.id.tvSocialProfileLikes);
+		activity = (TextView) v.findViewById(R.id.tvSocialProfileActivity);
 		
 		usernameClick();
 		System.out.println(ParseUser.getCurrentUser());
@@ -142,9 +146,6 @@ public class UserSocialProfileFragment extends Fragment {
 
 			}
 		});
-	}
-	
-	public void onSave(View v){	
 	}
 	
 	private String getUserTarget(ParseUser user) {
