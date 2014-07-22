@@ -230,7 +230,8 @@
             android:layout_centerInParent="true"
             android:text="TODAY"
             android:textColor="#FFF"
-            android:textSize="16sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ListView

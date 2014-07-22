@@ -56,7 +56,7 @@ public class UserDashBoardFragment extends Fragment {
 	TextView tvName;
 	TextView tvGoal;
 	TextView tvActivity;
-
+	
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
 	}
@@ -112,6 +112,7 @@ public class UserDashBoardFragment extends Fragment {
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
 						System.out.println("While inserting..." + activity.toJSONObject());
 						goals.add(activity);
+						changeShoutButton(getDoneGoals());
 					}
 					aGoals.notifyDataSetChanged();
 
@@ -120,11 +121,13 @@ public class UserDashBoardFragment extends Fragment {
 				}
 			}
 		});
+
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
+		System.out.println("I'm in on create view");
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
 		ProfilePictureView ivPicture = (ProfilePictureView) v.findViewById(R.id.ivPicture);
@@ -158,7 +161,7 @@ public class UserDashBoardFragment extends Fragment {
 	    			Toast.makeText(getActivity(), "Awesome job!", Toast.LENGTH_SHORT).show();
 	    			shout();
 	    		} else if (doneCount == numOfGoals - 1) {
-	    			Toast.makeText(getActivity(), "You're almost there!", Toast.LENGTH_SHORT).show();
+	    			Toast.makeText(getActivity(), "You're almost done!", Toast.LENGTH_SHORT).show();
 	    		} else {
 	    			Toast.makeText(getActivity(), "Do some more exercise!", Toast.LENGTH_SHORT).show();
 	    		}
