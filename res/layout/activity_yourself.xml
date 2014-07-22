@@ -93,7 +93,7 @@
                 android:id="@+id/ivHeightIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_height_inactive" />
 
@@ -101,7 +101,7 @@
                 android:id="@+id/ivWeightIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_weight_inactive" />
 
@@ -109,7 +109,7 @@
                 android:id="@+id/ivActivityIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="14dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_activity_inactive" />
         </LinearLayout>
@@ -163,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="14dp"
+                android:editable="false"
                 android:hint="Activity Level"
                 android:onClick="onClick" />
 

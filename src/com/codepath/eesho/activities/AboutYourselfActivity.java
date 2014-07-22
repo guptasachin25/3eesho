@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,14 +28,15 @@ public class AboutYourselfActivity extends Activity {
 	String weightUnit = "lbs";
 	String heightUnit = "cms";
 	ParseUser currentUser;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_yourself);
 		getActionBar().hide();
 		setViews();
-		setTextChangeListeners();
+		setupListeners();
+		setFocusChangeListeners();
 	}
 
 	private void setViews() {
@@ -45,17 +48,40 @@ public class AboutYourselfActivity extends Activity {
 		ivWeightIcon = (ImageView) findViewById(R.id.ivWeightIcon);
 		ivActivityIcon = (ImageView) findViewById(R.id.ivActivityIcon);
 	}
-
-	private void setTextChangeListeners() {
+	
+	
+	private void setWeightIcon() {
+		ivWeightIcon.setImageResource(R.drawable.icon_weight_active);
+	}
+	
+	private void offWeightIcon() {
+		ivWeightIcon.setImageResource(R.drawable.icon_weight_inactive);
+	}
+	
+	private void setHeighIcon() {
+		ivHeightIcon.setImageResource(R.drawable.icon_height_active);
+	}
+	
+	private void offHeightIcon() {
+		ivHeightIcon.setImageResource(R.drawable.icon_height_inactive);
+	}
+	
+	private void offActivityIcon() {
+		ivActivityIcon.setImageResource(R.drawable.icon_activity_inactive);
+	}
+	
+	private void setActivityIcon() {
+		ivActivityIcon.setImageResource(R.drawable.icon_activity_active);
+	}
+	
+	private void setFocusChangeListeners() {
 		etHeight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
-				checkContinueEnabled();
 				EditText view = (EditText) v;
-				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(heightUnit)) {
+				if (!isNullorEmpty(view) && !view.getText().toString().contains(heightUnit)) {
 					String height = ((EditText) v).getText().toString();					
 					etHeight.setText(height + " " + heightUnit);
-					ivHeightIcon.setImageResource(R.drawable.icon_height_active);
 				}
 			}
 		});
@@ -65,23 +91,9 @@ public class AboutYourselfActivity extends Activity {
 			public void onFocusChange(View v, boolean hasFocus) {
 				checkContinueEnabled();
 				EditText view = (EditText) v;
-				if (view.getText() != null && !view.getText().toString().equals("") && !view.getText().toString().contains(weightUnit)) {
+				if (!isNullorEmpty(view) && !view.getText().toString().contains(weightUnit)) {
 					String weight = ((EditText) v).getText().toString();					
 					etWeight.setText(weight + " " + weightUnit);
-					ivWeightIcon.setImageResource(R.drawable.icon_weight_active);
-				}
-			}
-		});
-		
-		etActivityLevel.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-			
-			@Override
-			public void onFocusChange(View v, boolean hasFocus) {
-				checkContinueEnabled();
-				EditText view = (EditText) v;
-				if (view.getText() != null && 
-					!view.getText().toString().equals("")) {
-						ivActivityIcon.setImageResource(R.drawable.icon_activity_active);
 				}
 			}
 		});
@@ -103,7 +115,63 @@ public class AboutYourselfActivity extends Activity {
 		}
 		return true;
 	}
+	
+	private class Watcher implements TextWatcher {
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {}
 
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			btnContinue.setEnabled(checkValues());
+			btnContinue.refreshDrawableState();
+			changeImages();
+		}
+	}
+	
+	private void setupListeners() {
+		etWeight.addTextChangedListener(new Watcher());
+		etHeight.addTextChangedListener(new Watcher());
+		etActivityLevel.addTextChangedListener(new Watcher());
+	}
+	
+	private boolean isNullorEmpty(EditText et) {
+		if(et.getText() == null || et.getText().toString().equals("")) {
+			return true;
+		}
+		return false;
+	}
+	
+	private void changeImages() {
+		if(isNullorEmpty(etWeight)) {
+			offWeightIcon();
+		} else {
+			setWeightIcon();
+		}
+		
+		if(isNullorEmpty(etHeight)) {
+			offHeightIcon();
+		} else {
+			setHeighIcon();
+		} 
+		
+		if(isNullorEmpty(etActivityLevel)) {
+			offActivityIcon();
+		} else {
+			setActivityIcon();
+		}
+	}
+	
+	private boolean checkValues() {
+		if(isNullorEmpty(etHeight) || isNullorEmpty(etWeight) || isNullorEmpty(etHeight)) {
+			return false;
+		}
+		return true;
+	}
 
 	private void changeColorOfHint() {
 		if(etWeight.getText().toString().equals("")) {
@@ -129,60 +197,54 @@ public class AboutYourselfActivity extends Activity {
 
 	private void onSubmit() {
 		System.out.println("On Submit");
-		if(!checkDataAvailable()) {
-			changeColorOfHint();
-			return;
+		if(btnContinue.isEnabled()) {
+			saveData();	
+			Intent intent = new Intent(this, GoalActivity.class);
+			startActivity(intent);
 		}
-		//saveData();
-		
-		Intent intent = new Intent(this, GoalActivity.class);
-		startActivity(intent);	
 	}
 	
-	private void onSubmitHeight() {
-		etHeight.setText("");
-		ivHeightIcon.setImageResource(R.drawable.ic_height_inactive);		
-	}
-
-	private void onSubmitWeight() {
-		etWeight.setText("");
-		ivWeightIcon.setImageResource(R.drawable.icon_weight_inactive);		
-	}
-
 	private void onSubmitActivityLevel() {
 		ivActivityIcon.setImageResource(R.drawable.ic_activity);
 		final CharSequence[] items={"High Activity", "Medium Activity", "Low Activity"};
 
+		int currentSelected = 1;
+		if(etActivityLevel.getText() != null) {
+			if("High Activity".equals(etActivityLevel.getText().toString()))
+			{
+				currentSelected = 0;
+			}
+			else if("Low Activity".equals(etActivityLevel.getText().toString()))
+			{
+				currentSelected = 2;
+			}
+		}
+		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Set Daily Activity");
 
 		builder.setPositiveButton("Okay",
 				new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
-				System.out.println(whichButton);
-				//etActivityLevel.setText(items[whichButton]);
+				changeImages();
 			}
 		});
-		
-		builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+
+		builder.setSingleChoiceItems(items, currentSelected, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {		
 				if("High Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("High Activity");
-					ivActivityIcon.setImageResource(R.drawable.ic_like);
-
 				}
 				else if("Medium Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Medium Activity");
-					ivActivityIcon.setImageResource(R.drawable.ic_like);
 
 				}
 				else if("Low Activity".equals(items[which]))
 				{
 					etActivityLevel.setText("Low Activity");
-					ivActivityIcon.setImageResource(R.drawable.ic_like);
 
 				}
 			}
@@ -190,19 +252,23 @@ public class AboutYourselfActivity extends Activity {
 		
 		builder.create();
 		builder.show();
+		
+		if(isNullorEmpty(etActivityLevel)) {
+			etActivityLevel.setText(items[currentSelected]);
+		}
 	}
-
+	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.btnContinue:
 			onSubmit();
 			break;
-		case R.id.etWeight:
-			onSubmitWeight();
-			break;
-		case R.id.etHeight:
-			onSubmitHeight();
-			break;
+		//case R.id.etWeight:
+		//	onSubmitWeight();
+		//	break;
+		//case R.id.etHeight:
+		//	onSubmitHeight();
+		//	break;
 		case R.id.etActivityLevel:
 			onSubmitActivityLevel();
 			break;
