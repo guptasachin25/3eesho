@@ -112,6 +112,8 @@ public class UserDashBoardFragment extends Fragment {
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
 						System.out.println("While inserting..." + activity.toJSONObject());
 						goals.add(activity);
+						
+						// may cause null pointer exception, but is workaround for now
 						changeShoutButton(getDoneGoals());
 					}
 					aGoals.notifyDataSetChanged();
