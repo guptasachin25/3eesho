@@ -21,7 +21,8 @@ public class GoalActivity extends Activity {
 	ImageView ivRunIcon;
 	ImageView ivWeightLostIcon;
 	
-	EditText selected;
+	boolean selected = false;
+	int selectedValue = -1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,9 +35,9 @@ public class GoalActivity extends Activity {
 		btnRun = (EditText) findViewById(R.id.btnRun);
 		btnLoseWeight = (EditText) findViewById(R.id.btnLoseWeight);
 		btnContinue = (Button) findViewById(R.id.btnContinue);
-		ivFitnessIcon = (ImageView) findViewById(R.id.ivLoseWeightIcon);
+		ivFitnessIcon = (ImageView) findViewById(R.id.ivGeneralFitness);
 		ivRunIcon = (ImageView) findViewById(R.id.ivRunIcon);
-		ivWeightLostIcon = (ImageView) findViewById(R.id.ivWeightIcon);
+		ivWeightLostIcon = (ImageView) findViewById(R.id.ivLoseWeightIcon);
 	}
 	
 	private void saveData(String target) {
@@ -46,36 +47,55 @@ public class GoalActivity extends Activity {
 	}
 	
 	private void clickFitness() {
-		saveData("General Fitness");
+		//saveData("General Fitness");
 		Intent intent = new Intent(this, HomeActivity.class);
-		intent.putExtra("referer", "SignUp");
 		startActivity(intent);
 	}
 	
 	private void clickRun() {
-		saveData("Run");
+		//saveData("Run");
 		startActivity(new Intent(this, RunTargetActivity.class));
 	}
 	
 	private void clickLoseWeight() {
-		saveData("Lose Weight");
+		//saveData("Lose Weight");
 		startActivity(new Intent(this, WeightTargetActivity.class));
 	}
 	
+	
+	private void enableContinueButton() {
+		if(selected) {
+			btnContinue.setEnabled(true);
+		} else {
+			btnContinue.setEnabled(false);
+		}
+	}
+	
 	private void onSubmit() {
-		
+		if(btnContinue.isEnabled()) {
+			if(selectedValue == 1) {
+				clickLoseWeight();
+			} else if(selectedValue == 2) {
+				clickRun();
+			} else {
+				clickFitness();
+			}
+		}
 	}
 	
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.btnFitness:
 			selectFitness();
+			enableContinueButton();
 			break;
 		case R.id.btnRun:
 			selectRun();
+			enableContinueButton();
 			break;
 		case R.id.btnLoseWeight:
 			selectLoseWeight();
+			enableContinueButton();
 			break;
 		case R.id.btnContinue:
 			onSubmit();
@@ -101,7 +121,6 @@ public class GoalActivity extends Activity {
 	private void offRunImage() {
 		btnRun.setText("");
 		ivRunIcon.setImageResource(R.drawable.icon_run_inactive);
-
 	}
 	
 	private void setFitnessImage() {
@@ -115,19 +134,24 @@ public class GoalActivity extends Activity {
 	}
 
 	private void selectLoseWeight() {
+		selectedValue = 1;
+		selected = true;
 		setWeightImage();
 		offFitnessImage();
 		offRunImage();
 	}
 
 	private void selectRun() {
+		selectedValue = 2;
+		selected = true;
 		offWeightImage();
 		setRunImage();
 		offFitnessImage();
 	}
 
 	private void selectFitness() {
-		btnFitness.setText(btnFitness.getHint().toString());
+		selectedValue = 3;
+		selected = true;
 		offWeightImage();
 		offRunImage();
 		setFitnessImage();
