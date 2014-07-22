@@ -32,7 +32,7 @@ String user_id;
 		ft.commit();
 	}
 	
-	public void onLogout(MenuItem mi){
+/*	public void onLogout(MenuItem mi){
 		ParseUser.logOut();
 		Log.d("logout", "user is now loged out");
 		Intent i = new Intent(this, StartActivity.class);
@@ -51,7 +51,7 @@ String user_id;
     public boolean onCreateOptionsMenu(Menu menu) {
     	getMenuInflater().inflate(R.menu.logout, menu);
 		return true;
-    }
+    } */
 	
 @Override
 	public void invalidateOptionsMenu() {
