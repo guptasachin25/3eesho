@@ -30,6 +30,7 @@ proguard/
 
 *.pydevproject
 .project
+.project.properties
 .metadata
 bin/**
 tmp/**
