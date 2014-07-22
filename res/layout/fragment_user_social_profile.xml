@@ -196,15 +196,16 @@
         </LinearLayout>
     </LinearLayout>
 
-    <fragment
+    <FrameLayout
         android:id="@+id/fr_myshoutMessage"
-        android:name="com.codepath.eesho.fragments.MyWallFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/linearLayout1"
         tools:layout="@layout/activity_messages" >
 
-    </fragment>
+    </FrameLayout>
 
 </RelativeLayout>

@@ -22,7 +22,6 @@ import com.parse.SaveCallback;
 public class UserSocialProfileFragment extends Fragment {
 	
 	private String user_id;
-	//private ParseUser currentUser; 
 	private TextView tvUserProfileName;
 	private TextView targetTxt;
 	private ParseUser currentUser;
@@ -42,9 +41,7 @@ public class UserSocialProfileFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
@@ -57,29 +54,23 @@ public class UserSocialProfileFragment extends Fragment {
 		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
 		
 		usernameClick();
-		//targetClick();
-		//listofShoutMessages();
 		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
+		listofShoutMessages();
 		return v;
-
 	}
 	
-/*	private void listofShoutMessages() {
-		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		MyWallFragment fragment = new MyWallFragment();
-		ft.replace(R.id.fr_myshoutMessage, fragment);
-		ft.commit();
-	}*/
+	private void listofShoutMessages() {
+		Fragment myWallFragment = new MyWallFragment();
+		FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+		transaction.add(R.id.fr_myshoutMessage, myWallFragment).commit();
+	}
 
 	private void setUpUserData(ParseUser user) {
 		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
 			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
-		}   //if( user.getString("location") != null){
-			//location.setText(user.getString("location"));
-	//	} 
-		
+		}
 	else{
 			Log.d("Getting the value for parse","value from parse is null");
 		}
