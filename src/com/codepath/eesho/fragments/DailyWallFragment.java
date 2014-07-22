@@ -12,6 +12,7 @@ public class DailyWallFragment extends WallFragment {
 		query.setLimit(30);
 		query.addDescendingOrder("createdAt");
 		query.whereNotEqualTo("sender", ParseUser.getCurrentUser());
+		query.include("sender");
 		return query;
 	}
 }

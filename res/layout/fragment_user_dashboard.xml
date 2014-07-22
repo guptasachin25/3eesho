@@ -12,7 +12,17 @@
         android:background="#546E7A" >
 
         <com.facebook.widget.ProfilePictureView
-            android:id="@+id/ivPicture"
+            android:id="@+id/ivFacebookPicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/buzz2" />
+
+        <com.codepath.eesho.utils.CircularImageView
+            android:id="@+id/ivCircularPicture"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentLeft="true"
@@ -25,10 +35,10 @@
             android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/ivPicture"
+            android:layout_alignTop="@+id/ivFacebookPicture"
             android:layout_marginLeft="17dp"
             android:layout_marginTop="2dp"
-            android:layout_toRightOf="@+id/ivPicture"
+            android:layout_toRightOf="@+id/ivFacebookPicture"
             android:orientation="vertical" >
 
             <TextView
@@ -45,6 +55,8 @@
                 android:id="@+id/tvGoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="onClickSetTarget"
                 android:text="Run full marathon in 3 months"
                 android:textColor="#FFF"
                 android:textSize="12sp"
@@ -106,10 +118,10 @@
     </RelativeLayout>
 
     <View
-    	android:layout_width="fill_parent"
-    	android:layout_height="1dp"
-    	android:background="@android:color/darker_gray"/>
-    
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
     <!-- Second Screen showing metrics -->
 
     <LinearLayout
@@ -249,7 +261,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/shout_button"
         android:text="Shout!"
-        android:textSize="20sp"
-        android:textColor="#FFF" />
+        android:textColor="#FFF"
+        android:textSize="20sp" />
 
 </LinearLayout>

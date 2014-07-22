@@ -9,6 +9,8 @@ import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.DailyWallFragment;
 import com.codepath.eesho.fragments.LikesWallFragment;
 import com.codepath.eesho.listeners.FragmentTabListener;
+import com.codepath.eesho.parse.models.User;
+import com.parse.ParseQuery;
 
 public class ShoutActivity extends FragmentActivity {
 

@@ -69,7 +69,7 @@ public abstract class WallFragment extends Fragment {
 			}
 		});
 	}
-
+	
 	private List<Messages> getMessages() {
 		ParseQuery<Messages> query = getQuery();
 		ParseQuery.getQuery(Messages.class);

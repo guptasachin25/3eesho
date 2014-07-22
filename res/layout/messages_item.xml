@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
+    <com.codepath.eesho.utils.CircularImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -11,7 +11,18 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/buzz2" />
+
+    <com.facebook.widget.ProfilePictureView
+        android:id="@+id/ivFacebookPicture"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/buzz2" 
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/tvDescription"
@@ -22,8 +33,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/ivProfileImage"
-        android:typeface="serif"
-        android:text="Messages." />
+        android:text="Messages."
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/tvTimespan"
@@ -43,24 +54,23 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="6dp"
-        android:layout_marginRight="6dp">
-        
-       <TextView
+        android:layout_marginRight="6dp" >
+
+        <TextView
             android:id="@+id/tvLikes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:text="25"
-            android:textAppearance="?android:attr/textAppearanceSmall"/>
-        
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
         <ImageView
-        	android:id="@+id/ivLikes"
-        	android:layout_width="15dp"
-        	android:layout_height="match_parent"
-        	android:layout_toRightOf="@+id/tvLikes"
-        	android:layout_marginLeft="2dp"
-        	android:src="@drawable/ic_like" />
+            android:id="@+id/ivLikes"
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/tvLikes"
+            android:src="@drawable/ic_like" />
     </RelativeLayout>
 
-    
 </RelativeLayout>

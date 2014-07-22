@@ -12,6 +12,7 @@ public class LikesWallFragment extends WallFragment {
 		query.setLimit(30);
 		query.addDescendingOrder("createdAt");
 		query.whereEqualTo("users_who_liked", ParseUser.getCurrentUser());
+		query.include("sender");
 		return query;
 	}
 }

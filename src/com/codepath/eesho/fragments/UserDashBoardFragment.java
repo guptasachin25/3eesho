@@ -14,8 +14,8 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +57,8 @@ public class UserDashBoardFragment extends Fragment {
 	TextView tvName;
 	TextView tvGoal;
 	TextView tvActivity;
+	ProfilePictureView ivFacebookPicture;
+	ImageView ivPicture;
 	
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
@@ -71,22 +75,25 @@ public class UserDashBoardFragment extends Fragment {
 	}
 	
 	private String getUserTarget(ParseUser user) {
+		String target = null;
 		String targetType = user.getString("target_type");
+		Number targetRun = user.getNumber("target_run_distance");
+		Number targetTime = user.getNumber("target_time");
+		Number targetWeight = user.getNumber("target_weight");
+		
 		if(targetType != null) {
-			if(targetType.equalsIgnoreCase("run")) {
+			if(targetType.equalsIgnoreCase("run") && targetRun != null && targetTime != null) {
 				return String.format(Locale.ENGLISH, "Run %d miles in %d months", 
-						user.getNumber("target_run_distance"),
-						user.getNumber("target_time"));
-			} else if(targetType.toLowerCase().contains("weight")) {
+						targetRun, targetTime);
+			} else if(targetType.toLowerCase().contains("weight") && targetWeight != null && targetTime != null) {
 				return String.format(Locale.ENGLISH, "Lose %d lbs weight in %d months",
-						user.getNumber("target_weight"),
-						user.getNumber("target_time"));
-			} else {
+						targetWeight, targetTime);
+			} else if (targetType.equalsIgnoreCase("fitness")) {
 				return "General Fitness";
 			}
-		} else {
-			return "No Target";
 		}
+		
+		return "<font color='#00BCD4'><u><b>Set Target</b></u></font>";
 	}
 
 	@Override
@@ -131,24 +138,31 @@ public class UserDashBoardFragment extends Fragment {
 		System.out.println("I'm in on create view");
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
-		ProfilePictureView ivPicture = (ProfilePictureView) v.findViewById(R.id.ivPicture);
+		ivFacebookPicture = (ProfilePictureView) v.findViewById(R.id.ivFacebookPicture);
+		ivPicture = (ImageView) v.findViewById(R.id.ivCircularPicture);
 		lvGoals = (ListView) v.findViewById(R.id.lvGoals);
 		tvName = (TextView) v.findViewById(R.id.tvName);
 		tvGoal = (TextView) v.findViewById(R.id.tvGoal);
 		tvActivity = (TextView) v.findViewById(R.id.tvActivity);
 		btShout = (Button) v.findViewById(R.id.btShout);
 
-		ivPicture.setPresetSize(ProfilePictureView.NORMAL);
+		ivFacebookPicture.setPresetSize(ProfilePictureView.NORMAL);
 		String facebookPic = ParseUser.getCurrentUser().getString("facebook_id");
 		if(facebookPic != null) {
-			ivPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
+			ivPicture.setVisibility(ImageView.INVISIBLE);
+			ivFacebookPicture.setVisibility(ImageView.VISIBLE);
+			ivFacebookPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
 			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
+			
+		} else {
+			ivFacebookPicture.setVisibility(ImageView.INVISIBLE);
+			ivPicture.setVisibility(ImageView.VISIBLE);
 		}
 		lvGoals.setAdapter(aGoals);
 		lvGoals.setItemsCanFocus(true);
 
 		tvName.setText(getUserName(ParseUser.getCurrentUser()));
-		tvGoal.setText(getUserTarget(ParseUser.getCurrentUser()));
+		tvGoal.setText(Html.fromHtml(getUserTarget(ParseUser.getCurrentUser())));
 		
 		// this doesnt work??
 		changeShoutButton(getDoneGoals());

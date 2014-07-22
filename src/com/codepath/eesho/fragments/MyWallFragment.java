@@ -12,6 +12,8 @@ public class MyWallFragment extends WallFragment {
 		query.setLimit(30);
 		query.addDescendingOrder("createdAt");
 		query.whereEqualTo("sender", ParseUser.getCurrentUser());
+		query.include("sender");
+
 		return query;
 	}
 

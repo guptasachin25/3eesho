@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ActivityHistoryFragment;
@@ -104,5 +105,9 @@ public class HomeActivity extends FragmentActivity {
 		fts.replace(R.id.flHomeContainer, new ProgressFragment());	
 		fts.addToBackStack(null);
 		fts.commit();
+	}
+	
+	public void onClickSetTarget(View v) {
+		Toast.makeText(this, "Set Target", Toast.LENGTH_SHORT);
 	}
 }
