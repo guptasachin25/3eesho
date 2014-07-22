@@ -5,21 +5,18 @@ import java.util.Locale;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 public class UserSocialProfileFragment extends Fragment {
 	
@@ -47,6 +44,7 @@ public class UserSocialProfileFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//setHasOptionsMenu(true);
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
@@ -98,13 +96,6 @@ public class UserSocialProfileFragment extends Fragment {
 			return "General Fitness";
 		}
 	}
-	
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.logout, menu);
-	}
-	
-	
 }
 
 
