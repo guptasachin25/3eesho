@@ -34,8 +34,8 @@ public class StartActivity extends Activity {
 		setContentView(R.layout.activity_start);
 		getActionBar().hide();
 		setViews();
-		
-	/*
+
+		/*
 		ActivityRecognitionScan scan = new ActivityRecognitionScan(getApplicationContext());
 		System.out.println(GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext()) == ConnectionResult.SUCCESS);
 		scan.startActivityRecognitionScan();
@@ -123,26 +123,26 @@ public class StartActivity extends Activity {
 			}				
 		});
 	}
-	
+
 	private void makeMeRequest(final Session session) {
-	    // Make an API call to get user data and define a 
-	    // new callback to handle the response.
-	    Request request = Request.newMeRequest(session, 
-	            new Request.GraphUserCallback() {
-	        @Override
-	        public void onCompleted(GraphUser user, Response response) {
-	            // If the response is successful
-	            if (session == Session.getActiveSession()) {
-	                if (user != null) {
-	                    // Set the id for the ProfilePictureView
-	                    // view that in turn displays the profile picture.
-	                	System.out.println(user.toString());
-	                	ParseUser parseUser = ParseUser.getCurrentUser();
-	                	parseUser.put("name", user.getName());
-	                	parseUser.put("sex", user.getProperty("gender"));
-	                	parseUser.put("facebook_id", user.getId());
-	                	parseUser.saveInBackground(new SaveCallback() {
-							
+		// Make an API call to get user data and define a 
+		// new callback to handle the response.
+		Request request = Request.newMeRequest(session, 
+				new Request.GraphUserCallback() {
+			@Override
+			public void onCompleted(GraphUser user, Response response) {
+				// If the response is successful
+				if (session == Session.getActiveSession()) {
+					if (user != null) {
+						// Set the id for the ProfilePictureView
+						// view that in turn displays the profile picture.
+						System.out.println(user.toString());
+						ParseUser parseUser = ParseUser.getCurrentUser();
+						parseUser.put("name", user.getName());
+						parseUser.put("sex", user.getProperty("gender"));
+						parseUser.put("facebook_id", user.getId());
+						parseUser.saveInBackground(new SaveCallback() {
+
 							@Override
 							public void done(ParseException arg0) {
 								if(arg0 != null) {
@@ -150,17 +150,17 @@ public class StartActivity extends Activity {
 								}
 							}
 						});
-	                    //profilePictureView.setProfileId(user.getId());
-	                    // Set the Textview's text to the user's name.
-	                    //userNameView.setText(user.getName());
-	                }
-	            }
-	            if (response.getError() != null) {
-	                // Handle errors, will do so later.
-	            }
-	        }
-	    });
-	    request.executeAsync();
+						//profilePictureView.setProfileId(user.getId());
+						// Set the Textview's text to the user's name.
+						//userNameView.setText(user.getName());
+					}
+				}
+				if (response.getError() != null) {
+					// Handle errors, will do so later.
+				}
+			}
+		});
+		request.executeAsync();
 	} 
 
 	public void onClick(View view) {
