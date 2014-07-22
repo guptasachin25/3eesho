@@ -9,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -29,7 +31,8 @@ public class UserSocialProfileFragment extends Fragment {
 	protected RadioButton rd2_dialog;
 	protected RadioButton rd3_dialog;
 	private TextView likesTxt;
-	private TextView activity;
+	private TextView activityTxt;
+	private TextView weightTxt;
 	
 
 	// The fragment for getting user input field names
@@ -55,10 +58,8 @@ public class UserSocialProfileFragment extends Fragment {
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userSocialProfilename);
 		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
 		likesTxt = (TextView) v.findViewById(R.id.tvSocialProfileLikes);
-		activity = (TextView) v.findViewById(R.id.tvSocialProfileActivity);
-		
-		usernameClick();
-		System.out.println(ParseUser.getCurrentUser());
+		activityTxt = (TextView) v.findViewById(R.id.tvSocialProfileActivity);
+		weightTxt = (TextView) v.findViewById(R.id.tvSocialProfileWeight);
 		setUpUserData(ParseUser.getCurrentUser());
 		listofShoutMessages();
 		return v;
@@ -74,78 +75,13 @@ public class UserSocialProfileFragment extends Fragment {
 		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
 			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
+		}if(user.getString("weight") != null){
+			weightTxt.setText(user.getNumber("weight").toString());
+			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
 		}
 	else{
 			Log.d("Getting the value for parse","value from parse is null");
 		}
-	}
-	
-		private void usernameClick() {
-		// TODO Auto-generated method stub
-		tvUserProfileName.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				//TODO Auto-generated method stub
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				if(s != null){
-					currentUser.put("name", s.toString());
-					currentUser.saveInBackground(new SaveCallback() {
-
-						@Override
-						public void done(ParseException e) {
-							// TODO Auto-generated method stub
-							Log.d("done","user name is changed");	
-						}
-					});
-				}
-			}
-		});
-
-	}
-
-	
-	private void targetClick() {
-		// TODO Auto-generated method stub
-		targetTxt.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) { 
-				currentUser.put("location", s.toString());
-				currentUser.saveInBackground(new SaveCallback() {
-
-					@Override
-					public void done(ParseException e) {
-						// TODO Auto-generated method stub
-						Log.d("done","changed location is saved");	
-					}
-				});
-
-			}
-		});
 	}
 	
 	private String getUserTarget(ParseUser user) {
@@ -162,4 +98,13 @@ public class UserSocialProfileFragment extends Fragment {
 			return "General Fitness";
 		}
 	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.logout, menu);
+	}
+	
+	
 }
+
+
