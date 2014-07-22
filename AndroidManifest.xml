@@ -106,7 +106,7 @@
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_start" >
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -115,7 +115,6 @@
         <activity
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
-           
         </activity>
 
         <service
@@ -145,7 +144,6 @@
             android:label="@string/title_activity_shout" >
         </activity>
         <activity
-
             android:name=".activities.SignupActivity"
             android:label="@string/title_activity_signup" >
         </activity>
@@ -153,13 +151,9 @@
             android:name=".ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password" >
         </activity>
-        <activity>
+        <activity
             android:name=".SocialProfileActivity"
             android:label="@string/title_activity_social_profile" >
-        </activity>
-		<activity
-            android:name="com.codepath.eesho.activities.SignupActivity"
-            android:label="@string/title_activity_signup" >
         </activity>
     </application>
 

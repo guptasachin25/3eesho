@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-light"
-                android:text="Hello Sachin."
+                android:text="We will help you run.."
                 android:textColor="#FFFFFF"
                 android:textSize="24dp" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="Can you tell us about yourself?"
+                android:text="Tell us about your target"
                 android:textColor="#FFFFFF"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -49,7 +49,7 @@
         android:layout_below="@+id/LLImage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="@drawable/onboard_progress_1"
+        android:background="@drawable/onboard_progress_3"
         android:orientation="horizontal" >
     </LinearLayout>
 
@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
         android:orientation="vertical" >
@@ -68,31 +68,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Sachin&apos;s Profile"
+            android:text="Sachin&apos;s Target"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000"
             android:textSize="16sp" />
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ivHeightIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:id="@+id/ivTargetDistanceIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
         android:layout_below="@+id/linearLayout2"
         android:scaleType="fitXY"
-        android:src="@drawable/icon_height_inactive" />
+        android:src="@drawable/icon_run_inactive" />
 
     <EditText
-        android:id="@+id/etHeight"
+        android:id="@+id/etRunTarget"
         style="@style/EditTextDataEntry"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivHeightIcon"
+        android:layout_alignTop="@+id/ivTargetDistanceIcon"
         android:layout_marginBottom="12dp"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/ivHeightIcon"
-        android:hint="Height (cms)"
+        android:layout_toRightOf="@+id/ivTargetDistanceIcon"
+        android:hint="Target weight (lbs)"
         android:onClick="onClick" >
 
         <requestFocus />
@@ -101,77 +101,42 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etHeight"
-        android:layout_alignRight="@+id/etHeight"
-        android:layout_below="@+id/etHeight"
+        android:layout_alignLeft="@+id/etRunTarget"
+        android:layout_alignRight="@+id/etRunTarget"
+        android:layout_below="@+id/etRunTarget"
         android:alpha="0.25"
         android:background="#000000" />
 
     <ImageView
-        android:id="@+id/ivWeightIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:id="@+id/ivTargetTimeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@+id/etHeight"
-        android:layout_marginTop="12dp"
+        android:layout_below="@+id/etRunTarget"
+        android:layout_marginTop="20dp"
         android:scaleType="fitXY"
-        android:src="@drawable/icon_weight_inactive" />
+        android:src="@drawable/icon_time_inactive" />
 
     <EditText
-        android:id="@+id/etWeight"
+        android:id="@+id/etTargetTime"
         style="@style/EditTextDataEntry"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etHeight"
-        android:layout_alignRight="@+id/etHeight"
-        android:layout_alignTop="@+id/ivWeightIcon"
+        android:layout_alignLeft="@+id/etRunTarget"
+        android:layout_alignRight="@+id/etRunTarget"
+        android:layout_alignTop="@+id/ivTargetTimeIcon"
         android:layout_marginBottom="12dp"
-        android:hint="Weight (lbs)"
+        android:hint="Target Time (months)"
         android:onClick="onClick" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etWeight"
-        android:layout_alignRight="@+id/etWeight"
-        android:layout_below="@+id/etWeight"
+        android:layout_alignLeft="@+id/etTargetTime"
+        android:layout_alignRight="@+id/etTargetTime"
+        android:layout_below="@+id/etTargetTime"
         android:alpha="0.25"
         android:background="#000000" />
-
-    
-    <ImageView
-        android:id="@+id/ivActivityIcon"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:scaleType="fitXY"
-        android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_below="@id/ivWeightIcon"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/icon_activity_inactive" />
-    
-    
-    <EditText
-        android:id="@+id/etActivityLevel"
-        style="@style/EditTextDataEntry"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/etWeight"
-        android:layout_alignRight="@+id/etWeight"
-        android:layout_alignTop="@+id/ivActivityIcon"
-        android:layout_marginBottom="12dp"
-        android:hint="Activity Level"
-        android:onClick="onClick" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_alignLeft="@+id/etActivityLevel"
-        android:layout_alignRight="@+id/etActivityLevel"
-        android:layout_below="@+id/etActivityLevel"
-        android:alpha="0.25"
-        android:background="#000000" />
-
-   
 
     <Button
         android:id="@+id/btnContinue"
@@ -180,7 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="5dp"
         android:clickable="true"
         android:enabled="true"
         android:focusable="true"

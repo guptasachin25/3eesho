@@ -19,7 +19,7 @@ public class WeightTargetActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_weight_target);
+		setContentView(R.layout.activity_weight_target_new);
 		setViews();
 	}
 	
