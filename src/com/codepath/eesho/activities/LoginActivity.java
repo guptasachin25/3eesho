@@ -95,16 +95,12 @@ public class LoginActivity extends FragmentActivity {
 
 		@Override
 		public void afterTextChanged(Editable s) {
-			System.out.println("----" + checkValues());
 			btnLogin.setEnabled(checkValues());
 			btnLogin.refreshDrawableState();
 		}
 	}
 
 	private boolean checkValues() {
-		System.out.println(etUserName.getText());
-		System.out.println(etPassword.getText());
-		System.out.println(btnLogin.isEnabled());
 		if(etUserName.getText() == null || etPassword.getText() == null
 				|| etUserName.getText().toString().equals("")
 				|| etPassword.getText().toString().equals("")) {

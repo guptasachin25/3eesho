@@ -31,8 +31,6 @@ public class WeightTargetActivity extends Activity {
 	
 	private void saveData() {
 		ParseUser currentUser = ParseUser.getCurrentUser();
-		System.out.println(etTargetTime.getText().toString());
-		System.out.println(etTargetWeight.getText().toString());
 		currentUser.put("target_time", Long.parseLong(etTargetTime.getText().toString()));
 		currentUser.put("target_weight", Long.parseLong(etTargetWeight.getText().toString()));
 		

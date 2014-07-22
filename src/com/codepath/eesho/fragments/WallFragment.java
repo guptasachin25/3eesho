@@ -65,7 +65,7 @@ public abstract class WallFragment extends Fragment {
 						messageAdapter.notifyDataSetChanged();
 					}
 				});
-				Toast.makeText(getActivity(), "Message Liked", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(getActivity(), "Message Liked", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

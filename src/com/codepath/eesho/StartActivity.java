@@ -1,8 +1,16 @@
 package com.codepath.eesho;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +42,22 @@ public class StartActivity extends Activity {
 		setContentView(R.layout.activity_start);
 		getActionBar().hide();
 		setViews();
+		
+		// Add code to print out the key hash
+	    try {
+	        PackageInfo info = getPackageManager().getPackageInfo(
+	                "com.codepath.eesho", 
+	                PackageManager.GET_SIGNATURES);
+	        for (Signature signature : info.signatures) {
+	            MessageDigest md = MessageDigest.getInstance("SHA");
+	            md.update(signature.toByteArray());
+	            Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+	            }
+	    } catch (NameNotFoundException e) {
+
+	    } catch (NoSuchAlgorithmException e) {
+
+	    }
 
 		/*
 		ActivityRecognitionScan scan = new ActivityRecognitionScan(getApplicationContext());
@@ -136,7 +160,6 @@ public class StartActivity extends Activity {
 					if (user != null) {
 						// Set the id for the ProfilePictureView
 						// view that in turn displays the profile picture.
-						System.out.println(user.toString());
 						ParseUser parseUser = ParseUser.getCurrentUser();
 						parseUser.put("name", user.getName());
 						parseUser.put("sex", user.getProperty("gender"));

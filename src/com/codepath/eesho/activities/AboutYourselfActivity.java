@@ -151,7 +151,6 @@ public class AboutYourselfActivity extends Activity {
 
 	private void onSubmitActivityLevel() {
 		ivActivityIcon.setImageResource(R.drawable.ic_activity);
-		System.out.println("We came in this activity level");
 		final CharSequence[] items={"High Activity", "Medium Activity", "Low Activity"};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
