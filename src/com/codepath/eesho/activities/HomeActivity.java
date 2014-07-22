@@ -62,8 +62,19 @@ public class HomeActivity extends FragmentActivity {
 	private void getPlanView() {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserDashBoardFragment fragment = new UserDashBoardFragment();
-		ft.replace(R.id.flHomeContainer, fragment);
+		ft.replace(R.id.flHomeContainer, fragment, "dashboard");
+		
 		ft.commit();
+	}
+	
+	@Override
+	public void onBackPressed() {
+	    final UserDashBoardFragment fragment = (UserDashBoardFragment) getSupportFragmentManager().findFragmentByTag("dashboard");
+	    if (fragment.isVisible()) {
+	    	// don't go anywhere if already on UserDashBoard
+	    	} else {
+	    		super.onBackPressed();
+	    	}
 	}
 	
 	public void onProfileView(MenuItem mi) {
