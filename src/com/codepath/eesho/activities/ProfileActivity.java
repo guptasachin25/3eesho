@@ -32,29 +32,46 @@ String user_id;
 		ft.commit();
 	}
 	
-/*	public void onLogout(MenuItem mi){
+	public void onLogout(MenuItem mi){
 		ParseUser.logOut();
 		Log.d("logout", "user is now loged out");
 		Intent i = new Intent(this, StartActivity.class);
 		  startActivity(i);
 	}
 	
-	public void onEditProfile(MenuItem mi){
-		
+	/*public void onEditProfile(MenuItem mi){
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
 		ft.replace(R.id.frameLayoutProfile, fragment);
 		ft.commit();
+	}*/
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	   // handle item selection
+	   switch (item.getItemId()) {
+	      case R.id.miEditProfile:
+	    	  FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+	  		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+	  		ft.replace(R.id.frameLayoutProfile, fragment);
+	  		ft.commit();
+	  		item.setVisible(false);
+	         return true;
+	      case R.id.miLogout:
+	    	  ParseUser.logOut();
+	  		Log.d("logout", "user is now loged out");
+	  		Intent i = new Intent(this, StartActivity.class);
+	  		  startActivity(i);
+	  		  return true;
+	      default:
+	         return super.onOptionsItemSelected(item);
+	   }
 	}
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	getMenuInflater().inflate(R.menu.logout, menu);
 		return true;
-    } */
+    } 
 	
-@Override
-	public void invalidateOptionsMenu() {
-		
-	}
 }

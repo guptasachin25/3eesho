@@ -7,6 +7,7 @@ import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.MyActivity;
 import com.codepath.eesho.parse.models.Plan;
 import com.codepath.eesho.parse.models.User;
+import com.codepath.eesho.parse.models.Weight;
 import com.parse.Parse;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
@@ -24,6 +25,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(Messages.class);
         ParseObject.registerSubclass(MyActivity.class);
         ParseObject.registerSubclass(ParseUser.class);
+        ParseObject.registerSubclass(Weight.class);
         
         Parse.initialize(this, "Iyx6g7dZxvqi1o3ECmMxTLHhqys3OAhOS5YB2DV1", "JEm4N1zcYnvIgUcSLNGJj2z1S5I30MkCBPfDnti9");
         ParseFacebookUtils.initialize("629605243814245");

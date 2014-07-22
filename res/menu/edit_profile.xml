@@ -3,12 +3,8 @@
     <item
         android:id="@+id/miEditProfile"
         android:showAsAction="always"
+        android:onClick="onEditProfile"
         android:title="Edit">
-    </item>
-    <item
-        android:id="@+id/miLogout"
-        android:showAsAction="always"
-        android:title="Logout">
     </item>
 
 </menu>
