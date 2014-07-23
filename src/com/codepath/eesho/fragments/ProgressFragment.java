@@ -21,6 +21,7 @@ import android.widget.NumberPicker;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.parse.models.Weight;
+import com.codepath.eesho.utils.Utils;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
@@ -156,7 +157,8 @@ public class ProgressFragment extends Fragment{
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<Weight>() {
 			public void done(List<Weight> weights, ParseException e) {
-				if (e == null) {
+				if (e == null && weights.size() > 1) {
+					
 					Line myLine = new Line();
 					ArrayList<Integer> myPoints = new ArrayList<Integer>();
 					for (int i = 0; i < weights.size(); i++) {
@@ -181,8 +183,11 @@ public class ProgressFragment extends Fragment{
 					lgWeight.setTextSize(20);
 					lgWeight.showHorizontalGrid(true);
 					lgWeight.setGridColor(Color.parseColor("#FFFFFF"));
+					
+					// this is to populate some data for users who don't have weight
+					// only for demo purposes
 				} else {
-					System.out.println(e.getStackTrace());
+					
 				}
 				
 			}

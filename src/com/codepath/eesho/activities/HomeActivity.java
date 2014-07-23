@@ -1,9 +1,16 @@
 package com.codepath.eesho.activities;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+
 import org.joda.time.DateTime;
 import org.json.JSONArray;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -17,7 +24,11 @@ import com.codepath.eesho.fragments.ActivityHistoryFragment;
 import com.codepath.eesho.fragments.ProgressFragment;
 import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.parse.models.Goal;
+import com.codepath.eesho.parse.models.Weight;
 import com.codepath.eesho.utils.Utils;
+import com.echo.holographlibrary.Line;
+import com.echo.holographlibrary.LinePoint;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -33,7 +44,43 @@ public class HomeActivity extends FragmentActivity {
 		setContentView(R.layout.activity_home);
 		checkAndSetPlan();
 		getPlanView();
+		
+		populateWeight();
 		//changeProfileImageIcon();
+	}
+	
+	public void populateWeight() {
+		ParseQuery<Weight> query = ParseQuery.getQuery(Weight.class);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		
+		query.findInBackground(new FindCallback<Weight>() {
+			public void done(List<Weight> weights, ParseException e) {
+				if (e == null && weights.size() < 1) {
+					
+					if (weights.size() < 1) {
+						final Calendar calendar = Calendar.getInstance();
+						SimpleDateFormat formatter = new SimpleDateFormat("MMM dd"); // 3-letter month name & 2-char day of month
+						final String d = formatter.format(calendar.getTime());
+						
+						for (int i = 0; i < 10; i++) {
+							int lb = 125;
+							
+							Weight weight = new Weight(lb, d);
+							weight.setOwner(ParseUser.getCurrentUser());
+							weight.saveInBackground();
+							
+							lb = lb - Utils.randInt(0, 2);
+						}
+						
+						
+					}
+
+				} else {
+					
+				}
+				
+			}
+		});
 	}
 
 	private void checkAndSetPlan() {
