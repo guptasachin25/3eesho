@@ -35,20 +35,6 @@ public class GoalArrayAdapter extends ArrayAdapter<SingleActivity> {
 			v = convertView;
 		}
 		
-//		CheckBox ch = (CheckBox) v.findViewById(R.id.cb1);
-//		System.out.println("I am inside adapter");
-//		try {
-//			System.out.println(goal.toJSONObject().toString());
-//		} catch (JSONException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		ch.setText(goal.toString());
-//		ch.setChecked(goal.isDone());
-//		ch.setClickable(false);
-//		ch.setFocusable(false);
-		
-		//System.out.println("goal_done" + goal.isDone());
 		TextView number = (TextView) v.findViewById(R.id.tvNumber);
 		TextView activity = (TextView) v.findViewById(R.id.tvActivity);
 		ImageView checkbox = (ImageView) v.findViewById(R.id.ivCheck);
@@ -58,13 +44,12 @@ public class GoalArrayAdapter extends ArrayAdapter<SingleActivity> {
 		
 		if(goal.isDone()) {
 			checkbox.setImageResource(R.drawable.ic_check_done);
-			activity.setTextColor(Color.GRAY);
-			number.setTextColor(Color.GRAY);
+			activity.setTextColor(Color.parseColor("#d7d7d7"));
+			number.setTextColor(Color.parseColor("#bdbdbd"));
 		} else {
 			checkbox.setImageResource(R.drawable.ic_check);
-			activity.setTextColor(Color.BLACK);
-			number.setTextColor(Color.BLACK);
-
+			activity.setTextColor(Color.parseColor("#696969"));
+			number.setTextColor(Color.parseColor("#000000"));
 		}
 		v.setTag(goal);
 		//

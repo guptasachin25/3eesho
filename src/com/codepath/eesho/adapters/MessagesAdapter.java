@@ -46,7 +46,7 @@ public class MessagesAdapter extends ArrayAdapter<Messages>{
 			ivPicture.setVisibility(ImageView.INVISIBLE);
 			ivFacebookPicture.setVisibility(ImageView.VISIBLE);
 			ivFacebookPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
-			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
+//			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
 		} else {
 			ivFacebookPicture.setVisibility(ImageView.INVISIBLE);
 			ivPicture.setVisibility(ImageView.VISIBLE);
