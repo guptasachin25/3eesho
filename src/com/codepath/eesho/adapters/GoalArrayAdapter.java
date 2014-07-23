@@ -39,11 +39,11 @@ public class GoalArrayAdapter extends ArrayAdapter<SingleActivity> {
 		number.setText(Long.toString(goal.getDisplayNumber()));
 		
 		if(goal.isDone()) {
-			checkbox.setImageResource(R.drawable.ic_check_done);
+			checkbox.setImageResource(R.drawable.icon_checkbox_active);
 			activity.setTextColor(Color.parseColor("#d7d7d7"));
 			number.setTextColor(Color.parseColor("#bdbdbd"));
 		} else {
-			checkbox.setImageResource(R.drawable.ic_check);
+			checkbox.setImageResource(R.drawable.icon_checkbox_inactive);
 			activity.setTextColor(Color.parseColor("#696969"));
 			number.setTextColor(Color.parseColor("#000000"));
 		}
