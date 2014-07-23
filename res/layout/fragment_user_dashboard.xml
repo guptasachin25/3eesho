@@ -33,7 +33,7 @@
 
         <LinearLayout
             android:id="@+id/linearLayout1"
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/ivFacebookPicture"
             android:layout_marginLeft="17dp"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Billy Bob"
                 android:textColor="#FFF"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:typeface="serif" />
 
@@ -55,11 +55,9 @@
                 android:id="@+id/tvGoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:onClick="onClickSetTarget"
                 android:text="Run full marathon in 3 months"
                 android:textColor="#FFF"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:typeface="serif" />
         </LinearLayout>
 

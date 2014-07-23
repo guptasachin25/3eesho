@@ -122,6 +122,10 @@ public class HomeActivity extends FragmentActivity {
 		fts.commit();
 	}
 
+	public void onClickProfileLayout(View v) {
+		Toast.makeText(this, "Set Target", Toast.LENGTH_SHORT);
+	}
+	
 	public void onClickSetTarget(View v) {
 		Toast.makeText(this, "Set Target", Toast.LENGTH_SHORT);
 	}
