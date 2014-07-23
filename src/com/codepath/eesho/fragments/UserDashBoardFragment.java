@@ -1,6 +1,7 @@
 package com.codepath.eesho.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -39,6 +40,7 @@ import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.MyActivity;
 import com.facebook.widget.ProfilePictureView;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -59,6 +61,7 @@ public class UserDashBoardFragment extends Fragment {
 	TextView tvActivity;
 	ProfilePictureView ivFacebookPicture;
 	ImageView ivPicture;
+	private int totalActivityCount = 0;
 	
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
@@ -166,7 +169,7 @@ public class UserDashBoardFragment extends Fragment {
 		
 		// this doesnt work??
 		changeShoutButton(getDoneGoals());
-		
+		populateActivityNumber();
 		btShout.setOnClickListener(new OnClickListener(){
 	        @Override
 	        public void onClick(View view) {
@@ -233,6 +236,24 @@ public class UserDashBoardFragment extends Fragment {
 		return v;
 	}
 	
+	private void populateActivityNumber() {
+		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
+		query.whereEqualTo("user",ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<MyActivity>(){
+			public void done(List<MyActivity> itemList, ParseException e){
+				if(e == null){
+					for(MyActivity activity: itemList) {
+						totalActivityCount += activity.getDimension().intValue();
+					}
+				}else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }Log.d("Total activity", "activity is here " + totalActivityCount);
+		        tvActivity.setText(String.valueOf(totalActivityCount));
+			}
+		});
+		
+	}
+
 	public void changeShoutButton(int num) {
 		switch (num) {
 			case 1: btShout.setBackgroundResource(R.drawable.shout_button_1);
