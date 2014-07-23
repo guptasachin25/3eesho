@@ -13,7 +13,6 @@ public class MyWallFragment extends WallFragment {
 		query.addDescendingOrder("createdAt");
 		query.whereEqualTo("sender", ParseUser.getCurrentUser());
 		query.include("sender");
-
 		return query;
 	}
 

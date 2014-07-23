@@ -116,6 +116,7 @@
             android:name=".activities.AboutYourselfActivity"
             android:label="@string/title_activity_chat" >
         </activity>
+
         <service
             android:name=".activities.ActivityRecognitionService"
             android:exported="false"

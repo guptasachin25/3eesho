@@ -82,7 +82,6 @@ public class UserProfileFragment extends DialogFragment {
 		heightClick();
 		
 		imageViewCircle();
-		System.out.println(ParseUser.getCurrentUser());
 		setUpUserData(ParseUser.getCurrentUser());
 		return v;
 

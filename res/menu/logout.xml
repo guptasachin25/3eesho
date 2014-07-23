@@ -3,11 +3,13 @@
     <item
         android:id="@+id/miEditProfile"
         android:showAsAction="always"
+        android:icon="@drawable/icon_edit"
         android:title="Edit">
     </item>
+    
+    
     <item
         android:id="@+id/miLogout"
-        android:showAsAction="always"
         android:title="Logout">
     </item>
 

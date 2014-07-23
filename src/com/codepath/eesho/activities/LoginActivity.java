@@ -4,12 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.fragments.ForgotPasswordDialog;
@@ -23,6 +24,7 @@ public class LoginActivity extends FragmentActivity {
 	Button btnLogin;
 	Button btnSignup;
 	Button tvForgotPassword;
+	ProgressBar progressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,15 @@ public class LoginActivity extends FragmentActivity {
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		btnSignup = (Button) findViewById(R.id.btnSignup);
 		tvForgotPassword = (Button) findViewById(R.id.tvForgotPassword);
+		progressBar = (ProgressBar) findViewById(R.id.pbLoading);
 	}
 
 	private void onSubmit() {
+		progressBar.setVisibility(ProgressBar.VISIBLE);
 		ParseUser.logInInBackground(etUserName.getText().toString(), etPassword.getText().toString(), 
 				new LogInCallback() {
 			public void done(ParseUser user, ParseException e) {
+				progressBar.setVisibility(ProgressBar.INVISIBLE);
 				if (user != null) {
 					Log.d("MyApp", "User is logged in");
 					Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

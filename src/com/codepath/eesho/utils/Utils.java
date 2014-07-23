@@ -3,7 +3,6 @@ package com.codepath.eesho.utils;
 import java.util.Random;
 
 import org.joda.time.DateTime;
-import org.json.JSONException;
 
 import com.codepath.eesho.activities.UserMetricsActivity;
 import com.codepath.eesho.models.WeeklyFitnessPlan;
@@ -54,17 +53,10 @@ public class Utils {
 				public void done(Goal goal, ParseException exception) {
 					if(exception != null) {
 						if(goal == null) {
-							System.out.println("Goal is null");
 							goal = new Goal();
 						}
 						goal.setDate(date.toDateMidnight().toDate());
 						goal.setWeekDay(UserMetricsActivity.weekDayMap.get(date.getDayOfWeek()));
-						try {
-							System.out.println("This is plan..." + UserMetricsActivity.weekDayMap.get(date.getDayOfWeek()));
-							System.out.println(plan.getPlan(date).toJson());
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
 						goal.setPlan(plan.getPlan(date));
 						goal.setUser(user);
 						goal.saveInBackground();

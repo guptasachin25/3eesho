@@ -10,6 +10,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.utils.Utils;
@@ -21,9 +23,10 @@ public class SignupActivity extends Activity {
 	EditText etEmailId;
 	EditText etPassword;
 	EditText etName;
-	EditText etSex;
+	TextView etSex;
 	Button btnSignup;
 	Button btnSignin;
+	ProgressBar progressBar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +41,13 @@ public class SignupActivity extends Activity {
 		etEmailId = (EditText) findViewById(R.id.etUserName);
 		etPassword = (EditText) findViewById(R.id.etPassword);
 		etName = (EditText) findViewById(R.id.etName);
-		etSex = (EditText) findViewById(R.id.etSex);	
+		etSex = (TextView) findViewById(R.id.etSex);	
 		btnSignup = (Button) findViewById(R.id.btnSignup);
 		btnSignin = (Button) findViewById(R.id.btnSignin);
-	}
+		progressBar = (ProgressBar) findViewById(R.id.pbLoading);
 
+	}
+	
 	private void onSubmit() {
 		ParseUser user = new ParseUser();
 		user.setUsername(etEmailId.getText().toString());
@@ -50,16 +55,17 @@ public class SignupActivity extends Activity {
 		user.setEmail(etEmailId.getText().toString());
 		user.put("name", etName.getText().toString());
 		user.put("sex", etSex.getText().toString());
-
+		progressBar.setVisibility(ProgressBar.VISIBLE);
 		user.signUpInBackground(new SignUpCallback() {
 			@Override
 			public void done(ParseException exception) {
 				if(exception == null) {
+					progressBar.setVisibility(ProgressBar.INVISIBLE);
 					Utils.setPlan(ParseUser.getCurrentUser()); // Check whether user is available here
 					Intent intent = new Intent(getApplicationContext(), AboutYourselfActivity.class);
 					startActivity(intent);
 				} else {
-					System.out.println(exception.getMessage());
+					//System.out.println(exception.getMessage());
 				}
 			}
 		});

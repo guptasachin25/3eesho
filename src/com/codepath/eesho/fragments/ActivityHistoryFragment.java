@@ -2,8 +2,6 @@ package com.codepath.eesho.fragments;
 
 import java.util.List;
 
-import org.json.JSONException;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +14,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
-import com.codepath.eesho.models.FitnessPlanSingleActivity;
 import com.codepath.eesho.parse.models.MyActivity;
 import com.parse.FindCallback;
 import com.parse.ParseException;

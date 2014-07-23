@@ -95,10 +95,10 @@
         android:id="@+id/btnSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/transparent_button"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
+        android:background="@drawable/transparent_button"
         android:fontFamily="sans-serif"
         android:onClick="onClick"
         android:text="Sign Up"
@@ -117,5 +117,11 @@
         android:text="Forgot Password?"
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </RelativeLayout>

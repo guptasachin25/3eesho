@@ -109,7 +109,7 @@
                 android:id="@+id/ivGeneralFitness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="28dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/icon_generalhealth_inactive" />
         </LinearLayout>
@@ -121,19 +121,15 @@
             android:layout_marginLeft="20dp"
             android:orientation="vertical" >
 
-            <EditText
+            <TextView
                 android:id="@+id/btnLoseWeight"
-                style="@style/EditTextDataEntry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="12dp"
-                android:editable="false"
                 android:hint="Lose Weight"
-                android:onClick="onClick" >
-
-                <requestFocus />
-            </EditText>
+                style="@style/TextViewDataEntry"
+                android:onClick="onClick" />
 
             <View
                 android:layout_width="fill_parent"
@@ -141,14 +137,13 @@
                 android:alpha="0.25"
                 android:background="#000000" />
 
-            <EditText
+            <TextView
                 android:id="@+id/btnRun"
-                style="@style/EditTextDataEntry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="12dp"
-                android:editable="false"
+                style="@style/TextViewDataEntry"
                 android:hint="Run a distance"
                 android:onClick="onClick" />
 
@@ -158,14 +153,13 @@
                 android:alpha="0.25"
                 android:background="#000000" />
 
-            <EditText
+            <TextView
                 android:id="@+id/btnFitness"
-                style="@style/EditTextDataEntry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@style/TextViewDataEntry"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="12dp"
-                android:editable="false"
                 android:hint="General Fitness"
                 android:onClick="onClick" />
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,10 @@ public class MessagesAdapter extends ArrayAdapter<Messages>{
 			ivPicture.setVisibility(ImageView.INVISIBLE);
 			ivFacebookPicture.setVisibility(ImageView.VISIBLE);
 			ivFacebookPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
+
+
 //			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
+
 		} else {
 			ivFacebookPicture.setVisibility(ImageView.INVISIBLE);
 			ivPicture.setVisibility(ImageView.VISIBLE);

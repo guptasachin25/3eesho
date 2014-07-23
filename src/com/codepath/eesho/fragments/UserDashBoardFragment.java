@@ -1,6 +1,7 @@
 package com.codepath.eesho.fragments;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
@@ -42,6 +43,7 @@ import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Messages;
 import com.codepath.eesho.parse.models.MyActivity;
 import com.facebook.widget.ProfilePictureView;
+import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -62,6 +64,7 @@ public class UserDashBoardFragment extends Fragment {
 	TextView tvActivity;
 	ProfilePictureView ivFacebookPicture;
 	ImageView ivPicture;
+	private int totalActivityCount = 0;
 	
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
@@ -77,7 +80,7 @@ public class UserDashBoardFragment extends Fragment {
 		return doneCount;
 	}
 	
-	private String getUserTarget(ParseUser user) {
+	public static String getUserTarget(ParseUser user) {
 		String target = null;
 		String targetType = user.getString("target_type");
 		Number targetRun = user.getNumber("target_run_distance");
@@ -119,7 +122,6 @@ public class UserDashBoardFragment extends Fragment {
 						e1.printStackTrace();
 					}
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
-						System.out.println("While inserting..." + activity.toJSONObject());
 						goals.add(activity);
 						
 						// may cause null pointer exception, but is workaround for now
@@ -138,7 +140,6 @@ public class UserDashBoardFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		System.out.println("I'm in on create view");
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
 		ivFacebookPicture = (ProfilePictureView) v.findViewById(R.id.ivFacebookPicture);
@@ -169,7 +170,7 @@ public class UserDashBoardFragment extends Fragment {
 		
 		// this doesnt work??
 		changeShoutButton(getDoneGoals());
-		
+		populateActivityNumber();
 		btShout.setOnClickListener(new OnClickListener(){
 	        @Override
 	        public void onClick(View view) {
@@ -230,15 +231,9 @@ public class UserDashBoardFragment extends Fragment {
 					int position, long id) {
 				final Boolean done;
 				try {
-					System.out.println(goals.get(position));
-					System.out.println(((FitnessPlanSingleActivity) view.getTag()).toJSONObject());
-					System.out.println(dailyActivity.toJson());
 					FitnessPlanSingleActivity fitnessActivity = 
 							(FitnessPlanSingleActivity) view.getTag();
-					System.out.println(fitnessActivity.isDone());					
 					myGoal.resetDone(dailyActivity, goals.get(position));
-					System.out.println(fitnessActivity.isDone());
-
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -246,13 +241,10 @@ public class UserDashBoardFragment extends Fragment {
 				myGoal.saveInBackground(new SaveCallback() {
 					@Override
 					public void done(ParseException arg0) {
-						System.out.println(arg0);
 						if(arg0 == null) {
-							System.out.println("Data Saved");
 							FitnessPlanSingleActivity fitnessActivity = 
 									(FitnessPlanSingleActivity) view.getTag();
 							Long sign = fitnessActivity.isDone() ? 1L : -1L;
-							System.out.println(sign);
 							Long calories =  Math.abs((new Random().nextLong() % 100)) * sign;
 							Long steps = Math.abs((new Random().nextLong() % 100)) * sign;
 							MyActivity myActivity = 
@@ -274,6 +266,24 @@ public class UserDashBoardFragment extends Fragment {
 		return v;
 	}
 	
+	private void populateActivityNumber() {
+		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
+		query.whereEqualTo("user",ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<MyActivity>(){
+			public void done(List<MyActivity> itemList, ParseException e){
+				if(e == null){
+					for(MyActivity activity: itemList) {
+						totalActivityCount += activity.getDimension().intValue();
+					}
+				}else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }Log.d("Total activity", "activity is here " + totalActivityCount);
+		        tvActivity.setText(String.valueOf(totalActivityCount));
+			}
+		});
+		
+	}
+
 	public void changeShoutButton(int num) {
 		switch (num) {
 			case 1: btShout.setBackgroundResource(R.drawable.shout_button_1);

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.MessagesAdapter;
@@ -59,7 +58,6 @@ public abstract class WallFragment extends Fragment {
 					@Override
 					public void done(ParseException arg0) {
 						if(arg0 != null) {
-							System.out.println(arg0);
 							return;
 						}
 						messageAdapter.notifyDataSetChanged();
