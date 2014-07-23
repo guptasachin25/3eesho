@@ -174,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:text="Progress"
+                    android:text="PROGRESS"
                     android:textAlignment="center"
                     android:textColor="#FFF"
                     android:textSize="12sp" />
@@ -222,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:text="Activity"
+                    android:text="ACTIVITY"
                     android:textAlignment="center"
                     android:textColor="#FFF"
                     android:textSize="12sp" />

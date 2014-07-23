@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Weight")
 public class Weight extends ParseObject{
@@ -12,8 +13,10 @@ public class Weight extends ParseObject{
 		super();
 	}
 	
-	public Weight(int pounds, Date d) {
-		
+	// date is MMM dd
+	public Weight(int pounds, String date) {
+		put ("Weight", pounds);
+		put ("Date", date);
 	}
 	
 	public String getId() {
@@ -30,6 +33,10 @@ public class Weight extends ParseObject{
 	
 	public Date getDate() {
 		return getDate("createdAt");
+	}
+	
+	public void setOwner(ParseUser currentUser) {
+		put("user", currentUser);
 	}
 	
 	
