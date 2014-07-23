@@ -53,7 +53,7 @@ public class ProgressFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_progress, container, false);
-		
+		getActivity().getActionBar().setTitle("Progress");
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
 		bAll = (Button) v.findViewById(R.id.btAll);

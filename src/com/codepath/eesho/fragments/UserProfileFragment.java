@@ -65,6 +65,7 @@ public class UserProfileFragment extends DialogFragment {
 			ViewGroup container,  Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_user_profile, container,false);
 		currentUser = ParseUser.getCurrentUser();
+		getActivity().getActionBar().setTitle("Edit Profile");
 		// get the current user object
 		tv_profileage = (TextView)v. findViewById(R.id.tv_profileage);
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userProfilename);

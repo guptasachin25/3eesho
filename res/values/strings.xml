@@ -3,7 +3,7 @@
 
     <string name="app_name">3eesho</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_profile">Profile</string>
     <string name="et_userName">Raj Singh</string>
     <string name="et_User_Profession">Software Engg</string>
     <string name="et_user_location">San Francisco, CA</string>
@@ -70,7 +70,7 @@
     <string name="title_activity_run_target">RunTargetActivity</string>
     <string name="title_activity_weight_target">WeightTargetActivity</string>
     <string name="title_activity_diet_plan">DietPlanActivity</string>
-    <string name="title_activity_shout">ShoutActivity</string>
+    <string name="title_activity_shout">Shout</string>
     <string name="title_activity_social_profile">SocialProfileActivity</string>
     <string name="tv_user_Target">Target</string>
     <string name="hint_targetTxt">"Target "</string>
