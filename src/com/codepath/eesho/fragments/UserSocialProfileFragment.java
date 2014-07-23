@@ -71,6 +71,7 @@ public class UserSocialProfileFragment extends Fragment {
 	private void totalActivity() {
 		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
 		query.whereEqualTo("user",ParseUser.getCurrentUser());
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<MyActivity>(){
 			public void done(List<MyActivity> itemList, ParseException e){
 				if(e == null){
@@ -88,6 +89,7 @@ public class UserSocialProfileFragment extends Fragment {
 	private void totalLikeMessages() {
 		ParseQuery<Messages> query = ParseQuery.getQuery(Messages.class);
 		query.whereEqualTo("sender",ParseUser.getCurrentUser());
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<Messages>(){
 			public void done(List<Messages> itemList, ParseException e){
 				if(e == null){

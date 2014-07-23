@@ -113,6 +113,7 @@ public class UserDashBoardFragment extends Fragment {
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
 
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
 				if (e == null) {
@@ -326,7 +327,8 @@ public class UserDashBoardFragment extends Fragment {
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", date.toDateMidnight().toDate());
-
+		
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
 				if (e == null) {

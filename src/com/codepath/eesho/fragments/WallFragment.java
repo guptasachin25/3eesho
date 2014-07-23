@@ -73,6 +73,7 @@ public abstract class WallFragment extends Fragment {
 		ParseQuery.getQuery(Messages.class);
 		query.setLimit(30);
 		query.addDescendingOrder("createdAt");
+		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<Messages>() {
 			@Override
 			public void done(List<Messages> messageList, ParseException exception) {
