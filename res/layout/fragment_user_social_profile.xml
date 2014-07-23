@@ -84,7 +84,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@+id/ivSocialProfileWeight"
-                    android:text="88"
+                    android:hint="88"
                     android:textColor="#FFFFFF"
                     android:textSize="24sp"
                     android:fontFamily="sans-serif-light" />

@@ -1,7 +1,9 @@
 package com.codepath.eesho.fragments;
 
+import java.util.List;
 import java.util.Locale;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +16,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
+import com.codepath.eesho.parse.models.Messages;
+import com.codepath.eesho.parse.models.MyActivity;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 public class UserSocialProfileFragment extends Fragment {
@@ -28,6 +35,12 @@ public class UserSocialProfileFragment extends Fragment {
 	private TextView likesTxt;
 	private TextView activityTxt;
 	private TextView weightTxt;
+
+
+
+	private int totalLikes = 0;
+	private int totalActivityCount = 0;
+	
 
 
 	// The fragment for getting user input field names
@@ -58,8 +71,50 @@ public class UserSocialProfileFragment extends Fragment {
 		weightTxt = (TextView) v.findViewById(R.id.tvSocialProfileWeight);
 		setUpUserData(ParseUser.getCurrentUser());
 		listofShoutMessages();
+		totalLikeMessages();
+		totalActivity();
 		return v;
 	}
+
+
+	
+	private void totalActivity() {
+		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
+		query.whereEqualTo("user",ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<MyActivity>(){
+			public void done(List<MyActivity> itemList, ParseException e){
+				if(e == null){
+					for(MyActivity activity: itemList) {
+						totalActivityCount += activity.getDimension().intValue();
+					}
+				}else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }Log.d("Total activity", "activity is here " + totalActivityCount);
+		        activityTxt.setText(String.valueOf(totalActivityCount));
+			}
+		});
+	}
+
+	private void totalLikeMessages() {
+		
+		ParseQuery<Messages> query = ParseQuery.getQuery(Messages.class);
+		query.whereEqualTo("sender",ParseUser.getCurrentUser());
+		query.findInBackground(new FindCallback<Messages>(){
+			public void done(List<Messages> itemList, ParseException e){
+				if(e == null){
+					for(Messages msg: itemList) {
+						totalLikes += msg.getLikes().intValue();
+					}
+				}else {
+		            Log.d("item", "Error: " + e.getMessage());
+		        }Log.d("Total lIKES", "lIKES ARE HERE " + totalLikes);
+		        likesTxt.setText(String.valueOf(totalLikes));
+			}
+
+		});
+		
+	}
+
 
 	private void listofShoutMessages() {
 		Fragment myWallFragment = new MyWallFragment();
@@ -68,13 +123,18 @@ public class UserSocialProfileFragment extends Fragment {
 	}
 
 	private void setUpUserData(ParseUser user) {
-		if (user.getString("name") != null){
+		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
-			targetTxt.setText(Html.fromHtml(UserDashBoardFragment.getUserTarget(ParseUser.getCurrentUser())));
-		} if(user.getString("weight") != null){
+			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
+		}if(user.getNumber("weight") != null){
 			weightTxt.setText(user.getNumber("weight").toString());
 		}
+	else{
+			Log.d("Getting the value for parse","value from parse is null");
+		}
 	}
+	
+
 }
 
 
