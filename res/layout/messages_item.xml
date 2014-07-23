@@ -73,7 +73,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="2dp"
             android:layout_toRightOf="@+id/tvLikes"
-            android:src="@drawable/ic_like" />
+            android:src="@drawable/icon_like_feed" />
     </RelativeLayout>
 
 </RelativeLayout>
