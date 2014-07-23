@@ -30,6 +30,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +52,6 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 public class UserDashBoardFragment extends Fragment {
-
 	private ArrayList<SingleActivity> goals;
 	private GoalArrayAdapter aGoals;
 	Button btShout;
@@ -65,11 +65,12 @@ public class UserDashBoardFragment extends Fragment {
 	ProfilePictureView ivFacebookPicture;
 	ImageView ivPicture;
 	private int totalActivityCount = 0;
-	
+	ProgressBar pbLoading;
+
 	private String getUserName(ParseUser user) {
 		return user.getString("name");
 	}
-	
+
 	public int getDoneGoals() {
 		int doneCount = 0;
 		for (SingleActivity s : goals) {
@@ -79,14 +80,14 @@ public class UserDashBoardFragment extends Fragment {
 		}
 		return doneCount;
 	}
-	
+
 	public static String getUserTarget(ParseUser user) {
 		String target = null;
 		String targetType = user.getString("target_type");
 		Number targetRun = user.getNumber("target_run_distance");
 		Number targetTime = user.getNumber("target_time");
 		Number targetWeight = user.getNumber("target_weight");
-		
+
 		if(targetType != null) {
 			if(targetType.equalsIgnoreCase("run") && targetRun != null && targetTime != null) {
 				return String.format(Locale.ENGLISH, "Run %d miles in %d months", 
@@ -98,7 +99,7 @@ public class UserDashBoardFragment extends Fragment {
 				return "General Fitness";
 			}
 		}
-		
+
 		return "<font color='#00BCD4'><u><b>Set Target</b></u></font>";
 	}
 
@@ -107,7 +108,7 @@ public class UserDashBoardFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		goals = new ArrayList<SingleActivity>();
 		aGoals = new GoalArrayAdapter(getActivity(), goals);				
-		
+
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
@@ -123,12 +124,11 @@ public class UserDashBoardFragment extends Fragment {
 					}
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
 						goals.add(activity);
-						
+
 						// may cause null pointer exception, but is workaround for now
 						changeShoutButton(getDoneGoals());
 					}
 					aGoals.notifyDataSetChanged();
-
 				} else {
 					Log.d("item", "Error: " + e.getMessage());
 				}
@@ -149,6 +149,7 @@ public class UserDashBoardFragment extends Fragment {
 		tvGoal = (TextView) v.findViewById(R.id.tvGoal);
 		tvActivity = (TextView) v.findViewById(R.id.tvActivity);
 		btShout = (Button) v.findViewById(R.id.btShout);
+		pbLoading = (ProgressBar) v.findViewById(R.id.pbLoading);
 
 		ivFacebookPicture.setPresetSize(ProfilePictureView.NORMAL);
 		String facebookPic = ParseUser.getCurrentUser().getString("facebook_id");
@@ -157,73 +158,73 @@ public class UserDashBoardFragment extends Fragment {
 			ivFacebookPicture.setVisibility(ImageView.VISIBLE);
 			ivFacebookPicture.setProfileId((ParseUser.getCurrentUser().getString("facebook_id")));
 			Log.d("Facebook", ParseUser.getCurrentUser().getString("facebook_id"));
-			
 		} else {
 			ivFacebookPicture.setVisibility(ImageView.INVISIBLE);
 			ivPicture.setVisibility(ImageView.VISIBLE);
 		}
+
 		lvGoals.setAdapter(aGoals);
 		lvGoals.setItemsCanFocus(true);
 
 		tvName.setText(getUserName(ParseUser.getCurrentUser()));
 		tvGoal.setText(Html.fromHtml(getUserTarget(ParseUser.getCurrentUser())));
-		
+
 		// this doesnt work??
 		changeShoutButton(getDoneGoals());
 		populateActivityNumber();
 		btShout.setOnClickListener(new OnClickListener(){
-	        @Override
-	        public void onClick(View view) {
-	    		int numOfGoals = goals.size();
-	    		int doneCount = getDoneGoals();
-	    		if (doneCount == numOfGoals) {
-	    			Toast.makeText(getActivity(), "Awesome job!", Toast.LENGTH_SHORT).show();
-	    			shout();
-	    		} else if (doneCount == numOfGoals - 1) {
-	    			Toast.makeText(getActivity(), "You're almost done!", Toast.LENGTH_SHORT).show();
-	    		} else {
-	    			Toast.makeText(getActivity(), "Do some more exercise!", Toast.LENGTH_SHORT).show();
-	    		}
-	        }
-	    });
-		
+			@Override
+			public void onClick(View view) {
+				int numOfGoals = goals.size();
+				int doneCount = getDoneGoals();
+				if (doneCount == numOfGoals) {
+					Toast.makeText(getActivity(), "Awesome job!", Toast.LENGTH_SHORT).show();
+					shout();
+				} else if (doneCount == numOfGoals - 1) {
+					Toast.makeText(getActivity(), "You're almost done!", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getActivity(), "Do some more exercise!", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+
 		lvGoals.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                    final int pos, long id) {
-            	AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-                alert.setTitle("Do you want to see a tutorial?");
-                // alert.setMessage("Message");
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					final int pos, long id) {
+				AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+				alert.setTitle("Do you want to see a tutorial?");
+				// alert.setMessage("Message");
 
-                alert.setPositiveButton("YES!", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                    	String url = "";
-                    	if (goals.get(pos).toString().contains("Inch")) {
-                        	url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
-                    	} else if (goals.get(pos).toString().contains("Pushups")) {
-                    		url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
-                    	} else if (goals.get(pos).toString().contains("Chest")) {
-                    		url = "https://www.youtube.com/watch?v=QwJa1jzaek8E"; // chest press                    		
-                    	} 
-                    	Intent i = new Intent(Intent.ACTION_VIEW);
-                    	i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    	i.setData(Uri.parse(url));
-                    	startActivity(i);
-                    }
-                });
+				alert.setPositiveButton("YES!", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						String url = "";
+						if (goals.get(pos).toString().contains("Inch")) {
+							url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
+						} else if (goals.get(pos).toString().contains("Pushups")) {
+							url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
+						} else if (goals.get(pos).toString().contains("Chest")) {
+							url = "https://www.youtube.com/watch?v=QwJa1jzaek8E"; // chest press                    		
+						} 
+						Intent i = new Intent(Intent.ACTION_VIEW);
+						i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						i.setData(Uri.parse(url));
+						startActivity(i);
+					}
+				});
 
-                alert.setNegativeButton("Nope",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                        	dialog.dismiss();
-                        }
-                    });
+				alert.setNegativeButton("Nope",
+						new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						dialog.dismiss();
+					}
+				});
 
-                alert.show();
-              
-                return true;
-            }
-        }); 
+				alert.show();
+
+				return true;
+			}
+		}); 
 
 		lvGoals.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -265,7 +266,7 @@ public class UserDashBoardFragment extends Fragment {
 		});
 		return v;
 	}
-	
+
 	private void populateActivityNumber() {
 		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
 		query.whereEqualTo("user",ParseUser.getCurrentUser());
@@ -276,24 +277,24 @@ public class UserDashBoardFragment extends Fragment {
 						totalActivityCount += activity.getDimension().intValue();
 					}
 				}else {
-		            Log.d("item", "Error: " + e.getMessage());
-		        }Log.d("Total activity", "activity is here " + totalActivityCount);
-		        tvActivity.setText(String.valueOf(totalActivityCount));
+					Log.d("item", "Error: " + e.getMessage());
+				}Log.d("Total activity", "activity is here " + totalActivityCount);
+				tvActivity.setText(String.valueOf(totalActivityCount));
 			}
 		});
-		
+
 	}
 
 	public void changeShoutButton(int num) {
 		switch (num) {
-			case 1: btShout.setBackgroundResource(R.drawable.shout_button_1);
-				break;
-        	case 2: btShout.setBackgroundResource(R.drawable.shout_button_2);
-                break;
-        	case 3:btShout.setBackgroundResource(R.drawable.shout_button);
-        		break;
-        	case 0: btShout.setBackgroundResource(R.drawable.shout_button_0);
-    			break;
+		case 1: btShout.setBackgroundResource(R.drawable.shout_button_1);
+		break;
+		case 2: btShout.setBackgroundResource(R.drawable.shout_button_2);
+		break;
+		case 3:btShout.setBackgroundResource(R.drawable.shout_button);
+		break;
+		case 0: btShout.setBackgroundResource(R.drawable.shout_button_0);
+		break;
 		}
 	}
 
@@ -319,7 +320,7 @@ public class UserDashBoardFragment extends Fragment {
 						new Rect(0, 0, targetWidth, targetHeight), null);
 		return targetBitmap;
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public void shout() {
 		DateTime date = new DateTime();
@@ -359,7 +360,7 @@ public class UserDashBoardFragment extends Fragment {
 								}
 							}
 						}
-						
+
 						if(flag) {
 							Messages message = new Messages();
 							String m = builder.toString().trim();

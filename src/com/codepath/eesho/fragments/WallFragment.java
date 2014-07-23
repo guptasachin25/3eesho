@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.codepath.eesho.R;
 import com.codepath.eesho.adapters.MessagesAdapter;
 import com.codepath.eesho.parse.models.Messages;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -41,11 +42,11 @@ public abstract class WallFragment extends Fragment {
 
 		messageAdapter = new MessagesAdapter(this.getActivity(), messages);
 		lvMessages.setAdapter(messageAdapter);
-		messageAdapter.addAll(getMessages());
 		setupListViewListener();
+		getMessages();
 		return v;
 	}
-	
+
 	private void setupListViewListener() {
 		lvMessages.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -63,22 +64,25 @@ public abstract class WallFragment extends Fragment {
 						messageAdapter.notifyDataSetChanged();
 					}
 				});
-				//Toast.makeText(getActivity(), "Message Liked", Toast.LENGTH_SHORT).show();
 			}
 		});
 	}
-	
-	private List<Messages> getMessages() {
+
+	private void getMessages() {
 		ParseQuery<Messages> query = getQuery();
 		ParseQuery.getQuery(Messages.class);
 		query.setLimit(30);
 		query.addDescendingOrder("createdAt");
-		try {
-			return query.find();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return new ArrayList<Messages>();
-		}
+		query.findInBackground(new FindCallback<Messages>() {
+			@Override
+			public void done(List<Messages> messageList, ParseException exception) {
+				if(exception == null) {
+					for(Messages message: messageList) {
+						messageAdapter.add(message);
+						messageAdapter.notifyDataSetChanged();
+					}
+				}
+			}
+		});
 	}
 }

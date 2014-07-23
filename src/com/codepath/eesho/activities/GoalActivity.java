@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.codepath.eesho.R;
@@ -20,7 +21,8 @@ public class GoalActivity extends Activity {
 	ImageView ivFitnessIcon;
 	ImageView ivRunIcon;
 	ImageView ivWeightLostIcon;
-
+	ProgressBar progressBar;
+	
 	boolean selected = false;
 	int selectedValue = -1;
 	@Override
@@ -39,6 +41,7 @@ public class GoalActivity extends Activity {
 		ivFitnessIcon = (ImageView) findViewById(R.id.ivGeneralFitness);
 		ivRunIcon = (ImageView) findViewById(R.id.ivRunIcon);
 		ivWeightLostIcon = (ImageView) findViewById(R.id.ivLoseWeightIcon);
+		progressBar = (ProgressBar) findViewById(R.id.pbLoading);
 	}
 
 	private void saveData(String target) {
@@ -49,6 +52,7 @@ public class GoalActivity extends Activity {
 
 	private void clickFitness() {
 		saveData("General Fitness");
+		progressBar.setVisibility(ProgressBar.VISIBLE);
 		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 		//overridePendingTransition(R.anim.right_in, R.anim.left_out);

@@ -32,6 +32,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif"
         android:layout_toRightOf="@+id/ivProfileImage"
         android:text="Messages."
         android:typeface="serif" />
@@ -43,6 +44,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tvDescription"
         android:layout_marginRight="7dp"
+        android:fontFamily="sans-serif"
         android:text="5h"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#BBBBBB" />
@@ -60,6 +62,7 @@
             android:id="@+id/tvLikes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
             android:layout_alignParentLeft="true"
             android:text="25"
             android:textAppearance="?android:attr/textAppearanceSmall" />

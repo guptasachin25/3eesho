@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import com.codepath.eesho.activities.AboutYourselfActivity;
 import com.codepath.eesho.activities.HomeActivity;
@@ -32,6 +33,7 @@ import com.parse.SaveCallback;
 public class StartActivity extends Activity {
 	Button btnLogin;
 	Button btnFacebook;
+	ProgressBar pbLoading;
 
 	public static final Integer LOGIN_REQUEST = 80;
 	public static final Integer SIGNUP_REQUEST = 100;
@@ -86,6 +88,7 @@ public class StartActivity extends Activity {
 	private void setViews() {
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		btnFacebook = (Button) findViewById(R.id.btnFacebook);
+		pbLoading = (ProgressBar) findViewById(R.id.pbLoading);
 	}
 
 	private void signup() {
@@ -134,6 +137,7 @@ public class StartActivity extends Activity {
 	}
 
 	private void facebookLogin() {
+		pbLoading.setVisibility(ProgressBar.VISIBLE);
 		ParseFacebookUtils.logIn(this, new LogInCallback() {
 			@Override
 			public void done(ParseUser user, ParseException exception) {
