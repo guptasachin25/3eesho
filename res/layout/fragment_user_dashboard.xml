@@ -207,8 +207,8 @@
                     <ImageView
                         android:id="@+id/ivActivity"
                         android:layout_width="wrap_content"
-                    	  android:layout_height="wrap_content"
-				  android:layout_alignParentLeft="true"
+                    	android:layout_height="wrap_content"
+				  		android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/icon_dashboard_activity" />
 
