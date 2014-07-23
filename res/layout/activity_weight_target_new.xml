@@ -121,6 +121,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="14dp"
                 android:hint="Target weight (lbs)"
+                android:inputType="number"
                 android:onClick="onClick" >
 
                 <requestFocus />
@@ -140,6 +141,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="14dp"
                 android:hint="Target time (months)"
+                android:inputType="number"
                 android:onClick="onClick" />
 
             <View
@@ -166,5 +168,12 @@
         android:text="CONTINUE"
         android:textSize="20dp"
         android:typeface="serif" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </RelativeLayout>

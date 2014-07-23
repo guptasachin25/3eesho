@@ -1,16 +1,13 @@
 package com.codepath.eesho.activities;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 import org.joda.time.DateTime;
 import org.json.JSONArray;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -26,8 +23,7 @@ import com.codepath.eesho.fragments.UserDashBoardFragment;
 import com.codepath.eesho.parse.models.Goal;
 import com.codepath.eesho.parse.models.Weight;
 import com.codepath.eesho.utils.Utils;
-import com.echo.holographlibrary.Line;
-import com.echo.holographlibrary.LinePoint;
+import com.parse.CountCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -43,10 +39,8 @@ public class HomeActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		checkAndSetPlan();
-		getPlanView();
-		
 		populateWeight();
-		//changeProfileImageIcon();
+		getPlanView();
 	}
 	
 	public void populateWeight() {
@@ -70,9 +64,7 @@ public class HomeActivity extends FragmentActivity {
 							weight.saveInBackground();
 							
 							lb = lb - Utils.randInt(0, 2);
-						}
-						
-						
+						}					
 					}
 
 				} else {
@@ -88,13 +80,12 @@ public class HomeActivity extends FragmentActivity {
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
 
-		try {
-			if(query.count() == 0) {
+		query.countInBackground(new CountCallback() {
+			@Override
+			public void done(int arg0, ParseException arg1) {
 				Utils.setFitnessPlan(ParseUser.getCurrentUser());
 			}
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		});
 	}
 
 	private void getPlanView() {

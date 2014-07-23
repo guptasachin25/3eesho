@@ -187,5 +187,12 @@
         android:text="CONTINUE"
         android:textSize="20dp"
         android:typeface="serif" />
+    
+        <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+    
 
 </RelativeLayout>

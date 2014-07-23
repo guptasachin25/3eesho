@@ -268,5 +268,11 @@
         android:text="Shout!"
         android:textColor="#FFF"
         android:textSize="20sp" />
+    
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </LinearLayout>

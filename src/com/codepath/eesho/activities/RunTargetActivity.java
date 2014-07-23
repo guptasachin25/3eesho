@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
 import com.parse.ParseUser;
@@ -19,6 +20,7 @@ public class RunTargetActivity extends Activity {
 	Button btnContinue;
 	ImageView ivTimeTargetIcon;
 	ImageView ivDistanceTargetIcon;
+	ProgressBar pbLoading;
 	
 	String timeUnit = "months";
 	String distanceUnit = "miles";
@@ -39,6 +41,7 @@ public class RunTargetActivity extends Activity {
 		btnContinue = (Button) findViewById(R.id.btnContinue);
 		ivTimeTargetIcon = (ImageView) findViewById(R.id.ivTargetTimeIcon);
 		ivDistanceTargetIcon = (ImageView) findViewById(R.id.ivTargetDistanceIcon);
+		pbLoading = (ProgressBar) findViewById(R.id.pbLoading);
 	}
 	
 	private void saveData() {
@@ -49,6 +52,7 @@ public class RunTargetActivity extends Activity {
 	}
 	
 	private void doSubmit() {
+		pbLoading.setVisibility(ProgressBar.VISIBLE);
 		saveData();
 		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);

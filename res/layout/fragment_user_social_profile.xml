@@ -29,7 +29,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="@string/et_userName"
-            android:inputType="text"
+            android:inputType="text|textNoSuggestions"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
@@ -37,15 +37,14 @@
             android:id="@+id/etuserSocialProfileTargetText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.65"
             android:background="@android:color/transparent"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/hint_targetTxt"
             android:inputType="text"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:alpha="0.65" />
-
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,8 +53,7 @@
         android:layout_height="80dp"
         android:layout_below="@+id/lv_socialprofile_image"
         android:background="#546E7A"
-        android:orientation="horizontal"
-         >
+        android:orientation="horizontal" >
 
         <LinearLayout
             android:id="@+id/llSocialProfileWeight"
@@ -84,10 +82,10 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@+id/ivSocialProfileWeight"
+                    android:fontFamily="sans-serif-light"
                     android:hint="88"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:fontFamily="sans-serif-light" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/tvWeightTxt"
@@ -120,7 +118,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentTop="true"
-                     android:layout_marginTop="10dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/icon_activity_dashboard" />
 
                 <TextView
@@ -130,10 +128,10 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@+id/ivSocialProfileActivity"
+                    android:fontFamily="sans-serif-light"
                     android:text="60"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:fontFamily="sans-serif-light"/>
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/tvSocialProfileActivityText"
@@ -173,13 +171,13 @@
                     android:id="@+id/tvSocialProfileLikes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   	android:layout_alignParentTop="true"
+                    android:layout_alignParentTop="true"
                     android:layout_marginTop="13dp"
                     android:layout_toRightOf="@+id/ivSocialProfileLikes"
+                    android:fontFamily="sans-serif-light"
                     android:text="60"
                     android:textColor="#FFFFFF"
-                    android:textSize="24sp"
-                    android:fontFamily="sans-serif-light" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/tvSocialProfileActivityLikes"
@@ -200,12 +198,18 @@
         android:id="@+id/fr_myshoutMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/linearLayout1"
         tools:layout="@layout/activity_messages" >
-
     </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

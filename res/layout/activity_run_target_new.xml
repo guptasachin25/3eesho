@@ -93,8 +93,8 @@
                 android:id="@+id/ivTargetDistanceIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
                 android:layout_marginTop="18dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/icon_run_inactive" />
 
             <ImageView
@@ -166,5 +166,12 @@
         android:text="CONTINUE"
         android:textSize="20dp"
         android:typeface="serif" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </RelativeLayout>

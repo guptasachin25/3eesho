@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.codepath.eesho.R;
 import com.parse.ParseUser;
@@ -20,6 +21,7 @@ public class WeightTargetActivity extends Activity {
 	Button btnContinue;
 	ImageView ivTimeTargetIcon;
 	ImageView ivWeightTargetIcon;
+	ProgressBar pbLoading;
 	
 	private String weightUnit = "lbs";
 	private String timeUnit = "months";
@@ -40,9 +42,11 @@ public class WeightTargetActivity extends Activity {
 		btnContinue = (Button) findViewById(R.id.btnContinue);
 		ivTimeTargetIcon = (ImageView) findViewById(R.id.ivTargetTimeIcon);
 		ivWeightTargetIcon = (ImageView) findViewById(R.id.ivTargetWeightIcon);
+		pbLoading = (ProgressBar) findViewById(R.id.pbLoading);
 	}
 
 	private void saveData() {
+		pbLoading.setVisibility(ProgressBar.VISIBLE);
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		currentUser.put("target_time", Long.parseLong(etTargetTime.getText().toString().replace(timeUnit, "").trim()));
 		currentUser.put("target_weight", Long.parseLong(etTargetWeight.getText().toString().replace(weightUnit, "").trim()));
