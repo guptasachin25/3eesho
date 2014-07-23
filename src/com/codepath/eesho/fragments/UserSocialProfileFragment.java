@@ -52,6 +52,7 @@ public class UserSocialProfileFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container,  Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_user_social_profile, container,false);
+		getActivity().getActionBar().setTitle("Profile");
 		tvUserProfileName = (TextView)v. findViewById(R.id.tv_userSocialProfilename);
 		targetTxt = (TextView) v.findViewById(R.id.etuserSocialProfileTargetText);
 		likesTxt = (TextView) v.findViewById(R.id.tvSocialProfileLikes);

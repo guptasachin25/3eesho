@@ -54,6 +54,7 @@ public class ProfileActivity extends FragmentActivity {
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
 			ft.replace(R.id.frameLayoutProfile, fragment);
+			ft.addToBackStack(null);
 			ft.commit();
 			item.setVisible(false);
 			return true;

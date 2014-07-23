@@ -141,7 +141,7 @@ public class UserDashBoardFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
-
+		getActivity().getActionBar().setTitle("3eesho");
 		ivFacebookPicture = (ProfilePictureView) v.findViewById(R.id.ivFacebookPicture);
 		ivPicture = (ImageView) v.findViewById(R.id.ivCircularPicture);
 		lvGoals = (ListView) v.findViewById(R.id.lvGoals);

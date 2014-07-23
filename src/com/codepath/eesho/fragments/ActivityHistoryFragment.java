@@ -48,7 +48,7 @@ public class ActivityHistoryFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_activity_history, container, false);
-		
+		getActivity().getActionBar().setTitle("Activity");
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
 		bAll = (Button) v.findViewById(R.id.btEverything);
