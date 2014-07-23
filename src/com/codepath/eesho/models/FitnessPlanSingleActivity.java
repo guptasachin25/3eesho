@@ -213,7 +213,6 @@ public class FitnessPlanSingleActivity implements SingleActivity {
 	}
 	
 	public static FitnessPlanSingleActivity fromJSON(JSONObject object) {
-		System.out.println(object.toString());
 		FitnessPlanSingleActivity plan = new FitnessPlanSingleActivity();
 		
 		try {

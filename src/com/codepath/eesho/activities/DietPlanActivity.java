@@ -1,12 +1,9 @@
 package com.codepath.eesho.activities;
 
-import com.codepath.eesho.R;
-import com.codepath.eesho.R.layout;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
+import com.codepath.eesho.R;
 
 public class DietPlanActivity extends Activity {
 

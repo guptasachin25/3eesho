@@ -23,7 +23,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -74,7 +73,7 @@ public class UserDashBoardFragment extends Fragment {
 		return doneCount;
 	}
 	
-	private String getUserTarget(ParseUser user) {
+	public static String getUserTarget(ParseUser user) {
 		String target = null;
 		String targetType = user.getString("target_type");
 		Number targetRun = user.getNumber("target_run_distance");
@@ -116,7 +115,6 @@ public class UserDashBoardFragment extends Fragment {
 						e1.printStackTrace();
 					}
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
-						System.out.println("While inserting..." + activity.toJSONObject());
 						goals.add(activity);
 						
 						// may cause null pointer exception, but is workaround for now
@@ -135,7 +133,6 @@ public class UserDashBoardFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
-		System.out.println("I'm in on create view");
 		View v = inflater.inflate(R.layout.fragment_user_dashboard, container,false);
 
 		ivFacebookPicture = (ProfilePictureView) v.findViewById(R.id.ivFacebookPicture);
@@ -189,15 +186,9 @@ public class UserDashBoardFragment extends Fragment {
 					int position, long id) {
 				final Boolean done;
 				try {
-					System.out.println(goals.get(position));
-					System.out.println(((FitnessPlanSingleActivity) view.getTag()).toJSONObject());
-					System.out.println(dailyActivity.toJson());
 					FitnessPlanSingleActivity fitnessActivity = 
 							(FitnessPlanSingleActivity) view.getTag();
-					System.out.println(fitnessActivity.isDone());					
 					myGoal.resetDone(dailyActivity, goals.get(position));
-					System.out.println(fitnessActivity.isDone());
-
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
@@ -205,13 +196,10 @@ public class UserDashBoardFragment extends Fragment {
 				myGoal.saveInBackground(new SaveCallback() {
 					@Override
 					public void done(ParseException arg0) {
-						System.out.println(arg0);
 						if(arg0 == null) {
-							System.out.println("Data Saved");
 							FitnessPlanSingleActivity fitnessActivity = 
 									(FitnessPlanSingleActivity) view.getTag();
 							Long sign = fitnessActivity.isDone() ? 1L : -1L;
-							System.out.println(sign);
 							Long calories =  Math.abs((new Random().nextLong() % 100)) * sign;
 							Long steps = Math.abs((new Random().nextLong() % 100)) * sign;
 							MyActivity myActivity = 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.parse.ParseUser;
@@ -19,7 +20,7 @@ import com.parse.ParseUser;
 public class AboutYourselfActivity extends Activity {
 	EditText etWeight;
 	EditText etHeight;
-	EditText etActivityLevel;
+	TextView etActivityLevel;
 	Button btnContinue;
 	ImageView ivHeightIcon;
 	ImageView ivWeightIcon;
@@ -42,7 +43,7 @@ public class AboutYourselfActivity extends Activity {
 	private void setViews() {
 		etWeight = (EditText) findViewById(R.id.etWeight);
 		etHeight = (EditText) findViewById(R.id.etHeight);
-		etActivityLevel = (EditText) findViewById(R.id.etActivityLevel);
+		etActivityLevel = (TextView) findViewById(R.id.etActivityLevel);
 		btnContinue = (Button) findViewById(R.id.btnContinue);
 		ivHeightIcon = (ImageView) findViewById(R.id.ivHeightIcon);
 		ivWeightIcon = (ImageView) findViewById(R.id.ivWeightIcon);
@@ -145,6 +146,13 @@ public class AboutYourselfActivity extends Activity {
 		return false;
 	}
 	
+	private boolean isNullorEmpty(TextView et) {
+		if(et.getText() == null || et.getText().toString().equals("")) {
+			return true;
+		}
+		return false;
+	}
+	
 	private void changeImages() {
 		if(isNullorEmpty(etWeight)) {
 			offWeightIcon();
@@ -195,11 +203,11 @@ public class AboutYourselfActivity extends Activity {
 	}
 
 	private void onSubmit() {
-		System.out.println("On Submit");
 		if(btnContinue.isEnabled()) {
 			saveData();	
 			Intent intent = new Intent(this, GoalActivity.class);
 			startActivity(intent);
+			overridePendingTransition(R.anim.right_in, R.anim.left_out);
 		}
 	}
 	

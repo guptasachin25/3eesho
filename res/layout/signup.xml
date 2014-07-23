@@ -87,19 +87,17 @@
             android:layout_marginRight="15dp"
             android:background="@android:color/darker_gray" />
 
-        <EditText
+        <TextView
             android:id="@+id/etSex"
-            style="@style/EditTextStyleLogin"
+            style="@style/TextViewStyleLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="17dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="15dp"
             android:layout_marginTop="17dp"
-            android:hint="Gender"
-            android:inputType="none"
-            android:editable="false"
             android:clickable="true"
+            android:hint="Gender"
             android:onClick="onClick" />
     </LinearLayout>
 
@@ -132,5 +130,11 @@
         android:text="Sign In"
         android:textColor="#00BCD4"
         android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
 
 </RelativeLayout>

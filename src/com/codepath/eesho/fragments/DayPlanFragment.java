@@ -56,7 +56,6 @@ public class DayPlanFragment extends Fragment{
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				
-				System.out.println("I came here after click");
 				try {
 					myGoal.resetDone(dailyActivity, goals.get(position));
 				} catch (JSONException e) {
@@ -66,9 +65,8 @@ public class DayPlanFragment extends Fragment{
 					
 					@Override
 					public void done(ParseException arg0) {
-						System.out.println(arg0);
-						if(arg0 == null) {
-							System.out.println("Data Saved");
+						if(arg0 != null) {
+							System.out.println(arg0);
 						}
 					}
 				});
@@ -85,9 +83,6 @@ public class DayPlanFragment extends Fragment{
 		goals = new ArrayList<SingleActivity>();
 		aGoals = new GoalArrayAdapter(getActivity(), goals);
 
-		System.out.println("Framment Number: " + fragmentNumber);
-		System.out.println(date.toDateMidnight().toString());
-
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", date.toDateMidnight().toDate());
@@ -102,7 +97,6 @@ public class DayPlanFragment extends Fragment{
 						e1.printStackTrace();
 					}
 					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
-						System.out.println("While inserting..." + activity.toJSONObject());
 						goals.add(activity);
 					}
 					aGoals.notifyDataSetChanged();

@@ -153,11 +153,6 @@ public class Goal extends ParseObject {
 						} catch (JSONException e1) {
 							e1.printStackTrace();
 						}
-		            	try {
-							System.out.println(goals.get(i).getGoalDescription().toString());
-						} catch (JSONException e1) {
-							e1.printStackTrace();
-						}
 		            }
 		            
 		        } else {
@@ -191,7 +186,6 @@ public class Goal extends ParseObject {
 
 	public void resetDone(DailyActivity<FitnessPlanSingleActivity> dailyActivity, SingleActivity singleActivity) throws JSONException {
 		dailyActivity.resetDone(singleActivity);
-		System.out.println(dailyActivity.toJson());
 		put("plan_object", dailyActivity.toJson());
 	}
 }

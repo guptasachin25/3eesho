@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.joda.time.DateTime;
-import org.json.JSONException;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -177,7 +176,7 @@ public class UserMetricsActivity extends Activity {
 						goal.setUser(currentUser);
 						goal.saveInBackground();
 					} else {
-						System.out.println(exception);
+						//System.out.println(exception);
 					}
 				}
 			});

@@ -3,7 +3,6 @@ package com.codepath.eesho.parse.models;
 import java.util.Calendar;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.codepath.eesho.models.DailyActivity;

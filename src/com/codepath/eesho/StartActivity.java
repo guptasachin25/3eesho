@@ -74,9 +74,11 @@ public class StartActivity extends Activity {
 			if(!newUser) {
 				Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.right_in, R.anim.left_out);
 			} else {
 				Intent intent = new Intent(getApplicationContext(), AboutYourselfActivity.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.right_in, R.anim.left_out);
 			}
 		}
 	}
@@ -93,6 +95,7 @@ public class StartActivity extends Activity {
 		//startActivityForResult(builder.build(), SIGNUP_REQUEST);
 		Intent intent = new Intent(this, SignupActivity.class);
 		startActivity(intent);
+		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 
 	private void login() {
@@ -100,6 +103,7 @@ public class StartActivity extends Activity {
 		//startActivityForResult(builder.build(), LOGIN_REQUEST);
 		Intent intent = new Intent(this, LoginActivity.class);
 		startActivity(intent);
+		overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 
 	/*

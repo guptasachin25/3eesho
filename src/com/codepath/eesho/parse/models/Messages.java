@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 
-import android.util.Log;
-
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -64,8 +62,6 @@ public class Messages extends ParseObject {
 
 	public String getTimeSinceCurrentTime(Date date) {
 		long seconds = (new DateTime().getMillis() - date.getTime()) / 1000;
-		System.out.println(new DateTime().getMillis());
-		System.out.println(date.getTime());
 
 		if (seconds < 60L) {
 			return String.valueOf(seconds) + 's';
@@ -94,6 +90,10 @@ public class Messages extends ParseObject {
 	}
 
 	public String getFacebookId() {
-		return getSender().getString("facebook_id");
+		try {
+			return getSender().getString("facebook_id");
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

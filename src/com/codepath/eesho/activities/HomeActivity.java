@@ -26,15 +26,16 @@ public class HomeActivity extends FragmentActivity {
 	JSONArray jsonArray = new JSONArray();
 	ParseUser currentUser;
 	String referer = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		checkAndSetPlan();
 		getPlanView();
+		//changeProfileImageIcon();
 	}
-	
+
 	private void checkAndSetPlan() {
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
@@ -55,26 +56,28 @@ public class HomeActivity extends FragmentActivity {
 		ft.replace(R.id.flHomeContainer, fragment, "dashboard");
 		ft.commit();
 	}
-	
+
 	@Override
 	public void onBackPressed() {
-	    final UserDashBoardFragment fragment = (UserDashBoardFragment) getSupportFragmentManager().findFragmentByTag("dashboard");
-	    if (fragment.isVisible()) {
-	    	// don't go anywhere if already on UserDashBoard
-	    	} else {
-	    		super.onBackPressed();
-	    	}
+		final UserDashBoardFragment fragment = (UserDashBoardFragment) getSupportFragmentManager().findFragmentByTag("dashboard");
+		if (fragment.isVisible()) {
+			// don't go anywhere if already on UserDashBoard
+		} else {
+			super.onBackPressed();
+		}
 	}
-	
+
 	public void onProfileView(MenuItem mi) {
 		Intent i = new Intent(HomeActivity.this, ProfileActivity.class);
 		i.putExtra("currentUserLoggedInfo", ParseUser.getCurrentUser().getString("name"));
 		startActivity(i);
+		//overridePendingTransition(R.anim.right_in, R.anim.left_out);
 	}
 
 	public void onSocialView(MenuItem mi) {
 		Intent intent = new Intent(this, ShoutActivity.class);
 		startActivity(intent);
+		//overridePendingTransition(R.anim.right_in, R.anim.left_out);
 		/*
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		WallFragment fragment = new WallFragment();
@@ -86,13 +89,25 @@ public class HomeActivity extends FragmentActivity {
 		getPlanView();
 	}
 
+	private void changeProfileImageIcon() {
+		if(ParseUser.getCurrentUser() != null) {
+			MenuItem profileImage = (MenuItem) findViewById(R.id.miProfile);
+			if(profileImage != null) {
+				if(ParseUser.getCurrentUser().getString("sex").equals("female")) {
+					profileImage.setIcon(R.drawable.icon_profile_woman);
+				} else {
+					profileImage.setIcon(R.drawable.icon_profile_man);
+				}
+			}
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.profile, menu);
 		return true;
 	}
-
+	
 	public void goToActivityHistory(View v) {
 		FragmentTransaction fts = getSupportFragmentManager().beginTransaction();
 		fts.replace(R.id.flHomeContainer, new ActivityHistoryFragment());	
@@ -106,7 +121,7 @@ public class HomeActivity extends FragmentActivity {
 		fts.addToBackStack(null);
 		fts.commit();
 	}
-	
+
 	public void onClickSetTarget(View v) {
 		Toast.makeText(this, "Set Target", Toast.LENGTH_SHORT);
 	}
