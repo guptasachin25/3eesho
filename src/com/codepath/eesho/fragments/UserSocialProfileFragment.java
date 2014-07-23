@@ -40,7 +40,7 @@ public class UserSocialProfileFragment extends Fragment {
 
 	private int totalLikes = 0;
 	private int totalActivityCount = 0;
-	
+
 
 
 	// The fragment for getting user input field names
@@ -77,7 +77,7 @@ public class UserSocialProfileFragment extends Fragment {
 	}
 
 
-	
+
 	private void totalActivity() {
 		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
 		query.whereEqualTo("user",ParseUser.getCurrentUser());
@@ -88,15 +88,14 @@ public class UserSocialProfileFragment extends Fragment {
 						totalActivityCount += activity.getDimension().intValue();
 					}
 				}else {
-		            Log.d("item", "Error: " + e.getMessage());
-		        }Log.d("Total activity", "activity is here " + totalActivityCount);
-		        activityTxt.setText(String.valueOf(totalActivityCount));
+					Log.d("item", "Error: " + e.getMessage());
+				}Log.d("Total activity", "activity is here " + totalActivityCount);
+				activityTxt.setText(String.valueOf(totalActivityCount));
 			}
 		});
 	}
 
 	private void totalLikeMessages() {
-		
 		ParseQuery<Messages> query = ParseQuery.getQuery(Messages.class);
 		query.whereEqualTo("sender",ParseUser.getCurrentUser());
 		query.findInBackground(new FindCallback<Messages>(){
@@ -106,35 +105,28 @@ public class UserSocialProfileFragment extends Fragment {
 						totalLikes += msg.getLikes().intValue();
 					}
 				}else {
-		            Log.d("item", "Error: " + e.getMessage());
-		        }Log.d("Total lIKES", "lIKES ARE HERE " + totalLikes);
-		        likesTxt.setText(String.valueOf(totalLikes));
+					Log.d("item", "Error: " + e.getMessage());
+				}Log.d("Total lIKES", "lIKES ARE HERE " + totalLikes);
+				likesTxt.setText(String.valueOf(totalLikes));
 			}
 
 		});
-		
 	}
-
-
+	
 	private void listofShoutMessages() {
 		Fragment myWallFragment = new MyWallFragment();
 		FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 		transaction.add(R.id.fr_myshoutMessage, myWallFragment).commit();
 	}
-
+	
 	private void setUpUserData(ParseUser user) {
 		if(user.getString("name") != null){
 			tvUserProfileName.setText(user.getString("name"));
-			targetTxt.setText(getUserTarget(ParseUser.getCurrentUser()));
-		}if(user.getNumber("weight") != null){
+			targetTxt.setText(Html.fromHtml(UserDashBoardFragment.getUserTarget(ParseUser.getCurrentUser())));
+		} if(user.getNumber("weight") != null){
 			weightTxt.setText(user.getNumber("weight").toString());
 		}
-	else{
-			Log.d("Getting the value for parse","value from parse is null");
-		}
 	}
-	
-
 }
 
 
