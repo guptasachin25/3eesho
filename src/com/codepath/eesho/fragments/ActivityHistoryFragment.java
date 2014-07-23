@@ -168,25 +168,39 @@ public class ActivityHistoryFragment extends Fragment{
 	}
 	
 	public void setUpMonthBars() {
-		getActivityWeek("Run", pbMiles, tvMiles, 100);
-		getActivityWeek("Pushups", pbPushups, tvPushups, 400);
-		// formerly crunches
-		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 200);
-		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 400);
-		//formerly situps
-		getActivityWeek("Chest Presses", pbSitups, tvSitups, 400);
-		getActivityWeek("Lunges", pbLunges, tvLunges, 400);
+//		getActivityWeek("Run", pbMiles, tvMiles, 100);
+//		getActivityWeek("Pushups", pbPushups, tvPushups, 400);
+//		// formerly crunches
+//		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 200);
+//		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 400);
+//		//formerly situps
+//		getActivityWeek("Chest Presses", pbSitups, tvSitups, 400);
+//		getActivityWeek("Lunges", pbLunges, tvLunges, 400);
+		
+		setBar(pbMiles, tvMiles, 100, 20);
+		setBar(pbPushups, tvPushups, 400, 250);
+		setBar(pbCrunches, tvCrunches, 200, 200);
+		setBar(pbShoulder, tvShoulder, 400, 125);
+		setBar(pbSitups, tvSitups, 400, 50);
+		setBar(pbLunges, tvLunges, 500, 80);
 	}
 	
 	public void setUpAllBars() {
-		getActivityWeek("Run", pbMiles, tvMiles, 300);
-		getActivityWeek("Pushups", pbPushups, tvPushups, 1200);
-		// formerly crunches
-		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 600);
-		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 1200);
-		//formerly situps
-		getActivityWeek("Chest Presses", pbSitups, tvSitups, 1200);
-		getActivityWeek("Lunges", pbLunges, tvLunges, 1200);
+//		getActivityWeek("Run", pbMiles, tvMiles, 300);
+//		getActivityWeek("Pushups", pbPushups, tvPushups, 1200);
+//		// formerly crunches
+//		getActivityWeek("Inch Worm", pbCrunches, tvCrunches, 600);
+//		getActivityWeek("Shoulder", pbShoulder, tvShoulder, 1200);
+//		//formerly situps
+//		getActivityWeek("Chest Presses", pbSitups, tvSitups, 1200);
+//		getActivityWeek("Lunges", pbLunges, tvLunges, 1200);
+		
+		setBar(pbMiles, tvMiles, 300, 100);
+		setBar(pbPushups, tvPushups, 1200, 600);
+		setBar(pbCrunches, tvCrunches, 600, 200);
+		setBar(pbShoulder, tvShoulder, 1200, 500);
+		setBar(pbSitups, tvSitups, 1200, 800);
+		setBar(pbLunges, tvLunges, 1200, 900);
 	}
 
 }
