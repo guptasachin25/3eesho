@@ -134,7 +134,6 @@ public class UserDashBoardFragment extends Fragment {
 				}
 			}
 		});
-
 	}
 
 	@Override

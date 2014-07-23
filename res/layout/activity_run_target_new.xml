@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="Sachin&apos;s Target"
+            android:text="Target"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000"
             android:textSize="16sp" />
@@ -120,6 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="14dp"
+                android:inputType="number"
                 android:hint="Target distance (miles)"
                 android:onClick="onClick" >
 
@@ -139,6 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="14dp"
+                android:inputType="number"
                 android:hint="Target time (months)"
                 android:onClick="onClick" />
 
