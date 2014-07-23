@@ -12,8 +12,8 @@
         android:top="1dp"
         android:bottom="1dp"/>
 
-    <solid android:color="#79CDCD"/>
+    <solid android:color="#a8a8a8"/>
     
-    <stroke android:width="1px" android:color="#79CDCD" />
+    <stroke android:width="1px" android:color="#a8a8a8" />
 
 </shape>
