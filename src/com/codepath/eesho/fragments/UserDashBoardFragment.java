@@ -189,15 +189,23 @@ public class UserDashBoardFragment extends Fragment {
 		lvGoals.setOnItemLongClickListener(new OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-                    int pos, long id) {
+                    final int pos, long id) {
             	AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Do you want to see a tutorial?");
                 // alert.setMessage("Message");
 
                 alert.setPositiveButton("YES!", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                    	String url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU";
+                    	String url = "";
+                    	if (goals.get(pos).toString().contains("Inch")) {
+                        	url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
+                    	} else if (goals.get(pos).toString().contains("Pushups")) {
+                    		url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
+                    	} else if (goals.get(pos).toString().contains("Chest")) {
+                    		url = "https://www.youtube.com/watch?v=QwJa1jzaek8E"; // chest press                    		
+                    	} 
                     	Intent i = new Intent(Intent.ACTION_VIEW);
+                    	i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     	i.setData(Uri.parse(url));
                     	startActivity(i);
                     }
