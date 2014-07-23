@@ -7,11 +7,14 @@ import java.util.Random;
 import org.joda.time.DateTime;
 import org.json.JSONException;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -22,6 +25,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -179,6 +183,44 @@ public class UserDashBoardFragment extends Fragment {
 	    		}
 	        }
 	    });
+		
+		lvGoals.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                    final int pos, long id) {
+            	AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setTitle("Do you want to see a tutorial?");
+                // alert.setMessage("Message");
+
+                alert.setPositiveButton("YES!", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    	String url = "";
+                    	if (goals.get(pos).toString().contains("Inch")) {
+                        	url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
+                    	} else if (goals.get(pos).toString().contains("Pushups")) {
+                    		url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
+                    	} else if (goals.get(pos).toString().contains("Chest")) {
+                    		url = "https://www.youtube.com/watch?v=QwJa1jzaek8E"; // chest press                    		
+                    	} 
+                    	Intent i = new Intent(Intent.ACTION_VIEW);
+                    	i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    	i.setData(Uri.parse(url));
+                    	startActivity(i);
+                    }
+                });
+
+                alert.setNegativeButton("Nope",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        	dialog.dismiss();
+                        }
+                    });
+
+                alert.show();
+              
+                return true;
+            }
+        }); 
 
 		lvGoals.setOnItemClickListener(new OnItemClickListener() {
 			@Override
