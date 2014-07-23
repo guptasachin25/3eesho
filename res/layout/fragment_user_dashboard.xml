@@ -80,6 +80,7 @@
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:layout_marginTop="1dp"
+                    android:layout_marginRight="3dp"
                     android:src="@drawable/icon_like_feed" />
 
                 <TextView
@@ -101,8 +102,9 @@
                     android:id="@+id/ivMessages"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
+                    android:layout_marginRight="3dp"
                     android:layout_marginTop="1dp"
-                    android:src="@drawable/ic_broadcast" />
+                    android:src="@drawable/icon_shout" />
 
                 <TextView
                     android:id="@+id/tvNumMessages"
@@ -134,44 +136,48 @@
 
         <RelativeLayout
             android:id="@+id/llProgress"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="openProgress"
             android:orientation="vertical" >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical" >
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
 
                     <ImageView
                         android:id="@+id/ivGraph"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_bargraph" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_dashboard_progress" />
 
                     <TextView
                         android:id="@+id/tvProgress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:text="88"
                         android:textColor="#FFFFFF"
-                        android:textSize="24sp" />
-                </LinearLayout>
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tvProgressTxt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
                     android:text="PROGRESS"
                     android:textAlignment="center"
                     android:textColor="#FFF"
@@ -182,7 +188,7 @@
         <!-- Showing Activity Metrics -->
 
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="goToActivityHistory"
@@ -194,32 +200,33 @@
                 android:layout_centerInParent="true"
                 android:orientation="vertical" >
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
 
                     <ImageView
                         android:id="@+id/ivActivity"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_activity" />
+                        android:layout_width="wrap_content"
+                    	  android:layout_height="wrap_content"
+				  android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_dashboard_activity" />
 
                     <TextView
                         android:id="@+id/tvActivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:text="60"
                         android:textColor="#FFFFFF"
-                        android:textSize="24sp" />
-                </LinearLayout>
+                        android:textSize="20sp" />
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tvActivityText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="7dp"
                     android:text="ACTIVITY"
                     android:textAlignment="center"
                     android:textColor="#FFF"
