@@ -75,6 +75,14 @@ public class HomeActivity extends FragmentActivity {
 						weight = new Weight(126, d);
 						weight.setOwner(ParseUser.getCurrentUser());
 						weight.saveInBackground();
+						
+						weight = new Weight(128, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
+						
+						weight = new Weight(127, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
 					}
 
 				} else {
