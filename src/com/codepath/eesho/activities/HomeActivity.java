@@ -56,15 +56,25 @@ public class HomeActivity extends FragmentActivity {
 						SimpleDateFormat formatter = new SimpleDateFormat("MMM dd"); // 3-letter month name & 2-char day of month
 						final String d = formatter.format(calendar.getTime());
 						
-						for (int i = 0; i < 10; i++) {
-							int lb = 125;
-							
-							Weight weight = new Weight(lb, d);
-							weight.setOwner(ParseUser.getCurrentUser());
-							weight.saveInBackground();
-							
-							lb = lb - Utils.randInt(0, 2);
-						}					
+						Weight weight = new Weight(125, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();	
+						
+						weight = new Weight(127, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
+						
+						weight = new Weight(124, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
+						
+						weight = new Weight(124, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
+						
+						weight = new Weight(126, d);
+						weight.setOwner(ParseUser.getCurrentUser());
+						weight.saveInBackground();
 					}
 
 				} else {
