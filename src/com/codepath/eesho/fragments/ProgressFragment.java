@@ -157,25 +157,7 @@ public class ProgressFragment extends Fragment{
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<Weight>() {
 			public void done(List<Weight> weights, ParseException e) {
-				if (e == null && weights.size() < 1) {
-					
-					if (weights.size() < 1) {
-						final Calendar calendar = Calendar.getInstance();
-						SimpleDateFormat formatter = new SimpleDateFormat("MMM dd"); // 3-letter month name & 2-char day of month
-						final String d = formatter.format(calendar.getTime());
-						
-						for (int i = 0; i < 10; i++) {
-							int lb = 125;
-							
-							Weight weight = new Weight(lb, d);
-							weight.setOwner(ParseUser.getCurrentUser());
-							weight.saveInBackground();
-							
-							lb = lb - Utils.randInt(0, 2);
-						}
-						
-						
-					}
+				if (e == null && weights.size() > 1) {
 					
 					Line myLine = new Line();
 					ArrayList<Integer> myPoints = new ArrayList<Integer>();
