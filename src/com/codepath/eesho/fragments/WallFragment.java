@@ -78,6 +78,7 @@ public abstract class WallFragment extends Fragment {
 			@Override
 			public void done(List<Messages> messageList, ParseException exception) {
 				if(exception == null) {
+					messageAdapter.clear();
 					for(Messages message: messageList) {
 						messageAdapter.add(message);
 						messageAdapter.notifyDataSetChanged();

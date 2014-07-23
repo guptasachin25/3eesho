@@ -113,23 +113,26 @@ public class UserDashBoardFragment extends Fragment {
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", new DateTime().toDateMidnight().toDate());
 
-		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+		//query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
 				if (e == null) {
 					myGoal = goal;
 					try {
+						aGoals.clear();
+						goals.clear();
 						dailyActivity = goal.getDailyActivity();
+						for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
+							goals.add(activity);
+							// may cause null pointer exception, but is workaround for now
+							changeShoutButton(getDoneGoals());
+						}
+						aGoals.notifyDataSetChanged();
 					} catch (JSONException e1) {
 						e1.printStackTrace();
+					} catch (NullPointerException exp) {
+						Log.d("ERROR", exp.getMessage());
 					}
-					for(FitnessPlanSingleActivity activity: dailyActivity.getActivityList()) {
-						goals.add(activity);
-
-						// may cause null pointer exception, but is workaround for now
-						changeShoutButton(getDoneGoals());
-					}
-					aGoals.notifyDataSetChanged();
 				} else {
 					Log.d("item", "Error: " + e.getMessage());
 				}
@@ -231,6 +234,7 @@ public class UserDashBoardFragment extends Fragment {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				final Boolean done;
+				
 				try {
 					FitnessPlanSingleActivity fitnessActivity = 
 							(FitnessPlanSingleActivity) view.getTag();
@@ -327,8 +331,7 @@ public class UserDashBoardFragment extends Fragment {
 		ParseQuery<Goal> query = ParseQuery.getQuery(Goal.class);
 		query.whereEqualTo("user", ParseUser.getCurrentUser());
 		query.whereEqualTo("date", date.toDateMidnight().toDate());
-		
-		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
+
 		query.getFirstInBackground(new GetCallback<Goal>() {
 			public void done(Goal goal, ParseException e) {
 				if (e == null) {
