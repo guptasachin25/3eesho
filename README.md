@@ -10,10 +10,8 @@ Facebook SDK: https://developers.facebook.com/docs/android/
 Jodatime: http://www.joda.org/joda-time/
 
 ![pic1](p1.png)
-![pic2](p2.png)
+![gif1](dashboard.gif)
 ![pic3](p3.png)
 ![pic4](p4.png)
-![pic5](p5.png)
-![pic6](p6.png)
 
 
