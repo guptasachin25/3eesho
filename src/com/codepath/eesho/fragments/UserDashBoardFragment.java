@@ -202,13 +202,17 @@ public class UserDashBoardFragment extends Fragment {
 				alert.setPositiveButton("YES!", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int whichButton) {
 						String url = "";
-						if (goals.get(pos).toString().contains("Inch")) {
-							url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
-						} else if (goals.get(pos).toString().contains("Pushups")) {
-							url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
-						} else if (goals.get(pos).toString().contains("Chest")) {
-							url = "https://www.youtube.com/watch?v=QwJa1jzaek8E"; // chest press                    		
-						} 
+						url = "https://www.youtube.com/watch?v=AGVAR1m8gf8";
+
+//						if (goals.get(pos).toString().contains("Inch")) {
+//							url = "https://www.youtube.com/watch?v=VSp0z7Mp5IU"; // inch worm
+//						} else if (goals.get(pos).toString().contains("Pushups")) {
+//							url = "https://www.youtube.com/watch?v=Eh00_rniF8E"; // push ups
+//						} else if (goals.get(pos).toString().contains("Chest")) {
+//							url = "https://www.youtube.com/watch?v=rT7DgCr-3pg"; // chest press                    		
+//						} else {
+//							url = "https://www.youtube.com/watch?v=AGVAR1m8gf8";
+//						}
 						Intent i = new Intent(Intent.ACTION_VIEW);
 						i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						i.setData(Uri.parse(url));
