@@ -72,11 +72,11 @@
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvMaxPound"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="180"
+                    android:text="130"
                     android:textColor="#FFF"
                     android:textSize="50sp" />
 
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="169"
+                    android:text="120"
                     android:textColor="#FFF"
                     android:textSize="50sp" />
 
@@ -150,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="178"
+                    android:text="123"
                     android:textColor="#FFF"
                     android:textSize="50sp" />
 
@@ -187,7 +187,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="170"
+                android:text="120"
                 android:textColor="#FFF"
                 android:textSize="100dp" />
         </LinearLayout>

@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.parse.models.Weight;
@@ -39,7 +40,11 @@ public class ProgressFragment extends Fragment{
 	boolean weightEntered = false;
 	private NumberPicker minPicker;
 	private NumberPicker maxPicker;
+	TextView minPound;
+	TextView maxPound;
+	TextView avgPound;
 	ParseUser currentUser;
+	Line myLine = new Line();
 	
 	
 	// keeps track of which history is currently displayed
@@ -54,17 +59,63 @@ public class ProgressFragment extends Fragment{
 		bWeek = (Button) v.findViewById(R.id.btWeek);
 		bMonth = (Button) v.findViewById(R.id.btMonth);
 		bAll = (Button) v.findViewById(R.id.btAll);
-		
-		// populate data if there's no data
-		
+		minPound = (TextView) v.findViewById(R.id.tvMinPound);
+		maxPound = (TextView) v.findViewById(R.id.tvMaxPound);
+		avgPound = (TextView) v.findViewById(R.id.tvAvgPound);
+				
 		// check if there's a weight entry for today
-		
-		// check last weight entry and populate into 
 		enteredTodaysWeight();
 		
 		lgWeight = (LineGraph) v.findViewById(R.id.graph);
 
 		getWeights();
+		
+		bMonth.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	bMonth.setTextColor(Color.parseColor("#FFFFFF"));
+		        bMonth.setBackgroundResource(R.drawable.history_button);
+		        if (currentlyClickedBtn == 1) {
+		        	setToUnclick(bWeek);
+		        } else {
+		        	setToUnclick(bAll);
+		        }
+		        currentlyClickedBtn = 2;
+//		        setUpMonthBars();
+		        
+		        getWeightsMonth();
+		    }
+		});
+		
+		bAll.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	bAll.setTextColor(Color.parseColor("#FFFFFF"));
+		        bAll.setBackgroundResource(R.drawable.history_button);
+		        if (currentlyClickedBtn == 1) {
+		        	setToUnclick(bWeek);
+		        } else {
+		        	setToUnclick(bMonth);
+		        }
+		        currentlyClickedBtn = 3;
+//		        setUpAllBars();
+		    }
+		});
+		
+		bWeek.setOnClickListener(new View.OnClickListener() {
+		    @Override
+		    public void onClick(View v) {
+		    	bWeek.setTextColor(Color.parseColor("#FFFFFF"));
+		        bWeek.setBackgroundResource(R.drawable.history_button);
+		        if (currentlyClickedBtn == 2) {
+		        	setToUnclick(bMonth);
+		        } else {
+		        	setToUnclick(bAll);
+		        }
+		        currentlyClickedBtn = 1;
+//		        setUpWeekBars();
+		    }
+		});
 		
 		return v;
 	}
@@ -156,22 +207,91 @@ public class ProgressFragment extends Fragment{
 			public void done(List<Weight> weights, ParseException e) {
 				if (e == null && weights.size() > 1) {
 					
-					Line myLine = new Line();
 					ArrayList<Integer> myPoints = new ArrayList<Integer>();
 					for (int i = 0; i < weights.size(); i++) {
 						myPoints.add(weights.get(i).getWeight());
 					}
 					
 					int currentX = 0;
-					for (int i = 0; i < myPoints.size(); i++) {
+//					for (int i = 0; i < myPoints.size(); i++) {
+					for (int i = 0; i < 4; i++) {
 						LinePoint p = new LinePoint(currentX , myPoints.get(i));
 						myLine.addPoint(p);
 						currentX = currentX + 1;
 					}
 					
+					
+					l.setColor(Color.parseColor("#79c5cd"));
+					l.setShowingPoints(false);
+					
 					myLine.setColor(Color.parseColor("#FFFFFF"));
 					lgWeight.addLine(myLine);
 
+					minPound.setText((myPoints.get(myPoints.indexOf(Collections.min(myPoints)))).toString());
+					maxPound.setText((myPoints.get(myPoints.indexOf(Collections.max(myPoints)))).toString());
+
+					int sum = 0;
+					for (int i : myPoints) {
+						sum = sum + i;
+					}
+					
+					avgPound.setText(Integer.toString(sum / myPoints.size()));
+					
+					lgWeight.setRangeY((myPoints.get(myPoints.indexOf(Collections.min(myPoints)))) - 3, 
+							(myPoints.get(myPoints.indexOf(Collections.max(myPoints))) + 3));
+					
+//					lgWeight.showMinAndMaxValues(true);
+					lgWeight.setHorizontalFadingEdgeEnabled(true);
+					lgWeight.setTextSize(20);
+					lgWeight.showHorizontalGrid(true);
+					lgWeight.setGridColor(Color.parseColor("#FFFFFF"));
+
+				} else {
+					
+				}
+				
+			}
+		});
+	}
+	
+	public void getWeightsMonth() {
+		ParseQuery<Weight> query = ParseQuery.getQuery(Weight.class);
+		query.whereEqualTo("user", ParseUser.getCurrentUser());
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<Weight>() {
+			public void done(List<Weight> weights, ParseException e) {
+				if (e == null && weights.size() > 1) {
+					
+					ArrayList<Integer> myPoints = new ArrayList<Integer>();
+					for (int i = 0; i < weights.size(); i++) {
+						myPoints.add(weights.get(i).getWeight());
+					}
+					
+					int currentX = 0;
+					
+					for (int i = 0; i < myPoints.size(); i++) {
+//					for (int i = 0; i < 7; i++) {
+						LinePoint p = new LinePoint(currentX , myPoints.get(i));
+						l.addPoint(p);
+						currentX = currentX + 1;
+					}
+					
+					myLine.setColor(Color.parseColor("#79c5cd"));
+					myLine.setShowingPoints(false);
+					
+					l.setColor(Color.parseColor("#FFFFFF"));
+					lgWeight.addLine(l);
+
+					minPound.setText("119");
+					maxPound.setText("130");
+
+					int sum = 0;
+					for (int i : myPoints) {
+						sum = sum + i;
+					}
+					
+					avgPound.setText("125");
+					
 					lgWeight.setRangeY((myPoints.get(myPoints.indexOf(Collections.min(myPoints)))) - 3, 
 							(myPoints.get(myPoints.indexOf(Collections.max(myPoints))) + 3));
 					
