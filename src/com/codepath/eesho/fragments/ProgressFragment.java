@@ -1,6 +1,5 @@
 package com.codepath.eesho.fragments;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +20,6 @@ import android.widget.NumberPicker;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.parse.models.Weight;
-import com.codepath.eesho.utils.Utils;
 import com.echo.holographlibrary.Line;
 import com.echo.holographlibrary.LineGraph;
 import com.echo.holographlibrary.LinePoint;
@@ -29,7 +27,6 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 public class ProgressFragment extends Fragment{
 	Line l = new Line();

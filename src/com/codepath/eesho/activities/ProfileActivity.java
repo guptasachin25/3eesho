@@ -23,7 +23,7 @@ public class ProfileActivity extends FragmentActivity {
 		user_id = getIntent().getExtras().getString("currentUserLoggedInfo");
 		setupWithUser(user_id);
 	}
-
+	
 	private void setupWithUser(String user_name) {
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		UserSocialProfileFragment fragment = UserSocialProfileFragment.newInstance(user_name);
@@ -58,6 +58,7 @@ public class ProfileActivity extends FragmentActivity {
 			ft.commit();
 			item.setVisible(false);
 			return true;
+			
 		case R.id.miLogout:
 			ParseUser.logOut();
 			Log.d("logout", "user is now loged out");

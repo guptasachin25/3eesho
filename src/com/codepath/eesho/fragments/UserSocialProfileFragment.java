@@ -72,16 +72,19 @@ public class UserSocialProfileFragment extends Fragment {
 	private void totalActivity() {
 		ParseQuery<MyActivity> query = ParseQuery.getQuery(MyActivity.class);
 		query.whereEqualTo("user",ParseUser.getCurrentUser());
+		
 		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
 		query.findInBackground(new FindCallback<MyActivity>(){
 			public void done(List<MyActivity> itemList, ParseException e){
-				if(e == null){
+				if(e == null) {
+					totalActivityCount = 0;
 					for(MyActivity activity: itemList) {
 						totalActivityCount += activity.getDimension().intValue();
 					}
 				} else {
 					Log.d("item", "Error: " + e.getMessage());
-				}Log.d("Total activity", "activity is here " + totalActivityCount);
+				} 
+				Log.d("Total activity", "activity is here " + totalActivityCount);
 				activityTxt.setText(String.valueOf(totalActivityCount));
 			}
 		});
@@ -90,19 +93,21 @@ public class UserSocialProfileFragment extends Fragment {
 	private void totalLikeMessages() {
 		ParseQuery<Messages> query = ParseQuery.getQuery(Messages.class);
 		query.whereEqualTo("sender",ParseUser.getCurrentUser());
+		
 		query.setCachePolicy(ParseQuery.CachePolicy.CACHE_THEN_NETWORK);
-		query.findInBackground(new FindCallback<Messages>(){
+		query.findInBackground(new FindCallback<Messages>() {
 			public void done(List<Messages> itemList, ParseException e){
-				if(e == null){
+				if(e == null) {
+					totalLikes = 0;
 					for(Messages msg: itemList) {
 						totalLikes += msg.getLikes().intValue();
 					}
-				}else {
+				} else {
 					Log.d("item", "Error: " + e.getMessage());
-				}Log.d("Total lIKES", "lIKES ARE HERE " + totalLikes);
+				} 
+				Log.d("Total lIKES", "lIKES ARE HERE " + totalLikes);
 				likesTxt.setText(String.valueOf(totalLikes));
 			}
-
 		});
 	}
 	
@@ -116,7 +121,7 @@ public class UserSocialProfileFragment extends Fragment {
 		if(user.getString("name") != null) {
 			tvUserProfileName.setText(user.getString("name"));
 			targetTxt.setText(Html.fromHtml(UserDashBoardFragment.getUserTarget(ParseUser.getCurrentUser())));
-		} if(user.getNumber("weight") != null){
+		} if(user.getNumber("weight") != null) {
 			weightTxt.setText(user.getNumber("weight").toString());
 		}
 	}
