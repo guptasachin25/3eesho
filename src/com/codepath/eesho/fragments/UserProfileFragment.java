@@ -9,6 +9,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -60,6 +62,13 @@ public class UserProfileFragment extends DialogFragment {
 		Log.d("inprofileactivity", "user id in profile after activity pass it " + user_id + " first");
 	}
 
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		MenuItem miedit = (MenuItem) menu.findItem(R.id.miEditProfile);
+		miedit.setVisible(false);
+		super.onPrepareOptionsMenu(menu);
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			ViewGroup container,  Bundle savedInstanceState) {

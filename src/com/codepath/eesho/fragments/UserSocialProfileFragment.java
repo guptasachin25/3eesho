@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -46,6 +49,7 @@ public class UserSocialProfileFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
 	}
 
 	@Override
@@ -67,6 +71,13 @@ public class UserSocialProfileFragment extends Fragment {
 		totalActivity();
 		progressBar.setVisibility(ProgressBar.INVISIBLE);
 		return v;
+	}
+	
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		MenuItem miedit = (MenuItem) menu.findItem(R.id.miEditProfile);
+		miedit.setVisible(true);
+		super.onPrepareOptionsMenu(menu);
 	}
 
 	private void totalActivity() {
@@ -124,6 +135,26 @@ public class UserSocialProfileFragment extends Fragment {
 		} if(user.getNumber("weight") != null) {
 			weightTxt.setText(user.getNumber("weight").toString());
 		}
+	}
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.edit_profile, menu);
+	} 
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	   // handle item selection
+	   switch (item.getItemId()) {
+	      case R.id.miEditProfile:
+	    	  FragmentTransaction ft = this.getActivity().getSupportFragmentManager().beginTransaction();
+				UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
+				ft.replace(R.id.frameLayoutProfile, fragment);
+				ft.addToBackStack(null);
+				ft.commit();
+	         return true;
+	      default:
+	         return super.onOptionsItemSelected(item);
+	   }
 	}
 }
 

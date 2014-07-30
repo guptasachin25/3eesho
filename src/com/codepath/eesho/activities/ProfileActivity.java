@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.codepath.eesho.R;
 import com.codepath.eesho.StartActivity;
@@ -39,26 +40,11 @@ public class ProfileActivity extends FragmentActivity {
 		startActivity(i);
 	}
 
-	/*public void onEditProfile(MenuItem mi){
-		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
-		ft.replace(R.id.frameLayoutProfile, fragment);
-		ft.commit();
-	}*/
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// handle item selection
-		switch (item.getItemId()) {
-		case R.id.miEditProfile:
-			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-			UserProfileFragment fragment = UserProfileFragment.newInstance(ParseUser.getCurrentUser().getString("name"));
-			ft.replace(R.id.frameLayoutProfile, fragment);
-			ft.addToBackStack(null);
-			ft.commit();
-			item.setVisible(false);
-			return true;
-			
+		switch (item.getItemId()) {	
 		case R.id.miLogout:
 			ParseUser.logOut();
 			Log.d("logout", "user is now loged out");

@@ -3,8 +3,7 @@
     <item
         android:id="@+id/miEditProfile"
         android:showAsAction="always"
-        android:onClick="onEditProfile"
+        android:icon="@drawable/icon_edit"
         android:title="Edit">
     </item>
-
 </menu>
